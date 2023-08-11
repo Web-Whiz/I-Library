@@ -67,7 +67,7 @@ const NewReleasedBook = () => {
       "authorName": "J.R.R. Tolkien",
       "borrowPrice": 4.15,
       "rating": 4.7,
-      "shelfNo": 602
+      "shelfNo": 605
     },
     {
       "id": 7,
