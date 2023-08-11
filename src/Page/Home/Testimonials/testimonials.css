@@ -1,0 +1,6 @@
+.bg-testimonials-bg {
+  background-image: url("../../../assets/testimonial.jpg");
+  /* height: 800px; */
+  background-size: cover;
+  background-attachment: fixed;
+}
