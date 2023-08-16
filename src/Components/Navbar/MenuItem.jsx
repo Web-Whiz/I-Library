@@ -1,4 +1,4 @@
-import React from "react";
+import Link from "next/link";
 
 const MenuItem = () => {
   return (
@@ -8,7 +8,7 @@ const MenuItem = () => {
           All Books
         </li>
         <li className="hover:text-white hover:bg-indigo-500 px-2 py-2 cursor-pointer duration-200 font-medium">
-          Category
+          <Link href="/category">Category</Link>
         </li>
         <li className="hover:text-white hover:bg-indigo-500 px-2 py-2 cursor-pointer duration-200 font-medium">
           Author
