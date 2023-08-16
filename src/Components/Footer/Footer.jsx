@@ -64,7 +64,7 @@ const Footer = () => {
             <a href="/accessibility">Accessibility</a>
           </div>
         </div>
-        <div className="flex items-center justify-center my-10 md:my-20">
+        {/* <div className="flex items-center justify-center my-10 md:my-20">
           <form className="flex items-center py-2">
             <button className="px-2 py-2 bg-indigo-500 text-white text-xl rounded-l-md">
               <IoIosMail />
@@ -79,7 +79,7 @@ const Footer = () => {
               <PiPaperPlaneRightBold />
             </button>
           </form>
-        </div>
+        </div> */}
       </div>
       <div className="w-full h-16 py-6 bg-[#0F86CD]">
         <p className="text-center text-white text-sm md:text-base">

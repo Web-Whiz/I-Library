@@ -6,13 +6,12 @@ import Link from "next/link";
 // import { FiShoppingCart, FiSearch } from "react-icons/fi";
 import { FaCartPlus } from "react-icons/fa";
 import { AiOutlineMenu } from "react-icons/ai";
-import MenuItem from "./MenuItem";
 import SearchBar from "../SearchBar/SearchBar";
 const Navbar = () => {
   return (
     <>
       <nav className="bg-white">
-        <div className="container mx-auto flex justify-between items-center px-2 md:px-0 pb-5 pt-5">
+        <div className="container mx-auto flex justify-between items-center px-2 md:px-0 py-5">
           <div>
             <Link href="/">
               <Image className="w-[150px] md:w-[200px]" src={logo} alt="logo" />
@@ -37,9 +36,7 @@ const Navbar = () => {
           </div>
         </div>
       </nav>
-      <div className="hidden lg:block">
-        <MenuItem />
-      </div>
+     
     </>
   );
 };

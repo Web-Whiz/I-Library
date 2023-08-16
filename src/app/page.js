@@ -11,12 +11,12 @@ const page = () => {
     <div>
       <Banner />
       <NewReleasedBook />
-      <PopularBooks/>
-      <Testimonials/>
-     <div className="mt-20">
-     <OurServices/>
-     </div>
-     <PopularAuthors/>
+      <PopularBooks />
+      <Testimonials />  
+      <div className="mt-20">
+        <OurServices />
+      </div>
+      <PopularAuthors />
     </div>
   );
 };

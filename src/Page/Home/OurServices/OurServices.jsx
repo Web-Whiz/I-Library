@@ -15,8 +15,8 @@ const OurServices = () => {
         Fresh Pages, New Adventures. Discover the latest arrivals <br /> in our
         New Releases section
       </p>
-      <div className="grid lg:grid-cols-4 gap-9">
-        <div className="bg-rose-500 bg-opacity-80 p-8 hover:scale-110 hover:shadow-lg hover:bg-opacity-100 duration-300 cursor-pointer">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-9">
+        <div className="bg-rose-500 bg-opacity-80 p-8 hover:shadow-lg hover:bg-opacity-100 duration-300 cursor-pointer">
           <Image
             src={icon1}
             alt=""
@@ -33,7 +33,7 @@ const OurServices = () => {
           </p>
         </div>
 
-        <div className="bg-green-500 bg-opacity-50  p-8 hover:scale-110 hover:shadow-lg hover:bg-opacity-100 duration-300 cursor-pointer">
+        <div className="bg-green-500 bg-opacity-50  p-8 hover:shadow-lg hover:bg-opacity-100 duration-300 cursor-pointer">
           <Image
             src={icon2}
             alt=""
@@ -50,7 +50,7 @@ const OurServices = () => {
           </p>
         </div>
 
-        <div className="bg-gray-500 bg-opacity-50  p-8 hover:scale-110 hover:shadow-lg hover:bg-opacity-100 duration-300 cursor-pointer">
+        <div className="bg-gray-500 bg-opacity-50  p-8 hover:shadow-lg hover:bg-opacity-100 duration-300 cursor-pointer">
           <Image
             src={icon3}
             alt=""
@@ -67,7 +67,7 @@ const OurServices = () => {
           </p>
         </div>
 
-        <div className="bg-fuchsia-600 bg-opacity-50  p-8 hover:scale-110 hover:shadow-lg hover:bg-opacity-100 duration-300 cursor-pointer">
+        <div className="bg-fuchsia-600 bg-opacity-50  p-8 hover:shadow-lg hover:bg-opacity-100 duration-300 cursor-pointer">
           <Image
             src={icon1}
             alt=""
