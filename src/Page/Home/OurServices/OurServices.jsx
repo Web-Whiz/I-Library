@@ -19,7 +19,7 @@ const OurServices = () => {
         <div className="bg-rose-500 bg-opacity-80 p-8 hover:shadow-lg hover:bg-opacity-100 duration-300 cursor-pointer">
           <Image
             src={icon1}
-            alt=""
+            alt="service image 1"
             className="mx-auto"
             width={50}
             height={50}
@@ -36,7 +36,7 @@ const OurServices = () => {
         <div className="bg-green-500 bg-opacity-50  p-8 hover:shadow-lg hover:bg-opacity-100 duration-300 cursor-pointer">
           <Image
             src={icon2}
-            alt=""
+            alt="service image 2"
             className="mx-auto"
             width={50}
             height={50}
@@ -53,7 +53,7 @@ const OurServices = () => {
         <div className="bg-gray-500 bg-opacity-50  p-8 hover:shadow-lg hover:bg-opacity-100 duration-300 cursor-pointer">
           <Image
             src={icon3}
-            alt=""
+            alt="service image 3"
             className="mx-auto"
             width={50}
             height={50}
@@ -70,7 +70,7 @@ const OurServices = () => {
         <div className="bg-fuchsia-600 bg-opacity-50  p-8 hover:shadow-lg hover:bg-opacity-100 duration-300 cursor-pointer">
           <Image
             src={icon1}
-            alt=""
+            alt="service image 4"
             className="mx-auto"
             width={50}
             height={50}

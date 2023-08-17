@@ -69,8 +69,9 @@ const CategoryPage = () => {
         <div className="grid grid-cols-2 md:grid-cols-6 gap-5">
           {categories.map((category) => (
             <Link id={category?.id} href="/">
-              <div className="w-full h-16 bg-indigo-200 border-solid border border-indigo-400 rounded-md flex items-center justify-center text-[#333333] hover:bg-indigo-500 hover:text-white hover:transition-all">
-                <h6 className="text-lg font-medium">
+              <div className="w-full overflow-hidden h-16 bg-indigo-200 border-solid border border-indigo-400 rounded-md flex items-center justify-center text-[#333333] group relative hover:text-white hover:transition-all">
+                <div className="absolute w-full h-full top-0 left-0 -translate-x-full duration-200 group-hover:-translate-x-0 bg-indigo-500" />
+                <h6 className="text-lg font-medium z-10">
                   {category?.category_name}
                 </h6>
               </div>

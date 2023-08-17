@@ -8,7 +8,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "./NewReleasedBook.css";
-import SectionHeader from "@/Components/SectionHeader/SectionHeader";
 
 // import 'swiper/css/pagination';
 // import 'swiper/css/navigation';
@@ -106,16 +105,14 @@ const NewReleasedBook = () => {
 
   return (
     <div className="container mx-auto bg-[#eff3f8]">
-      <div className="my-20">
-        <SectionHeader />
-        {/* <h1 className="capitalize font-bold text-3xl mt-14 mb-3 text-[#0F86CD]">
-          {" "}
+      <div className="my-20 text-center">
+        <h1 className="capitalize font-bold text-3xl mt-14 mb-3 text-[#0F86CD]">
           new released books
         </h1>
         <h3 className=" max-w-[450px] mx-auto mb-4">
           Fresh Pages, New Adventures. Discover the latest arrivals in our New
           Releases section
-        </h3> */}
+        </h3>
       </div>
       <div className="p-4">
         <Swiper

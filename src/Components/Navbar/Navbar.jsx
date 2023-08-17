@@ -21,9 +21,11 @@ const Navbar = () => {
             <SearchBar />
           </div>
           <div className="flex items-center bg-white rounded-sm shadow-md gap-3 lg:gap-8 px-4 py-2">
-            <button className="hover:text-indigo-500 text-black hidden lg:block duration-200 font-medium">
-              sign in
-            </button>
+            <Link href="/login">
+              <button className="hover:text-indigo-500 text-black hidden lg:block duration-200 font-medium">
+                sign in
+              </button>
+            </Link>
             <button className="text-2xl relative text-black lg:border-l-2 lg:pl-3">
               <FaCartPlus />
               <h2 className="absolute text-[14px] font-medium flex justify-center items-center text-white h-6 w-6 bg-indigo-500 rounded-full -top-2/3 -right-1/2">
@@ -36,7 +38,6 @@ const Navbar = () => {
           </div>
         </div>
       </nav>
-     
     </>
   );
 };

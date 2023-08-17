@@ -15,9 +15,11 @@ const MenuItem = () => {
             Category
           </li>
         </Link>
-        <li className="hover:text-white hover:bg-indigo-500 px-2 py-2 cursor-pointer duration-200 font-medium">
-          <Link href="/author">Author</Link>
-        </li>
+        <Link href="/author">
+          <li className="hover:text-white hover:bg-indigo-500 px-2 py-2 cursor-pointer duration-200 font-medium">
+            Author
+          </li>
+        </Link>
         <li className="hover:text-white hover:bg-indigo-500 px-2 py-2 cursor-pointer duration-200 font-medium">
           Publications
         </li>
