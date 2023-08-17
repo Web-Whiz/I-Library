@@ -1,5 +1,6 @@
 "use client";
 import AuthorCard from "@/Components/AuthorCard/AuthorCard";
+import Link from "next/link";
 import "swiper/css";
 import { Autoplay, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -145,12 +146,14 @@ const PopularAuthors = () => {
         </div>
 
         <div>
-          <button
-            type="button"
-            className="text-[#B8B8B8] font-medium h-12 w-24 md:w-32 text-base rounded-full border border-[#B8B8B8] hover:bg-indigo-500 transition hover:text-white"
-          >
-            View all
-          </button>
+          <Link href="/author">
+            <button
+              type="button"
+              className="text-[#B8B8B8] font-medium h-12 w-24 md:w-32 text-base rounded-full border border-[#B8B8B8] hover:bg-indigo-500 transition hover:text-white"
+            >
+              View all
+            </button>
+          </Link>
         </div>
       </div>
       <hr className="my-8  border border-black" />
