@@ -9,11 +9,11 @@
     "reviewer": {
       "username": "BookLover123",
       "location": "New York, USA",
-      "profile_image_url": "https://example.com/booklover123_profile.jpg"
+      "profile_image_url": "https://i.ibb.co/pyQQzjb/Profile.png"
     },
     "timestamp": "2023-08-17T12:34:56Z",
     "cover_image_url": "https://example.com/great_gatsby_cover.jpg",
-    "blog_post_image_url": "https://example.com/great_gatsby_blogpost.jpg"
+    "blog_post_image_url": "https://i.ibb.co/0M9SHY9/Styled-Stock-Society-Book-Lover-1-1024x683.jpg"
   },
   {
     "book_title": "To Kill a Mockingbird",
@@ -25,11 +25,11 @@
     "reviewer": {
       "username": "LiteraryScribe",
       "location": "London, UK",
-      "profile_image_url": "https://example.com/literaryscribe_profile.jpg"
+      "profile_image_url": "https://i.ibb.co/cQTSbvz/6.jpg"
     },
     "timestamp": "2023-08-16T18:22:33Z",
     "cover_image_url": "https://example.com/to_kill_a_mockingbird_cover.jpg",
-    "blog_post_image_url": "https://example.com/to_kill_a_mockingbird_blogpost.jpg"
+    "blog_post_image_url": "https://i.ibb.co/0M9SHY9/Styled-Stock-Society-Book-Lover-1-1024x683.jpg"
   },
   {
     "book_title": "The 7 Habits of Highly Effective People",
@@ -41,11 +41,11 @@
     "reviewer": {
       "username": "MindfulAchiever",
       "location": "Los Angeles, USA",
-      "profile_image_url": "https://example.com/mindfulachiever_profile.jpg"
+      "profile_image_url": "https://i.ibb.co/7tH04Kx/aeecc22a67dac7987a80ac0724658493.jpg"
     },
     "timestamp": "2023-08-15T09:45:21Z",
     "cover_image_url": "https://example.com/7_habits_cover.jpg",
-    "blog_post_image_url": "https://example.com/7_habits_blogpost.jpg"
+    "blog_post_image_url": "https://i.ibb.co/0M9SHY9/Styled-Stock-Society-Book-Lover-1-1024x683.jpg"
   },
   {
     "book_title": "The Power of Now",
@@ -57,13 +57,12 @@
     "reviewer": {
       "username": "SoulSeeker",
       "location": "Bali, Indonesia",
-      "profile_image_url": "https://example.com/soulseeker_profile.jpg"
+      "profile_image_url": "https://i.ibb.co/rfwYgv7/46.jpg"
     },
     "timestamp": "2023-08-14T14:12:09Z",
     "cover_image_url": "https://example.com/power_of_now_cover.jpg",
-    "blog_post_image_url": "https://example.com/power_of_now_blogpost.jpg"
+    "blog_post_image_url": "https://i.ibb.co/0M9SHY9/Styled-Stock-Society-Book-Lover-1-1024x683.jpg"
   },
-
   {
     "book_title": "The Catcher in the Rye",
     "author": "J.D. Salinger",
@@ -74,11 +73,11 @@
     "reviewer": {
       "username": "RebelReader",
       "location": "Chicago, USA",
-      "profile_image_url": "https://example.com/rebelreader_profile.jpg"
+      "profile_image_url": "https://i.ibb.co/k60mB5k/1b8fabaa8d66250a7049bdb9ecf44397.jpg"
     },
     "timestamp": "2023-08-20T16:08:45Z",
     "cover_image_url": "https://example.com/catcher_in_the_rye_cover.jpg",
-    "blog_post_image_url": "https://example.com/catcher_in_the_rye_blogpost.jpg"
+    "blog_post_image_url": "https://i.ibb.co/0M9SHY9/Styled-Stock-Society-Book-Lover-1-1024x683.jpg"
   },
   {
     "book_title": "The Alchemist",
@@ -90,11 +89,11 @@
     "reviewer": {
       "username": "DreamChaser",
       "location": "Rio de Janeiro, Brazil",
-      "profile_image_url": "https://example.com/dreamchaser_profile.jpg"
+      "profile_image_url": "https://i.ibb.co/JpFgJJr/83.jpg"
     },
     "timestamp": "2023-08-19T10:30:15Z",
     "cover_image_url": "https://example.com/the_alchemist_cover.jpg",
-    "blog_post_image_url": "https://example.com/the_alchemist_blogpost.jpg"
+    "blog_post_image_url": "https://i.ibb.co/0M9SHY9/Styled-Stock-Society-Book-Lover-1-1024x683.jpg"
   },
   {
     "book_title": "How to Win Friends and Influence People",
@@ -106,11 +105,11 @@
     "reviewer": {
       "username": "SocialMaven",
       "location": "New York, USA",
-      "profile_image_url": "https://example.com/socialmaven_profile.jpg"
+      "profile_image_url": "https://i.ibb.co/FH8Kqkv/hqRMHITj.jpg"
     },
     "timestamp": "2023-08-18T14:55:30Z",
     "cover_image_url": "https://example.com/how_to_win_friends_cover.jpg",
-    "blog_post_image_url": "https://example.com/how_to_win_friends_blogpost.jpg"
+    "blog_post_image_url": "https://i.ibb.co/0M9SHY9/Styled-Stock-Society-Book-Lover-1-1024x683.jpg"
   },
   {
     "book_title": "Eat, Pray, Love",
@@ -122,11 +121,11 @@
     "reviewer": {
       "username": "WanderlustSoul",
       "location": "Florence, Italy",
-      "profile_image_url": "https://example.com/wanderlustsoul_profile.jpg"
+      "profile_image_url": "https://i.ibb.co/QFyBG6D/l-Sv-WN-q-400x400.jpg"
     },
     "timestamp": "2023-08-17T09:15:10Z",
     "cover_image_url": "https://example.com/eat_pray_love_cover.jpg",
-    "blog_post_image_url": "https://example.com/eat_pray_love_blogpost.jpg"
+    "blog_post_image_url": "https://i.ibb.co/0M9SHY9/Styled-Stock-Society-Book-Lover-1-1024x683.jpg"
   },
   {
     "book_title": "Rich Dad Poor Dad",
@@ -138,10 +137,10 @@
     "reviewer": {
       "username": "WealthWise",
       "location": "Singapore",
-      "profile_image_url": "https://example.com/wealthwise_profile.jpg"
+      "profile_image_url": "https://i.ibb.co/DYG1R45/1662312244141.jpg"
     },
     "timestamp": "2023-08-16T17:40:05Z",
     "cover_image_url": "https://example.com/rich_dad_poor_dad_cover.jpg",
-    "blog_post_image_url": "https://example.com/rich_dad_poor_dad_blogpost.jpg"
+    "blog_post_image_url": "https://i.ibb.co/0M9SHY9/Styled-Stock-Society-Book-Lover-1-1024x683.jpg"
   }
 ]
