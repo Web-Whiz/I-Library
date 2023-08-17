@@ -10,16 +10,14 @@ import React from "react";
 
 const page = () => {
   return (
-    <div>
+    <div className="space-y-28">
       <Banner />
       <NewReleasedBook />
       <RequestBook />
       <PopularBooks />
       <DonateBook />
       <Testimonials />
-      <div className="mt-20">
-        <OurServices />
-      </div>
+      <OurServices />
       <PopularAuthors />
     </div>
   );

@@ -133,7 +133,7 @@ const PopularAuthors = () => {
   ];
 
   return (
-    <section className="container mx-auto p-8 md:p-5 2xl:p-0 my-20">
+    <section className="container mx-auto p-8 md:p-5 2xl:p-0">
       <div className="flex items-center justify-between">
         <div>
           <h6 className="text-base md:text-xl font-medium text-[#777777] mb-1">

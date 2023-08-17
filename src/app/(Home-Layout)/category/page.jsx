@@ -1,7 +1,6 @@
 import PopularAuthors from "@/Page/Home/PopularAuthors/PopularAuthors";
-import Image from "next/image";
 import Link from "next/link";
-import banner from "../../assets/banner01.jpg";
+import banner from "@/assets/banner01.jpg";
 import PageBanner from "@/Components/PageBanner/PageBanner";
 
 const CategoryPage = () => {
@@ -70,7 +69,7 @@ const CategoryPage = () => {
           {categories.map((category) => (
             <Link id={category?.id} href="/">
               <div className="w-full overflow-hidden h-16 bg-indigo-200 border-solid border border-indigo-400 rounded-md flex items-center justify-center text-[#333333] group relative hover:text-white hover:transition-all">
-                <div className="absolute w-full h-full top-0 left-0 -translate-x-full duration-200 group-hover:-translate-x-0 bg-indigo-500" />
+                <div className="absolute w-full h-full top-0 left-0 -translate-x-full duration-200 group-hover:translate-x-0 bg-indigo-500" />
                 <h6 className="text-lg font-medium z-10">
                   {category?.category_name}
                 </h6>

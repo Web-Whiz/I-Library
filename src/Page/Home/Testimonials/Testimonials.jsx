@@ -8,7 +8,7 @@ const Testimonials = () => {
     color: "#0F86CD", // Text color
   };
   return (
-    <div className="bg-testimonials-bg my-10">
+    <div className="bg-testimonials-bg">
       <div className="text-center pt-5">
         <h1 className="capitalize font-bold text-4xl mt-14 mb-3 text-[#0F86CD]">
           Testimonials

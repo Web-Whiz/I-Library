@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import banner from "../../assets/banner01.jpg";
+import banner from "@/assets/banner01.jpg";
 
 const AuthorPage = () => {
   const authors = [

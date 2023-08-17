@@ -5,7 +5,7 @@ import Navbar from "@/Components/Navbar/Navbar";
 const HomeLayout = ({ children }) => {
   return (
     <html lang="en">
-      <body>
+      <body className=" bg-[#EFF3F8]">
         <Navbar />
         <div className="hidden lg:block">
           <MenuItem />

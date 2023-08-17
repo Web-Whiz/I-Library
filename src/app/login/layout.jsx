@@ -5,7 +5,7 @@ import Navbar from "@/Components/Navbar/Navbar";
 const LoginLayout = ({ children }) => {
   return (
     <html lang="en">
-      <body>
+      <body className=" bg-[#EFF3F8]">
         <Navbar />
         <main className="my-16">{children}</main>
         <Footer />

@@ -7,7 +7,7 @@ import icon3 from "@/assets/icon3.png";
 
 const OurServices = () => {
   return (
-    <div className="container mx-auto my-5 px-2 md:px-0">
+    <div className="container mx-auto px-2 md:px-0">
       <h3 className="text-[#0F86CD] font-extrabold text-4xl text-center">
         Our Services{" "}
       </h3>

@@ -1,5 +1,5 @@
 import React from "react";
-import bannerPhoto from "@/assets/testimonial.jpg";
+import bannerPhoto from "@/assets/banner01.jpg";
 import Image from "next/image";
 const PageBanner = ({ bannerImg, bannerName }) => {
   return (
@@ -13,6 +13,9 @@ const PageBanner = ({ bannerImg, bannerName }) => {
       <h2 className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-center sm:text-3xl text-white font-bold">
         {bannerName}
       </h2>
+      <p className="font-bold text-center text-lg">
+        Share your query and ideas with us!
+      </p>
     </div>
   );
 };

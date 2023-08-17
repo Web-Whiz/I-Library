@@ -105,16 +105,16 @@ const NewReleasedBook = () => {
 
   return (
     <div className="container mx-auto bg-[#eff3f8]">
-      <div className="my-20 text-center">
-        <h1 className="capitalize font-bold text-3xl mt-14 mb-3 text-[#0F86CD]">
+      <div className="text-center mb-4">
+        <h1 className="capitalize font-bold text-3xl mb-3 text-[#0F86CD]">
           new released books
         </h1>
-        <h3 className=" max-w-[450px] mx-auto mb-4">
+        <h3 className=" max-w-[450px] mx-auto ">
           Fresh Pages, New Adventures. Discover the latest arrivals in our New
           Releases section
         </h3>
       </div>
-      <div className="p-4">
+      <div className="">
         <Swiper
           slidesPerView={2}
           navigation={true}
@@ -150,7 +150,7 @@ const NewReleasedBook = () => {
         >
           {newBooks.map((book, index) => (
             <SwiperSlide key={index}>
-              <BookCard key={book.id} book={book} />{" "}
+              <BookCard key={book.id} book={book} />
             </SwiperSlide>
           ))}
         </Swiper>
