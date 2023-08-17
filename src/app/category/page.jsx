@@ -72,7 +72,7 @@ const CategoryPage = () => {
           Category
         </h2>
       </div>
-      <section className="container mx-auto p-5 md:p-0 mt-20 mb-40">
+      <section className="container mx-auto p-5 mt-20 mb-40">
         <div className="grid grid-cols-2 md:grid-cols-6 gap-5">
           {categories.map((category) => (
             <Link id={category?.id} href="/">
@@ -83,6 +83,14 @@ const CategoryPage = () => {
               </div>
             </Link>
           ))}
+        </div>
+        <div className="flex items-center justify-center mt-12">
+          <button
+            type="button"
+            className="w-60 h-16 border-solid border border-indigo-400 text-lg font-medium rounded-md text-[#333333] hover:bg-indigo-500 hover:text-white hover:transition-all"
+          >
+            See All
+          </button>
         </div>
       </section>
       {/* Popular Authors */}
