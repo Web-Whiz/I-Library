@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FaGoogle, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
-import { PiPaperPlaneRightBold } from "react-icons/pi";
 import { IoIosMail } from "react-icons/io";
+import { PiPaperPlaneRightBold } from "react-icons/pi";
 
 import ILibrary from "../../assets/ILibrary.png";
 const Footer = () => {
@@ -64,7 +64,7 @@ const Footer = () => {
             <a href="/accessibility">Accessibility</a>
           </div>
         </div>
-        {/* <div className="flex items-center justify-center my-10 md:my-20">
+        <div className="flex items-center justify-center my-10 md:my-20">
           <form className="flex items-center py-2">
             <button className="px-2 py-2 bg-indigo-500 text-white text-xl rounded-l-md">
               <IoIosMail />
@@ -73,13 +73,13 @@ const Footer = () => {
               required
               type="email"
               placeholder="Write your email"
-              className="px-4 py-2 outline-0 border-0 bg-[#EFF3F8] text-lg text-gray-950 flex-grow h-full"
+              className="px-3 md:px-4 py-2 outline-0 border-0 bg-[#EFF3F8] text-base md:text-lg text-gray-950 flex-grow h-full"
             />
-            <button className="px-6 py-2 cursor-pointer bg-indigo-500 text-white text-xl rounded-r-md">
+            <button className="px-2 md:px-6 py-2 cursor-pointer bg-indigo-500 text-white text-xl rounded-r-md">
               <PiPaperPlaneRightBold />
             </button>
           </form>
-        </div> */}
+        </div>
       </div>
       <div className="w-full h-16 py-6 bg-[#0F86CD]">
         <p className="text-center text-white text-sm md:text-base">

@@ -4,6 +4,7 @@ import Image from "next/image";
 import BookCard from "@/Components/BookCard/BookCard";
 import AllBookCard from "@/Components/AllBookCard/AllBookCard";
 import { FaFilter } from "react-icons/fa";
+import PageBanner from "@/Components/PageBanner/PageBanner";
 const AllBooks = () => {
   const allBooks = [
     {
@@ -247,29 +248,140 @@ const AllBooks = () => {
       shelfNo: 903,
     },
   ];
+  const categories = [
+    {
+      id: 1,
+      category_name: "Fiction",
+    },
+    {
+      id: 3,
+      category_name: "Fantasy",
+    },
+    {
+      id: 4,
+      category_name: "Mystery",
+    },
+    {
+      id: 5,
+      category_name: "Thriller",
+    },
+    {
+      id: 6,
+      category_name: "Romance",
+    },
+
+    {
+      id: 8,
+      category_name: "Horror",
+    },
+    {
+      id: 9,
+      category_name: "Adventure",
+    },
+
+    {
+      id: 10,
+      category_name: "Kid's Books",
+    },
+
+    {
+      id: 11,
+      category_name: "Biography",
+    },
+
+    {
+      id: 12,
+      category_name: "Science",
+    },
+    {
+      id: 13,
+      category_name: "History",
+    },
+    {
+      id: 14,
+      category_name: "Philosophy",
+    },
+  ];
   return (
     <div>
-      <div className="relative">
-        <Image
-          className="h-60 object-cover w-full object-center"
-          src={banner}
-          alt=""
-        />
-        <div className="absolute top-0 left-0 w-full h-full bg-gray-950/10 backdrop-blur-md" />
-        <h2 className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-center sm:text-3xl text-white font-bold">
-          All Books
-        </h2>
+      <div>
+        <PageBanner bannerImg={banner} bannerName="All Books" />
       </div>
       <div className="container mx-auto grid grid-cols-12 gap-8 my-10">
-        <div className="col-span-3 bg-white h-screen hidden lg:block"></div>
-        <div className="col-span-12 lg:col-span-9 grid md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 justify-self-end gap-4">
-          <div className="col-span-2 sm:col-span-3 md:col-span-4 lg:col-span-3 xl:col-span-4 2xl:col-span-5 bg-white w-full h-20">
-            <button className="bg-">
+        <div className="col-span-3 hidden lg:block">
+          <div className="bg-white w-full h-fit p-4">
+            <h2 className="text-lg font-semibold">Category:</h2>
+            {categories.map((category) => {
+              return (
+                <div
+                  key={category.id}
+                  className="flex justify-between ml-4 my-2"
+                >
+                  <h2 className="hover:text-indigo-600 duration-200 cursor-pointer">
+                    {category?.category_name}
+                  </h2>
+                  <h3 className="text-gray-400">(205)</h3>
+                </div>
+              );
+            })}
+          </div>
+          <div className="bg-white w-full h-fit my-5 p-4">
+            <h2 className="text-lg font-semibold">Author:</h2>
+            {categories.map((category) => {
+              return (
+                <div
+                  key={category.id}
+                  className="flex justify-between ml-4 my-2"
+                >
+                  <h2 className="hover:text-indigo-600 duration-200 cursor-pointer">
+                    {category?.category_name}
+                  </h2>
+                  <h3 className="text-gray-400">(205)</h3>
+                </div>
+              );
+            })}
+          </div>
+          <div className="bg-white w-full h-fit p-4">
+            <h2 className="text-lg font-semibold">Publisher:</h2>
+            {categories.map((category) => {
+              return (
+                <div
+                  key={category.id}
+                  className="flex justify-between ml-4 my-2"
+                >
+                  <h2 className="hover:text-indigo-600 duration-200 cursor-pointer">
+                    {category?.category_name}
+                  </h2>
+                  <h3 className="text-gray-400">(205)</h3>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+        <div className="col-span-12 lg:col-span-9 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 justify-center lg:justify-self-end gap-4">
+          <div className="col-span-2 sm:col-span-3 md:col-span-4 lg:col-span-3 xl:col-span-4 2xl:col-span-5 bg-white w-full h-20 flex items-center justify-between lg:justify-end px-5">
+            <button className="bg-[#EFF3F8] flex items-center gap-2 px-3 py-2 rounded-sm lg:hidden">
               <span>
                 <FaFilter />
               </span>
               <span>Filter</span>
             </button>
+            <div className="flex items-center gap-2">
+              <label htmlFor="sortOption" className="font-medium">
+                Sorted by:
+              </label>
+              <select
+                name="softOption"
+                className="outline-0 rounded-sm px-3 py-2 bg-[#EFF3F8]"
+                id="sortOption"
+              >
+                <option value="Default" defaultValue>
+                  Default
+                </option>
+                <option value="Default">Ascending</option>
+                <option value="Default">Descending</option>
+              </select>
+            </div>
           </div>
           {allBooks.map((book) => {
             return <AllBookCard key={book.id} book={book} />;
