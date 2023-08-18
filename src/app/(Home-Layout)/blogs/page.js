@@ -1,7 +1,8 @@
 "use client";
+import PageBanner from "@/Components/PageBanner/PageBanner";
 import { Rating } from "@smastrom/react-rating";
 import '@smastrom/react-rating/style.css'
-
+import banner from '@/assets/banner01.jpg'
 import moment from "moment";
 import React, { useEffect, useState } from "react";
 // import Image from "next/image";
@@ -15,7 +16,12 @@ const Blogs = () => {
       .then((data) => setBlogs(data));
   }, []);
   return (
-    <div className="container mx-auto">
+   <section>
+    <div>
+      <PageBanner bannerName="Blogs" bannerImg={banner} />
+    </div>
+
+     <div className="container mx-auto">
       <div className="grid lg:grid-cols-6 gap-10">
         <div className="col-span-4">
           {blogs.map((blog) => (
@@ -99,6 +105,7 @@ const Blogs = () => {
         <div className="col-span-2 bg-black"></div>
       </div>
     </div>
+   </section>
   );
 };
 

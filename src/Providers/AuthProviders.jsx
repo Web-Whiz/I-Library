@@ -1,10 +1,6 @@
-"use client";
-import app from "@/firebase/firebase.config";
-import React, { createContext, useState } from "react";
-import { getAuth } from "firebase/auth";
+import AuthContext from "@/Context/AuthContext";
+import React, { useState } from "react";
 
-export const AuthContext = createContext();
-const auth = getAuth(app);
 const AuthProviders = ({ children }) => {
   const [user, setUser] = useState(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -12,6 +8,10 @@ const AuthProviders = ({ children }) => {
   const authInfo = {
     isMenuOpen,
     setIsMenuOpen,
+    user,
+    setUser,
+    loading,
+    setLoading,
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
