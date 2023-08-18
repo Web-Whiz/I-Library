@@ -20,6 +20,7 @@ const Banner = () => {
         <div className="relative">
           <Image
             className="w-screen h-[calc(100vh-400px)] md:h-[calc(100vh-300px)] lg:h-[calc(100vh-200px)]  bg-cover"
+            alt="banner image 1"
             src={banner1}
           ></Image>
           <div className="bg-black bg-opacity-60 absolute top-0 left-0  w-full h-full"></div>
@@ -43,6 +44,7 @@ const Banner = () => {
         <div className="relative">
           <Image
             className="w-screen h-[calc(100vh-400px)] md:h-[calc(100vh-300px)] lg:h-[calc(100vh-200px)]  bg-cover"
+            alt="banner image 2"
             src={banner2}
           ></Image>
           <div className="bg-black bg-opacity-60 absolute top-0 left-0  w-full h-full"></div>
@@ -66,6 +68,7 @@ const Banner = () => {
         <div className="relative">
           <Image
             className="w-screen h-[calc(100vh-400px)] md:h-[calc(100vh-300px)] lg:h-[calc(100vh-200px)]  bg-cover"
+            alt="banner image 3"
             src={banner3}
           ></Image>
           <div className="bg-black bg-opacity-60 absolute top-0 left-0  w-full h-full"></div>
