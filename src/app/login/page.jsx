@@ -1,23 +1,24 @@
 import Link from "next/link";
 import { BsGoogle } from "react-icons/bs";
 import { FaFacebookF } from "react-icons/fa";
-
+import login from '@/assets/login.png'
 import { MdLock, MdEmail } from "react-icons/md";
+import Image from "next/image";
 
 const LoginPage = () => {
   return (
     <div className="bg-white  max-w-[700px] mx-auto border md:shadow-md">
       {/* Login Banner */}
       <div>
-        <div className="relative w-full h-60">
+        <div className="relative w-full h-[350px]">
           <div className="w-full h-full">
-            <img
+            <Image
               className="w-full h-full"
-              src="/banner01.jpg"
+              src={login}
               alt="banner Image"
             />
           </div>
-          <div className="absolute top-0 w-full h-full flex flex-col bg-[#000000a2] items-center justify-center text-white">
+          <div className="absolute top-0 w-full h-full flex flex-col bg-[#4ABCFF] bg-opacity-40 items-center justify-center text-white">
             <h1 className="font-bold text-center text-3xl">Join Us Again</h1>
             <p className=" font-medium text-center text-lg">
               Reconnect through Your Account Login

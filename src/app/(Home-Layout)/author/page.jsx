@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import banner from "@/assets/banner01.jpg";
+import PageBanner from "@/Components/PageBanner/PageBanner";
 
 const AuthorPage = () => {
   const authors = [
@@ -127,17 +128,8 @@ const AuthorPage = () => {
   ];
   return (
     <div>
-      <div className="relative">
-        <Image
-          className="h-60 object-cover w-full object-center"
-          src={banner}
-          alt="Author related banner"
-        />
-        <div className="absolute top-0 left-0 w-full h-full bg-gray-950/10 backdrop-blur-md" />
-        <h2 className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-center text-3xl text-white font-bold">
-          Author
-        </h2>
-      </div>
+      <PageBanner bannerName="Author" bannerImg={banner} />
+
       <section className="container mx-auto p-5 mt-20 mb-40">
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-y-8 md:gap-y-16">
           {authors.map((author) => (

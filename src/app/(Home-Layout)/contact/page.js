@@ -1,10 +1,15 @@
-import PageTitleBanner from "@/Components/PageTitleBanner/PageTitleBanner";
+import PageBanner from "@/Components/PageBanner/PageBanner";
+import banner from "@/assets/banner01.jpg";
 import React from "react";
 
 const ContactPage = () => {
   return (
     <div>
-      <PageTitleBanner />
+      <PageBanner
+        bannerName="Contact us"
+        bannerImg={banner}
+        bannerSubTitle="Share your query and ideas with us!"
+      />
 
       {/* Contact us form section  */}
       <section className=" container my-20 mx-auto flex flex-col md:flex-row h-fit w-full bg-slate-50 p-4">

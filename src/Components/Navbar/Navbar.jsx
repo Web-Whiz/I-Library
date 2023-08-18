@@ -7,7 +7,11 @@ import Link from "next/link";
 import { FaCartPlus } from "react-icons/fa";
 import { AiOutlineMenu } from "react-icons/ai";
 import SearchBar from "../SearchBar/SearchBar";
+import useAuth from "@/Utils/useAuth";
+import BurgerMenu from "../BurgerMenu/BurgerMenu";
+import Hamburger from "hamburger-react";
 const Navbar = () => {
+  const { isMenuOpen, setIsMenuOpen } = useAuth();
   return (
     <>
       <nav className="bg-white">
@@ -32,9 +36,18 @@ const Navbar = () => {
                 0
               </h2>
             </button>
-            <button className="block lg:hidden text-xl ml-3 ">
-              <AiOutlineMenu />
-            </button>
+            <div className="block lg:hidden">
+              <Hamburger toggled={isMenuOpen} toggle={setIsMenuOpen} />
+              <div
+                className={`fixed top-0 left-0 z-50 w-[65%] md:w-[35%] lg:w-[15%] ${
+                  isMenuOpen
+                    ? "translate-x-0 origin-right duration-500"
+                    : "-translate-x-[101%] lg:translate-x-0 origin-right duration-500"
+                }`}
+              >
+                <BurgerMenu />
+              </div>
+            </div>
           </div>
         </div>
       </nav>
