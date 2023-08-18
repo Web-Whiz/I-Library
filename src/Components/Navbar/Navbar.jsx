@@ -37,7 +37,8 @@ const Navbar = () => {
               </h2>
             </button>
             <div className="block lg:hidden">
-              <Hamburger toggled={isMenuOpen} toggle={setIsMenuOpen} />
+                <Hamburger size={24} toggled={isMenuOpen} toggle={setIsMenuOpen} />
+
               <div
                 className={`fixed top-0 left-0 z-50 w-[65%] md:w-[35%] lg:w-[15%] ${
                   isMenuOpen
