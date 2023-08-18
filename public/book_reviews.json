@@ -1,0 +1,146 @@
+[
+  {
+    "book_title": "The Great Gatsby",
+    "author": "F. Scott Fitzgerald",
+    "publication_year": 1925,
+    "genre": "Fiction",
+    "rating": 4.5,
+    "review_text": "The Great Gatsby is a timeless classic that delves into the excesses and disillusionment of the Jazz Age. Fitzgerald's prose is exquisite, painting a vivid picture of opulent parties and unattainable dreams. The characters are complex and flawed, particularly Jay Gatsby, whose pursuit of the American Dream ultimately leads to tragedy. The novel's exploration of wealth, love, and social status remains relevant today. I was captivated by the intricacies of the characters' lives and the symbolism woven throughout the narrative.",
+    "reviewer": {
+      "username": "BookLover123",
+      "location": "New York, USA",
+      "profile_image_url": "https://i.ibb.co/pyQQzjb/Profile.png"
+    },
+    "timestamp": "2023-08-17T12:34:56Z",
+    "cover_image_url": "https://example.com/great_gatsby_cover.jpg",
+    "blog_post_image_url": "https://i.ibb.co/0M9SHY9/Styled-Stock-Society-Book-Lover-1-1024x683.jpg"
+  },
+  {
+    "book_title": "To Kill a Mockingbird",
+    "author": "Harper Lee",
+    "publication_year": 1960,
+    "genre": "Fiction",
+    "rating": 5.0,
+    "review_text": "To Kill a Mockingbird is a powerful and thought-provoking novel that tackles issues of racial injustice and moral growth. Set in the American South during the 1930s, the story follows young Scout Finch as she navigates the complexities of race, class, and empathy. Atticus Finch, her father, stands as a beacon of morality and integrity. Lee's storytelling is engaging and her characters are deeply human. This book is a must-read for anyone interested in exploring important social themes. The narrative is both heartwarming and heartbreaking, leaving a lasting impact on the reader.",
+    "reviewer": {
+      "username": "LiteraryScribe",
+      "location": "London, UK",
+      "profile_image_url": "https://i.ibb.co/cQTSbvz/6.jpg"
+    },
+    "timestamp": "2023-08-16T18:22:33Z",
+    "cover_image_url": "https://example.com/to_kill_a_mockingbird_cover.jpg",
+    "blog_post_image_url": "https://i.ibb.co/0M9SHY9/Styled-Stock-Society-Book-Lover-1-1024x683.jpg"
+  },
+  {
+    "book_title": "The 7 Habits of Highly Effective People",
+    "author": "Stephen R. Covey",
+    "publication_year": 1989,
+    "genre": "Self-Help",
+    "rating": 4.7,
+    "review_text": "Stephen Covey's 'The 7 Habits of Highly Effective People' is a transformative guide to personal and professional development. Covey presents a holistic approach to success, emphasizing principles such as proactive behavior, beginning with the end in mind, and seeking win-win solutions. The book's timeless wisdom continues to inspire individuals to cultivate effective habits that lead to lasting positive change. Covey's insights have had a profound impact on my mindset and decision-making.",
+    "reviewer": {
+      "username": "MindfulAchiever",
+      "location": "Los Angeles, USA",
+      "profile_image_url": "https://i.ibb.co/7tH04Kx/aeecc22a67dac7987a80ac0724658493.jpg"
+    },
+    "timestamp": "2023-08-15T09:45:21Z",
+    "cover_image_url": "https://example.com/7_habits_cover.jpg",
+    "blog_post_image_url": "https://i.ibb.co/0M9SHY9/Styled-Stock-Society-Book-Lover-1-1024x683.jpg"
+  },
+  {
+    "book_title": "The Power of Now",
+    "author": "Eckhart Tolle",
+    "publication_year": 1997,
+    "genre": "Self-Help",
+    "rating": 4.9,
+    "review_text": "Eckhart Tolle's 'The Power of Now' is a spiritual guide that offers profound insights into the nature of consciousness and mindfulness. Tolle teaches us to embrace the present moment and release ourselves from the shackles of past regrets and future anxieties. His teachings have helped me gain clarity and inner peace, allowing me to approach life with a heightened sense of awareness. This book is a life-changing journey to self-discovery and enlightenment.",
+    "reviewer": {
+      "username": "SoulSeeker",
+      "location": "Bali, Indonesia",
+      "profile_image_url": "https://i.ibb.co/rfwYgv7/46.jpg"
+    },
+    "timestamp": "2023-08-14T14:12:09Z",
+    "cover_image_url": "https://example.com/power_of_now_cover.jpg",
+    "blog_post_image_url": "https://i.ibb.co/0M9SHY9/Styled-Stock-Society-Book-Lover-1-1024x683.jpg"
+  },
+  {
+    "book_title": "The Catcher in the Rye",
+    "author": "J.D. Salinger",
+    "publication_year": 1951,
+    "genre": "Fiction",
+    "rating": 4.2,
+    "review_text": "J.D. Salinger's 'The Catcher in the Rye' is a raw and honest portrayal of teenage angst and alienation. Holden Caulfield's voice resonates with authenticity as he navigates the complexities of growing up and facing the harsh realities of the adult world. Salinger's prose is poignant and thought-provoking, capturing the essence of youthful rebellion and the search for meaning. This novel is a timeless exploration of the human condition.",
+    "reviewer": {
+      "username": "RebelReader",
+      "location": "Chicago, USA",
+      "profile_image_url": "https://i.ibb.co/k60mB5k/1b8fabaa8d66250a7049bdb9ecf44397.jpg"
+    },
+    "timestamp": "2023-08-20T16:08:45Z",
+    "cover_image_url": "https://example.com/catcher_in_the_rye_cover.jpg",
+    "blog_post_image_url": "https://i.ibb.co/0M9SHY9/Styled-Stock-Society-Book-Lover-1-1024x683.jpg"
+  },
+  {
+    "book_title": "The Alchemist",
+    "author": "Paulo Coelho",
+    "publication_year": 1988,
+    "genre": "Fiction",
+    "rating": 4.8,
+    "review_text": "Paulo Coelho's 'The Alchemist' is a captivating tale of self-discovery and the pursuit of one's dreams. Santiago's journey from a shepherd to an alchemist embodies the universal quest for purpose and fulfillment. Coelho weaves a magical narrative that encourages readers to listen to their hearts and follow their passions. The book's spiritual undertones and rich symbolism make it a timeless masterpiece.",
+    "reviewer": {
+      "username": "DreamChaser",
+      "location": "Rio de Janeiro, Brazil",
+      "profile_image_url": "https://i.ibb.co/JpFgJJr/83.jpg"
+    },
+    "timestamp": "2023-08-19T10:30:15Z",
+    "cover_image_url": "https://example.com/the_alchemist_cover.jpg",
+    "blog_post_image_url": "https://i.ibb.co/0M9SHY9/Styled-Stock-Society-Book-Lover-1-1024x683.jpg"
+  },
+  {
+    "book_title": "How to Win Friends and Influence People",
+    "author": "Dale Carnegie",
+    "publication_year": 1936,
+    "genre": "Self-Help",
+    "rating": 4.6,
+    "review_text": "Dale Carnegie's 'How to Win Friends and Influence People' is a timeless guide to effective communication and interpersonal skills. The book provides practical advice on building meaningful relationships, improving social interactions, and becoming a better leader. Carnegie's principles are as relevant today as they were when the book was first published. This guide has had a positive impact on my personal and professional life.",
+    "reviewer": {
+      "username": "SocialMaven",
+      "location": "New York, USA",
+      "profile_image_url": "https://i.ibb.co/FH8Kqkv/hqRMHITj.jpg"
+    },
+    "timestamp": "2023-08-18T14:55:30Z",
+    "cover_image_url": "https://example.com/how_to_win_friends_cover.jpg",
+    "blog_post_image_url": "https://i.ibb.co/0M9SHY9/Styled-Stock-Society-Book-Lover-1-1024x683.jpg"
+  },
+  {
+    "book_title": "Eat, Pray, Love",
+    "author": "Elizabeth Gilbert",
+    "publication_year": 2006,
+    "genre": "Memoir",
+    "rating": 4.4,
+    "review_text": "Elizabeth Gilbert's 'Eat, Pray, Love' chronicles her journey of self-discovery and healing as she embarks on a global quest for balance and fulfillment. Gilbert's candid narrative and introspective writing style make the reader feel like a close friend sharing in her experiences. The book is a beautiful reminder of the importance of self-care, exploration, and embracing life's uncertainties.",
+    "reviewer": {
+      "username": "WanderlustSoul",
+      "location": "Florence, Italy",
+      "profile_image_url": "https://i.ibb.co/QFyBG6D/l-Sv-WN-q-400x400.jpg"
+    },
+    "timestamp": "2023-08-17T09:15:10Z",
+    "cover_image_url": "https://example.com/eat_pray_love_cover.jpg",
+    "blog_post_image_url": "https://i.ibb.co/0M9SHY9/Styled-Stock-Society-Book-Lover-1-1024x683.jpg"
+  },
+  {
+    "book_title": "Rich Dad Poor Dad",
+    "author": "Robert T. Kiyosaki",
+    "publication_year": 1997,
+    "genre": "Finance",
+    "rating": 4.7,
+    "review_text": "'Rich Dad Poor Dad' by Robert Kiyosaki offers valuable lessons in financial literacy and wealth-building. The book contrasts the mindsets and financial practices of Kiyosaki's 'rich dad' and 'poor dad' to provide insights into the importance of assets, investments, and financial education. Kiyosaki's straightforward approach challenges conventional wisdom and encourages readers to think differently about money.",
+    "reviewer": {
+      "username": "WealthWise",
+      "location": "Singapore",
+      "profile_image_url": "https://i.ibb.co/DYG1R45/1662312244141.jpg"
+    },
+    "timestamp": "2023-08-16T17:40:05Z",
+    "cover_image_url": "https://example.com/rich_dad_poor_dad_cover.jpg",
+    "blog_post_image_url": "https://i.ibb.co/0M9SHY9/Styled-Stock-Society-Book-Lover-1-1024x683.jpg"
+  }
+]

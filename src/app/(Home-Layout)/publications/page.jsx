@@ -6,6 +6,7 @@ import PageBanner from "@/Components/PageBanner/PageBanner";
 import { useState } from "react";
 
 const PublicationsPage = () => {
+  const [searchQuery, setSearchQuery] = useState("");
   const [showAllPublications, setShowAllPublications] = useState(false);
 
   const publications = [
@@ -101,10 +102,17 @@ const PublicationsPage = () => {
     },
   ];
 
-  const subsetOfPublications = publications.slice(0, 12);
-
   const togglePublicationsVisibility = () => {
     setShowAllPublications(!showAllPublications);
+  };
+
+  const filteredPublications = publications.filter((publication) =>
+    publication.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  const setSearchQueryAndReset = (newQuery) => {
+    setSearchQuery(newQuery);
+    setShowAllPublications(false); // Reset the showAllPublications state
   };
 
   return (
@@ -122,6 +130,8 @@ const PublicationsPage = () => {
                 type="text"
                 className="outline-0 px-3 py-2 rounded-l-md rounded-r-none w-3/4 md:w-[350px] bg-[#EFF3F8] border-l-2 border-b-2 border-t-2 border-indigo-500 text-sm md:text-base"
                 placeholder="Search Your Favorite Publisher"
+                value={searchQuery}
+                onChange={(e) => setSearchQueryAndReset(e.target.value)}
               />
             </label>
             <button className="bg-indigo-500 p-2 text-white border-2 border-indigo-500 rounded-l-none rounded-r-md text-sm md:text-base">
@@ -130,75 +140,58 @@ const PublicationsPage = () => {
           </div>
         </form>
         <hr className="mt-6 mb-20 border-black" />
+
+        {filteredPublications.length === 0 && (
+          <p className="text-center text-red-500 font-medium mt-4 text-lg">
+            No Publications Found.
+          </p>
+        )}
+
         {/* All Publications */}
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-y-12 md:gap-y-24">
-          {showAllPublications
-            ? publications.map((publication) => (
-                <Link
-                  key={publication?.id}
-                  href="/"
-                  className="flex items-center justify-center"
+          {filteredPublications
+            .slice(0, showAllPublications ? undefined : 12)
+            .map((publication) => (
+              <Link
+                key={publication?.id}
+                href="/"
+                className="flex items-center justify-center"
+              >
+                <div
+                  title={publication?.name}
+                  style={{
+                    width: "140px",
+                    height: "140px",
+                  }}
+                  className="text-center text-gray-900 hover:text-indigo-700 rounded-full mx-auto border-2 border-solid border-gray-500 hover:border-indigo-500 transition-all"
                 >
-                  <div
-                    title={publication?.name}
+                  <img
                     style={{
-                      width: "140px",
-                      height: "140px",
+                      filter: "grayscale(100%)",
                     }}
-                    className="text-center text-gray-900 hover:text-indigo-700 rounded-full mx-auto border-2 border-solid border-gray-500 hover:border-indigo-500 transition-all"
-                  >
-                    <img
-                      style={{
-                        filter: "grayscale(100%)",
-                      }}
-                      src={publication?.img}
-                      alt={publication?.name}
-                      className="mx-auto rounded-full"
-                    />
-                    <h6 className="text-sm font-medium text-center mt-3">
-                      {publication?.name}
-                    </h6>
-                  </div>
-                </Link>
-              ))
-            : subsetOfPublications.map((publication) => (
-                <Link
-                  key={publication?.id}
-                  href="/"
-                  className="flex items-center justify-center"
-                >
-                  <div
-                    title={publication?.name}
-                    style={{
-                      width: "140px",
-                      height: "140px",
-                    }}
-                    className="text-center text-gray-900 hover:text-indigo-700 rounded-full mx-auto border-2 border-solid border-gray-500 hover:border-indigo-500 transition-all"
-                  >
-                    <img
-                      style={{
-                        filter: "grayscale(100%)",
-                      }}
-                      src={publication?.img}
-                      alt={publication?.name}
-                      className="mx-auto rounded-full"
-                    />
-                    <h6 className="text-sm font-medium text-center mt-3">
-                      {publication?.name}
-                    </h6>
-                  </div>
-                </Link>
-              ))}
+                    src={publication?.img}
+                    alt={publication?.name}
+                    className="mx-auto rounded-full"
+                  />
+                  <h6 className="text-sm font-medium text-center mt-3">
+                    {publication?.name}
+                  </h6>
+                </div>
+              </Link>
+            ))}
         </div>
-        <div className="flex items-center justify-center mt-28">
-          <button
-            onClick={togglePublicationsVisibility}
-            type="button"
-            className="w-60 h-16 border-solid border border-indigo-400 text-lg font-medium rounded-md text-[#333333] hover:bg-indigo-500 hover:text-white hover:transition-all"
-          >
-            {showAllPublications ? "Show Less" : "See All Publications"}
-          </button>
-        </div>
+        {/* "See All Publications" button */}
+        {searchQuery === "" && (
+          <div className="flex items-center justify-center mt-28">
+            <button
+              onClick={togglePublicationsVisibility}
+              type="button"
+              className="w-60 h-16 border-solid border border-indigo-400 text-lg font-medium rounded-md text-[#333333] hover:bg-indigo-500 hover:text-white hover:transition-all"
+            >
+              {showAllPublications ? "Show Less" : "See All Publications"}
+            </button>
+          </div>
+        )}
       </section>
     </div>
   );

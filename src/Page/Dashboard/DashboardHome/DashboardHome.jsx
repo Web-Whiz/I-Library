@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 
 const DashboardHome = () => {
@@ -77,8 +78,8 @@ const DashboardHome = () => {
                                 <h1 className='text-lg font-bold'>John Doe</h1>
                             </div>
                         </div>
-                        <li className='font-bold text-lg bg-slate-200 hover:shadow-sm my-1 rounded-md'><a>My Account</a></li>
-                        <li className='font-bold text-lg bg-slate-200 hover:shadow-sm my-1 rounded-md'><a>Cart</a></li>
+                        <li className='font-bold text-lg bg-slate-200 hover:shadow-sm my-1 rounded-md'><>My Account</></li>
+                        <li className='font-bold text-lg bg-slate-200 hover:shadow-sm my-1 rounded-md'><Link href='dashboard/cart'>Cart</Link></li>
                         <li className='font-bold text-lg bg-slate-200 hover:shadow-sm my-1 rounded-md'><a>My Orders</a></li>
                         <li className='font-bold text-lg bg-slate-200 hover:shadow-sm my-1 rounded-md'><a> Order History</a></li>
                         <li className='font-bold text-lg bg-slate-200 hover:shadow-sm my-1 rounded-md'><a> My LIst </a></li>
