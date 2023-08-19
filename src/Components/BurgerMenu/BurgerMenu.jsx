@@ -63,7 +63,7 @@ const BurgerMenu = () => {
             </Link>
           </li>
           <li className="text-gray-900 font-medium cursor-pointer py-[6px] duration-200 text-lg hover:bg-violet-50 rounded-sm hover:text-violet-600  my-1 px-2">
-            <Link href="/publication" className="flex items-center gap-4 text-[15px]">
+            <Link href="/publications" className="flex items-center gap-4 text-[15px]">
               <BiNews /> Publication
             </Link>
           </li>
