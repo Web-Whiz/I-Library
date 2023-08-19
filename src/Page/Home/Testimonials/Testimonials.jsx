@@ -4,9 +4,7 @@ import { Carousel } from "react-responsive-carousel";
 import "./testimonials.css";
 import TestimonialCard from "./TestimonialCard";
 const Testimonials = () => {
-  const headingStyle = {
-    color: "#0F86CD", // Text color
-  };
+
   return (
     <div className="bg-testimonials-bg">
       <div className="text-center pt-5">
