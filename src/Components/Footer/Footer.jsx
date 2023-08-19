@@ -66,7 +66,7 @@ const Footer = () => {
         </div>
         <div className="flex items-center justify-center my-10 md:my-20">
           <form className="flex items-center py-2">
-            <button className="px-2 py-2 bg-indigo-500 text-white text-xl rounded-l-md">
+            <button className="px-2 py-2 bg-indigo-700 text-white text-xl rounded-l-md">
               <IoIosMail />
             </button>
             <input
@@ -75,13 +75,13 @@ const Footer = () => {
               placeholder="Write your email"
               className="px-3 md:px-4 py-2 outline-0 border-0 bg-[#EFF3F8] text-base md:text-lg text-gray-950 flex-grow h-full"
             />
-            <button className="px-2 md:px-6 py-2 cursor-pointer bg-indigo-500 text-white text-xl rounded-r-md">
+            <button className="px-2 md:px-6 py-2 cursor-pointer bg-indigo-700 text-white text-xl rounded-r-md">
               <PiPaperPlaneRightBold />
             </button>
           </form>
         </div>
       </div>
-      <div className="w-full h-16 py-6 bg-[#0F86CD]">
+      <div className="w-full h-16 py-6 bg-indigo-700">
         <p className="text-center text-white text-sm md:text-base">
           Copyright 2023 by <b>I Library</b>. All Rights Reserved.
         </p>

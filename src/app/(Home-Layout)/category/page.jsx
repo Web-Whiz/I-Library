@@ -103,7 +103,7 @@ const CategoryPage = () => {
           {showAllCategories
             ? categories.map((category) => (
                 <Link key={category?.id} href="/">
-                  <div className="w-full h-16 bg-indigo-200 border-solid border border-indigo-400 rounded-md flex items-center justify-center text-[#333333] hover:bg-indigo-500 hover:text-white hover:transition-all">
+                  <div className="w-full h-16 bg-indigo-200 border-solid border border-indigo-400 rounded-md flex items-center justify-center text-[#333333] hover:bg-indigo-700 hover:text-white hover:transition-all">
                     <h6 className="text-lg font-medium">
                       {category?.category_name}
                     </h6>
@@ -112,7 +112,7 @@ const CategoryPage = () => {
               ))
             : subsetOfCategories.map((category) => (
                 <Link key={category?.id} href="/">
-                  <div className="w-full h-16 bg-indigo-200 border-solid border border-indigo-400 rounded-md flex items-center justify-center text-[#333333] hover:bg-indigo-500 hover:text-white hover:transition-all">
+                  <div className="w-full h-16 bg-indigo-200 border-solid border border-indigo-400 rounded-md flex items-center justify-center text-[#333333] hover:bg-indigo-700 hover:text-white hover:transition-all">
                     <h6 className="text-lg font-medium">
                       {category?.category_name}
                     </h6>
@@ -124,7 +124,7 @@ const CategoryPage = () => {
           <button
             onClick={toggleCategoriesVisibility}
             type="button"
-            className="w-60 h-16 border-solid border border-indigo-400 text-lg font-medium rounded-md text-[#333333] hover:bg-indigo-500 hover:text-white hover:transition-all"
+            className="w-60 h-16 border-solid border border-indigo-400 text-lg font-medium rounded-md text-[#333333] hover:bg-indigo-700 hover:text-white hover:transition-all"
           >
             {showAllCategories ? "Show Less" : "See All"}
           </button>

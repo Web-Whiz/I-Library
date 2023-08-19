@@ -27,7 +27,7 @@ const BurgerMenu = () => {
             className="outline-0 px-2 py-[6px] rounded-l-sm w-full bg-[#EFF3F8] border-b-2 border-indigo-500"
             placeholder="write here to search"
           />
-          <button className="bg-indigo-500 p-[6px] text-white w-fit border-b-2 border-indigo-500 rounded-r-sm">
+          <button className="bg-indigo-700 p-[6px] text-white w-fit border-b-2 border-indigo-500 rounded-r-sm">
             search
           </button>
         </form>
@@ -36,7 +36,7 @@ const BurgerMenu = () => {
         <ul className="px-2 h-full bg-white text-[#3d3c3c]">
           <li className="text-gray-900 font-medium cursor-pointer py-[6px] duration-200 text-lg hover:bg-violet-50 rounded-sm hover:text-violet-600  my-1 px-2">
             <Link
-              href="/dashboard"
+              href="/"
               className="flex items-center gap-4 text-[15px]"
             >
               <BiHomeHeart /> Home
@@ -44,7 +44,7 @@ const BurgerMenu = () => {
           </li>
           <li className="text-gray-900 font-medium cursor-pointer py-[6px] duration-200 text-lg hover:bg-violet-50 rounded-sm hover:text-violet-600  my-1 px-2">
             <Link
-              href="dashboard/cart"
+              href="/all-books"
               className="flex items-center gap-4 text-[15px]"
             >
               <BiBookAlt />
@@ -52,40 +52,40 @@ const BurgerMenu = () => {
             </Link>
           </li>
           <li className="text-gray-900 font-medium cursor-pointer py-[6px] duration-200 text-lg hover:bg-violet-50 rounded-sm hover:text-violet-600  my-1 px-2">
-            <a className="flex items-center gap-4 text-[15px]">
+            <Link href="/category" className="flex items-center gap-4 text-[15px]">
               <BiGridAlt />
               Category
-            </a>
+            </Link>
           </li>
           <li className="text-gray-900 font-medium cursor-pointer py-[6px] duration-200 text-lg hover:bg-violet-50 rounded-sm hover:text-violet-600  my-1 px-2">
-            <a className="flex items-center gap-4 text-[15px]">
+            <Link href="author" className="flex items-center gap-4 text-[15px]">
               <BiUserCircle /> Author
-            </a>
+            </Link>
           </li>
           <li className="text-gray-900 font-medium cursor-pointer py-[6px] duration-200 text-lg hover:bg-violet-50 rounded-sm hover:text-violet-600  my-1 px-2">
-            <a className="flex items-center gap-4 text-[15px]">
+            <Link href="/publication" className="flex items-center gap-4 text-[15px]">
               <BiNews /> Publication
-            </a>
+            </Link>
           </li>
           <li className="text-gray-900 font-medium cursor-pointer py-[6px] duration-200 text-lg hover:bg-violet-50 rounded-sm hover:text-violet-600 my-1  px-2">
-            <a className="flex items-center gap-4 text-[15px]">
+            <Link href="/blogs" className="flex items-center gap-4 text-[15px]">
               <BiMessageRoundedDetail /> Blogs
-            </a>
+            </Link>
           </li>
           <li className="text-gray-900 font-medium cursor-pointer py-[6px] duration-200 text-lg hover:bg-violet-50 rounded-sm hover:text-violet-600  my-1 px-2 ">
-            <a className="flex items-center gap-4 text-[15px]">
+            <Link href="/contact" className="flex items-center gap-4 text-[15px]">
               <BiPhone /> Contact
-            </a>
+            </Link>
           </li>
           <li className="text-gray-900 font-medium cursor-pointer py-[6px] duration-200 text-lg hover:bg-violet-50 rounded-sm hover:text-violet-600 my-1  px-2">
-            <a className="flex items-center gap-4 text-[15px]">
+            <Link href="/about-us" className="flex items-center gap-4 text-[15px]">
               <BiInfoCircle /> About us
-            </a>
+            </Link>
           </li>
           <li className="text-gray-900 font-medium cursor-pointer py-[6px] duration-200 text-lg hover:bg-violet-50 rounded-sm hover:text-violet-600 my-1  px-2">
-            <a className="flex items-center gap-4 text-[15px]">
+            <Link href="/kids-zone" className="flex items-center gap-4 text-[15px]">
               <BiSmile /> Kids zone
-            </a>
+            </Link>
           </li>
         </ul>
       </div>

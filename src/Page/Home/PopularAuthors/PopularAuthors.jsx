@@ -149,7 +149,7 @@ const PopularAuthors = () => {
           <Link href="/author">
             <button
               type="button"
-              className="text-[#B8B8B8] font-medium h-12 w-24 md:w-32 text-base rounded-full border border-[#B8B8B8] hover:bg-indigo-500 transition hover:text-white"
+              className="text-[#B8B8B8] font-medium h-12 w-24 md:w-32 text-base rounded-full border border-[#B8B8B8] hover:bg-indigo-700 transition hover:text-white"
             >
               View all
             </button>

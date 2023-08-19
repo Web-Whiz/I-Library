@@ -134,7 +134,7 @@ const PublicationsPage = () => {
                 onChange={(e) => setSearchQueryAndReset(e.target.value)}
               />
             </label>
-            <button className="bg-indigo-500 p-2 text-white border-2 border-indigo-500 rounded-l-none rounded-r-md text-sm md:text-base">
+            <button className="bg-indigo-700 p-2 text-white border-2 border-indigo-500 rounded-l-none rounded-r-md text-sm md:text-base">
               Search
             </button>
           </div>
@@ -186,7 +186,7 @@ const PublicationsPage = () => {
             <button
               onClick={togglePublicationsVisibility}
               type="button"
-              className="w-60 h-16 border-solid border border-indigo-400 text-lg font-medium rounded-md text-[#333333] hover:bg-indigo-500 hover:text-white hover:transition-all"
+              className="w-60 h-16 border-solid border border-indigo-400 text-lg font-medium rounded-md text-[#333333] hover:bg-indigo-700 hover:text-white hover:transition-all"
             >
               {showAllPublications ? "Show Less" : "See All Publications"}
             </button>

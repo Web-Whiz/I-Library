@@ -175,7 +175,7 @@ const AuthorPage = () => {
           <button
             onClick={toggleAuthorsVisibility}
             type="button"
-            className="w-60 h-16 border-solid border border-indigo-400 text-lg font-medium rounded-md text-[#333333] hover:bg-indigo-500 hover:text-white hover:transition-all"
+            className="w-60 h-16 border-solid border border-indigo-400 text-lg font-medium rounded-md text-[#333333] hover:bg-indigo-700 hover:text-white hover:transition-all"
           >
             {showAllAuthors ? "Show Less" : "View All"}
           </button>

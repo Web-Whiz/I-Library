@@ -18,7 +18,7 @@ const TestimonialCard = () => {
           taiyaki vape DIY tote bag drinking vinegar cronut adaptogen squid
           fanny pack vaporware.
         </p>
-        <span className="inline-block h-1 w-10 rounded bg-indigo-500 mt-6 mb-4"></span>
+        <span className="inline-block h-1 w-10 rounded bg-indigo-700 mt-6 mb-4"></span>
         <h2 className="text-white font-medium title-font tracking-wider text-sm">
           HOLDEN CAULFIELD
         </h2>

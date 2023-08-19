@@ -3,7 +3,7 @@ import React from "react";
 const page = () => {
   return (
     <div className="w-full bg-white">
-      <div className="bg-[#0F86CD] p-3 rounded-md flex flex-col md:flex-row gap-4 items-center">
+      <div className="bg-indigo-700 p-3 rounded-md flex flex-col md:flex-row gap-4 items-center">
         <h1 className="font-bold text-2xl text-white">Personal Information</h1>
         <p className="text-black cursor-pointer font-semibold hover:underline">
           Change Information

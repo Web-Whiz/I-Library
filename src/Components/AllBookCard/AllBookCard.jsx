@@ -10,7 +10,7 @@ const AllBookCard = ({ book }) => {
             src={book?.bookImg}
           />
           <div className="absolute z-0 top-0 left-0 -translate-y-full group-hover:-translate-y-0  duration-200 w-full h-full backdrop-blur-md bg-black/60 bg-opacity-30 flex justify-center items-center">
-            <button className="text-white text-sm hover:bg-indigo-500 duration-200 border-[1px] border-white rounded-full px-4 py-[2px]">
+            <button className="text-white text-sm hover:bg-indigo-700 duration-200 border-[1px] border-white rounded-full px-4 py-[2px]">
               Add to bag
             </button>
           </div>

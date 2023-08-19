@@ -10,7 +10,7 @@ const SearchBar = () => {
           placeholder="write here to search"
         />
       </label>
-      <button className="bg-indigo-500 p-2 text-white border-b-2 border-indigo-500 rounded-r-sm">
+      <button className="bg-indigo-700 p-2 text-white border-b-2 border-indigo-500 rounded-r-sm">
         search
       </button>
     </form>

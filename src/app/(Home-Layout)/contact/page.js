@@ -43,7 +43,7 @@ const ContactPage = () => {
             required
           ></textarea>
           <input
-            className=" border rounded w-full  p-3 text-white bg-[#0F86CD] hover:bg-blue-950 transition duration-500 font-bold   focus:outline-none "
+            className=" border rounded w-full  p-3 text-white bg-indigo-700 hover:bg-blue-950 transition duration-500 font-bold   focus:outline-none "
             type="submit"
             name=""
             id=""

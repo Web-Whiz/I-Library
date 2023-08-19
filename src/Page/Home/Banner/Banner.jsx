@@ -35,7 +35,7 @@ const Banner = () => {
                 your imagination. From the classics to the contemporary, embark
                 on a journey of discovery with us.
               </p>
-              <button className="bg-indigo-500 px-5 py-2 rounded-md mt-4 text-white font-medium hover:bg-white hover:text-indigo-500 duration-200">
+              <button className="bg-indigo-700 px-5 py-2 rounded-md mt-4 text-white font-medium hover:bg-white hover:text-indigo-500 duration-200">
                 Learn more
               </button>
             </div>
@@ -59,7 +59,7 @@ const Banner = () => {
                 your imagination. From the classics to the contemporary, embark
                 on a journey of discovery with us.
               </p>
-              <button className="bg-indigo-500 px-5 py-2 rounded-md mt-4 text-white font-medium hover:bg-white hover:text-indigo-500 duration-200">
+              <button className="bg-indigo-700 px-5 py-2 rounded-md mt-4 text-white font-medium hover:bg-white hover:text-indigo-500 duration-200">
                 Learn more
               </button>
             </div>
@@ -83,7 +83,7 @@ const Banner = () => {
                 your imagination. From the classics to the contemporary, embark
                 on a journey of discovery with us.
               </p>
-              <button className="bg-indigo-500 px-5 py-2 rounded-md mt-4 text-white font-medium hover:bg-white hover:text-indigo-500 duration-200">
+              <button className="bg-indigo-700 px-5 py-2 rounded-md mt-4 text-white font-medium hover:bg-white hover:text-indigo-500 duration-200">
                 Learn more
               </button>
             </div>

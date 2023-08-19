@@ -95,7 +95,7 @@ const Blogs = () => {
                   {blog?.review_text.split(" ").slice(0, 25).join(" ")} . . .
                   more
                 </p>
-                <button className="btn bg-[#0F86CD] text-white px-2 py-1">
+                <button className="btn bg-indigo-700 text-white px-2 py-1">
                   Read More
                 </button>
               </div>

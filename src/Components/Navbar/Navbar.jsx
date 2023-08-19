@@ -32,7 +32,7 @@ const Navbar = () => {
             </Link>
             <button className="text-2xl relative text-black lg:border-l-2 lg:pl-3">
               <FaCartPlus />
-              <h2 className="absolute text-[14px] font-medium flex justify-center items-center text-white h-6 w-6 bg-indigo-500 rounded-full -top-2/3 -right-1/2">
+              <h2 className="absolute text-[14px] font-medium flex justify-center items-center text-white h-6 w-6 bg-indigo-700 rounded-full -top-2/3 -right-1/2">
                 0
               </h2>
             </button>
