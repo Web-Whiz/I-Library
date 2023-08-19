@@ -1,22 +1,23 @@
 import Link from "next/link";
 import { BsGoogle } from "react-icons/bs";
 import { FaFacebookF } from "react-icons/fa";
-import login from '@/assets/login.png'
-import { MdLock, MdEmail } from "react-icons/md";
+import login from "@/assets/login.png";
+import {
+  MdLock,
+  MdEmail,
+  MdOutlineMailOutline,
+  MdOutlineLockOpen,
+} from "react-icons/md";
 import Image from "next/image";
 
 const LoginPage = () => {
   return (
-    <div className="bg-white  max-w-[700px] mx-auto border md:shadow-md">
+    <div className="bg-[#f3f4f6]  max-w-[700px] mx-auto border md:shadow-md">
       {/* Login Banner */}
       <div>
         <div className="relative w-full h-[350px]">
           <div className="w-full h-full">
-            <Image
-              className="w-full h-full"
-              src={login}
-              alt="banner Image"
-            />
+            <Image className="w-full h-full" src={login} alt="banner Image" />
           </div>
           <div className="absolute top-0 w-full h-full flex flex-col bg-[#4ABCFF] bg-opacity-40 items-center justify-center text-white">
             <h1 className="font-bold text-center text-3xl">Join Us Again</h1>
@@ -31,25 +32,25 @@ const LoginPage = () => {
         <h1 className="text-center my-8 text-3xl font-bold">Login Here </h1>
         <form>
           <div className="flex items-center my-10 ">
-            <span className="bg-slate-100 p-[14px]">
-              <MdEmail className="w-full text-[#0F86CD] text-2xl" />
+            <span className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
+              <MdOutlineMailOutline className="text-gray-400 text-lg"></MdOutlineMailOutline>
             </span>
             <input
-              className="text-lg p-3 bg-slate-300 font-medium w-full outline-none"
+              className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+              placeholder="johnsmith@example.com"
               type="email"
-              placeholder="Email"
               required
             />
           </div>
 
           <div className="flex items-center  my-10">
-            <span className="bg-slate-100 p-[14px]">
-              <MdLock className="w-full text-[#0F86CD] text-2xl" />
+            <span className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
+              <MdOutlineLockOpen className="text-gray-400 text-lg"></MdOutlineLockOpen>
             </span>
             <input
-              className="text-lg p-3 bg-slate-300 font-medium w-full outline-none"
+              className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+              placeholder="************"
               type="password"
-              placeholder="Password"
               required
             />
           </div>
@@ -66,7 +67,7 @@ const LoginPage = () => {
               </Link>
             </p>
           </div>
-          <button className="text-xl text-white p-2 bg-[#0F86CD] font-bold w-full">
+          <button className="text-xl text-white p-2 bg-indigo-700 font-semibold w-full">
             Sign in
           </button>
         </form>

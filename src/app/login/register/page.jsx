@@ -1,12 +1,20 @@
 import Link from "next/link";
 import { BsGoogle } from "react-icons/bs";
 import { FaCamera, FaFacebookF, FaUserAlt } from "react-icons/fa";
-import { MdLock, MdEmail } from "react-icons/md";
+import {
+  MdLock,
+  MdEmail,
+  MdOutlineMailOutline,
+  MdOutlineLockOpen,
+  MdCameraAlt,
+  MdOutlineEdit,
+  MdOutlineCameraAlt,
+} from "react-icons/md";
 import login from "@/assets/login.png";
 import Image from "next/image";
 const RegisterPage = () => {
   return (
-    <div className="bg-white  max-w-[700px] mx-auto border shadow-md">
+    <div className="bg-[#f3f4f6]  max-w-[700px] mx-auto border shadow-md">
       {/* register Banner */}
       <div>
         <div className="relative w-full h-[350px]">
@@ -34,48 +42,49 @@ const RegisterPage = () => {
         </h1>
         <form>
           <div className="flex items-center my-10 ">
-            <span className="bg-slate-100 p-[14px]">
-              <FaUserAlt className="w-full text-[#0F86CD] text-2xl" />
+            <span className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
+              <MdOutlineEdit className="text-gray-400 text-lg" />
             </span>
             <input
-              className="text-lg p-3 bg-slate-300 font-normal w-full outline-none"
-              type="Text"
-              placeholder="Name"
+              className="w-full -ml-10 pl-10 bg-white pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+              placeholder="Type your name"
+              type="text"
               required
             />
           </div>
 
           <div className="flex items-center my-10 ">
-            <span className="bg-slate-100 p-[14px]">
-              <FaCamera className="w-full text-[#0F86CD] text-2xl" />
+            <span className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
+              <MdOutlineCameraAlt className="text-gray-400 text-lg" />
             </span>
             <input
-              className="text-lg p-[9px] bg-slate-300 font-normal w-full outline-none"
+              className="w-full -ml-10 pl-10 bg-white pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+              placeholder="upload your photo"
               type="file"
               required
             />
           </div>
 
           <div className="flex items-center my-10 ">
-            <span className="bg-slate-100 p-[14px]">
-              <MdEmail className="w-full text-[#0F86CD] text-2xl" />
+            <span className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
+              <MdOutlineMailOutline className="text-gray-400 text-lg" />
             </span>
             <input
-              className="text-lg p-3 bg-slate-300 font-normal w-full outline-none"
+              className="w-full -ml-10 bg-white pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+              placeholder="johnsmith@example.com"
               type="email"
-              placeholder="Email"
               required
             />
           </div>
 
           <div className="flex items-center  my-10">
-            <span className="bg-slate-100 p-[14px]">
-              <MdLock className="w-full text-[#0F86CD] text-2xl" />
+            <span className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
+              <MdOutlineLockOpen className="text-gray-400 text-lg" />
             </span>
             <input
-              className="text-lg p-3 bg-slate-300 font-normal w-full outline-none"
+              className="w-full bg-white -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+              placeholder="************"
               type="password"
-              placeholder="Password"
               required
             />
           </div>
@@ -91,7 +100,7 @@ const RegisterPage = () => {
               </Link>
             </p>
           </div>
-          <button className="text-lg p-2 bg-[#0F86CD] font-bold w-full text-white">
+          <button className="text-lg p-2 bg-indigo-700 font-semibold w-full text-white">
             Sign Up
           </button>
         </form>
