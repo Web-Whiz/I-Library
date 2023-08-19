@@ -7,7 +7,7 @@ import { PiPaperPlaneRightBold } from "react-icons/pi";
 import ILibrary from "../../assets/ILibrary.png";
 const Footer = () => {
   return (
-    <footer className="bg-white pt-16">
+    <footer className="bg-[#f3f4f6] pt-16">
       <div className="container mx-auto p-8 md:p-16">
         <div className="flex flex-col md:flex-row justify-between gap-16 md:gap-12 lg:gap-0">
           <div>
@@ -73,7 +73,7 @@ const Footer = () => {
               required
               type="email"
               placeholder="Write your email"
-              className="px-3 md:px-4 py-2 outline-0 border-0 bg-[#EFF3F8] text-base md:text-lg text-gray-950 flex-grow h-full"
+              className="px-3 md:px-4 py-2 outline-0 border-0 bg-white text-base md:text-lg text-gray-950 flex-grow h-full"
             />
             <button className="px-2 md:px-6 py-2 cursor-pointer bg-indigo-700 text-white text-xl rounded-r-md">
               <PiPaperPlaneRightBold />

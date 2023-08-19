@@ -4,7 +4,7 @@ import React from "react";
 
 const RequestBook = () => {
   return (
-    <div className="container mx-auto bg-white shadow-md p-5">
+    <div className="container mx-auto bg-[#f3f4f6] shadow-md p-5">
       <div className="py-4">
         <SectionHeader header="Request Book" />
       </div>

@@ -1,9 +1,10 @@
 import SectionHeader from "@/Components/SectionHeader/SectionHeader";
+import Link from "next/link";
 import React from "react";
 
 const DonateBook = () => {
   return (
-      <div className="container mx-auto bg-white shadow-md p-5">
+      <div className="container mx-auto bg-[#f3f4f6] shadow-md p-5">
         <div className="py-4">
           <SectionHeader header="Donate Book" />
         </div>
@@ -14,9 +15,9 @@ const DonateBook = () => {
           <p className="text-gray-400 font-normal mt-3 mb-5">
           Empower Minds and Enrich Lives Through Book Donations
           </p>
-          <button className="text-lg border-2 border-gray-700 px-3 py-2 font-medium rounded-md hover:bg-indigo-600 duration-200 hover:text-white">
+          <Link href="/donate-book"><button className="text-lg border-2 border-gray-700 px-3 py-2 font-medium rounded-md hover:bg-indigo-600 duration-200 hover:text-white">
             Donate Now
-          </button>
+          </button></Link>
         </div>
       </div>
   );
