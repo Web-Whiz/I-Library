@@ -64,6 +64,30 @@ const RequestBook = () => {
               placeholder="Enter the author name"
             />
           </div>
+          <div>
+            <label htmlFor="publicationName" className="text-lg mb-1">
+              Publisher:
+            </label>
+            <input
+              type="text"
+              id="publicationName"
+              className="w-full px-3 py-[6px] bg-[#EFF3F8] outline-none"
+              placeholder="Enter the publisher name"
+            />
+          </div>
+          <div className="col-span-2">
+            <label htmlFor="publicationName" className="text-lg mb-1">
+              Message:
+            </label>
+            <textarea
+              id="publicationName"
+              className="w-full px-3 h-40 py-[6px] bg-[#EFF3F8] outline-none"
+              placeholder="Write any message you want to share"
+            />
+          </div>
+          <div className="col-span-2 mb-4">
+            <button className="w-full py-2 bg-indigo-600 text-white">Request now</button>
+          </div>
         </form>
       </section>
     </div>

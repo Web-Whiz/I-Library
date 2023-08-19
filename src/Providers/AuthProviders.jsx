@@ -5,8 +5,8 @@ const AuthProviders = ({ children }) => {
   const [user, setUser] = useState(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [isDashboardOpen, setIsDashboardOpen] = useState(false);
 
-  
   // const createUser = (email, password) => {
   //   setLoading(true);
   //   return createUserWithEmailAndPassword(auth, email, password);
@@ -51,6 +51,8 @@ const AuthProviders = ({ children }) => {
     setUser,
     loading,
     setLoading,
+    isDashboardOpen,
+    setIsDashboardOpen,
     // createUser,
     // Login,
     // googleSignIn,

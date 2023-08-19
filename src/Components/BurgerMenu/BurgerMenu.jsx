@@ -37,6 +37,12 @@ const BurgerMenu = () => {
           <li>
             <Link href="/category">Categories</Link>
           </li>
+          <li>
+            <Link href="/blogs">Blogs</Link>
+          </li>
+          <li>
+            <Link href="/contact">Contact</Link>
+          </li>
         </ul>
       </div>
       <div className="absolute bottom-5 left-1/2 -translate-x-1/2">
