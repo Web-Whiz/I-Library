@@ -1,5 +1,5 @@
 import AuthContext from "@/Context/AuthContext";
-import auth from "@/firebase/firebase.auth";
+import auth, { googleProvider } from "@/firebase/firebase.auth";
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
@@ -36,13 +36,11 @@ const AuthProviders = ({ children }) => {
     return signOut(auth);
   };
 
-  const updateUserProfile = async (name, photo) => {
-    setLoading(true);
-    await updateProfile(auth.currentUser, {
+  const updateUserProfile = (name, photo) => {
+    return updateProfile(auth.currentUser, {
       displayName: name,
       photoURL: photo,
     });
-    setUser((prevUser) => ({ ...prevUser, ...{ name, photo } }));
   };
 
   useEffect(() => {

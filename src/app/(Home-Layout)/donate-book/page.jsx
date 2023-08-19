@@ -1,11 +1,11 @@
 import PageBanner from "@/Components/PageBanner/PageBanner";
 import React from "react";
 import banner from "@/assets/banner01.jpg";
-const RequestBook = () => {
+const DonateBook = () => {
   return (
     <div>
       <div>
-        <PageBanner bannerName="Request a book" bannerImg={banner} />
+        <PageBanner bannerName="Donate book" bannerImg={banner} />
       </div>
       <section className="bg-[#f3f4f6] shadow-lg p-4 max-w-4xl mx-auto my-20">
         <form className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
@@ -96,4 +96,4 @@ const RequestBook = () => {
   );
 };
 
-export default RequestBook;
+export default DonateBook;
