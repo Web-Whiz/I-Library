@@ -1,5 +1,5 @@
 import React from "react";
-import banner from "@/assets/testimonial.jpg";
+import banner from "@/assets/banner01.jpg";
 import Image from "next/image";
 import BookCard from "@/Components/BookCard/BookCard";
 import AllBookCard from "@/Components/AllBookCard/AllBookCard";
