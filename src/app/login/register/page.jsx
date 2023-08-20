@@ -13,7 +13,7 @@ import Image from "next/image";
 import { useForm } from "react-hook-form";
 import useAuth from "@/Utils/useAuth";
 const RegisterPage = () => {
-  const { createUser, googleSignIn, user } = useAuth();
+  const { createUser, googleSignIn,facebookSignIn, user } = useAuth();
   const { register, handleSubmit } = useForm();
   const handleRegistration = (data) => {
     console.log(data);
@@ -26,6 +26,15 @@ const RegisterPage = () => {
   };
   const handleGoogleLogin = () => {
     googleSignIn()
+      .then((result) => {
+        console.log(result.user);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  const handleFacebookLogin = () => {
+    facebookSignIn()
       .then((result) => {
         console.log(result.user);
       })
@@ -135,7 +144,7 @@ const RegisterPage = () => {
           >
             <FcGoogle className="text-2xl" /> <span>Google</span>
           </button>
-          <button className="flex items-center gap-2 hover:bg-[#f3f4f6] hover:-translate-y-0.5 justify-center text-lg p-2 w-full font-bold bg-white shadow-md text-center ">
+          <button onClick={handleFacebookLogin} className="flex items-center gap-2 hover:bg-[#f3f4f6] hover:-translate-y-0.5 justify-center text-lg p-2 w-full font-bold bg-white shadow-md text-center ">
             <FaFacebookF className="text-[#1877F2] text-2xl" />
             <span>Facebook</span>
           </button>
