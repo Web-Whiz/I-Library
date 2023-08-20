@@ -18,6 +18,7 @@ const AuthProviders = ({ children }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [loading, setLoading] = useState(true);
   const [isDashboardOpen, setIsDashboardOpen] = useState(false);
+  const [isCartOpen, setIsCartOpen] = useState(false);
 
   const createUser = (email, password) => {
     setLoading(true);
@@ -66,6 +67,8 @@ const AuthProviders = ({ children }) => {
     setLoading,
     isDashboardOpen,
     setIsDashboardOpen,
+    isCartOpen,
+    setIsCartOpen,
     createUser,
     Login,
     googleSignIn,

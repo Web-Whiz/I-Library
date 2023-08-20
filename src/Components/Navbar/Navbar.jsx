@@ -10,8 +10,9 @@ import SearchBar from "../SearchBar/SearchBar";
 import useAuth from "@/Utils/useAuth";
 import BurgerMenu from "../BurgerMenu/BurgerMenu";
 import Hamburger from "hamburger-react";
+import ShoppingCart from "../ShoppingCart/ShoppingCart";
 const Navbar = () => {
-  const { isMenuOpen, setIsMenuOpen } = useAuth();
+  const { isMenuOpen, setIsMenuOpen, isCartOpen, setIsCartOpen } = useAuth();
   return (
     <>
       <nav className="bg-white">
@@ -30,14 +31,34 @@ const Navbar = () => {
                 sign in
               </button>
             </Link>
-            <button className="text-2xl relative text-black lg:border-l-2 lg:pl-3">
+            <button
+              onClick={() => setIsCartOpen(!isCartOpen)}
+              className="text-2xl relative text-black lg:border-l-2 lg:pl-3"
+            >
               <FaCartPlus />
               <h2 className="absolute text-[14px] font-medium flex justify-center items-center text-white h-6 w-6 bg-indigo-700 rounded-full -top-2/3 -right-1/2">
                 0
               </h2>
             </button>
+            {/* shopping cart */}
+            <div
+              className={`fixed top-0 right-0 z-20 w-[70%] sm:w-[65%] md:w-[45%] lg:w-[35%] duration-500 ${
+                isCartOpen
+                  ? "-translate-x-0 origin-left"
+                  : "translate-x-[101%] origin-left"
+              }`}
+            >
+              {console.log(isCartOpen)}
+              <ShoppingCart />
+            </div>
+            {/* shopping cart */}
+            {/* mobile navbar */}
             <div className="block lg:hidden">
-                <Hamburger size={24} toggled={isMenuOpen} toggle={setIsMenuOpen} />
+              <Hamburger
+                size={24}
+                toggled={isMenuOpen}
+                toggle={setIsMenuOpen}
+              />
 
               <div
                 className={`fixed top-0 left-0 z-50 w-[65%] md:w-[35%] lg:w-[15%] ${
@@ -49,6 +70,7 @@ const Navbar = () => {
                 <BurgerMenu />
               </div>
             </div>
+            {/* mobile navbar */}
           </div>
         </div>
       </nav>

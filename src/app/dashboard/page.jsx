@@ -26,7 +26,7 @@ const page = () => {
             <div>
               <label
                 htmlFor="uploadPhoto"
-                className="text-[15px] cursor-pointer font-medium px-3 py-[6px] rounded-md bg-violet-100 text-violet-600"
+                className="text-[14px] cursor-pointer font-medium px-3 py-[6px] rounded-md bg-violet-100 text-violet-600"
               >
                 Change avatar
               </label>
@@ -70,7 +70,7 @@ const page = () => {
               />
             </div>
             <div className="flex justify-end mt-5">
-              <button className="text-[16px] rounded-md font-semibold bg-violet-100 text-violet-600 hover:bg-violet-600 duration-200 hover:text-violet-100 px-4 py-[6px] uppercase">
+              <button className="text-[15px] rounded-md font-semibold bg-violet-100 text-violet-600 hover:bg-violet-600 duration-200 hover:text-violet-100 px-4 py-[6px] uppercase">
                 save
               </button>
             </div>
@@ -130,7 +130,7 @@ const page = () => {
               />
             </div>
             <div className="flex justify-end mt-5">
-              <button className="text-[16px] rounded-md font-semibold bg-violet-100 text-violet-600 hover:bg-violet-600 duration-200 hover:text-violet-100 px-4 py-[6px] uppercase">
+              <button className="text-[15px] rounded-md font-semibold bg-violet-100 text-violet-600 hover:bg-violet-600 duration-200 hover:text-violet-100 px-4 py-[6px] uppercase">
                 change password
               </button>
             </div>
@@ -151,7 +151,7 @@ const page = () => {
           </p>
         </div>
         <div className="md:col-span-3">
-          <button className="text-[16px] rounded-md font-semibold bg-red-100 text-red-600 hover:bg-red-600 duration-200 hover:text-red-100 px-4 py-[6px] uppercase">
+          <button className="text-[15px] rounded-md font-semibold bg-red-100 text-red-600 hover:bg-red-600 duration-200 hover:text-red-100 px-4 py-[6px] uppercase">
             Yes, delete my account
           </button>
         </div>
