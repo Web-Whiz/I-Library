@@ -12,6 +12,9 @@ import {
   BiHeart,
   BiCreditCard,
   BiStar,
+  BiHomeHeart,
+  BiBookAlt,
+  BiGridAlt,
 } from "react-icons/bi";
 import useAuth from "@/Utils/useAuth";
 const DashboardNavbar = () => {
@@ -75,6 +78,32 @@ const DashboardNavbar = () => {
           <a className="flex items-center gap-4 text-[15px]">
             <BiStar /> My Reviews{" "}
           </a>
+        </li>
+        <h2 className="text-sm font-semibold text-gray-400 mt-3">
+          General Menu
+        </h2>
+        <li className="text-gray-900 font-medium cursor-pointer py-[6px] duration-200 text-lg hover:bg-violet-50 rounded-sm hover:text-violet-600 my-1  px-2">
+          <Link href="/" className="flex items-center gap-4 text-[15px]">
+            <BiHomeHeart /> Home
+          </Link>
+        </li>
+        <li className="text-gray-900 font-medium cursor-pointer py-[6px] duration-200 text-lg hover:bg-violet-50 rounded-sm hover:text-violet-600 my-1  px-2">
+          <Link
+            href="/all-books"
+            className="flex items-center gap-4 text-[15px]"
+          >
+            <BiBookAlt />
+            All Books
+          </Link>
+        </li>
+        <li className="text-gray-900 font-medium cursor-pointer py-[6px] duration-200 text-lg hover:bg-violet-50 rounded-sm hover:text-violet-600 my-1  px-2">
+          <Link
+            href="/category"
+            className="flex items-center gap-4 text-[15px]"
+          >
+            <BiGridAlt />
+              Category
+          </Link>
         </li>
       </ul>
     </div>

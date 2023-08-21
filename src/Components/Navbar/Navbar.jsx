@@ -48,7 +48,6 @@ const Navbar = () => {
                   : "translate-x-[101%] origin-left"
               }`}
             >
-              {console.log(isCartOpen)}
               <ShoppingCart />
             </div>
             {/* shopping cart */}

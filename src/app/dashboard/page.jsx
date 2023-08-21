@@ -1,7 +1,10 @@
+"use client";
 import Image from "next/image";
 import React from "react";
 import profilePhoto from "@/assets/Author01.jpg";
+import useAuth from "@/Utils/useAuth";
 const page = () => {
+  const { user } = useAuth();
   return (
     <div className="w-full bg-white shadow-lg p-5 md:p-8">
       {/* personal information */}
@@ -43,6 +46,7 @@ const page = () => {
               <input
                 type="text"
                 id="name"
+                defaultValue={user?.displayName}
                 className="w-full px-3 py-[6px] text-[16px] mt-[6px] rounded-md border-2 border-gray-200 outline-none focus:border-indigo-500"
                 placeholder="Type your name"
               />
@@ -54,6 +58,7 @@ const page = () => {
               <input
                 type="text"
                 id="Email"
+                defaultValue={user?.email}
                 className="w-full px-3 py-[6px] text-[16px] mt-[6px] rounded-md border-2 border-gray-200 outline-none focus:border-indigo-500"
                 placeholder="Type your email"
               />
