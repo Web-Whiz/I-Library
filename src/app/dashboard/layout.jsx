@@ -6,7 +6,7 @@ import Hamburger from "hamburger-react";
 import Image from "next/image";
 
 const DashboardLayout = ({ children }) => {
-  const { isDashboardOpen, setIsDashboardOpen } = useAuth();
+  const { isDashboardOpen, setIsDashboardOpen, user } = useAuth();
   return (
     <html lang="en" data-theme="light">
       <body className=" bg-[#EFF3F8]">
@@ -31,15 +31,15 @@ const DashboardLayout = ({ children }) => {
                 />
               </aside>
               <aside className="flex items-center gap-6">
-                <Image
+                <img
                   width={50}
                   height={50}
                   className="rounded-full"
-                  src={profilePhoto}
+                  src={user?.photoURL}
                   alt="profile photo"
                 />
                 <h2 className="text-[16px] font-medium text-gray-800">
-                  Tom Cook
+                  {user?.displayName}
                 </h2>
               </aside>
             </header>

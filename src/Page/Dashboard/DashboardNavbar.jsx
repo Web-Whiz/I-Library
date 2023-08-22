@@ -15,6 +15,7 @@ import {
   BiHomeHeart,
   BiBookAlt,
   BiGridAlt,
+  BiSolidDashboard,
 } from "react-icons/bi";
 import useAuth from "@/Utils/useAuth";
 const DashboardNavbar = () => {
@@ -36,12 +37,20 @@ const DashboardNavbar = () => {
             href="/dashboard"
             className="flex items-center gap-4 text-[15px]"
           >
+            <BiSolidDashboard /> Dashboard
+          </Link>
+        </li>
+        <li className="text-gray-900 font-medium cursor-pointer py-[6px] duration-200 text-lg hover:bg-violet-50 rounded-sm hover:text-violet-600  my-1 px-2">
+          <Link
+            href="/dashboard/my-account"
+            className="flex items-center gap-4 text-[15px]"
+          >
             <BiUser /> My Account
           </Link>
         </li>
         <li className="text-gray-900 font-medium cursor-pointer py-[6px] duration-200 text-lg hover:bg-violet-50 rounded-sm hover:text-violet-600  my-1 px-2">
           <Link
-            href="dashboard/cart"
+            href="/dashboard/cart"
             className="flex items-center gap-4 text-[15px]"
           >
             <BiCart />
@@ -102,7 +111,7 @@ const DashboardNavbar = () => {
             className="flex items-center gap-4 text-[15px]"
           >
             <BiGridAlt />
-              Category
+            Category
           </Link>
         </li>
       </ul>
