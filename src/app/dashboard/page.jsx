@@ -3,9 +3,12 @@ import Image from "next/image";
 import React from "react";
 import profilePhoto from "@/assets/Author01.jpg";
 import useAuth from "@/Utils/useAuth";
+import Overview from "./overview/Overview";
 const page = () => {
   const { user } = useAuth();
   return (
+    <div>
+      <Overview />
     <div className="w-full bg-white shadow-lg p-5 md:p-8">
       {/* personal information */}
       <div className="grid md:grid-cols-5 gap-4 items-start border-b-[1px] border-gray-200 pb-8">
@@ -162,6 +165,7 @@ const page = () => {
         </div>
       </div>
       {/* delete my account */}
+    </div>
     </div>
   );
 };
