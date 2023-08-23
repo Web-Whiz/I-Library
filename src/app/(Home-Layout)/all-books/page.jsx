@@ -5,7 +5,8 @@ import BookCard from "@/Components/BookCard/BookCard";
 import AllBookCard from "@/Components/AllBookCard/AllBookCard";
 import { FaFilter } from "react-icons/fa";
 import PageBanner from "@/Components/PageBanner/PageBanner";
-const AllBooks = () => {
+import { getBooks } from "@/Utils/useBooks";
+const AllBooks = async () => {
   const allBooks = [
     {
       id: 1,
@@ -302,6 +303,7 @@ const AllBooks = () => {
       category_name: "Philosophy",
     },
   ];
+  const books = await getBooks();
   return (
     <div>
       <div>
@@ -383,8 +385,8 @@ const AllBooks = () => {
               </select>
             </div>
           </div>
-          {allBooks.map((book) => {
-            return <AllBookCard key={book.id} book={book} />;
+          {books.map((book) => {
+            return <AllBookCard key={book._id} book={book} />;
           })}
         </div>
       </div>

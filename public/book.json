@@ -1,0 +1,55 @@
+{
+  "title": "The Great Gatsby",
+  "author": "F. Scott Fitzgerald",
+  "translator": null,
+  "publisher": "Scribner",
+  "image_url": "https://m.media-amazon.com/images/I/71FTb9X6wsL._AC_UF1000,1000_QL80_.jpg",
+  "edition": "2021",
+  "published_in": 1925,
+  "category": "self development",
+  "number_of_pages": 180,
+  "language": "English",
+  "country": "United States",
+  "ratings": 4.5,
+  "total-read": 20,
+  "added-date": "22 Aug 2023",
+  "availability": {
+    "hard_copy": true,
+    "pdf": false,
+    "ebook": true
+  },
+  "pdf": [
+    {
+      "book-name": "",
+      "book-id": "",
+      "pdf-url": ""
+    }
+  ],
+  "user_ratings": [
+    {
+      "username": "reader123",
+      "user-email": "ridoy@gmail.com",
+      "rating": 5,
+      "review": "An American classic that beautifully captures the Jazz Age.",
+      "date": "2023-08-22",
+      "book-name": "",
+      "book-img": "",
+      "book-id": ""
+    },
+    {
+      "username": "booklover22",
+      "user-email": "ridoy@gmail.com",
+      "rating": 4,
+      "review": "Loved the narrative, but the ending left me wanting more.",
+      "date": "2023-08-20"
+    }
+  ],
+  "qna": [
+    {
+      "user-name": "Ridoy",
+      "user-email": "ridoy@gmail.com",
+      "question": "Is this book suitable for young adults?",
+      "answer": "Yes, this book is often recommended for young adult readers due to its themes and engaging storytelling."
+    }
+  ]
+}
