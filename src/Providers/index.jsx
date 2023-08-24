@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React from "react";
 import AuthProviders from "./AuthProviders";
 import QueryProvider from "./QueryProvider";

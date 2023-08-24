@@ -1,20 +1,37 @@
+"use client";
 import PageBanner from "@/Components/PageBanner/PageBanner";
 import React from "react";
 import banner from "@/assets/banner01.jpg";
+import useAuth from "@/Utils/useAuth";
+import { useForm } from "react-hook-form";
 const RequestBook = () => {
+  const { user } = useAuth();
+  const { register, handleSubmit } = useForm();
+  const handleRequestBook = (data) => {
+    const requestBook = {
+      ...data,
+      userName: user?.displayName,
+      userEmail: user?.email,
+    };
+  };
   return (
     <div>
       <div>
         <PageBanner bannerName="Request a book" bannerImg={banner} />
       </div>
       <section className="bg-[#f3f4f6] shadow-lg p-4 max-w-4xl mx-auto my-20">
-        <form className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+        <form
+          onSubmit={handleSubmit(handleRequestBook)}
+          className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center"
+        >
           <div>
             <label htmlFor="userName" className="text-lg mb-1">
               Name:
             </label>
             <input
               type="text"
+              readOnly
+              defaultValue={user?.displayName}
               id="userName"
               className="w-full px-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
               placeholder="Enter your name"
@@ -27,6 +44,8 @@ const RequestBook = () => {
             <input
               type="email"
               id="userEmail"
+              readOnly
+              defaultValue={user?.email}
               className="w-full px-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
               placeholder="Enter your email"
             />
@@ -38,6 +57,7 @@ const RequestBook = () => {
             <input
               type="text"
               id="bookName"
+              {...register("bookName")}
               className="w-full px-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
               placeholder="Enter the book name"
             />
@@ -49,6 +69,7 @@ const RequestBook = () => {
             <input
               type="text"
               id="authorName"
+              {...register("authorName")}
               className="w-full px-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
               placeholder="Enter the author name"
             />
@@ -60,6 +81,7 @@ const RequestBook = () => {
             <input
               type="file"
               id="bookPhoto"
+              {...register("bookPhoto")}
               className="w-full px-3 py-[6px] bg-white rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
               placeholder="Enter the author name"
             />
@@ -71,6 +93,7 @@ const RequestBook = () => {
             <input
               type="text"
               id="publicationName"
+              {...register("publicationName")}
               className="w-full px-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
               placeholder="Enter the publisher name"
             />
@@ -81,12 +104,16 @@ const RequestBook = () => {
             </label>
             <textarea
               id="publicationName"
+              {...register("message")}
               className="w-full px-3 h-40 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
               placeholder="Write any message you want to share"
             />
           </div>
           <div className="md:col-span-2 mb-4">
-            <button className="w-full py-2 bg-indigo-600 text-white">
+            <button
+              type="submit"
+              className="w-full py-2 bg-indigo-600 text-white"
+            >
               Request now
             </button>
           </div>

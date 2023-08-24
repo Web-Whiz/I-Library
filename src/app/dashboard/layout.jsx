@@ -18,7 +18,6 @@ const DashboardLayout = ({ children }) => {
                 : "-translate-x-[101%] lg:translate-x-0 origin-right duration-500"
             }`}
           >
-            {isDashboardOpen}
             <DashboardNavbar />
           </nav>
           <main className="w-full lg:ml-[22%] xl:ml-[16%]">
