@@ -10,11 +10,11 @@ import {
   BiGridAlt,
   BiHeart,
   BiHomeHeart,
+  BiSolidBookAlt,
   BiSolidDashboard,
   BiStar,
   BiTimeFive,
   BiUser,
-  BiSolidBookAlt,
 } from "react-icons/bi";
 import { RxCross2 } from "react-icons/rx";
 const DashboardNavbar = () => {
