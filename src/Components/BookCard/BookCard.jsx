@@ -26,7 +26,6 @@ const BookCard = ({ book }) => {
     })
       .then(res => res.json())
       .then((data) => {
-        console.log(data)
         if(data.insertedId){
           // todo: have to add swal
           alert('Added To Cart')
@@ -58,7 +57,6 @@ const BookCard = ({ book }) => {
     })
       .then(res => res.json())
       .then((data) => {
-        console.log(data)
         if(data.insertedId){
           // todo: have to add swal
           alert('Added to wish list')

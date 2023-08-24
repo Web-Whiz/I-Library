@@ -6,7 +6,6 @@ import React from 'react';
 const page = () => {
     const [wishListBooks, refetch] = useWishList()
 
-    console.log(wishListBooks)
     return (
         <div>
             <h1>Total Wish List Books:{wishListBooks.length}</h1>

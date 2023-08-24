@@ -19,7 +19,6 @@ const RegisterPage = () => {
   const { createUser, googleSignIn,facebookSignIn, user } = useAuth();
   const { register, handleSubmit, formState: { errors }, watch, reset } = useForm();
   const handleRegistration = (data) => {
-    console.log(data);
     const { email, password, photo, name } = data;
     createUser(email, password)
       .then((result) => {

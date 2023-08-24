@@ -24,7 +24,6 @@ const CartItemCard = ( {cartData,refetch} ) => {
     })
       .then(res => res.json())
       .then((data) => {
-        console.log(data)
         if(data.deletedCount){
           // todo: have to add swal
           refetch();

@@ -2,6 +2,7 @@ import useAuth from "@/Utils/useAuth";
 import useCart from "@/Utils/useCart";
 import React from "react";
 import CartItemCard from "../CartItemCard/CartItemCard";
+import Link from "next/link";
 
 const ShoppingCart = () => {
   const { setIsCartOpen } = useAuth();
@@ -64,12 +65,12 @@ const ShoppingCart = () => {
             Shipping and taxes calculated at checkout.
           </p>
           <div className="mt-6">
-            <a
+            <Link
               href="dashboard/cart"
               className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
             >
               Checkout
-            </a>
+            </Link>
           </div>
           <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
             <p>

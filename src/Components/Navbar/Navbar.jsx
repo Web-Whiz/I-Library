@@ -60,7 +60,6 @@ const Navbar = () => {
                         href="/dashboard"
                         className="flex items-center gap-4"
                       >
-                        {" "}
                         <BiSolidDashboard /> Dashboard
                       </Link>
                     </li>

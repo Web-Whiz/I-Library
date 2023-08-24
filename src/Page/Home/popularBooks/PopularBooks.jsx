@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import BookCard from "@/Components/BookCard/BookCard";
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
@@ -160,15 +160,14 @@ const PopularBooks = () => {
   //   },
   // ];
 
-  const {data: popularBooks, refetch} = useQuery({
-    queryKey: ['carts'],
-    queryFn: async() => {
-        const res = await fetch(`http://localhost:5000/popular-books`)
-        return res.json();
-    }
-})
- 
-console.log(popularBooks)
+  const { data: popularBooks, refetch } = useQuery({
+    queryKey: ["carts"],
+    queryFn: async () => {
+      const res = await fetch(`http://localhost:5000/popular-books`);
+      return res.json();
+    },
+  });
+
   return (
     <div className="container mx-auto">
       <div className="h2 text-center">

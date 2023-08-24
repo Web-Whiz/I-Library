@@ -17,7 +17,6 @@ const LoginPage = () => {
   const password = watch('password', '');
 
   const handleLogin = (data) => {
-    console.log(data);
     Login(data.email, data.password)
       .then((result) => {
         console.log(result.user);
