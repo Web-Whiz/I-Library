@@ -2,6 +2,68 @@ import Image from "next/image";
 import React from "react";
 
 const BookCard = ({ book }) => {
+
+
+  const handleAddToCart = (book) => {
+    // todo: have to use real user and user email 
+    const user = true
+    const email = 'john@gmail.com'
+
+    if (!user) {
+      alert('log in first')
+      return
+    }
+
+    const { image_url, title, author, _id } = book
+    const cartItem = { title, author, bookId: _id, image_url, userEmail: email }
+
+    fetch('http://localhost:5000/carts', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(cartItem)
+    })
+      .then(res => res.json())
+      .then((data) => {
+        if(data.insertedId){
+          // todo: have to add swal
+          alert('Added To Cart')
+        }
+      })
+
+  }
+
+
+  const handleAddToWishList = (book) => {
+    // todo: have to use real user and user email 
+    const user = true
+    const email = 'john@gmail.com'
+
+    if (!user) {
+      alert('log in first')
+      return
+    }
+
+    const { image_url, title, author, _id } = book
+    const wishLIstItem = { title, author, bookId: _id, image_url, userEmail: email }
+
+    fetch('http://localhost:5000/wish-list', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(wishLIstItem)
+    })
+      .then(res => res.json())
+      .then((data) => {
+        if(data.insertedId){
+          // todo: have to add swal
+          alert('Added to wish list')
+        }
+      })
+
+  }
   // const {bookName, bookImg, authorName, shelfNo, rating, borrowPrice} = book;
 
   return (
@@ -26,20 +88,25 @@ const BookCard = ({ book }) => {
         <div className="w-full h-[215px] relative">
           <img
             className="w-full h-full hover:scale-120 collegeImg duration-300 object-fill"
-            src={book?.bookImg}
+            src={book?.image_url}
           />
           <div className="absolute z-0 top-0 left-0 -translate-y-full group-hover:-translate-y-0  duration-200 w-full h-full backdrop-blur-md bg-black/60 bg-opacity-30 flex justify-center items-center">
-            <button className="text-white text-sm hover:bg-indigo-700 duration-200 border-[1px] border-white rounded-full px-4 py-[2px]">
+            <div className="flex flex-col items-center gap-1">
+            <button onClick={()=>handleAddToCart(book)} className="text-white text-sm w-full hover:bg-indigo-700 duration-200 border-[1px] border-white rounded-full px-4 py-[2px]">
               Add to bag
             </button>
+            <button onClick={()=>handleAddToWishList(book)} className="text-white text-sm w-full hover:bg-indigo-700 duration-200 border-[1px] border-white rounded-full px-4 py-[2px]">
+              Add to wish list
+            </button>
+            </div>
           </div>
         </div>
         <div className="py-2 sm:py-1 flex-grow text-center z-10">
-          <h1 className="font-semibold text-sm "> {book?.bookName} </h1>
+          <h1 className="font-semibold text-sm "> {book?.title} </h1>
         </div>
         <div className="flex flex-col pb-2 justify-end items-center z-10">
           <h3 className="text-xs text-gray-600 font-medium">
-            Self-Help and Motivation
+            {book?.category}
           </h3>
           <h4 className="text-[10px]">Self no: 23</h4>
         </div>

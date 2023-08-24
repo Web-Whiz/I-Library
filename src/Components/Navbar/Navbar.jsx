@@ -12,9 +12,11 @@ import BurgerMenu from "../BurgerMenu/BurgerMenu";
 import Hamburger from "hamburger-react";
 import ShoppingCart from "../ShoppingCart/ShoppingCart";
 import { BiLogOut, BiSolidDashboard, BiUserCheck } from "react-icons/bi";
+import useCart from "@/Utils/useCart";
 const Navbar = () => {
   const { isMenuOpen, setIsMenuOpen, isCartOpen, logOut, setIsCartOpen, user } =
     useAuth();
+    const [carts, refetch] = useCart()
   const [isUserOpen, setIsUserOpen] = useState(false);
   return (
     <>
@@ -35,7 +37,7 @@ const Navbar = () => {
             >
               <FaCartPlus />
               <h2 className="absolute text-[14px] font-medium flex justify-center items-center text-white h-6 w-6 bg-indigo-700 rounded-full -top-2/3 -right-1/2">
-                0
+                {carts?.length}
               </h2>
             </button>
             {user?.email ? (
@@ -58,7 +60,6 @@ const Navbar = () => {
                         href="/dashboard"
                         className="flex items-center gap-4"
                       >
-                        {" "}
                         <BiSolidDashboard /> Dashboard
                       </Link>
                     </li>

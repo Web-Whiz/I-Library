@@ -1,6 +1,10 @@
 import React from "react";
 
 const AllBookCard = ({ book }) => {
+
+
+
+  
   return (
     <div className="">
       <div className="w-full mx-auto group h-[320px] p-[3px] bg-[#f8fafc] hover:shadow-md duration-500 shadow-slate-100 rounded-sm overflow-hidden relative collegeCard flex flex-col">
