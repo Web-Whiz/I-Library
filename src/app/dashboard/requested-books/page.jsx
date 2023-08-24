@@ -5,7 +5,6 @@ import { getRequestedBooks } from "@/Utils/useRequestedBooks";
 const RequestedBook = () => {
   const { user } = useAuth();
   const [requestedBooks] = getRequestedBooks(user?.email);
-  console.log(requestedBooks);
   return (
     <div>
       <h1>This is requested books </h1>
