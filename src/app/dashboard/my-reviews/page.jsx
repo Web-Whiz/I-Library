@@ -1,19 +1,13 @@
 "use client";
 import useAuth from "@/Utils/useAuth";
+import useReviews from "@/Utils/useReviews";
 import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
-import { useEffect, useState } from "react";
 
 const MyReviews = () => {
+  const [reviews] = useReviews();
   const { user } = useAuth();
-  const [reviews, setReviews] = useState([]);
-
-  useEffect(() => {
-    fetch(`https://i-library-server.vercel.app/reviews/${user?.email}`)
-      .then((res) => res.json())
-      .then((data) => setReviews(data));
-  }, [reviews]);
-
+  console.log(reviews);
   return (
     <div className="w-full bg-white shadow-lg p-5 md:p-8">
       <h2 className="text-xl sm:text-2xl font-serif font-semibold">
