@@ -16,6 +16,7 @@ import {
   BiBookAlt,
   BiGridAlt,
   BiSolidDashboard,
+  BiSolidBookAlt,
 } from "react-icons/bi";
 import useAuth from "@/Utils/useAuth";
 const DashboardNavbar = () => {
@@ -69,9 +70,9 @@ const DashboardNavbar = () => {
           </a>
         </li>
         <li className="text-gray-900 font-medium cursor-pointer py-[6px] duration-200 text-lg hover:bg-violet-50 rounded-sm hover:text-violet-600  my-1 px-2">
-          <a className="flex items-center gap-4 text-[15px]">
-            <BiListCheck /> My LIst{" "}
-          </a>
+          <Link href="/dashboard/requested-books" className="flex items-center gap-4 text-[15px]">
+            <BiSolidBookAlt /> Requested Books
+          </Link>
         </li>
         <li className="text-gray-900 font-medium cursor-pointer py-[6px] duration-200 text-lg hover:bg-violet-50 rounded-sm hover:text-violet-600 my-1  px-2">
           <a className="flex items-center gap-4 text-[15px]">
