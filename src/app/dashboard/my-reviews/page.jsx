@@ -7,7 +7,7 @@ import "@smastrom/react-rating/style.css";
 const MyReviews = () => {
   const [reviews] = useReviews();
   const { user } = useAuth();
-  console.log(reviews);
+  // console.log(reviews);
   return (
     <div className="w-full bg-white shadow-lg p-5 md:p-8">
       <h2 className="text-xl sm:text-2xl font-serif font-semibold">
