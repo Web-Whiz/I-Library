@@ -1,11 +1,12 @@
 "use client";
-import useAuth from "@/Utils/useAuth";
+import { getRequestedBooks } from "@/Utils/useRequestedBooks";
 
 const RequestedBook = () => {
-  const { user } = useAuth();
+  const [requestedBooks] = getRequestedBooks();
+  console.log(requestedBooks);
   return (
     <div>
-      <h1>This is requested books {user?.email}</h1>
+      <h1>This is requested books</h1>
     </div>
   );
 };
