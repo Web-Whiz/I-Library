@@ -1,10 +1,12 @@
 'use client'
 import useAuth from "@/Utils/useAuth";
+import useCart from "@/Utils/useCart";
 import React from "react";
 import Swal from "sweetalert2";
 
 const BookCard = ({ book }) => {
   const {user,loading} = useAuth()
+  const [carts, refetch] = useCart()
 
   const handleAddToCart = (book) => {
     if (!user) {
@@ -32,6 +34,7 @@ const BookCard = ({ book }) => {
       .then((data) => {
         if(data.insertedId){
           // todo: have to add swal
+          refetch()
           Swal.fire({
             position: 'center',
             icon: 'success',
