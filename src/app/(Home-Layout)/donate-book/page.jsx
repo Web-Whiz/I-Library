@@ -4,16 +4,29 @@ import React from "react";
 import banner from "@/assets/banner01.jpg";
 import useAuth from "@/Utils/useAuth";
 import { useForm } from "react-hook-form";
+import { postDonatedBooks } from "@/Utils/useDonatedBooks";
 const DonateBook = () => {
   const { user } = useAuth();
   const { register, handleSubmit } = useForm();
+  const handleDonatedBooks = (data) => {
+    const donatedBook = {
+      ...data,
+      userName: user?.displayName,
+      userEmail: user?.email,
+    };
+    postDonatedBooks(donatedBook)
+      
+  };
   return (
     <div>
       <div>
         <PageBanner bannerName="Donate book" bannerImg={banner} />
       </div>
       <section className="bg-[#f3f4f6] shadow-lg p-4 max-w-4xl mx-auto my-20">
-        <form className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+        <form
+          onSubmit={handleSubmit(handleDonatedBooks)}
+          className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center"
+        >
           <div>
             <label htmlFor="userName" className="text-lg mb-1">
               Name:
@@ -98,7 +111,10 @@ const DonateBook = () => {
             />
           </div>
           <div className="md:col-span-2 mb-4">
-            <button type="submit" className="w-full py-2 bg-indigo-600 text-white">
+            <button
+              type="submit"
+              className="w-full py-2 bg-indigo-600 text-white"
+            >
               Submit Request
             </button>
           </div>
