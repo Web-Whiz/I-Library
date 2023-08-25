@@ -1,21 +1,19 @@
-import Image from "next/image";
+
+import useAuth from "@/Utils/useAuth";
 import React from "react";
+import Swal from "sweetalert2";
 
 const BookCard = ({ book }) => {
-
+  const {user,loading} = useAuth()
 
   const handleAddToCart = (book) => {
-    // todo: have to use real user and user email 
-    const user = true
-    const email = 'john@gmail.com'
-
     if (!user) {
-      alert('log in first')
+      Swal.fire('Log in first')
       return
     }
 
     const { image_url, title, author, _id } = book
-    const cartItem = { title, author, bookId: _id, image_url, userEmail: email }
+    const cartItem = { title, author, bookId: _id, image_url, userEmail: user?.email }
 
     fetch('http://localhost:5000/carts', {
       method: 'POST',
@@ -28,7 +26,11 @@ const BookCard = ({ book }) => {
       .then((data) => {
         if(data.insertedId){
           // todo: have to add swal
-          alert('Added To Cart')
+          Swal.fire('Added To Cart')
+        }
+        if(data.message){
+          // todo: have to add swal
+          Swal.fire(`${data.message}`)
         }
       })
 
@@ -36,17 +38,15 @@ const BookCard = ({ book }) => {
 
 
   const handleAddToWishList = (book) => {
-    // todo: have to use real user and user email 
-    const user = true
-    const email = 'john@gmail.com'
+
 
     if (!user) {
-      alert('log in first')
+      Swal.fire('Log in first')
       return
     }
 
     const { image_url, title, author, _id } = book
-    const wishLIstItem = { title, author, bookId: _id, image_url, userEmail: email }
+    const wishLIstItem = { title, author, bookId: _id, image_url, userEmail: user?.email }
 
     fetch('http://localhost:5000/wish-list', {
       method: 'POST',
@@ -58,8 +58,11 @@ const BookCard = ({ book }) => {
       .then(res => res.json())
       .then((data) => {
         if(data.insertedId){
+          Swal.fire('Added to wish list')
+        }
+        if(data.message){
           // todo: have to add swal
-          alert('Added to wish list')
+          Swal.fire(`${data.message}`)
         }
       })
 
@@ -108,7 +111,7 @@ const BookCard = ({ book }) => {
           <h3 className="text-xs text-gray-600 font-medium">
             {book?.category}
           </h3>
-          <h4 className="text-[10px]">Self no: 23</h4>
+          <h4 className="text-[10px]">Self no: {book?.shelf}</h4>
         </div>
       </div>
     </div>

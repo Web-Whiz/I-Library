@@ -160,14 +160,15 @@ const PopularBooks = () => {
   //   },
   // ];
 
-  const { data: popularBooks, refetch } = useQuery({
-    queryKey: ["carts"],
-    queryFn: async () => {
-      const res = await fetch(`http://localhost:5000/popular-books`);
-      return res.json();
-    },
-  });
-
+  const {data: popularBooks=[], refetch} = useQuery({
+    queryKey: ['popularBooks'],
+    queryFn: async() => {
+        const res = await fetch(`http://localhost:5000/popular-books`)
+        return res.json();
+    }
+})
+ 
+console.log(popularBooks)
   return (
     <div className="container mx-auto">
       <div className="h2 text-center">

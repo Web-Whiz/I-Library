@@ -8,7 +8,7 @@ const page = () => {
 
     return (
         <div>
-            <h1>Total Wish List Books:{wishListBooks.length}</h1>
+            <h1>Total Wish List Books:{wishListBooks?.length}</h1>
           {
           wishListBooks?.map(wishListBook => <WishListCard 
           key={wishListBook?._id}

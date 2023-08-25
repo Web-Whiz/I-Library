@@ -16,27 +16,27 @@ const ContactPage = () => {
         {/* contact form */}
         <form className="flex flex-col gap-4 p-3 w-full ">
           <input
-            className=" border rounded w-full  p-3 font-normal bg-slate-200  focus:outline-none "
+            className=" border rounded w-full  p-3 font-normal bg-slate-200  focus:outline-none focus:border-indigo-500 "
             type="text"
             placeholder="Enter Your Name"
           />
 
           <input
-            className=" border rounded w-full  p-3 font-normal bg-slate-200  focus:outline-none "
+            className=" border rounded w-full  p-3 font-normal bg-slate-200  focus:outline-none focus:border-indigo-500 "
             type="email"
             placeholder="Enter your Email"
             required
           />
 
           <input
-            className=" border rounded w-full  p-3 font-normal bg-slate-200  focus:outline-none "
+            className=" border rounded w-full  p-3 font-normal bg-slate-200  focus:outline-none focus:border-indigo-500 "
             type="number"
             placeholder="Enter your Phone Number"
             required
           />
 
           <textarea
-            className=" border rounded w-full min-h-[200px] md:min-h-[272px] max-h-[272px]  p-3 font-normal bg-slate-200  focus:outline-none "
+            className=" border rounded w-full min-h-[200px] md:min-h-[272px] max-h-[272px]  p-3 font-normal bg-slate-200  focus:outline-none focus:border-indigo-500 "
             name="message"
             rows="3"
             placeholder="Enter your message"
