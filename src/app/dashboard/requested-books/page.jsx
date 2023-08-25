@@ -5,11 +5,11 @@ import { getRequestedBooks } from "@/Utils/useRequestedBooks";
 const RequestedBook = () => {
   const { user } = useAuth();
   const [requestedBooks] = getRequestedBooks(user?.email);
-  console.log(requestedBooks)
+  console.log(requestedBooks);
   return (
-    <div>
-      <h1>This is requested books </h1>
-      {/* <h3>Total requested books {requestedBooks.length}</h3> */}
+    <div className="bg-white w-full shadow-lg p-5">
+      <h1 className="text-2xl font-serif font-semibold">Requested Books </h1>
+      <h3>Your total requested books {requestedBooks.length}</h3>
     </div>
   );
 };
