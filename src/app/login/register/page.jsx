@@ -16,10 +16,15 @@ import { useState } from "react";
 import { BiHide, BiShow } from "react-icons/bi";
 const RegisterPage = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const { createUser, googleSignIn,facebookSignIn, user } = useAuth();
-  const { register, handleSubmit, formState: { errors }, watch, reset } = useForm();
+  const { createUser, googleSignIn, facebookSignIn, user } = useAuth();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    watch,
+    reset,
+  } = useForm();
   const handleRegistration = (data) => {
-    console.log(data);
     const { email, password, photo, name } = data;
     createUser(email, password)
       .then((result) => {
@@ -117,34 +122,39 @@ const RegisterPage = () => {
           </div>
 
           <div>
-         <div className="flex items-center  mt-10 mb-2">
-            <span className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
-              <MdOutlineLockOpen className="text-gray-400 text-lg"></MdOutlineLockOpen>
-            </span>
-            <div className="w-full">
-              <div className='relative'>
-                <input id="password" type={showPassword ? 'text' : 'password'}
-                  {...register('password', { required: true, minLength: 6, pattern: /(?=.*[A-Z])(?=.*[@$!%*?&])/, })}
-                  className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
-                  placeholder="************"
-                />
-                <button className='btn btn-sm absolute top-0 right-1 w-fit  bg-white p-3 z-10 rounded-lg border-2  ' type="button" onClick={togglePasswordVisibility}>
-                  {showPassword ? <BiShow></BiShow> : <BiHide> </BiHide>}
-                </button>
-              </div>
-              
+            <div className="flex items-center relative mt-10 mb-2">
+              <span className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
+                <MdOutlineLockOpen className="text-gray-400 text-lg"></MdOutlineLockOpen>
+              </span>
+              <input
+                id="password"
+                type={showPassword ? "text" : "password"}
+                {...register("password", {
+                  required: true,
+                  minLength: 6,
+                  pattern: /(?=.*[A-Z])(?=.*[@$!%*?&])/,
+                })}
+                className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+                placeholder="************"
+              />
+              <button
+                className="absolute top-1/2 -translate-y-1/2 bottom-0 right-3 cursor-pointer"
+                type="button"
+                onClick={togglePasswordVisibility}
+              >
+                {showPassword ? <BiShow></BiShow> : <BiHide> </BiHide>}
+              </button>
             </div>
+            {errors.password && (
+              <div className="text-red-600">
+                {errors.password.type === "required"
+                  ? "Password is required"
+                  : errors.password.type === "minLength"
+                  ? "Password must be at least 6 characters long"
+                  : "Password must contain a capital letter and a special character"}
+              </div>
+            )}
           </div>
-          {errors.password && (
-                <div className='text-red-600'>
-                  {errors.password.type === 'required'
-                    ? 'Password is required'
-                    : errors.password.type === 'minLength'
-                      ? 'Password must be at least 6 characters long'
-                      : 'Password must contain a capital letter and a special character'}
-                </div>
-              )}
-         </div>
 
           <div className="flex flex-col sm:flex-row justify-between my-2">
             <p>
@@ -168,7 +178,10 @@ const RegisterPage = () => {
           >
             <FcGoogle className="text-2xl" /> <span>Google</span>
           </button>
-          <button onClick={handleFacebookLogin} className="flex items-center gap-2 hover:bg-[#f3f4f6] hover:-translate-y-0.5 justify-center text-lg p-2 w-full font-bold bg-white shadow-md text-center ">
+          <button
+            onClick={handleFacebookLogin}
+            className="flex items-center gap-2 hover:bg-[#f3f4f6] hover:-translate-y-0.5 justify-center text-lg p-2 w-full font-bold bg-white shadow-md text-center "
+          >
             <FaFacebookF className="text-[#1877F2] text-2xl" />
             <span>Facebook</span>
           </button>

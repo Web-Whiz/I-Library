@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import BookCard from "@/Components/BookCard/BookCard";
 import { useQuery } from "@tanstack/react-query";
 import React from "react";

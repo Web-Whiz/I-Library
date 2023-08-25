@@ -30,7 +30,6 @@ const BookCard = ({ book }) => {
     })
       .then(res => res.json())
       .then((data) => {
-        console.log(data)
         if(data.insertedId){
           // todo: have to add swal
           Swal.fire({
@@ -83,7 +82,6 @@ const BookCard = ({ book }) => {
     })
       .then(res => res.json())
       .then((data) => {
-        console.log(data)
         if(data.insertedId){
           
           Swal.fire({

@@ -7,7 +7,6 @@ const Cart = () => {
   
   const [carts, refetch] = useCart()
 
-  console.log(carts)
 
   return (
     <div>

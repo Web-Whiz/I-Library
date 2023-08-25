@@ -1,24 +1,22 @@
-import React from "react";
+import useAuth from "@/Utils/useAuth";
 import logo from "@/assets/ILibrary.png";
 import Image from "next/image";
 import Link from "next/link";
-import { RxCross2 } from "react-icons/rx";
 import {
-  BiUser,
+  BiBookAlt,
   BiCart,
   BiClipboard,
-  BiTimeFive,
-  BiListCheck,
-  BiHeart,
   BiCreditCard,
-  BiStar,
-  BiHomeHeart,
-  BiBookAlt,
   BiGridAlt,
-  BiSolidDashboard,
+  BiHeart,
+  BiHomeHeart,
   BiSolidBookAlt,
+  BiSolidDashboard,
+  BiStar,
+  BiTimeFive,
+  BiUser,
 } from "react-icons/bi";
-import useAuth from "@/Utils/useAuth";
+import { RxCross2 } from "react-icons/rx";
 const DashboardNavbar = () => {
   const { setIsDashboardOpen } = useAuth();
   return (
@@ -70,15 +68,20 @@ const DashboardNavbar = () => {
           </a>
         </li>
         <li className="text-gray-900 font-medium cursor-pointer py-[6px] duration-200 text-lg hover:bg-violet-50 rounded-sm hover:text-violet-600  my-1 px-2">
-          <Link href="/dashboard/requested-books" className="flex items-center gap-4 text-[15px]">
+          <Link
+            href="/dashboard/requested-books"
+            className="flex items-center gap-4 text-[15px]"
+          >
             <BiSolidBookAlt /> Requested Books
           </Link>
         </li>
         <li className="text-gray-900 font-medium cursor-pointer py-[6px] duration-200 text-lg hover:bg-violet-50 rounded-sm hover:text-violet-600 my-1  px-2">
           <Link
             href="/dashboard/wish-list"
-            className="flex items-center gap-4 text-[15px]">
-            <BiHeart />Wish LIst{" "}
+            className="flex items-center gap-4 text-[15px]"
+          >
+            <BiHeart />
+            Wish LIst{" "}
           </Link>
         </li>
         <li className="text-gray-900 font-medium cursor-pointer py-[6px] duration-200 text-lg hover:bg-violet-50 rounded-sm hover:text-violet-600  my-1 px-2 ">
@@ -87,9 +90,12 @@ const DashboardNavbar = () => {
           </a>
         </li>
         <li className="text-gray-900 font-medium cursor-pointer py-[6px] duration-200 text-lg hover:bg-violet-50 rounded-sm hover:text-violet-600 my-1  px-2">
-          <a className="flex items-center gap-4 text-[15px]">
+          <Link
+            href="/dashboard/my-reviews"
+            className="flex items-center gap-4 text-[15px]"
+          >
             <BiStar /> My Reviews{" "}
-          </a>
+          </Link>
         </li>
         <h2 className="text-sm font-semibold text-gray-400 mt-3">
           General Menu
