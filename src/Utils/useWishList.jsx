@@ -10,7 +10,7 @@ const useWishList = () => {
         queryKey: ['wishListBooks'],
         enabled: !loading,
         queryFn: async() => {
-            const res = await fetch(`http://localhost:5000/wish-list?email=${user?.email}`)
+            const res = await fetch(`http://ilibrary-server.vercel.app/wish-list?email=${user?.email}`)
             return res.json();
         }
     })

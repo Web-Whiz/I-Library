@@ -23,7 +23,7 @@ const BookCard = ({ book }) => {
     const { image_url, title, author, _id } = book
     const cartItem = { title, author, bookId: _id, image_url, userEmail: user?.email }
 
-    fetch('http://localhost:5000/carts', {
+    fetch('http://ilibrary-server.vercel.app/carts', {
       method: 'POST',
       headers: {
         'content-type': 'application/json'
@@ -76,7 +76,7 @@ const BookCard = ({ book }) => {
     const { image_url, title, author, _id } = book
     const wishLIstItem = { title, author, bookId: _id, image_url, userEmail: user?.email }
 
-    fetch('http://localhost:5000/wish-list', {
+    fetch('http://ilibrary-server.vercel.app/wish-list', {
       method: 'POST',
       headers: {
         'content-type': 'application/json'
