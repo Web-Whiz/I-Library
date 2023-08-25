@@ -1,4 +1,4 @@
-
+'use client'
 import useAuth from "@/Utils/useAuth";
 import React from "react";
 import Swal from "sweetalert2";
@@ -8,7 +8,13 @@ const BookCard = ({ book }) => {
 
   const handleAddToCart = (book) => {
     if (!user) {
-      Swal.fire('Log in first')
+      Swal.fire({
+        position: 'center',
+        icon: 'warning',
+        title: 'Login First',
+        showConfirmButton: false,
+        timer: 1500
+      })
       return
     }
 
@@ -27,11 +33,24 @@ const BookCard = ({ book }) => {
         console.log(data)
         if(data.insertedId){
           // todo: have to add swal
-          Swal.fire('Added To Cart')
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Added to cart',
+            showConfirmButton: false,
+            timer: 1500
+          })
         }
         if(data.message){
           // todo: have to add swal
-          Swal.fire(`${data.message}`)
+          
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: `${data.message}`,
+            showConfirmButton: false,
+            timer: 1500
+          })
         }
       })
 
@@ -42,7 +61,13 @@ const BookCard = ({ book }) => {
 
 
     if (!user) {
-      Swal.fire('Log in first')
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Login first',
+        showConfirmButton: false,
+        timer: 1500
+      })
       return
     }
 
@@ -60,11 +85,24 @@ const BookCard = ({ book }) => {
       .then((data) => {
         console.log(data)
         if(data.insertedId){
-          Swal.fire('Added to wish list')
+          
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Added to wish list',
+            showConfirmButton: false,
+            timer: 1500
+          })
         }
         if(data.message){
           // todo: have to add swal
-          Swal.fire(`${data.message}`)
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: `${data.message}`,
+            showConfirmButton: false,
+            timer: 1500
+          })
         }
       })
 

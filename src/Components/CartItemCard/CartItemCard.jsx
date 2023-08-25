@@ -1,3 +1,4 @@
+'use client'
 import useAuth from '@/Utils/useAuth';
 import React from 'react';
 import Swal from 'sweetalert2'
@@ -37,7 +38,14 @@ const CartItemCard = ( {cartData,refetch} ) => {
           .then((data) => {
             console.log(data)
             if(data.deletedCount){
-              Swal.fire('Deleted From Cart')
+            
+              Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Deleted From Cart',
+                showConfirmButton: false,
+                timer: 1500
+              })
               refetch();
               
             }

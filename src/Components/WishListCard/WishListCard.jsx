@@ -37,7 +37,13 @@ const WishListCard = ({wishListBook, refetch}) => {
               .then((data) => {
                 console.log(data)
                 if(data.deletedCount){
-                  Swal.fire('Removed')
+                  Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Removed',
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
                   refetch();
                 }
               })
