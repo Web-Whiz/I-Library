@@ -10,8 +10,8 @@ const DonatedBook = () => {
   return (
     <div className="bg-white w-full shadow-lg p-5">
       <div className="border-b-[1px] border-gray-200 pb-10">
-        <h1 className="text-2xl font-serif font-semibold">Requested Books </h1>
-        <h3>Your total requested books {donatedBooks.length}</h3>
+        <h1 className="text-2xl font-serif font-semibold">Donated Books </h1>
+        <h3>Your total Donated books {donatedBooks.length}</h3>
       </div>
       <div>
         {donatedBooks.map((book) => {
