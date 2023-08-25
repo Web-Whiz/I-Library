@@ -17,7 +17,7 @@ const NewReleasedBook = () => {
   const {data: newBooks=[], refetch} = useQuery({
     queryKey: ['newBooks'],
     queryFn: async() => {
-        const res = await fetch(`https://ilibrary-server.vercel.app/new-books`)
+        const res = await fetch(`http://ilibrary-server.vercel.app/new-books`)
         return res.json();
     }
 })

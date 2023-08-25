@@ -1,7 +1,7 @@
-'use client'
-import useAuth from '@/Utils/useAuth';
-import React from 'react';
-import Swal from 'sweetalert2'
+"use client";
+import useAuth from "@/Utils/useAuth";
+import React from "react";
+import Swal from "sweetalert2";
 
 const CartItemCard = ({ cartData, refetch }) => {
   const { user } = useAuth();
@@ -25,7 +25,7 @@ const CartItemCard = ({ cartData, refetch }) => {
       confirmButtonText: "Yes!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch("https://ilibrary-server.vercel.app/carts", {
+        fetch("http://ilibrary-server.vercel.app/carts", {
           method: "DELETE",
           headers: {
             "content-type": "application/json",
@@ -34,16 +34,14 @@ const CartItemCard = ({ cartData, refetch }) => {
         })
           .then((res) => res.json())
           .then((data) => {
-            console.log(data)
-            if(data.deletedCount){
-            
+            if (data.deletedCount) {
               Swal.fire({
-                position: 'center',
-                icon: 'success',
-                title: 'Deleted From Cart',
+                position: "center",
+                icon: "success",
+                title: "Deleted From Cart",
                 showConfirmButton: false,
-                timer: 1500
-              })
+                timer: 1500,
+              });
               refetch();
             }
           });

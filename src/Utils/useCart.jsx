@@ -9,7 +9,7 @@ const useCart = () => {
         queryKey: ['carts', user?.email],
         enabled: !loading,
         queryFn: async() => {
-            const res = await fetch(`https://ilibrary-server.vercel.app/carts?email=${user?.email}`)
+            const res = await fetch(`http://ilibrary-server.vercel.app/carts?email=${user?.email}`)
             return res.json();
         }
     })

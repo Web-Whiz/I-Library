@@ -19,7 +19,7 @@ const WishListCard = ({ wishListBook, refetch }) => {
       confirmButtonText: 'Yes!'
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch('https://ilibrary-server.vercel.app/wish-list', {
+        fetch('http://ilibrary-server.vercel.app/wish-list', {
           method: 'DELETE',
           headers: {
             'content-type': 'application/json'
