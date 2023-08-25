@@ -1,14 +1,16 @@
 
 import { useQuery } from "@tanstack/react-query";
+import useAuth from "./useAuth";
 
 const useWishList = () => {
-    const email = 'john@gmail.com'
+    
+    const {user,loading}=useAuth()
     
     const {data: wishListBooks = [], refetch} = useQuery({
-        queryKey: ['wishList', email],
-        // enabled: !loading,
+        queryKey: ['wishListBooks'],
+        enabled: !loading,
         queryFn: async() => {
-            const res = await fetch(`http://localhost:5000/wish-list?email=${email}`)
+            const res = await fetch(`http://localhost:5000/wish-list?email=${user?.email}`)
             return res.json();
         }
     })

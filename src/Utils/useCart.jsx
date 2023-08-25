@@ -1,14 +1,15 @@
 'use client'
 import { useQuery } from "@tanstack/react-query";
+import useAuth from "./useAuth";
 
 const useCart = () => {
-    const email = 'john@gmail.com'
+    const {user, loading} =useAuth()
     
     const {data: carts = [], refetch} = useQuery({
-        queryKey: ['carts', email],
-        // enabled: !loading,
+        queryKey: ['carts', user?.email],
+        enabled: !loading,
         queryFn: async() => {
-            const res = await fetch(`http://localhost:5000/carts?email=${email}`)
+            const res = await fetch(`http://localhost:5000/carts?email=${user?.email}`)
             return res.json();
         }
     })

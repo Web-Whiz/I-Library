@@ -1,4 +1,5 @@
 import React from 'react';
+import Swal from 'sweetalert2';
 
 const WishListCard = ({wishListBook, refetch}) => {
 
@@ -14,23 +15,36 @@ const WishListCard = ({wishListBook, refetch}) => {
     
        
         const deleteWishListItem = { bookId, userEmail: email }
-    
-        fetch('http://localhost:5000/wish-list', {
-          method: 'DELETE',
-          headers: {
-            'content-type': 'application/json'
-          },
-          body: JSON.stringify(deleteWishListItem)
+
+        Swal.fire({
+          title: 'Are you sure?',
+         
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes!'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            fetch('http://localhost:5000/wish-list', {
+              method: 'DELETE',
+              headers: {
+                'content-type': 'application/json'
+              },
+              body: JSON.stringify(deleteWishListItem)
+            })
+              .then(res => res.json())
+              .then((data) => {
+                console.log(data)
+                if(data.deletedCount){
+                  Swal.fire('Removed')
+                  refetch();
+                }
+              })
+          }
         })
-          .then(res => res.json())
-          .then((data) => {
-            console.log(data)
-            if(data.deletedCount){
-              // todo: have to add swal
-              refetch();
-              alert('Deleted From Wish List')
-            }
-          })
+    
+        
     
       }
     return (

@@ -160,8 +160,8 @@ const PopularBooks = () => {
   //   },
   // ];
 
-  const {data: popularBooks, refetch} = useQuery({
-    queryKey: ['carts'],
+  const {data: popularBooks=[], refetch} = useQuery({
+    queryKey: ['popularBooks'],
     queryFn: async() => {
         const res = await fetch(`http://localhost:5000/popular-books`)
         return res.json();

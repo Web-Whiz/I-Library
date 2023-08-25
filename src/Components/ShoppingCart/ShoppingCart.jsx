@@ -7,9 +7,8 @@ const ShoppingCart = () => {
   const { setIsCartOpen } = useAuth();
   const [carts, refetch] = useCart()
   return (
-    <div className="w-full h-screen overflow-scroll  bg-white">
-      <div className="flex overflow-scroll  flex-col">
-        <div className="flex-1 overflow-y-auto px-4 py-6 sm:px-6">
+<div className="bg-white overflow-y-scroll h-screen">
+<div className="flex-1  px-4 py-6 sm:px-6">
           <div className="flex items-start justify-between">
             <h2
               className="text-lg font-medium text-gray-900"
@@ -84,8 +83,7 @@ const ShoppingCart = () => {
             </p>
           </div>
         </div>
-      </div>
-    </div>
+</div>
   );
 };
 

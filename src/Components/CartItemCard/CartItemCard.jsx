@@ -1,11 +1,13 @@
+import useAuth from '@/Utils/useAuth';
 import React from 'react';
+import Swal from 'sweetalert2'
 
 const CartItemCard = ( {cartData,refetch} ) => {
+  const {user}=useAuth()
 
   const handleDeleteFromCart = (bookId) => {
     // todo: have to use real user and user email 
-    const user = true
-    const email = 'john@gmail.com'
+
 
     if (!user) {
       alert('log in first')
@@ -13,29 +15,42 @@ const CartItemCard = ( {cartData,refetch} ) => {
     }
 
    
-    const deleteCartItem = { bookId, userEmail: email }
+    const deleteCartItem = { bookId, userEmail: user?.email }
 
-    fetch('http://localhost:5000/carts', {
-      method: 'DELETE',
-      headers: {
-        'content-type': 'application/json'
-      },
-      body: JSON.stringify(deleteCartItem)
+    Swal.fire({
+      title: 'Are you sure?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch('http://localhost:5000/carts', {
+          method: 'DELETE',
+          headers: {
+            'content-type': 'application/json'
+          },
+          body: JSON.stringify(deleteCartItem)
+        })
+          .then(res => res.json())
+          .then((data) => {
+            console.log(data)
+            if(data.deletedCount){
+              Swal.fire('Deleted From Cart')
+              refetch();
+              
+            }
+          })
+      }
     })
-      .then(res => res.json())
-      .then((data) => {
-        console.log(data)
-        if(data.deletedCount){
-          // todo: have to add swal
-          refetch();
-          alert('Deleted From Cart')
-        }
-      })
+
+    
 
   }
     return (
         <div>
-            <div className="flex p-3 max-w-lg border my-1">
+            <div className="flex p-3 bg-white max-w-lg border my-1">
                   <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                     <img
                       src={cartData?.image_url}
