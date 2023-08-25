@@ -4,6 +4,7 @@ import React from "react";
 import banner from "@/assets/banner01.jpg";
 import useAuth from "@/Utils/useAuth";
 import { useForm } from "react-hook-form";
+import { postRequestedBooks } from "@/Utils/useRequestedBooks";
 const RequestBook = () => {
   const { user } = useAuth();
   const { register, handleSubmit } = useForm();
@@ -13,6 +14,7 @@ const RequestBook = () => {
       userName: user?.displayName,
       userEmail: user?.email,
     };
+    postRequestedBooks(requestBook);
   };
   return (
     <div>
@@ -114,7 +116,7 @@ const RequestBook = () => {
               type="submit"
               className="w-full py-2 bg-indigo-600 text-white"
             >
-              Request now
+              Submit Request
             </button>
           </div>
         </form>
