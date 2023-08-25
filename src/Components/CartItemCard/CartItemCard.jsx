@@ -25,7 +25,7 @@ const CartItemCard = ({ cartData, refetch }) => {
       confirmButtonText: "Yes!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch("http://ilibrary-server.vercel.app/carts", {
+        fetch("https://ilibrary-server.vercel.app/carts", {
           method: "DELETE",
           headers: {
             "content-type": "application/json",

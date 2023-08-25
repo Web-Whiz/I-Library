@@ -1,20 +1,20 @@
 "use client";
 import RequestBookCard from "@/Components/RequestBookCard/RequestBookCard";
 import useAuth from "@/Utils/useAuth";
-import { getRequestedBooks } from "@/Utils/useRequestedBooks";
+import { getDonatedBooks } from "@/Utils/useDonatedBooks";
 
-const RequestedBook = () => {
+const DonatedBook = () => {
   const { user } = useAuth();
-  const [requestedBooks] = getRequestedBooks(user?.email);
-  console.log(requestedBooks);
+  const [donatedBooks] = getDonatedBooks(user?.email);
+  console.log(donatedBooks);
   return (
     <div className="bg-white w-full shadow-lg p-5">
       <div className="border-b-[1px] border-gray-200 pb-10">
         <h1 className="text-2xl font-serif font-semibold">Requested Books </h1>
-        <h3>Your total requested books {requestedBooks.length}</h3>
+        <h3>Your total requested books {donatedBooks.length}</h3>
       </div>
       <div>
-        {requestedBooks.map((book) => {
+        {donatedBooks.map((book) => {
           return <RequestBookCard book={book} />;
         })}
       </div>
@@ -22,4 +22,4 @@ const RequestedBook = () => {
   );
 };
 
-export default RequestedBook; // Component names should start with an uppercase letter
+export default DonatedBook; // Component names should start with an uppercase letter

@@ -8,7 +8,7 @@ const PopularBooks = () => {
   const {data: popularBooks=[], refetch} = useQuery({
     queryKey: ['popularBooks'],
     queryFn: async() => {
-        const res = await fetch(`http://ilibrary-server.vercel.app/popular-books`)
+        const res = await fetch(`https://ilibrary-server.vercel.app/popular-books`)
         return res.json();
     }
 })
