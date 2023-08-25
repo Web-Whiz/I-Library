@@ -8,6 +8,7 @@ const RequestedBook = () => {
   return (
     <div>
       <h1>This is requested books </h1>
+      <h3>Total requested books {requestedBooks.length}</h3>
     </div>
   );
 };
