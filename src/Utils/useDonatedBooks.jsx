@@ -7,7 +7,7 @@ export const getDonatedBooks = (email) => {
     // enabled: !loading,
     queryFn: async () => {
       const res = await fetch(
-        `http://localhost:5000/donated-books?email=${email}`
+        `https://ilibrary-server.vercel.app/donated-books?email=${email}`
       );
       return res.json();
     },
@@ -17,7 +17,7 @@ export const getDonatedBooks = (email) => {
 };
 
 export const postDonatedBooks = (DonatedBook) => {
-  fetch(`http://localhost:5000/donated-books`, {
+  fetch(`https://ilibrary-server.vercel.app/donated-books`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
