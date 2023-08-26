@@ -1,5 +1,6 @@
 "use client";
 import { useQuery } from "@tanstack/react-query";
+import { toast } from "react-hot-toast";
 
 export const getRequestedBooks = (email) => {
   const { data: requestedBooks = [], refetch } = useQuery({
@@ -27,6 +28,9 @@ export const postRequestedBooks = (requestedBook) => {
     .then((res) => res.json())
     .then((data) => {
       console.log(data);
+      if (data.insertedId) {
+        toast.success("Book request successful");
+      }
     })
     .catch((error) => {
       console.log(error);

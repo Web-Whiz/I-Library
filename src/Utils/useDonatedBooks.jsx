@@ -1,6 +1,6 @@
 "use client";
 import { useQuery } from "@tanstack/react-query";
-
+import { toast } from "react-hot-toast";
 export const getDonatedBooks = (email) => {
   const { data: donatedBook = [], refetch } = useQuery({
     queryKey: ["donated books", email],
@@ -27,6 +27,9 @@ export const postDonatedBooks = (DonatedBook) => {
     .then((res) => res.json())
     .then((data) => {
       console.log(data);
+      if (data.insertedId) {
+        toast.success("Book donate request successful");
+      }
     })
     .catch((error) => {
       console.log(error);

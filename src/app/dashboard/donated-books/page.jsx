@@ -6,7 +6,6 @@ import { getDonatedBooks } from "@/Utils/useDonatedBooks";
 const DonatedBook = () => {
   const { user } = useAuth();
   const [donatedBooks] = getDonatedBooks(user?.email);
-  console.log(donatedBooks);
   return (
     <div className="bg-white w-full shadow-lg p-5">
       <div className="border-b-[1px] border-gray-200 pb-10">
@@ -22,4 +21,4 @@ const DonatedBook = () => {
   );
 };
 
-export default DonatedBook; // Component names should start with an uppercase letter
+export default DonatedBook;
