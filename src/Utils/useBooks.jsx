@@ -13,3 +13,16 @@ export const getBooks = () => {
 
   return [allBooks, refetch];
 };
+
+export const getBook = (id) => {
+  const { data: book = [], refetch } = useQuery({
+    queryKey: ["book"],
+    // enabled: !loading,
+    queryFn: async () => {
+      const res = await fetch(`http://localhost:5000/book/${id}`);
+      return res.json();
+    },
+  });
+
+  return [book, refetch];
+};
