@@ -13,7 +13,7 @@ const page = () => {
   };
   return (
     <section>
-      <div className="container mx-auto bg-white flex justify-between flex-wrap shadow-lg">
+      <div className="container mx-auto bg-white flex justify-between flex-col lg:flex-row shadow-lg">
         <div className="w-full lg:w-[70%] items-center justify-center grid grid-cols-1 sm:grid-cols-5 gap-10 p-6">
           {/* book image */}
           <div className="sm:col-span-2">
@@ -50,12 +50,17 @@ const page = () => {
             <div className="flex items-center gap-3 mt-1">
               <Rating
                 placeholderRating={4.5}
+                className="space-x-1"
                 readonly
-                emptySymbol={<BsStar className="text-2xl" />}
-                placeholderSymbol={
-                  <BsStarFill className="text-[#FF9900] text-2xl" />
+                emptySymbol={
+                  <BsStar className="text-lg sm:text-2xl text-[#FF9900]" />
                 }
-                fullSymbol={<BsStarFill className="text-[#FF9900] text-2xl" />}
+                placeholderSymbol={
+                  <BsStarFill className="text-[#FF9900] text-lg sm:text-2xl" />
+                }
+                fullSymbol={
+                  <BsStarFill className="text-[#FF9900] text-lg sm:text-2xl" />
+                }
               />
               <h3 className="text-sm">200 Ratings | 121 Reviews</h3>
             </div>
@@ -87,13 +92,13 @@ const page = () => {
           {/* book info */}
         </div>
         {/* related books */}
-        <div className="w-full lg:w-[30%] bg-[#DCDCDC] p-5">
+        <div className="w-full lg:w-[30%] bg-[#EFF3F8] p-5">
           <h2 className="text-2xl font-semibold mb-3">Related books</h2>
           {/* book card */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 justify-center gap-4">
-            <div className="flex items-center gap-5 md:gap-2 xl:gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 justify-center gap-4">
+            <div className="flex items-center gap-5 md:gap-2 xl:gap-5 bg-white p-2 rounded-sm">
               <div>
-                <Image width={85} src={bookImg} alt="" />
+                <Image width={60} src={bookImg} alt="" />
               </div>
               <div>
                 <h2 className="text-[15px] font-medium">
@@ -108,33 +113,30 @@ const page = () => {
                 <div className="flex items-center gap-2 mt-1">
                   <Rating
                     placeholderRating={4.5}
+                    className="space-x-1"
                     readonly
-                    emptySymbol={<BsStar className="text-lg" />}
+                    emptySymbol={
+                      <BsStar className="text-[#FF9900] text-[15px]" />
+                    }
                     placeholderSymbol={
-                      <BsStarFill className="text-[#FF9900] text-lg" />
+                      <BsStarFill className="text-[#FF9900] text-[15px]" />
                     }
                     fullSymbol={
-                      <BsStarFill className="text-[#FF9900] text-lg" />
+                      <BsStarFill className="text-[#FF9900] text-[15px]" />
                     }
                   />
                   <h3 className="text-sm">(200)</h3>
                 </div>
-                <div className="space-y-1">
-                  <button className="py-[4px] text-sm bg-violet-100 hover:bg-violet-700 hover:text-violet-50 duration-200 rounded-sm text-violet-700 w-[180px] xl:w-[200px] block">
-                    add to bag
-                  </button>
-                  <button className="py-[4px] text-sm bg-violet-100 hover:bg-violet-700 hover:text-violet-50 duration-200 rounded-sm text-violet-700 w-[180px] xl:w-[200px] block">
-                    view book
-                  </button>
-                </div>
               </div>
             </div>
-            <div className="flex items-center gap-5 md:gap-2 xl:gap-5">
+            <div className="flex items-center gap-5 md:gap-2 xl:gap-5 bg-white p-2 rounded-sm">
               <div>
-                <Image width={85} src={bookImg} alt="" />
+                <Image width={60} src={bookImg} alt="" />
               </div>
               <div>
-                <h2 className="text-[15px] font-medium">Rich dad poor dad</h2>
+                <h2 className="text-[15px] font-medium">
+                  Rich dad and poor dad
+                </h2>
                 <h4 className="text-[12px]">
                   by
                   <span className="text-[#0386FF] cursor-pointer">
@@ -144,33 +146,30 @@ const page = () => {
                 <div className="flex items-center gap-2 mt-1">
                   <Rating
                     placeholderRating={4.5}
+                    className="space-x-1"
                     readonly
-                    emptySymbol={<BsStar className="text-lg" />}
+                    emptySymbol={
+                      <BsStar className="text-[#FF9900] text-[15px]" />
+                    }
                     placeholderSymbol={
-                      <BsStarFill className="text-[#FF9900] text-lg" />
+                      <BsStarFill className="text-[#FF9900] text-[15px]" />
                     }
                     fullSymbol={
-                      <BsStarFill className="text-[#FF9900] text-lg" />
+                      <BsStarFill className="text-[#FF9900] text-[15px]" />
                     }
                   />
                   <h3 className="text-sm">(200)</h3>
                 </div>
-                <div className="space-y-1">
-                  <button className="py-[4px] text-sm bg-violet-100 hover:bg-violet-700 hover:text-violet-50 duration-200 rounded-sm text-violet-700 w-[180px] xl:w-[200px] block">
-                    add to bag
-                  </button>
-                  <button className="py-[4px] text-sm bg-violet-100 hover:bg-violet-700 hover:text-violet-50 duration-200 rounded-sm text-violet-700 w-[180px] xl:w-[200px] block">
-                    view book
-                  </button>
-                </div>
               </div>
             </div>
-            <div className="flex items-center gap-5 md:gap-2 xl:gap-5">
+            <div className="flex items-center gap-5 md:gap-2 xl:gap-5 bg-white p-2 rounded-sm">
               <div>
-                <Image width={85} src={bookImg} alt="" />
+                <Image width={60} src={bookImg} alt="" />
               </div>
               <div>
-                <h2 className="text-[15px] font-medium">Rich dad poor dad</h2>
+                <h2 className="text-[15px] font-medium">
+                  Rich dad and poor dad
+                </h2>
                 <h4 className="text-[12px]">
                   by
                   <span className="text-[#0386FF] cursor-pointer">
@@ -180,24 +179,52 @@ const page = () => {
                 <div className="flex items-center gap-2 mt-1">
                   <Rating
                     placeholderRating={4.5}
+                    className="space-x-1"
                     readonly
-                    emptySymbol={<BsStar className="text-lg" />}
+                    emptySymbol={
+                      <BsStar className="text-[#FF9900] text-[15px]" />
+                    }
                     placeholderSymbol={
-                      <BsStarFill className="text-[#FF9900] text-lg" />
+                      <BsStarFill className="text-[#FF9900] text-[15px]" />
                     }
                     fullSymbol={
-                      <BsStarFill className="text-[#FF9900] text-lg" />
+                      <BsStarFill className="text-[#FF9900] text-[15px]" />
                     }
                   />
                   <h3 className="text-sm">(200)</h3>
                 </div>
-                <div className="space-y-1">
-                  <button className="py-[4px] text-sm bg-violet-100 hover:bg-violet-700 hover:text-violet-50 duration-200 rounded-sm text-violet-700 w-[180px] xl:w-[200px] block">
-                    add to bag
-                  </button>
-                  <button className="py-[4px] text-sm bg-violet-100 hover:bg-violet-700 hover:text-violet-50 duration-200 rounded-sm text-violet-700 w-[180px] xl:w-[200px] block">
-                    view book
-                  </button>
+              </div>
+            </div>
+            <div className="flex items-center gap-5 md:gap-2 xl:gap-5 bg-white p-2 rounded-sm">
+              <div>
+                <Image width={60} src={bookImg} alt="" />
+              </div>
+              <div>
+                <h2 className="text-[15px] font-medium">
+                  Rich dad and poor dad
+                </h2>
+                <h4 className="text-[12px]">
+                  by
+                  <span className="text-[#0386FF] cursor-pointer">
+                    Robert T. Kiyosaki
+                  </span>
+                </h4>
+                <div className="flex items-center gap-2 mt-1">
+                  <Rating
+                    placeholderRating={4.5}
+                    className="space-x-1"
+                    readonly
+                    emptySymbol={
+                      <BsStar className="text-[#FF9900] text-[15px]" />
+                    }
+                    placeholderSymbol={
+                      <BsStarFill className="text-[#FF9900] text-[15px]" />
+                    }
+                    fullSymbol={
+                      <BsStarFill className="text-[#FF9900] text-[15px]" />
+                    }
+                  />
+                  <h3 className="text-sm">(200)</h3>
                 </div>
               </div>
             </div>
@@ -249,9 +276,7 @@ const page = () => {
                   <td className="bg-[#F1F2F4] border px-4 py-2">
                     <h2>Self no</h2>
                   </td>
-                  <td className="border px-4 py-2">
-                    27
-                  </td>
+                  <td className="border px-4 py-2">27</td>
                 </tr>
                 <tr>
                   <td className="bg-[#F1F2F4] border px-4 py-2">
@@ -296,7 +321,7 @@ const page = () => {
           </div>
           {/* book specifications */}
           {/* reviews and ratings */}
-          <div className="my-5 p-5">
+          <div className="my-5 mt-10">
             <h2 className="text-2xl font-semibold mb-5">Reviews and Ratings</h2>
             <div className="flex justify-between items-center gap-4 pb-6 border-b-[1px] border-gray-100">
               <div>
@@ -450,6 +475,124 @@ const page = () => {
             </div>
           </div>
           {/* reviews and ratings */}
+          {/* Ask a question */}
+          <div className="my-5 mt-10">
+            <div className="flex flex-col md:flex-row justify-between md:items-center gap-4 pb-6 border-b-[1px] border-gray-100">
+              <div>
+                <h2 className="text-2xl font-bold">Book Q/A</h2>
+                <h3>Have a question regarding the product?</h3>
+                <h4>Ask Us Ask a Question</h4>
+              </div>
+              <div>
+                <button className="px-3 rounded-sm py-2 bg-violet-100 text-violet-700 hover:text-violet-100 hover:bg-violet-700 duration-200 text-[15px]">
+                  Ask a question
+                </button>
+              </div>
+            </div>
+            <div className="mt-5">
+              <ul className="list-none py-4 border-b-[1px] border-gray-100">
+                <li>
+                  <span className="text-lg font-semibold">Question:</span>
+                  <span> Can you please describe the book topic?</span>
+                  <span className="text-neutral-400"> Questioned by</span>
+                  <span className="font-semibold"> Hamim</span>
+                  <span className="text-neutral-400"> on 20 Aug 2023</span>
+                </li>
+                <li className="ml-2 md:ml-6 mt-2">
+                  <span className="text-lg font-semibold">Answer:</span>
+                  <span>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Maxime nemo ea similique culpa odio labore officiis
+                    doloremque magni omnis aut.
+                  </span>
+                  <span className="text-neutral-400"> Answered by</span>
+                  <span className="font-semibold"> Hamim</span>
+                  <span className="text-neutral-400"> on 20 Aug 2023</span>
+                </li>
+              </ul>
+              <ul className="list-none py-4 border-b-[1px] border-gray-100">
+                <li>
+                  <span className="text-lg font-semibold">Question:</span>
+                  <span> Can you please describe the book topic?</span>
+                  <span className="text-neutral-400"> Questioned by</span>
+                  <span className="font-semibold"> Hamim</span>
+                  <span className="text-neutral-400"> on 20 Aug 2023</span>
+                </li>
+                <li className="ml-2 md:ml-6 mt-2">
+                  <span className="text-lg font-semibold">Answer:</span>
+                  <span>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Maxime nemo ea similique culpa odio labore officiis
+                    doloremque magni omnis aut.
+                  </span>
+                  <span className="text-neutral-400"> Answered by</span>
+                  <span className="font-semibold"> Hamim</span>
+                  <span className="text-neutral-400"> on 20 Aug 2023</span>
+                </li>
+              </ul>
+              <ul className="list-none py-4 border-b-[1px] border-gray-100">
+                <li>
+                  <span className="text-lg font-semibold">Question:</span>
+                  <span> Can you please describe the book topic?</span>
+                  <span className="text-neutral-400"> Question by</span>
+                  <span className="font-semibold"> Hamim</span>
+                  <span className="text-neutral-400"> on 20 Aug 2023</span>
+                </li>
+                <li className="ml-2 md:ml-6 mt-2">
+                  <span className="text-lg font-semibold">Answer:</span>
+                  <span>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Maxime nemo ea similique culpa odio labore officiis
+                    doloremque magni omnis aut.
+                  </span>
+                  <span className="text-neutral-400"> Question by</span>
+                  <span className="font-semibold"> Hamim</span>
+                  <span className="text-neutral-400"> on 20 Aug 2023</span>
+                </li>
+              </ul>
+              <ul className="list-none py-4 border-b-[1px] border-gray-100">
+                <li>
+                  <span className="text-lg font-semibold">Question:</span>
+                  <span> Can you please describe the book topic?</span>
+                  <span className="text-neutral-400"> Question by</span>
+                  <span className="font-semibold"> Hamim</span>
+                  <span className="text-neutral-400"> on 20 Aug 2023</span>
+                </li>
+                <li className="ml-2 md:ml-6 mt-2">
+                  <span className="text-lg font-semibold">Answer:</span>
+                  <span>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Maxime nemo ea similique culpa odio labore officiis
+                    doloremque magni omnis aut.
+                  </span>
+                  <span className="text-neutral-400"> Question by</span>
+                  <span className="font-semibold"> Hamim</span>
+                  <span className="text-neutral-400"> on 20 Aug 2023</span>
+                </li>
+              </ul>
+              <ul className="list-none py-4 border-b-[1px] border-gray-100">
+                <li>
+                  <span className="text-lg font-semibold">Question:</span>
+                  <span> Can you please describe the book topic?</span>
+                  <span className="text-neutral-400"> Question by</span>
+                  <span className="font-semibold"> Hamim</span>
+                  <span className="text-neutral-400"> on 20 Aug 2023</span>
+                </li>
+                <li className="ml-2 md:ml-6 mt-2">
+                  <span className="text-lg font-semibold">Answer:</span>
+                  <span>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Maxime nemo ea similique culpa odio labore officiis
+                    doloremque magni omnis aut.
+                  </span>
+                  <span className="text-neutral-400"> Question by</span>
+                  <span className="font-semibold"> Hamim</span>
+                  <span className="text-neutral-400"> on 20 Aug 2023</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          {/* Ask a question */}
         </div>
       </div>
     </section>

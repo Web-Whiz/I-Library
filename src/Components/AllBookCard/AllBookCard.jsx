@@ -1,21 +1,17 @@
 import React from "react";
 
 const AllBookCard = ({ book }) => {
-
-
-
-  
   return (
     <div className="">
-      <div className="w-full mx-auto group h-[320px] p-[3px] bg-[#f8fafc] hover:shadow-md duration-500 shadow-slate-100 rounded-sm overflow-hidden relative collegeCard flex flex-col">
+      <div className="w-full mx-auto group hover:shadow-xl h-[320px] p-[3px] bg-[#f8fafc] duration-500 shadow-slate-100 rounded-sm overflow-hidden relative collegeCard flex flex-col">
         <div className="w-full h-[215px] relative">
           <img
             className="w-full h-full hover:scale-120 duration-300 object-cover object-center"
             src={book?.image_url}
           />
-          <div className="absolute z-0 top-0 left-0 -translate-y-[105%] group-hover:-translate-y-0  duration-200 w-full h-full backdrop-blur-md bg-black/60 bg-opacity-30 flex justify-center items-center">
-            <button className="text-white text-sm hover:bg-indigo-700 duration-200 border-[1px] border-white rounded-full px-4 py-[2px]">
-              Add to bag
+          <div className="absolute bottom-0 left-0 text-center w-full h-fit backdrop-blur-lg duration-200 opacity-0 group-hover:opacity-100">
+            <button className="text-white uppercase bg-black/30 text-sm w-full h-full px-4 py-4">
+              view details
             </button>
           </div>
         </div>
