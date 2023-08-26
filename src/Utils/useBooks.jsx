@@ -19,7 +19,7 @@ export const getBook = (id) => {
     queryKey: ["book"],
     // enabled: !loading,
     queryFn: async () => {
-      const res = await fetch(`http://localhost:5000/book/${id}`);
+      const res = await fetch(`https://ilibrary-server.vercel.app/book/${id}`);
       return res.json();
     },
   });
