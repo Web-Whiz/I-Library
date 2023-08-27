@@ -14,9 +14,12 @@ import { useForm } from "react-hook-form";
 import useAuth from "@/Utils/useAuth";
 import { useState } from "react";
 import { BiHide, BiShow } from "react-icons/bi";
+import usePhotoUpload from "@/Utils/usePhotoUpload";
+import { toast } from "react-hot-toast";
 const RegisterPage = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const { createUser, googleSignIn, facebookSignIn, user } = useAuth();
+  const { createUser, googleSignIn, facebookSignIn, updateUserProfile } =
+    useAuth();
   const {
     register,
     handleSubmit,
@@ -24,31 +27,66 @@ const RegisterPage = () => {
     watch,
     reset,
   } = useForm();
-  const handleRegistration = (data) => {
-    const { email, password, photo, name } = data;
-    createUser(email, password)
-      .then((result) => {
-        console.log(result.user);
-      })
-      .catch((error) => console.log(error));
+
+  const handleRegistration = async (data) => {
+    toast.promise(usePhotoUpload(data.photo[0]), {
+      loading: "Uploading photo...",
+      success: async (imgURL) => {
+        try {
+          const { email, password, name } = data;
+          const result = await createUser(email, password);
+          console.log(result.user);
+
+          await updateUserProfile(name, imgURL);
+
+          const response = await fetch("http://localhost:5000/users", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify({ name, email, image: imgURL }),
+          });
+
+          const responseData = await response.json();
+
+          if (responseData.insertedId) {
+            toast.success("User created successfully");
+          }
+        } catch (error) {
+          console.log(error);
+          toast.error("An error occurred during registration");
+        }
+      },
+      error: "An error occurred while uploading photo",
+    });
   };
+
   const handleGoogleLogin = () => {
-    googleSignIn()
-      .then((result) => {
+    toast.promise(googleSignIn(), {
+      loading: "Logging in...",
+      success: (result) => {
         console.log(result.user);
-      })
-      .catch((error) => {
+        return "Login successful";
+      },
+      error: (error) => {
         console.log(error);
-      });
+        throw new Error("Login failed");
+      },
+    });
   };
+
   const handleFacebookLogin = () => {
-    facebookSignIn()
-      .then((result) => {
+    toast.promise(facebookSignIn(), {
+      loading: "Logging in...",
+      success: (result) => {
         console.log(result.user);
-      })
-      .catch((error) => {
+        return "Login successful";
+      },
+      error: (error) => {
         console.log(error);
-      });
+        throw new Error("Login failed");
+      },
+    });
   };
 
   const togglePasswordVisibility = () => {
