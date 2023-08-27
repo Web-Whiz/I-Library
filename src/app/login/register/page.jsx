@@ -39,13 +39,16 @@ const RegisterPage = () => {
 
           await updateUserProfile(name, imgURL);
 
-          const response = await fetch("http://localhost:5000/users", {
-            method: "POST",
-            headers: {
-              "content-type": "application/json",
-            },
-            body: JSON.stringify({ name, email, image: imgURL }),
-          });
+          const response = await fetch(
+            `${process.env.NEXT_PUBLIC_BaseURL}/users`,
+            {
+              method: "POST",
+              headers: {
+                "content-type": "application/json",
+              },
+              body: JSON.stringify({ name, email, image: imgURL }),
+            }
+          );
 
           const responseData = await response.json();
 
@@ -61,30 +64,81 @@ const RegisterPage = () => {
     });
   };
 
-  const handleGoogleLogin = () => {
-    toast.promise(googleSignIn(), {
-      loading: "Logging in...",
-      success: (result) => {
-        console.log(result.user);
-        return "Login successful";
-      },
-      error: (error) => {
-        console.log(error);
-        throw new Error("Login failed");
-      },
-    });
+  const handleGoogleLogin = async () => {
+    try {
+      // Display a loading toast while logging in
+      toast.promise(googleSignIn(), {
+        loading: "Logging in...",
+        success: async (result) => {
+          try {
+            const loggedInUser = result.user;
+            const userData = {
+              name: loggedInUser.displayName,
+              email: loggedInUser.email,
+              image: loggedInUser.photoURL,
+            };
+            const response = await fetch(
+              `${process.env.NEXT_PUBLIC_BaseURL}/users`,
+              {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify(userData),
+              }
+            );
+            const responseData = await response.json();
+            if (
+              responseData.insertedId ||
+              responseData.message === "user already exists"
+            ) {
+              return "Login successful";
+            }
+          } catch (error) {
+            console.log(error);
+            toast.error("An error occurred during Login");
+          }
+        },
+        error: "Login failed",
+      });
+    } catch (error) {
+      console.log(error);
+      toast.error("Google login failed");
+    }
   };
 
-  const handleFacebookLogin = () => {
+  const handleFacebookLogin = async () => {
     toast.promise(facebookSignIn(), {
       loading: "Logging in...",
-      success: (result) => {
-        console.log(result.user);
-        return "Login successful";
-      },
-      error: (error) => {
-        console.log(error);
-        throw new Error("Login failed");
+      success: async (result) => {
+        try {
+          const loggedInUser = result.user;
+          const userData = {
+            name: loggedInUser.displayName,
+            email: loggedInUser.email,
+            image: loggedInUser.photoURL,
+          };
+          const response = await fetch(
+            `${process.env.NEXT_PUBLIC_BaseURL}/users`,
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(userData),
+            }
+          );
+          const responseData = await response.json();
+          if (
+            responseData.insertedId ||
+            responseData.message === "user already exists"
+          ) {
+            return "Login successful";
+          }
+        } catch (error) {
+          console.log(error);
+          toast.error("Facebook login failed");
+        }
       },
     });
   };

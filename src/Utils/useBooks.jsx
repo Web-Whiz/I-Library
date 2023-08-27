@@ -6,7 +6,7 @@ export const getBooks = () => {
     queryKey: ["all books"],
     // enabled: !loading,
     queryFn: async () => {
-      const res = await fetch(`https://ilibrary-server.vercel.app/books`);
+      const res = await fetch(`${process.env.NEXT_PUBLIC_BaseURL}/books`);
       return res.json();
     },
   });
@@ -19,7 +19,7 @@ export const getBook = (id) => {
     queryKey: ["book"],
     // enabled: !loading,
     queryFn: async () => {
-      const res = await fetch(`https://ilibrary-server.vercel.app/book/${id}`);
+      const res = await fetch(`${process.env.NEXT_PUBLIC_BaseURL}/book/${id}`);
       return res.json();
     },
   });

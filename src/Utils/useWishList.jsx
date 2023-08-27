@@ -9,7 +9,7 @@ const useWishList = () => {
     enabled: !loading,
     queryFn: async () => {
       const res = await fetch(
-        `https://ilibrary-server.vercel.app/wish-list?email=${user?.email}`
+        `${process.env.NEXT_PUBLIC_BaseURL}/wish-list?email=${user?.email}`
       );
       return res.json();
     },

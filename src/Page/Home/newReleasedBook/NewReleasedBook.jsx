@@ -14,13 +14,13 @@ import { useQuery } from "@tanstack/react-query";
 // import 'swiper/css/navigation';
 
 const NewReleasedBook = () => {
-  const {data: newBooks=[], refetch} = useQuery({
-    queryKey: ['newBooks'],
-    queryFn: async() => {
-        const res = await fetch(`https://ilibrary-server.vercel.app/new-books`)
-        return res.json();
-    }
-})
+  const { data: newBooks = [], refetch } = useQuery({
+    queryKey: ["newBooks"],
+    queryFn: async () => {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_BaseURL}/new-books`);
+      return res.json();
+    },
+  });
 
   return (
     <div className="container mx-auto bg-[#eff3f8]">
