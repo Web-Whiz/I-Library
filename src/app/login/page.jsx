@@ -39,7 +39,6 @@ const LoginPage = () => {
 
   const handleGoogleLogin = async () => {
     try {
-      // Display a loading toast while logging in
       toast.promise(googleSignIn(), {
         loading: "Logging in...",
         success: async (result) => {

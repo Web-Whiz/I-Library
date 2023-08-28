@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import bookImg from "@/assets/book1.png";
 import Image from "next/image";
 import Rating from "react-rating";
@@ -8,7 +8,12 @@ import { PiSealCheckFill } from "react-icons/pi";
 import { getBook } from "@/Utils/useBooks";
 const Book = ({ params }) => {
   const [book] = getBook(params.id);
-  console.log(book);
+  const [showPdf, setShowPdf] = useState(false);
+
+  const togglePdfViewer = () => {
+    setShowPdf(true);
+    console.log(showPdf);
+  };
   const getStarValue = (e) => {
     console.log(e);
   };
@@ -81,9 +86,15 @@ const Book = ({ params }) => {
                 At a glance
               </button>
               <div className="grid grid-cols-2 w-full gap-2 mt-2">
-                <button className="px-3 py-2 bg-violet-600 text-violet-100 hover:bg-violet-100 hover:text-violet-600 duration-200">
+                <button
+                  onClick={togglePdfViewer}
+                  className="px-3 py-2 bg-violet-600 text-violet-100 hover:bg-violet-100 hover:text-violet-600 duration-200"
+                >
                   Read PDF
                 </button>
+                {/* pdf components */}
+                {/* pdf components */}
+
                 <button className="px-3 py-2 bg-violet-600 text-violet-100 hover:bg-violet-100 hover:text-violet-600 duration-200">
                   Borrow
                 </button>
