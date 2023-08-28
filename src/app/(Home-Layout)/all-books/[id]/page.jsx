@@ -1,13 +1,19 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import bookImg from "@/assets/book1.png";
 import Image from "next/image";
 import Rating from "react-rating";
 import { BsStar, BsStarFill } from "react-icons/bs";
-import { HiMiniCheckBadge } from "react-icons/hi";
-import { FaCheckCircle } from "react-icons/fa";
 import { PiSealCheckFill } from "react-icons/pi";
-const page = () => {
+import { getBook } from "@/Utils/useBooks";
+const Book = ({ params }) => {
+  const [book] = getBook(params.id);
+  const [showPdf, setShowPdf] = useState(false);
+
+  const togglePdfViewer = () => {
+    setShowPdf(true);
+    console.log(showPdf);
+  };
   const getStarValue = (e) => {
     console.log(e);
   };
@@ -18,9 +24,9 @@ const page = () => {
           {/* book image */}
           <div className="sm:col-span-2">
             <div className="w-full p-6 border-[#EAE6E6] border-[1px]">
-              <Image
-                className="w-full h-[215px] object-contain object-center"
-                src={bookImg}
+              <img
+                className="w-full h-[215px] object-contain object-center hover:scale-150 duration-500"
+                src={book.image_url}
                 alt="book img"
               />
             </div>
@@ -31,25 +37,25 @@ const page = () => {
           {/* book image */}
           {/* book info */}
           <div className="sm:col-span-3">
-            <h2 className="text-2xl font-medium">Rich dad poor dad</h2>
+            <h2 className="text-2xl font-medium">{book.title}</h2>
             <h4 className="text-sm">
               by
               <span className="text-[#0386FF] cursor-pointer">
-                Robert T. Kiyosaki
+                {book.author}
               </span>
             </h4>
             <h4 className="mt-7 text-sm">
               Category:
               <span className="text-[#0386FF] cursor-pointer">
-                Self development & Motivation
+                {book.category}
               </span>
             </h4>
             <h4 className="text-sm">
-              Self no: <span>32</span>
+              Self no: <span>{book.shelf}</span>
             </h4>
             <div className="flex items-center gap-3 mt-1">
               <Rating
-                placeholderRating={4.5}
+                placeholderRating={book.ratings}
                 className="space-x-1"
                 readonly
                 emptySymbol={
@@ -80,9 +86,15 @@ const page = () => {
                 At a glance
               </button>
               <div className="grid grid-cols-2 w-full gap-2 mt-2">
-                <button className="px-3 py-2 bg-violet-600 text-violet-100 hover:bg-violet-100 hover:text-violet-600 duration-200">
+                <button
+                  onClick={togglePdfViewer}
+                  className="px-3 py-2 bg-violet-600 text-violet-100 hover:bg-violet-100 hover:text-violet-600 duration-200"
+                >
                   Read PDF
                 </button>
+                {/* pdf components */}
+                {/* pdf components */}
+
                 <button className="px-3 py-2 bg-violet-600 text-violet-100 hover:bg-violet-100 hover:text-violet-600 duration-200">
                   Borrow
                 </button>
@@ -244,16 +256,14 @@ const page = () => {
                   <td className="bg-[#F1F2F4] border px-4 py-2 md:w-[30%]">
                     <h2>Title</h2>
                   </td>
-                  <td className="border px-4 py-2 md:w-[70%]">
-                    Rich dad poor dad
-                  </td>
+                  <td className="border px-4 py-2 md:w-[70%]">{book.title}</td>
                 </tr>
                 <tr>
                   <td className="bg-[#F1F2F4] border px-4 py-2">
                     <h2>Author</h2>
                   </td>
                   <td className="border px-4 py-2 text-[#0386FF] cursor-pointer">
-                    Robert T. Kiyosaki
+                    {book.author}
                   </td>
                 </tr>
                 <tr>
@@ -261,7 +271,7 @@ const page = () => {
                     <h2>Category</h2>
                   </td>
                   <td className="border px-4 py-2 text-[#0386FF] cursor-pointer">
-                    Self development & motivation
+                    {book.category}
                   </td>
                 </tr>
                 <tr>
@@ -269,52 +279,52 @@ const page = () => {
                     <h2>Publisher</h2>
                   </td>
                   <td className="border px-4 py-2 text-[#0386FF] cursor-pointer">
-                    Penguin Publication
+                    {book.publisher}
                   </td>
                 </tr>
                 <tr>
                   <td className="bg-[#F1F2F4] border px-4 py-2">
                     <h2>Self no</h2>
                   </td>
-                  <td className="border px-4 py-2">27</td>
+                  <td className="border px-4 py-2">{book.shelf}</td>
                 </tr>
                 <tr>
                   <td className="bg-[#F1F2F4] border px-4 py-2">
                     <h2>Translator</h2>
                   </td>
                   <td className="border px-4 py-2 text-[#0386FF] cursor-pointer">
-                    N/A
+                    {book.translator ? book.translator : "N/A"}
                   </td>
                 </tr>
                 <tr>
                   <td className="bg-[#F1F2F4] border px-4 py-2">
                     <h2>Edition</h2>
                   </td>
-                  <td className="border px-4 py-2">2005</td>
+                  <td className="border px-4 py-2">{book.edition}</td>
                 </tr>
                 <tr>
                   <td className="bg-[#F1F2F4] border px-4 py-2">
                     <h2>Published in</h2>
                   </td>
-                  <td className="border px-4 py-2">1996</td>
+                  <td className="border px-4 py-2">{book.published_in}</td>
                 </tr>
                 <tr>
                   <td className="bg-[#F1F2F4] border px-4 py-2">
                     <h2>Number of pages</h2>
                   </td>
-                  <td className="border px-4 py-2">180</td>
+                  <td className="border px-4 py-2">{book.number_of_pages}</td>
                 </tr>
                 <tr>
                   <td className="bg-[#F1F2F4] border px-4 py-2">
                     <h2>Language</h2>
                   </td>
-                  <td className="border px-4 py-2">English</td>
+                  <td className="border px-4 py-2">{book.language}</td>
                 </tr>
                 <tr>
                   <td className="bg-[#F1F2F4] border px-4 py-2">
                     <h2>Country</h2>
                   </td>
-                  <td className="border px-4 py-2">Abroad</td>
+                  <td className="border px-4 py-2">{book.country}</td>
                 </tr>
               </tbody>
             </table>
@@ -599,4 +609,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Book;

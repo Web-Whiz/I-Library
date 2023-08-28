@@ -4,15 +4,16 @@ import { useQuery } from "@tanstack/react-query";
 import React from "react";
 
 const PopularBooks = () => {
+  const { data: popularBooks = [], refetch } = useQuery({
+    queryKey: ["popularBooks"],
+    queryFn: async () => {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_BaseURL}/popular-books`
+      );
+      return res.json();
+    },
+  });
 
-  const {data: popularBooks=[], refetch} = useQuery({
-    queryKey: ['popularBooks'],
-    queryFn: async() => {
-        const res = await fetch(`https://ilibrary-server.vercel.app/popular-books`)
-        return res.json();
-    }
-})
- 
   return (
     <div className="container mx-auto">
       <div className="h2 text-center">

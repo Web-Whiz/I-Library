@@ -10,6 +10,7 @@ const AddBook = () => {
     handleSubmit,
     setValue,
     formState: { errors },
+    reset,
   } = useForm();
 
   const uploadImage = async (event) => {
@@ -39,6 +40,7 @@ const AddBook = () => {
   };
 
   const onSubmit = async (data) => {
+   
     const {
       title,
       author,
@@ -66,51 +68,39 @@ const AddBook = () => {
       translator: translator || null,
       publisher,
       shelf: parseFloat(shelf),
-      image_url:photo,
+      image_url: photo,
       edition,
-      published_in:parseFloat(published_in),
+      published_in: parseFloat(published_in),
       category,
-      number_of_pages:parseFloat(number_of_pages),
+      number_of_pages: parseFloat(number_of_pages),
       language,
       country,
-      ratings:parseFloat(ratings),
-      total_read:parseFloat(total_read),
+      ratings: parseFloat(ratings),
+      total_read: parseFloat(total_read),
       added_date,
-      availability:{hard_copy,pdf,ebook}
+      availability: { hard_copy, pdf, ebook },
     };
-    console.log(maindata);
-  
 
-
-    fetch(`http://localhost:5000/books`,{
-      method:'POST',
-      headers:{
-          'content-type':'application/json'
+    fetch(`http://localhost:5000/books`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
       },
-      body:JSON.stringify(maindata)
-  })
-  .then(res => res.json())
-  .then(data => {
-      console.log(data)
-      if (data.insertedId) {
-          Swal.fire({
-              title: 'seccessssssssssssss',
-              showClass: {
-                popup: 'Update secssssss'
-              },
-              hideClass: {
-                popup: 'animate__animated animate__fadeOutUp'
-              }
-            })
-      }
-  })
-
-
-
+      body: JSON.stringify(maindata),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.insertedId) {
+          toast.success("Book add Successful");
+          reset();
+        }
+      });
   };
 
   return (
     <div>
+  
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="bg-white md:p-20 p-3 rounded-md md:space-y-10  border-8 "
@@ -120,7 +110,7 @@ const AddBook = () => {
           <li>
             <input
               {...register("title", { required: true })}
-              className="md:w-[440px] p-2 border-b-2 border-black outline-none "
+              className="md:w-[680px] p-2 outline-none border-2 rounded focus:border-indigo-500"
               type="text"
               placeholder="Title"
             />
@@ -128,34 +118,39 @@ const AddBook = () => {
           <li>
             <input
               {...register("author", { required: true })}
-              className="md:w-[440px] p-2 border-b-2 border-black outline-none "
+              className="md:w-[680px] p-2 outline-none border-2 rounded focus:border-indigo-500"
               type="text"
               placeholder="Author"
             />
           </li>
-          <li>
-            <input
-              {...register("translator", { required: true })}
-              className="md:w-[440px] p-2 border-b-2 border-black outline-none "
-              type="text"
-              placeholder="Translator"
-            />
-          </li>
         </ul>
+
         {/* Slot 2 */}
         <ul className="md:flex md:space-x-8">
           <li>
             <input
-              {...register("publisher", { required: true })}
-              className="md:w-[440px] p-2 border-b-2 border-black outline-none "
+              {...register("translator", { required: true })}
+              className="md:w-[680px] p-2 outline-none border-2 rounded focus:border-indigo-500"
               type="text"
-              placeholder="Publisher"
+              placeholder="Translator"
             />
           </li>
           <li>
             <input
+              {...register("publisher", { required: true })}
+              className="md:w-[680px] p-2 outline-none border-2 rounded focus:border-indigo-500"
+              type="text"
+              placeholder="Publisher"
+            />
+          </li>
+        </ul>
+
+        {/* Slot 3 */}
+        <ul className="md:flex md:space-x-8">
+          <li>
+            <input
               {...register("shelf", { required: true })}
-              className="md:w-[440px] p-2 border-b-2 border-black outline-none "
+              className="md:w-[680px] p-2 outline-none border-2 rounded focus:border-indigo-500"
               type="number"
               placeholder="Shelf"
             />
@@ -163,18 +158,18 @@ const AddBook = () => {
           <li>
             <input
               onChange={uploadImage}
-              className="md:w-[440px] w-60 p-2 border-b-2 border-black outline-none "
+              className="md:w-[680px] p-2 outline-none border-2 rounded focus:border-indigo-500"
               type="file"
               placeholder="image_url"
             />
           </li>
         </ul>
-        {/* Slot 3 */}
+
         <ul className="md:flex md:space-x-8">
           <li>
             <input
               {...register("edition", { required: true })}
-              className="md:w-[440px] p-2 border-b-2 border-black outline-none "
+              className="md:w-[680px] p-2 outline-none border-2 rounded focus:border-indigo-500"
               type="text"
               placeholder="Edition"
             />
@@ -182,34 +177,39 @@ const AddBook = () => {
           <li>
             <input
               {...register("published_in", { required: true })}
-              className="md:w-[440px] p-2 border-b-2 border-black outline-none "
+              className="md:w-[680px] p-2 outline-none border-2 rounded focus:border-indigo-500"
               type="text"
               placeholder="Published"
             />
           </li>
-          <li>
-            <input
-              {...register("category", { required: true })}
-              className="md:w-[440px] p-2 border-b-2 border-black outline-none "
-              type="text"
-              placeholder="category"
-            />
-          </li>
         </ul>
+
         {/* Slot 4 */}
         <ul className="md:flex md:space-x-8">
           <li>
             <input
-              {...register("number_of_pages", { required: true })}
-              className="md:w-[440px] p-2 border-b-2 border-black outline-none "
+              {...register("category", { required: true })}
+              className="md:w-[680px] p-2 outline-none border-2 rounded focus:border-indigo-500"
               type="text"
-              placeholder="Number_of_Pages"
+              placeholder="category"
             />
           </li>
           <li>
             <input
+              {...register("number_of_pages", { required: true })}
+              className="md:w-[680px] p-2 outline-none border-2 rounded focus:border-indigo-500"
+              type="text"
+              placeholder="Number_of_Pages"
+            />
+          </li>
+        </ul>
+
+        {/* Slot 5 */}
+        <ul className="md:flex md:space-x-8">
+          <li>
+            <input
               {...register("language", { required: true })}
-              className="md:w-[440px] p-2 border-b-2 border-black outline-none "
+              className="md:w-[680px] p-2 outline-none border-2 rounded focus:border-indigo-500"
               type="text"
               placeholder="Language"
             />
@@ -217,18 +217,19 @@ const AddBook = () => {
           <li>
             <input
               {...register("country", { required: true })}
-              className="md:w-[440px] p-2 border-b-2 border-black outline-none "
+              className="md:w-[680px] p-2 outline-none border-2 rounded focus:border-indigo-500"
               type="text"
               placeholder="Country"
             />
           </li>
         </ul>
-        {/* Slot 5 */}
+
+        {/* Slot 6 */}
         <ul className="md:flex md:space-x-8">
           <li>
             <input
               {...register("ratings", { required: true })}
-              className="md:w-[440px] p-2 border-b-2 border-black outline-none "
+              className="md:w-[680px] p-2 outline-none border-2 rounded focus:border-indigo-500"
               type="text"
               placeholder="Ratings"
             />
@@ -236,22 +237,25 @@ const AddBook = () => {
           <li>
             <input
               {...register("total_read", { required: true })}
-              className="md:w-[440px] p-2 border-b-2 border-black outline-none "
+              className="md:w-[680px] p-2 outline-none border-2 rounded focus:border-indigo-500"
               type="text"
               placeholder="Total_read"
             />
           </li>
+        </ul>
+
+        <ul className="md:flex md:space-x-8">
           <li>
             <input
               {...register("added_date", { required: true })}
-              className="md:w-[440px] p-2 border-b-2 border-black outline-none "
+              className="md:w-[1390px] p-2 outline-none border-2 rounded focus:border-indigo-500"
               type="date"
               placeholder="added_date"
             />
           </li>
         </ul>
-        {/* Slot 6 */}
-        <ul className="md:flex md:space-x-[290px]">
+
+        <ul className="md:flex md:space-x-[440px]">
           <div className="form-control">
             <label className="cursor-pointer label">
               <span className="label-text md:text-3xl text-xl mr-4">

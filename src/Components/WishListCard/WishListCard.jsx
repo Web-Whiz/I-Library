@@ -1,51 +1,47 @@
-'use client'
-import useAuth from '@/Utils/useAuth';
-import React from 'react';
-import Swal from 'sweetalert2';
+"use client";
+import useAuth from "@/Utils/useAuth";
+import React from "react";
+import Swal from "sweetalert2";
 
 const WishListCard = ({ wishListBook, refetch }) => {
-  const { user } = useAuth()
+  const { user } = useAuth();
 
   const handleDeleteFromWishList = (bookId) => {
-
-    const deleteWishListItem = { bookId, userEmail: user?.email }
+    const deleteWishListItem = { bookId, userEmail: user?.email };
 
     Swal.fire({
-      title: 'Are you sure?',
-      icon: 'warning',
+      title: "Are you sure?",
+      icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes!'
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch('https://ilibrary-server.vercel.app/wish-list', {
-          method: 'DELETE',
+        fetch(`${process.env.NEXT_PUBLIC_BaseURL}/wish-list`, {
+          method: "DELETE",
           headers: {
-            'content-type': 'application/json'
+            "content-type": "application/json",
           },
-          body: JSON.stringify(deleteWishListItem)
+          body: JSON.stringify(deleteWishListItem),
         })
-          .then(res => res.json())
+          .then((res) => res.json())
           .then((data) => {
-            console.log(data)
+            console.log(data);
             if (data.deletedCount) {
               Swal.fire({
-                position: 'center',
-                icon: 'success',
-                title: 'Removed',
+                position: "center",
+                icon: "success",
+                title: "Removed",
                 showConfirmButton: false,
-                timer: 1500
-              })
+                timer: 1500,
+              });
               refetch();
             }
-          })
+          });
       }
-    })
-
-
-
-  }
+    });
+  };
   return (
     <div>
       <div className="flex p-3 max-w-lg border my-1">
@@ -62,12 +58,10 @@ const WishListCard = ({ wishListBook, refetch }) => {
               <h3>
                 <a href="#">{wishListBook?.title}</a>
               </h3>
-
             </div>
             <p className="mt-1 text-sm text-gray-500">{wishListBook?.author}</p>
           </div>
           <div className="flex flex-1 items-end justify-between text-sm">
-
             <div className="flex justify-between">
               <button
                 onClick={() => handleDeleteFromWishList(wishListBook?.bookId)}

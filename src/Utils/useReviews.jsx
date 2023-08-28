@@ -8,7 +8,9 @@ const useReviews = () => {
   const { data: reviews = [], refetch } = useQuery({
     queryKey: ["reviews", user?.email],
     queryFn: async () => {
-      const res = await fetch(`https://ilibrary-server.vercel.app/reviews/${user?.email}`);
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_BaseURL}/reviews/${user?.email}`
+      );
       return res.json();
     },
   });

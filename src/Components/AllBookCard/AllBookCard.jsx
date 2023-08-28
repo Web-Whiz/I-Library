@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 const AllBookCard = ({ book }) => {
@@ -11,7 +12,7 @@ const AllBookCard = ({ book }) => {
           />
           <div className="absolute bottom-0 left-0 text-center w-full h-fit backdrop-blur-lg duration-200 opacity-0 group-hover:opacity-100">
             <button className="text-white uppercase bg-black/30 text-sm w-full h-full px-4 py-4">
-              view details
+              <Link href={`/all-books/${book._id}`}>view details</Link>
             </button>
           </div>
         </div>
