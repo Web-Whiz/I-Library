@@ -2,12 +2,11 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Toaster, toast } from "react-hot-toast";
-const img_hosting_token = process.env.VITE_IMEGE_KEY;
 
-const AddBook = () => {
+const Updatedatapage = ({ params }) => {
+  console.log(params.Updatedata);
+
   const [pdf, setpdf] = useState(false);
-
-  console.log(pdf);
 
   const pdffile = (e) => {
     setpdf(e.target.checked);
@@ -91,8 +90,8 @@ const AddBook = () => {
     };
     console.log(maindata);
 
-    fetch(`https://i-library-server-mu.vercel.app/books`, {
-      method: "POST",
+    fetch(`http://localhost:5000/books/${params.Updatedata}`, {
+      method: "PUT",
       headers: {
         "content-type": "application/json",
       },
@@ -101,7 +100,8 @@ const AddBook = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        if (data.insertedId) {
+
+        if (data.modifiedCount) {
           toast.success("Book add Successful");
           reset();
         }
@@ -118,20 +118,18 @@ const AddBook = () => {
         <ul className="md:flex md:space-x-8">
           <li>
             <input
-              {...register("title", { required: true })}
+              {...register("title")}
               className="md:w-[680px] w-full mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
               type="text"
               placeholder="Title"
-              required
             />
           </li>
           <li>
             <input
-              {...register("author", { required: true })}
+              {...register("author")}
               className="md:w-[680px] w-full mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
               type="text"
               placeholder="Author"
-              required
             />
           </li>
         </ul>
@@ -140,20 +138,18 @@ const AddBook = () => {
         <ul className="md:flex md:space-x-8">
           <li>
             <input
-              {...register("translator", { required: true })}
+              {...register("translator")}
               className="md:w-[680px] w-full mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
               type="text"
               placeholder="Translator"
-              required
             />
           </li>
           <li>
             <input
-              {...register("publisher", { required: true })}
+              {...register("publisher")}
               className="md:w-[680px] w-full mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
               type="text"
               placeholder="Publisher"
-              required
             />
           </li>
         </ul>
@@ -162,11 +158,10 @@ const AddBook = () => {
         <ul className="md:flex md:space-x-8">
           <li>
             <input
-              {...register("shelf", { required: true })}
+              {...register("shelf")}
               className="md:w-[680px] w-full mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
               type="number"
               placeholder="Shelf"
-              required
             />
           </li>
           <li>
@@ -175,7 +170,6 @@ const AddBook = () => {
               className="md:w-[680px] w-full mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
               type="file"
               placeholder="image_url"
-              required
             />
           </li>
         </ul>
@@ -183,20 +177,18 @@ const AddBook = () => {
         <ul className="md:flex md:space-x-8">
           <li>
             <input
-              {...register("edition", { required: true })}
+              {...register("edition")}
               className="md:w-[680px] w-full mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
               type="text"
               placeholder="Edition"
-              required
             />
           </li>
           <li>
             <input
-              {...register("published_in", { required: true })}
+              {...register("published_in")}
               className="md:w-[680px] w-full mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
               type="text"
               placeholder="Published"
-              required
             />
           </li>
         </ul>
@@ -205,20 +197,18 @@ const AddBook = () => {
         <ul className="md:flex md:space-x-8">
           <li>
             <input
-              {...register("category", { required: true })}
+              {...register("category")}
               className="md:w-[680px] w-full mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
               type="text"
               placeholder="category"
-              required
             />
           </li>
           <li>
             <input
-              {...register("number_of_pages", { required: true })}
+              {...register("number_of_pages")}
               className="md:w-[680px] w-full mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
               type="text"
               placeholder="Number_of_Pages"
-              required
             />
           </li>
         </ul>
@@ -227,20 +217,18 @@ const AddBook = () => {
         <ul className="md:flex md:space-x-8">
           <li>
             <input
-              {...register("language", { required: true })}
+              {...register("language")}
               className="md:w-[680px] w-full mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
               type="text"
               placeholder="Language"
-              required
             />
           </li>
           <li>
             <input
-              {...register("country", { required: true })}
+              {...register("country")}
               className="md:w-[680px] w-full mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
               type="text"
               placeholder="Country"
-              required
             />
           </li>
         </ul>
@@ -249,20 +237,18 @@ const AddBook = () => {
         <ul className="md:flex md:space-x-8">
           <li>
             <input
-              {...register("ratings", { required: true })}
+              {...register("ratings")}
               className="md:w-[680px] w-full mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
               type="text"
               placeholder="Ratings"
-              required
             />
           </li>
           <li>
             <input
-              {...register("total_read", { required: true })}
+              {...register("total_read")}
               className="md:w-[680px] w-full mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
               type="text"
               placeholder="Total_read"
-              required
             />
           </li>
         </ul>
@@ -271,11 +257,10 @@ const AddBook = () => {
         <ul className="md:flex md:space-x-8">
           <li>
             <input
-              {...register("added_date", { required: true })}
+              {...register("added_date")}
               className="md:w-[1390px] w-full mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
               type="date"
               placeholder="added_date"
-              required
             />
           </li>
         </ul>
@@ -325,7 +310,6 @@ const AddBook = () => {
               {...register("pdf_link")}
               className="md:w-[1390px] p-2 outline-none border-2 rounded focus:border-indigo-500"
               placeholder="Enter Your Pdf Link"
-              required
             />
           ) : (
             <input
@@ -343,4 +327,4 @@ const AddBook = () => {
   );
 };
 
-export default AddBook;
+export default Updatedatapage;
