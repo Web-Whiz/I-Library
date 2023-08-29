@@ -1,10 +1,18 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { toast } from "react-hot-toast";
+import { Toaster, toast } from "react-hot-toast";
 const img_hosting_token = process.env.VITE_IMEGE_KEY;
 
 const AddBook = () => {
+  const [pdf, setpdf] = useState(false);
+
+  console.log(pdf);
+
+  const pdffile = (e) => {
+    setpdf(e.target.checked);
+  };
+
   const {
     register,
     handleSubmit,
@@ -40,7 +48,6 @@ const AddBook = () => {
   };
 
   const onSubmit = async (data) => {
-   
     const {
       title,
       author,
@@ -60,6 +67,7 @@ const AddBook = () => {
       hard_copy,
       pdf,
       ebook,
+      pdf_link,
     } = data;
 
     const maindata = {
@@ -79,9 +87,11 @@ const AddBook = () => {
       total_read: parseFloat(total_read),
       added_date,
       availability: { hard_copy, pdf, ebook },
+      pdf_link: pdf_link,
     };
+    console.log(maindata);
 
-    fetch(`http://localhost:5000/books`, {
+    fetch(`https://i-library-server-mu.vercel.app/books`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -100,7 +110,6 @@ const AddBook = () => {
 
   return (
     <div>
-  
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="bg-white md:p-20 p-3 rounded-md md:space-y-10  border-8 "
@@ -113,6 +122,7 @@ const AddBook = () => {
               className="md:w-[680px] p-2 outline-none border-2 rounded focus:border-indigo-500"
               type="text"
               placeholder="Title"
+              required
             />
           </li>
           <li>
@@ -121,6 +131,7 @@ const AddBook = () => {
               className="md:w-[680px] p-2 outline-none border-2 rounded focus:border-indigo-500"
               type="text"
               placeholder="Author"
+              required
             />
           </li>
         </ul>
@@ -133,6 +144,7 @@ const AddBook = () => {
               className="md:w-[680px] p-2 outline-none border-2 rounded focus:border-indigo-500"
               type="text"
               placeholder="Translator"
+              required
             />
           </li>
           <li>
@@ -141,6 +153,7 @@ const AddBook = () => {
               className="md:w-[680px] p-2 outline-none border-2 rounded focus:border-indigo-500"
               type="text"
               placeholder="Publisher"
+              required
             />
           </li>
         </ul>
@@ -153,6 +166,7 @@ const AddBook = () => {
               className="md:w-[680px] p-2 outline-none border-2 rounded focus:border-indigo-500"
               type="number"
               placeholder="Shelf"
+              required
             />
           </li>
           <li>
@@ -161,6 +175,7 @@ const AddBook = () => {
               className="md:w-[680px] p-2 outline-none border-2 rounded focus:border-indigo-500"
               type="file"
               placeholder="image_url"
+              required
             />
           </li>
         </ul>
@@ -172,6 +187,7 @@ const AddBook = () => {
               className="md:w-[680px] p-2 outline-none border-2 rounded focus:border-indigo-500"
               type="text"
               placeholder="Edition"
+              required
             />
           </li>
           <li>
@@ -180,6 +196,7 @@ const AddBook = () => {
               className="md:w-[680px] p-2 outline-none border-2 rounded focus:border-indigo-500"
               type="text"
               placeholder="Published"
+              required
             />
           </li>
         </ul>
@@ -192,6 +209,7 @@ const AddBook = () => {
               className="md:w-[680px] p-2 outline-none border-2 rounded focus:border-indigo-500"
               type="text"
               placeholder="category"
+              required
             />
           </li>
           <li>
@@ -200,6 +218,7 @@ const AddBook = () => {
               className="md:w-[680px] p-2 outline-none border-2 rounded focus:border-indigo-500"
               type="text"
               placeholder="Number_of_Pages"
+              required
             />
           </li>
         </ul>
@@ -212,6 +231,7 @@ const AddBook = () => {
               className="md:w-[680px] p-2 outline-none border-2 rounded focus:border-indigo-500"
               type="text"
               placeholder="Language"
+              required
             />
           </li>
           <li>
@@ -220,6 +240,7 @@ const AddBook = () => {
               className="md:w-[680px] p-2 outline-none border-2 rounded focus:border-indigo-500"
               type="text"
               placeholder="Country"
+              required
             />
           </li>
         </ul>
@@ -232,6 +253,7 @@ const AddBook = () => {
               className="md:w-[680px] p-2 outline-none border-2 rounded focus:border-indigo-500"
               type="text"
               placeholder="Ratings"
+              required
             />
           </li>
           <li>
@@ -240,10 +262,12 @@ const AddBook = () => {
               className="md:w-[680px] p-2 outline-none border-2 rounded focus:border-indigo-500"
               type="text"
               placeholder="Total_read"
+              required
             />
           </li>
         </ul>
 
+        {/* Slot 7 */}
         <ul className="md:flex md:space-x-8">
           <li>
             <input
@@ -251,15 +275,17 @@ const AddBook = () => {
               className="md:w-[1390px] p-2 outline-none border-2 rounded focus:border-indigo-500"
               type="date"
               placeholder="added_date"
+              required
             />
           </li>
         </ul>
 
+        {/* Slot 8 */}
         <ul className="md:flex md:space-x-[440px]">
           <div className="form-control">
             <label className="cursor-pointer label">
               <span className="label-text md:text-3xl text-xl mr-4">
-                Hard_copy
+                Hard Copy
               </span>
               <input
                 {...register("hard_copy")}
@@ -274,6 +300,7 @@ const AddBook = () => {
               <input
                 {...register("pdf")}
                 type="checkbox"
+                onChange={pdffile}
                 className="checkbox checkbox-info items-center"
               />
             </label>
@@ -291,10 +318,27 @@ const AddBook = () => {
             </label>
           </div>
         </ul>
+        <div>
+          {pdf === true ? (
+            <input
+              type="text"
+              {...register("pdf_link")}
+              className="md:w-[1390px] p-2 outline-none border-2 rounded focus:border-indigo-500"
+              placeholder="Enter Your Pdf Link"
+              required
+            />
+          ) : (
+            <input
+              type="text"
+              className="md:w-[1390px] hidden p-2 outline-none border-2 rounded focus:border-indigo-500 "
+            />
+          )}
+        </div>
         <button className="md:w-9/12 md:ml-48 ml-28 mt-3 md:py-4 p-3 border bg-[#ede9fe] text-[#a03aed] hover:text-white hover:bg-[#a03aed] bg-opacity-25 font-semibold duration-700 rounded-md">
           <input type="submit" value={"Submit"} />
         </button>
       </form>
+      <Toaster />
     </div>
   );
 };
