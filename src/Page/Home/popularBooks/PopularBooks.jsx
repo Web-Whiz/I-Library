@@ -168,7 +168,6 @@ const PopularBooks = () => {
     }
 })
  
-console.log(popularBooks)
   return (
     <div className="container mx-auto">
       <div className="h2 text-center">
