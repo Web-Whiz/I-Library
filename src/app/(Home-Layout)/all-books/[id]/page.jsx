@@ -1,7 +1,9 @@
 "use client";
 import Modal from "@/Components/Modal/Modal";
+import QAModal from "@/Components/QAModal/QAModal";
 import useAuth from "@/Utils/useAuth";
 import { getBook } from "@/Utils/useBooks";
+import useQA from "@/Utils/useQA";
 import useReviewsAndRatings from "@/Utils/useReviewsAndRatings";
 import bookImg from "@/assets/book1.png";
 import Image from "next/image";
@@ -16,7 +18,9 @@ const Book = ({ params }) => {
   const { user } = useAuth();
   const [showPdf, setShowPdf] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [showQAModal, setShowQAModal] = useState(false);
   const [reviews] = useReviewsAndRatings();
+  const [qas] = useQA();
 
   const togglePdfViewer = () => {
     setShowPdf(true);
@@ -444,116 +448,52 @@ const Book = ({ params }) => {
             <div className="flex flex-col md:flex-row justify-between md:items-center gap-4 pb-6 border-b-[1px] border-gray-100">
               <div>
                 <h2 className="text-2xl font-bold">Book Q/A</h2>
-                <h3>Have a question regarding the product?</h3>
-                <h4>Ask Us Ask a Question</h4>
+                <h3>Have a question regarding the book?</h3>
+                <h4>Ask a Question</h4>
               </div>
               <div>
-                <button className="px-3 rounded-sm py-2 bg-violet-100 text-violet-700 hover:text-violet-100 hover:bg-violet-700 duration-200 text-[15px]">
+                <button
+                  className="px-3 rounded-sm py-2 bg-violet-100 text-violet-700 hover:text-violet-100 hover:bg-violet-700 duration-200 text-[15px]"
+                  onClick={() => setShowQAModal(true)}
+                >
                   Ask a question
                 </button>
+                {showQAModal ? (
+                  <QAModal
+                    showQAModal={showQAModal}
+                    setShowQAModal={setShowQAModal}
+                    bookImg={book.image_url}
+                    bookTitle={book.title}
+                    bookId={book._id}
+                  ></QAModal>
+                ) : null}
               </div>
             </div>
             <div className="mt-5">
-              <ul className="list-none py-4 border-b-[1px] border-gray-100">
-                <li>
-                  <span className="text-lg font-semibold">Question:</span>
-                  <span> Can you please describe the book topic?</span>
-                  <span className="text-neutral-400"> Questioned by</span>
-                  <span className="font-semibold"> Hamim</span>
-                  <span className="text-neutral-400"> on 20 Aug 2023</span>
-                </li>
-                <li className="ml-2 md:ml-6 mt-2">
-                  <span className="text-lg font-semibold">Answer:</span>
-                  <span>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Maxime nemo ea similique culpa odio labore officiis
-                    doloremque magni omnis aut.
-                  </span>
-                  <span className="text-neutral-400"> Answered by</span>
-                  <span className="font-semibold"> Hamim</span>
-                  <span className="text-neutral-400"> on 20 Aug 2023</span>
-                </li>
-              </ul>
-              <ul className="list-none py-4 border-b-[1px] border-gray-100">
-                <li>
-                  <span className="text-lg font-semibold">Question:</span>
-                  <span> Can you please describe the book topic?</span>
-                  <span className="text-neutral-400"> Questioned by</span>
-                  <span className="font-semibold"> Hamim</span>
-                  <span className="text-neutral-400"> on 20 Aug 2023</span>
-                </li>
-                <li className="ml-2 md:ml-6 mt-2">
-                  <span className="text-lg font-semibold">Answer:</span>
-                  <span>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Maxime nemo ea similique culpa odio labore officiis
-                    doloremque magni omnis aut.
-                  </span>
-                  <span className="text-neutral-400"> Answered by</span>
-                  <span className="font-semibold"> Hamim</span>
-                  <span className="text-neutral-400"> on 20 Aug 2023</span>
-                </li>
-              </ul>
-              <ul className="list-none py-4 border-b-[1px] border-gray-100">
-                <li>
-                  <span className="text-lg font-semibold">Question:</span>
-                  <span> Can you please describe the book topic?</span>
-                  <span className="text-neutral-400"> Question by</span>
-                  <span className="font-semibold"> Hamim</span>
-                  <span className="text-neutral-400"> on 20 Aug 2023</span>
-                </li>
-                <li className="ml-2 md:ml-6 mt-2">
-                  <span className="text-lg font-semibold">Answer:</span>
-                  <span>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Maxime nemo ea similique culpa odio labore officiis
-                    doloremque magni omnis aut.
-                  </span>
-                  <span className="text-neutral-400"> Question by</span>
-                  <span className="font-semibold"> Hamim</span>
-                  <span className="text-neutral-400"> on 20 Aug 2023</span>
-                </li>
-              </ul>
-              <ul className="list-none py-4 border-b-[1px] border-gray-100">
-                <li>
-                  <span className="text-lg font-semibold">Question:</span>
-                  <span> Can you please describe the book topic?</span>
-                  <span className="text-neutral-400"> Question by</span>
-                  <span className="font-semibold"> Hamim</span>
-                  <span className="text-neutral-400"> on 20 Aug 2023</span>
-                </li>
-                <li className="ml-2 md:ml-6 mt-2">
-                  <span className="text-lg font-semibold">Answer:</span>
-                  <span>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Maxime nemo ea similique culpa odio labore officiis
-                    doloremque magni omnis aut.
-                  </span>
-                  <span className="text-neutral-400"> Question by</span>
-                  <span className="font-semibold"> Hamim</span>
-                  <span className="text-neutral-400"> on 20 Aug 2023</span>
-                </li>
-              </ul>
-              <ul className="list-none py-4 border-b-[1px] border-gray-100">
-                <li>
-                  <span className="text-lg font-semibold">Question:</span>
-                  <span> Can you please describe the book topic?</span>
-                  <span className="text-neutral-400"> Question by</span>
-                  <span className="font-semibold"> Hamim</span>
-                  <span className="text-neutral-400"> on 20 Aug 2023</span>
-                </li>
-                <li className="ml-2 md:ml-6 mt-2">
-                  <span className="text-lg font-semibold">Answer:</span>
-                  <span>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Maxime nemo ea similique culpa odio labore officiis
-                    doloremque magni omnis aut.
-                  </span>
-                  <span className="text-neutral-400"> Question by</span>
-                  <span className="font-semibold"> Hamim</span>
-                  <span className="text-neutral-400"> on 20 Aug 2023</span>
-                </li>
-              </ul>
+              {qas.map((qa) => (
+                <ul
+                  key={qa._id}
+                  className="list-none py-4 border-b-[1px] border-gray-100"
+                >
+                  <li>
+                    <span className="text-lg font-semibold">Question: </span>
+                    <span> {qa?.question}</span>
+                    <span className="text-neutral-400"> Questioned by</span>
+                    <span className="font-semibold"> {qa?.username}</span>
+                    <span className="text-neutral-400"> {qa?.date}</span>
+                  </li>
+                  <li className="ml-2 md:ml-6 mt-2">
+                    <span className="text-lg font-semibold">Answer: </span>
+                    <span> {qa?.answer}</span>
+                    <span className="text-neutral-400"> Answered by</span>
+                    <span className="font-semibold"> {qa["answered-by"]}</span>
+                    <span className="text-neutral-400">
+                      {" "}
+                      {qa["answered-date"]}
+                    </span>
+                  </li>
+                </ul>
+              ))}
             </div>
           </div>
           {/* Ask a question */}
