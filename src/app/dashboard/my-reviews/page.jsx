@@ -46,7 +46,7 @@ const MyReviews = () => {
           <Link href="/">
             <p className="my-5 font-medium text-gray-900 hover:text-indigo-600">
               <span className="border-b-2 border-indigo-300 hover:bg-indigo-50 p-1 transition-all">
-                The Great Gatsby
+                {review["book-name"]}
               </span>
             </p>
           </Link>
