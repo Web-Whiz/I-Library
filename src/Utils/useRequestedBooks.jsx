@@ -7,7 +7,7 @@ export const getRequestedBooks = (email) => {
     // enabled: !loading,
     queryFn: async () => {
       const res = await fetch(
-        `https://i-library-server.vercel.app/requested-books?email=${email}`
+        `http://localhost:5000/requested-books?email=${email}`
       );
       return res.json();
     },
@@ -17,7 +17,7 @@ export const getRequestedBooks = (email) => {
 };
 
 export const postRequestedBooks = (requestedBook) => {
-  fetch(`https://i-library-server.vercel.app/requested-books`, {
+  fetch(`http://localhost:5000/requested-books`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
