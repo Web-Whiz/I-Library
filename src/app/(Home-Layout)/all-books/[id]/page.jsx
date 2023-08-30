@@ -93,6 +93,7 @@ const Book = ({ params }) => {
                   Read PDF
                 </button>
                 {/* pdf components */}
+                {/* <Document></Document> */}
                 {/* pdf components */}
 
                 <button className="px-3 py-2 bg-violet-600 text-violet-100 hover:bg-violet-100 hover:text-violet-600 duration-200">

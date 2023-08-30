@@ -1,9 +1,7 @@
 "use client";
 import DashboardNavbar from "@/Page/Dashboard/DashboardNavbar";
 import useAuth from "@/Utils/useAuth";
-import profilePhoto from "@/assets/Author01.jpg";
 import Hamburger from "hamburger-react";
-import Image from "next/image";
 
 const DashboardLayout = ({ children }) => {
   const { isDashboardOpen, setIsDashboardOpen, user } = useAuth();
