@@ -16,7 +16,7 @@ import useCart from "@/Utils/useCart";
 const Navbar = () => {
   const { isMenuOpen, setIsMenuOpen, isCartOpen, logOut, setIsCartOpen, user } =
     useAuth();
-    const [carts, refetch] = useCart()
+  const [carts, refetch] = useCart();
   const [isUserOpen, setIsUserOpen] = useState(false);
   return (
     <>
@@ -52,10 +52,10 @@ const Navbar = () => {
                 <div
                   className={`absolute top-14 z-50 right-0 rounded-md ${
                     isUserOpen ? "scale-y-100" : "scale-y-0"
-                  } duration-200 origin-top bg-white shadow-lg p-2`}
+                  } duration-200 origin-top bg-white shadow-lg`}
                 >
-                  <ul className="list-none px-2 w-full">
-                    <li className="text-gray-900 font-medium text-[15px] cursor-pointer py-[6px] duration-200 text-lg hover:bg-violet-50 rounded-sm hover:text-violet-600  my-1 px-4">
+                  <ul className="list-none w-full">
+                    <li className="text-gray-900 font-medium text-[15px] cursor-pointer py-[6px] duration-200 hover:bg-violet-50 rounded-sm hover:text-violet-600  my-1 px-4">
                       <Link
                         href="/dashboard"
                         // href={role?'admin-dashboard':'dashboard'}
@@ -64,7 +64,7 @@ const Navbar = () => {
                         <BiSolidDashboard /> Dashboard
                       </Link>
                     </li>
-                    <li className="text-gray-900 font-medium text-[15px] cursor-pointer py-[6px] duration-200 text-lg hover:bg-violet-50 rounded-sm hover:text-violet-600  my-1 px-4">
+                    <li className="text-gray-900 font-medium text-[15px] cursor-pointer py-[6px] duration-200 hover:bg-violet-50 rounded-sm hover:text-violet-600  my-1 px-4">
                       <Link
                         href="/dashboard"
                         className="flex items-center gap-4"
@@ -74,7 +74,7 @@ const Navbar = () => {
                     </li>
                     <li
                       onClick={() => logOut()}
-                      className="text-gray-900 font-medium text-[15px] cursor-pointer py-[6px] duration-200 text-lg hover:bg-violet-50 rounded-sm hover:text-violet-600  my-1 px-4 flex items-center gap-4"
+                      className="text-gray-900 font-medium text-[15px] cursor-pointer py-[6px] duration-200 hover:bg-violet-50 rounded-sm hover:text-violet-600  my-1 px-4 flex items-center gap-4"
                     >
                       <BiLogOut /> Sign out
                     </li>

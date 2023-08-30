@@ -1,22 +1,21 @@
-
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "./useAuth";
 
 const useWishList = () => {
-    
-    const {user,loading}=useAuth()
-    
-    const {data: wishListBooks = [], refetch} = useQuery({
-        queryKey: ['wishListBooks'],
-        enabled: !loading,
-        queryFn: async() => {
-            const res = await fetch(`https://i-library-server-seven.vercel.app/wish-list?email=${user?.email}`)
-            return res.json();
-        }
-    })
+  const { user, loading } = useAuth();
 
-    return [wishListBooks, refetch]
+  const { data: wishListBooks = [], refetch } = useQuery({
+    queryKey: ["wishListBooks"],
+    enabled: !loading,
+    queryFn: async () => {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_BaseURL}/wish-list?email=${user?.email}`
+      );
+      return res.json();
+    },
+  });
 
+  return [wishListBooks, refetch];
 };
 
 export default useWishList;

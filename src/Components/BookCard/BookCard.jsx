@@ -11,63 +11,57 @@ const BookCard = ({ book }) => {
   const handleAddToCart = (book) => {
     if (!user) {
       Swal.fire({
-        position: 'center',
-        icon: 'warning',
-        title: 'Login First',
+        position: "center",
+        icon: "warning",
+        title: "Login First",
         showConfirmButton: false,
-        timer: 1500
-      })
-      return
+        timer: 1500,
+      });
+      return;
     }
 
-    if(carts?.length === 3){
-      Swal.fire({
-        position: 'center',
-        icon: 'warning',
-        title: 'You can add only 3 books',
-        showConfirmButton: false,
-        timer: 1500
-      })
-      return
-    }
+    const { image_url, title, author, _id } = book;
+    const cartItem = {
+      title,
+      author,
+      bookId: _id,
+      image_url,
+      userEmail: user?.email,
+    };
 
-    const { image_url, title, author, _id } = book
-    const cartItem = { title, author, bookId: _id, image_url, userEmail: user?.email }
-
-    fetch('https://i-library-server-seven.vercel.app/carts', {
-      method: 'POST',
+    fetch(`${process.env.NEXT_PUBLIC_BaseURL}/carts`, {
+      method: "POST",
       headers: {
-        'content-type': 'application/json'
+        "content-type": "application/json",
       },
-      body: JSON.stringify(cartItem)
+      body: JSON.stringify(cartItem),
     })
-      .then(res => res.json())
+      .then((res) => res.json())
       .then((data) => {
-        if(data.insertedId){
+        if (data.insertedId) {
           // todo: have to add swal
-          refetch()
+          refetch();
           Swal.fire({
-            position: 'center',
-            icon: 'success',
-            title: 'Added to cart',
+            position: "center",
+            icon: "success",
+            title: "Added to cart",
             showConfirmButton: false,
-            timer: 1500
-          })
+            timer: 1500,
+          });
         }
-        if(data.message){
+        if (data.message) {
           // todo: have to add swal
 
           Swal.fire({
-            position: 'center',
-            icon: 'success',
+            position: "center",
+            icon: "success",
             title: `${data.message}`,
             showConfirmButton: false,
-            timer: 1500
-          })
+            timer: 1500,
+          });
         }
-      })
-
-  }
+      });
+  };
 
   const handleAddToWishList = (book) => {
     if (!user) {
@@ -90,7 +84,7 @@ const BookCard = ({ book }) => {
       userEmail: user?.email,
     };
 
-    fetch("https://i-library-server-seven.vercel.app/wish-list", {
+    fetch(`${process.env.NEXT_PUBLIC_BaseURL}/wish-list`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -109,6 +103,7 @@ const BookCard = ({ book }) => {
           });
         }
         if (data.message) {
+          // todo: have to add swal
           Swal.fire({
             position: "center",
             icon: "success",
@@ -119,6 +114,7 @@ const BookCard = ({ book }) => {
         }
       });
   };
+  // const {bookName, bookImg, authorName, shelfNo, rating, borrowPrice} = book;
 
   return (
     // <div className='flex items-center justify-center'>
@@ -147,13 +143,13 @@ const BookCard = ({ book }) => {
           <div className="absolute z-0 top-0 left-0 -translate-y-full group-hover:-translate-y-0  duration-200 w-full h-full backdrop-blur-md bg-black/60 bg-opacity-30 flex justify-center items-center">
             <div className="flex flex-col items-center gap-1">
               <button
-                onClick={() => handleAddToCart(book, user, carts, refetch)}
+                onClick={() => handleAddToCart(book)}
                 className="text-white text-sm w-full hover:bg-indigo-700 duration-200 border-[1px] border-white rounded-full px-4 py-[2px]"
               >
                 Add to bag
               </button>
               <button
-                onClick={() => handleAddToWishList(book,user)}
+                onClick={() => handleAddToWishList(book)}
                 className="text-white text-sm w-full hover:bg-indigo-700 duration-200 border-[1px] border-white rounded-full px-4 py-[2px]"
               >
                 Add to wish list

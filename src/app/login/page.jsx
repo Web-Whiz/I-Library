@@ -9,6 +9,7 @@ import { useForm } from "react-hook-form";
 import useAuth from "@/Utils/useAuth";
 import { useState } from "react";
 import { BiHide, BiShow } from "react-icons/bi";
+import { toast } from "react-hot-toast";
 
 const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -22,31 +23,95 @@ const LoginPage = () => {
   } = useForm();
   const password = watch("password", "");
 
-  const handleLogin = (data) => {
-    Login(data.email, data.password)
-      .then((result) => {
+  const handleLogin = async (data) => {
+    toast.promise(Login(data.email, data.password), {
+      loading: "Logging in...",
+      success: (result) => {
         console.log(result.user);
-      })
-      .catch((error) => console.log(error));
-  };
-  const handleGoogleLogin = () => {
-    googleSignIn()
-      .then((result) => {
-        console.log(result.user);
-      })
-      .catch((error) => {
+        return "Login successful";
+      },
+      error: (error) => {
         console.log(error);
-      });
+        throw new Error("Login failed");
+      },
+    });
   };
 
-  const handleFacebookLogin = () => {
-    facebookSignIn()
-      .then((result) => {
-        console.log(result.user);
-      })
-      .catch((error) => {
-        console.log(error);
+  const handleGoogleLogin = async () => {
+    try {
+      toast.promise(googleSignIn(), {
+        loading: "Logging in...",
+        success: async (result) => {
+          try {
+            const loggedInUser = result.user;
+            const userData = {
+              name: loggedInUser.displayName,
+              email: loggedInUser.email,
+              image: loggedInUser.photoURL,
+            };
+            const response = await fetch(
+              `${process.env.NEXT_PUBLIC_BaseURL}/users`,
+              {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify(userData),
+              }
+            );
+            const responseData = await response.json();
+            if (
+              responseData.insertedId ||
+              responseData.message === "user already exists"
+            ) {
+              return "Login successful";
+            }
+          } catch (error) {
+            console.log(error);
+            toast.error("An error occurred during Login");
+          }
+        },
+        error: "Login failed",
       });
+    } catch (error) {
+      console.log(error);
+      toast.error("Google login failed");
+    }
+  };
+  const handleFacebookLogin = async () => {
+    toast.promise(facebookSignIn(), {
+      loading: "Logging in...",
+      success: async (result) => {
+        try {
+          const loggedInUser = result.user;
+          const userData = {
+            name: loggedInUser.displayName,
+            email: loggedInUser.email,
+            image: loggedInUser.photoURL,
+          };
+          const response = await fetch(
+            `${process.env.NEXT_PUBLIC_BaseURL}/users`,
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(userData),
+            }
+          );
+          const responseData = await response.json();
+          if (
+            responseData.insertedId ||
+            responseData.message === "user already exists"
+          ) {
+            return "Login successful";
+          }
+        } catch (error) {
+          console.log(error);
+          toast.error("Facebook login failed");
+        }
+      },
+    });
   };
 
   const togglePasswordVisibility = () => {
@@ -91,24 +156,24 @@ const LoginPage = () => {
               <span className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
                 <MdOutlineLockOpen className="text-gray-400 text-lg"></MdOutlineLockOpen>
               </span>
-                <input
-                  id="password"
-                  type={showPassword ? "text" : "password"}
-                  {...register("password", {
-                    required: true,
-                    minLength: 6,
-                    pattern: /(?=.*[A-Z])(?=.*[@$!%*?&])/,
-                  })}
-                  className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
-                  placeholder="************"
-                />
-                <button
-                  className="absolute top-1/2 -translate-y-1/2 bottom-0 right-3 cursor-pointer"
-                  type="button"
-                  onClick={togglePasswordVisibility}
-                >
-                  {showPassword ? <BiShow></BiShow> : <BiHide> </BiHide>}
-                </button>
+              <input
+                id="password"
+                type={showPassword ? "text" : "password"}
+                {...register("password", {
+                  required: true,
+                  minLength: 6,
+                  pattern: /(?=.*[A-Z])(?=.*[@$!%*?&])/,
+                })}
+                className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+                placeholder="************"
+              />
+              <button
+                className="absolute top-1/2 -translate-y-1/2 bottom-0 right-3 cursor-pointer"
+                type="button"
+                onClick={togglePasswordVisibility}
+              >
+                {showPassword ? <BiShow></BiShow> : <BiHide> </BiHide>}
+              </button>
             </div>
             {errors.password && (
               <div className="text-red-600">
