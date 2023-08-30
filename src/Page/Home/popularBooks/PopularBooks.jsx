@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import React from "react";
 
 const PopularBooks = () => {
+
   const { data: popularBooks = [], refetch } = useQuery({
     queryKey: ["popularBooks"],
     queryFn: async () => {
@@ -14,6 +15,8 @@ const PopularBooks = () => {
     },
   });
 
+
+ 
   return (
     <div className="container mx-auto">
       <div className="h2 text-center">

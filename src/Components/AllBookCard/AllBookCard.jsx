@@ -1,5 +1,8 @@
 import Link from "next/link";
 import React from "react";
+import Swal from "sweetalert2";
+
+
 
 const AllBookCard = ({ book }) => {
   return (
