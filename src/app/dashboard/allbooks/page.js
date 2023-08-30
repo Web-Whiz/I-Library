@@ -55,7 +55,7 @@ const page = () => {
     <div>
       <div>
         <div className="form-control">
-          <div className="flex md:ml-48">
+          <div className="flex lg:ml-48 md:ml-0">
             <input
               type="text"
               onChange={(e) => setsesrch(e.target.value)}
@@ -72,7 +72,7 @@ const page = () => {
         </div>
       </div>
       <div>
-        <div className="overflow-x-auto md:block hidden">
+        <div className="overflow-x-auto md:hidden lg:block hidden">
           <div>
             <div className="flex w-[1240px] ml-[190px] bg-white mt-5 border-2 p-2">
               <p className="ml-6">Photo</p>
@@ -101,9 +101,7 @@ const page = () => {
                   </div>
                   <div className="flex space-x-10">
                     <button className="ml-[170px] text-[13px]  rounded-md font-semibold bg-white text-violet-600 hover:bg-violet-600 duration-200 hover:text-violet-100 p-2 uppercase">
-                      <Link href={`/all-books/${booksdata._id}`}>
-                         details
-                      </Link>
+                      <Link href={`/all-books/${booksdata._id}`}>details</Link>
                     </button>
                     <button className="text-[13px] ml-2 rounded-md font-semibold bg-white text-violet-600 hover:bg-violet-600 duration-200 hover:text-violet-100 px-4 py-[6px] uppercase">
                       <Link href={`/dashboard/allbooks/${booksdata._id}`}>
@@ -111,11 +109,11 @@ const page = () => {
                       </Link>
                     </button>
                     <button
-                    onClick={() => handlerdelete(booksdata._id)}
-                    className="text-[13px] ml-2 rounded-md font-semibold bg-white text-violet-600 hover:bg-violet-600 duration-200 hover:text-violet-100 px-4 py-[6px] uppercase"
-                  >
-                    Delete
-                  </button>
+                      onClick={() => handlerdelete(booksdata._id)}
+                      className="text-[13px] ml-2 rounded-md font-semibold bg-white text-violet-600 hover:bg-violet-600 duration-200 hover:text-violet-100 px-4 py-[6px] uppercase"
+                    >
+                      Delete
+                    </button>
                   </div>
                 </div>
               </div>
@@ -123,9 +121,52 @@ const page = () => {
           </div>
         </div>
 
+        {/* i pad */}
+
+        <div className="md:block hidden lg:hidden">
+          {Booksdatas.map((booksdata) => (
+            <div
+              key={booksdata._id}
+              className="bg-base-100 shadow-xl rounded mb-5 flex p-5"
+            >
+              <figure>
+                <img
+                  className="w-[43px] rounded"
+                  src={booksdata.image_url}
+                  alt="Movie"
+                />
+              </figure>
+              <div className="p-3 flex">
+                <h2 className="card-title w-36">{booksdata.title}</h2>
+                <p className="ml-20">{booksdata.added_date}</p>
+                <div className="flex ml-10">
+                  <button className="text-[13px]  rounded-md font-semibold bg-white text-violet-600 hover:bg-violet-600 duration-200 hover:text-violet-100 px-4 py-[6px] uppercase">
+                    <Link href={`/all-books/${booksdata._id}`}>
+                      view details
+                    </Link>
+                  </button>
+
+                  <button className="text-[13px] ml-2 rounded-md font-semibold bg-white text-violet-600 hover:bg-violet-600 duration-200 hover:text-violet-100 px-4 py-[6px] uppercase">
+                    <Link href={`/dashboard/allbooks/${booksdata._id}`}>
+                      update
+                    </Link>
+                  </button>
+
+                  <button
+                    onClick={() => handlerdelete(booksdata._id)}
+                    className="text-[13px] ml-2 rounded-md font-semibold bg-white text-violet-600 hover:bg-violet-600 duration-200 hover:text-violet-100 px-4 py-[6px] uppercase"
+                  >
+                    Delete
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
         {/* Phone responsive */}
 
-        <div className="md:hidden block">
+        <div className="md:hidden lg:hidden block">
           {Booksdatas.map((booksdata) => (
             <div
               key={booksdata._id}
