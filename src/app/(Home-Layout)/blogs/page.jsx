@@ -11,14 +11,15 @@ import { FaSearch } from "react-icons/fa";
 
 const Blogs = () => {
   const [allBlogs, setAllBlogs] = useState([]);
-  const [searchText, setSearchText] = useState("");
-  const totalBlogs = allBlogs.length;
-  console.log(totalBlogs)
+  console.log(allBlogs)
 
-  const [blogPerPage, setBlogPerPage] = useState(3);
+  const [searchText, setSearchText] = useState("");
+  const totalBlogs = allBlogs[1] && allBlogs[1] || 3
+
+  const [blogPerPage, setBlogPerPage] = useState(5);
   const totalPages = Math.ceil(totalBlogs / blogPerPage);
   const pageNumbers = [...Array(totalPages).keys()];
-  console.log(totalPages);
+  
   const [currentPage, setCurrentPage] = useState(0);
 
   const options = [5, 10, 20];
@@ -27,18 +28,16 @@ const Blogs = () => {
     setBlogPerPage(parseInt(event.target.value));
     setCurrentPage(0);
   };
+
   useEffect(() => {
-    fetch(`http://localhost:5000/allBlogs?page=${currentPage}&limit=${blogPerPage}`)
+    fetch(
+      `https://i-library-server-two.vercel.app/blogs?page=${currentPage}&limit=${blogPerPage}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setAllBlogs(data);
       });
   }, [currentPage, blogPerPage]);
-
-  const sl = [];
-  for (let i = 1; i <= allBlogs?.length; i++) {
-    sl.push(i);
-  }
 
   return (
     <section>
@@ -53,8 +52,7 @@ const Blogs = () => {
       <div className="container mx-auto">
         <div className="grid lg:grid-cols-6 gap-10">
           <div className="col-span-4">
-            {allBlogs
-              .filter((blog) => {
+            {allBlogs[0] && allBlogs[0].filter((blog) => {
                 if (searchText == "") {
                   return blog;
                 } else if (
@@ -164,7 +162,6 @@ const Blogs = () => {
             </div>
           </div>
           <div className="col-span-2 bg-white rounded-3xl px-6 shadow-2xl">
-            
             <div className="text-center">
               <label className="text-xl relative right-28 top-10 border-r py-3 pr-3 ">
                 Search
