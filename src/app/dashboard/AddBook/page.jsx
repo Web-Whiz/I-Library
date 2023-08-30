@@ -61,8 +61,8 @@ const AddBook = () => {
       number_of_pages,
       language,
       country,
-      ratings,
-      total_read,
+      // ratings,
+      // total_read,
       added_date,
       hard_copy,
       pdf,
@@ -83,8 +83,8 @@ const AddBook = () => {
       number_of_pages: parseFloat(number_of_pages),
       language,
       country,
-      ratings: parseFloat(ratings),
-      total_read: parseFloat(total_read),
+      // ratings: parseFloat(ratings),
+      // total_read: parseFloat(total_read),
       added_date,
       availability: { hard_copy, pdf, ebook },
       pdf_link: pdf_link,
@@ -110,10 +110,12 @@ const AddBook = () => {
 
   return (
     <div>
+      
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="bg-white md:p-20 p-3 rounded-md md:space-y-10  border-8 "
       >
+        <h1 className="text-center md:text-4xl text-2xl font-semibold md:-mt-5">Add Your Own Book</h1>
         {/* Slot 1 */}
         <ul className="md:flex md:space-x-8">
           <li>
@@ -246,7 +248,7 @@ const AddBook = () => {
         </ul>
 
         {/* Slot 6 */}
-        <ul className="md:flex md:space-x-8">
+        {/* <ul className="md:flex md:space-x-8">
           <li>
             <input
               {...register("ratings", { required: true })}
@@ -265,7 +267,7 @@ const AddBook = () => {
               required
             />
           </li>
-        </ul>
+        </ul> */}
 
         {/* Slot 7 */}
         <ul className="md:flex md:space-x-8">
@@ -323,7 +325,7 @@ const AddBook = () => {
             <input
               type="text"
               {...register("pdf_link")}
-              className="md:w-[1390px] p-2 outline-none border-2 rounded focus:border-indigo-500"
+              className="md:w-[1390px] w-full p-2 outline-none border-2 rounded focus:border-indigo-500"
               placeholder="Enter Your Pdf Link"
               required
             />

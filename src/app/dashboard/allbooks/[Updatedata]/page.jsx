@@ -1,10 +1,42 @@
 "use client";
+import { getBook } from "@/Utils/useBooks";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Toaster, toast } from "react-hot-toast";
 
 const Updatedatapage = ({ params }) => {
-  console.log(params.Updatedata);
+  // from put matod//////////////
+
+  const [title1, settitle1] = useState(false);
+
+  const [author1, setauthor1] = useState(false);
+
+  const [translator1, settranslator1] = useState(false);
+
+  const [publisher1, setpublisher1] = useState(false);
+
+  const [shelf1, setshelf1] = useState(false);
+
+  const [image_url1, setimage_url1] = useState(false);
+
+  const [edition1, setedition1] = useState(false);
+
+  const [published_in1, setpublished_in1] = useState(false);
+
+  const [category1, setcategory1] = useState(false);
+
+  const [number_of_pages1, setnumber_of_pages1] = useState(false);
+
+  const [language1, setlanguage1] = useState(false);
+
+  const [country1, setcountry1] = useState(false);
+
+  const [added_date1, setadded_date1] = useState(false);
+
+  const [pdf_link1, setpdf_link1] = useState(false);
+
+  ////////////////////////////////////////
+  const [booksdatas] = getBook(params.Updatedata);
 
   const [pdf, setpdf] = useState(false);
 
@@ -20,10 +52,15 @@ const Updatedatapage = ({ params }) => {
     reset,
   } = useForm();
 
-  const uploadImage = async (event) => {
+  const hendleimg = (e) => {
+    setimage_url1(e);
+  };
+
+  const uploadImage = async (data) => {
+    console.log(data);
     const formData = new FormData();
-    if (!event.target.files[0]) return;
-    formData.append("image", event.target.files[0]);
+    if (!data.target.files[0]) return;
+    formData.append("image", data.target.files[0]);
     const toastId = toast.loading("Image uploading...");
     try {
       const res = await fetch(
@@ -60,8 +97,8 @@ const Updatedatapage = ({ params }) => {
       number_of_pages,
       language,
       country,
-      ratings,
-      total_read,
+      // ratings,
+      // total_read,
       added_date,
       hard_copy,
       pdf,
@@ -70,28 +107,31 @@ const Updatedatapage = ({ params }) => {
     } = data;
 
     const maindata = {
-      title,
-      author,
-      translator: translator || null,
-      publisher,
-      shelf: parseFloat(shelf),
-      image_url: photo,
-      edition,
-      published_in: parseFloat(published_in),
-      category,
-      number_of_pages: parseFloat(number_of_pages),
-      language,
-      country,
-      ratings: parseFloat(ratings),
-      total_read: parseFloat(total_read),
-      added_date,
+      title: title1 ? title : booksdatas.title,
+      author: author1 ? author : booksdatas.author,
+      translator: translator1 ? translator : booksdatas.translator,
+      publisher: publisher1 ? publisher : booksdatas.publisher,
+      shelf: shelf1 ? shelf : booksdatas.shelf,
+      image_url: image_url1 ? photo : booksdatas.image_url,
+      edition: edition1 ? edition : booksdatas.edition,
+      published_in: published_in1 ? published_in : booksdatas.published_in,
+      category: category1 ? category : booksdatas.category,
+      number_of_pages: number_of_pages1
+        ? number_of_pages
+        : booksdatas.number_of_pages,
+      language: language1 ? language : booksdatas.language,
+      country: country1 ? country : booksdatas.country,
+      // ratings: parseFloat(ratings),
+      // total_read: parseFloat(total_read),
+      added_date: added_date1 ? added_date : booksdatas.added_date,
       availability: { hard_copy, pdf, ebook },
-      pdf_link: pdf_link,
+      pdf_link: pdf_link1 ? pdf_link : booksdatas.pdf_link,
     };
+
     console.log(maindata);
 
-    fetch(`http://localhost:5000/books/${params.Updatedata}`, {
-      method: "PUT",
+    fetch(`https://i-library-server-mu.vercel.app/books/${params.Updatedata}`, {
+      method: "PATCH",
       headers: {
         "content-type": "application/json",
       },
@@ -114,11 +154,16 @@ const Updatedatapage = ({ params }) => {
         onSubmit={handleSubmit(onSubmit)}
         className="bg-white md:p-20 p-3 rounded-md md:space-y-10  border-8 "
       >
+        <h1 className="text-center md:text-4xl text-2xl font-semibold md:-mt-5">
+          Update Book Information
+        </h1>
         {/* Slot 1 */}
         <ul className="md:flex md:space-x-8">
           <li>
             <input
               {...register("title")}
+              defaultValue={booksdatas.title}
+              onChange={(e) => settitle1(true)}
               className="md:w-[680px] w-full mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
               type="text"
               placeholder="Title"
@@ -127,6 +172,8 @@ const Updatedatapage = ({ params }) => {
           <li>
             <input
               {...register("author")}
+              onChange={(e) => setauthor1(true)}
+              defaultValue={booksdatas.author}
               className="md:w-[680px] w-full mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
               type="text"
               placeholder="Author"
@@ -139,6 +186,8 @@ const Updatedatapage = ({ params }) => {
           <li>
             <input
               {...register("translator")}
+              onChange={(e) => settranslator1(true)}
+              defaultValue={booksdatas.translator}
               className="md:w-[680px] w-full mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
               type="text"
               placeholder="Translator"
@@ -147,6 +196,8 @@ const Updatedatapage = ({ params }) => {
           <li>
             <input
               {...register("publisher")}
+              onChange={(e) => setpublisher1(true)}
+              defaultValue={booksdatas.publisher}
               className="md:w-[680px] w-full mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
               type="text"
               placeholder="Publisher"
@@ -159,6 +210,8 @@ const Updatedatapage = ({ params }) => {
           <li>
             <input
               {...register("shelf")}
+              onChange={(e) => setshelf1(true)}
+              defaultValue={booksdatas.shelf}
               className="md:w-[680px] w-full mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
               type="number"
               placeholder="Shelf"
@@ -167,6 +220,8 @@ const Updatedatapage = ({ params }) => {
           <li>
             <input
               onChange={uploadImage}
+              onClick={() => hendleimg(true)}
+              // defaultValue={booksdatas.image_url}
               className="md:w-[680px] w-full mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
               type="file"
               placeholder="image_url"
@@ -178,6 +233,8 @@ const Updatedatapage = ({ params }) => {
           <li>
             <input
               {...register("edition")}
+              onChange={(e) => setedition1(true)}
+              defaultValue={booksdatas.edition}
               className="md:w-[680px] w-full mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
               type="text"
               placeholder="Edition"
@@ -186,6 +243,8 @@ const Updatedatapage = ({ params }) => {
           <li>
             <input
               {...register("published_in")}
+              onChange={(e) => setpublished_in1(true)}
+              defaultValue={booksdatas.published_in}
               className="md:w-[680px] w-full mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
               type="text"
               placeholder="Published"
@@ -198,6 +257,8 @@ const Updatedatapage = ({ params }) => {
           <li>
             <input
               {...register("category")}
+              onChange={(e) => setcategory1(true)}
+              defaultValue={booksdatas.category}
               className="md:w-[680px] w-full mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
               type="text"
               placeholder="category"
@@ -206,6 +267,8 @@ const Updatedatapage = ({ params }) => {
           <li>
             <input
               {...register("number_of_pages")}
+              onChange={(e) => setnumber_of_pages1(true)}
+              defaultValue={booksdatas.number_of_pages}
               className="md:w-[680px] w-full mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
               type="text"
               placeholder="Number_of_Pages"
@@ -218,6 +281,8 @@ const Updatedatapage = ({ params }) => {
           <li>
             <input
               {...register("language")}
+              onChange={(e) => setlanguage1(true)}
+              defaultValue={booksdatas.language}
               className="md:w-[680px] w-full mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
               type="text"
               placeholder="Language"
@@ -226,6 +291,8 @@ const Updatedatapage = ({ params }) => {
           <li>
             <input
               {...register("country")}
+              onChange={(e) => setcountry1(true)}
+              defaultValue={booksdatas.country}
               className="md:w-[680px] w-full mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
               type="text"
               placeholder="Country"
@@ -234,7 +301,7 @@ const Updatedatapage = ({ params }) => {
         </ul>
 
         {/* Slot 6 */}
-        <ul className="md:flex md:space-x-8">
+        {/* <ul className="md:flex md:space-x-8">
           <li>
             <input
               {...register("ratings")}
@@ -251,13 +318,15 @@ const Updatedatapage = ({ params }) => {
               placeholder="Total_read"
             />
           </li>
-        </ul>
+        </ul> */}
 
         {/* Slot 7 */}
         <ul className="md:flex md:space-x-8">
           <li>
             <input
               {...register("added_date")}
+              onChange={(e) => setadded_date1(true)}
+              defaultValue={booksdatas.added_date}
               className="md:w-[1390px] w-full mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
               type="date"
               placeholder="added_date"
@@ -266,7 +335,7 @@ const Updatedatapage = ({ params }) => {
         </ul>
 
         {/* Slot 8 */}
-        <ul className="md:flex md:space-x-[440px]">
+        {/* <ul className="md:flex md:space-x-[440px]">
           <div className="form-control">
             <label className="cursor-pointer label">
               <span className="label-text md:text-3xl text-xl mr-4">
@@ -302,13 +371,14 @@ const Updatedatapage = ({ params }) => {
               />
             </label>
           </div>
-        </ul>
+        </ul> */}
         <div>
           {pdf === true ? (
             <input
               type="text"
               {...register("pdf_link")}
-              className="md:w-[1390px] p-2 outline-none border-2 rounded focus:border-indigo-500"
+              defaultValue={booksdatas.pdf_link}
+              className="md:w-[1390px] w-full p-2 outline-none border-2 rounded focus:border-indigo-500"
               placeholder="Enter Your Pdf Link"
             />
           ) : (
