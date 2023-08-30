@@ -55,68 +55,68 @@ const page = () => {
     <div>
       <div>
         <div className="form-control">
-          <div className="flex">
+          <div className="flex md:ml-48">
             <input
               type="text"
               onChange={(e) => setsesrch(e.target.value)}
               placeholder="Enter title of books Search… "
-              className="w-full md:w-[530px] h-12 rounded"
+              className="w-full md:w-[530px] h-12 rounded border-2 border-b-blue-600"
             />
             <button
-              className="hover:bg-indigo-500 text-indigo-500 outline-none focus:border-2 hover:text-white bg-indigo-100 "
+              className="bg-indigo-700 text-white outline-none p-2 "
               onClick={Handlersearch}
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-12 w-12"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                />
-              </svg>
+              Search...
             </button>
           </div>
         </div>
       </div>
       <div>
         <div className="overflow-x-auto md:block hidden">
-          <div className="bg-white">
+          <div>
+            <div className="flex w-[1240px] ml-[190px] bg-white mt-5 border-2 p-2">
+              <p className="ml-6">Photo</p>
+              <p className="ml-[110px]">Title</p>
+              <p className="ml-[250px]">Date</p>
+              <p className="ml-[100px]">Publish</p>
+              <p className="ml-[180px]">Detail</p>
+              <p className="ml-[80px]">Update</p>
+              <p className="ml-[70px]">Delete</p>
+            </div>
             {Booksdatas.map((booksdata) => (
-              <div key={booksdata._id} className="flex space-x-96 border-2 mt-2  ml-10 mr-10 p-7 rounded ">
-                <div className="flex space-x-4">
-                  <img className="w-12 h-12 rounded-md" src={booksdata.image_url} alt="hello" />
-                  <h1 className="overflow-hidden w-40">{booksdata.title}</h1>
-                </div>
-                <div className="flex items-center  space-x-28">
-                  <h1>{booksdata.added_date}</h1>
-                  <h1>{booksdata.published_in}</h1>
-                  
-                </div>
-                <div className="flex">
-                  <button className="text-[15px] rounded-md font-semibold bg-violet-100 text-violet-600 hover:bg-violet-600 duration-200 hover:text-violet-100 px-2 py-[6px] uppercase">
-                    <Link href={`/all-books/${booksdata._id}`}>
-                      view details
-                    </Link>
-                  </button>
-
-                  <button className="text-[15px] ml-2 rounded-md font-semibold bg-violet-100 text-violet-600 hover:bg-violet-600 duration-200 hover:text-violet-100 px-4 py-[6px] uppercase">
-                    <Link href={`/dashboard/allbooks/${booksdata._id}`}>
-                      update
-                    </Link>
-                  </button>
-
-                  <button
+              <div
+                key={booksdata._id}
+                className="flex rounded mt-7 bg-blue-300 w-[1240px] ml-48 shadow-md"
+              >
+                <div className="flex items-center p-5 space-x-3">
+                  <img
+                    className="w-24 h-24 rounded-md"
+                    src={booksdata.image_url}
+                    alt=""
+                  />
+                  <h1 className="w-56">{booksdata.title}</h1>
+                  <div className="flex space-x-20">
+                    <p className="ml-[80px]">{booksdata.added_date}</p>
+                    <p>{booksdata.published_in}</p>
+                  </div>
+                  <div className="flex space-x-10">
+                    <button className="ml-[170px] text-[13px]  rounded-md font-semibold bg-white text-violet-600 hover:bg-violet-600 duration-200 hover:text-violet-100 p-2 uppercase">
+                      <Link href={`/all-books/${booksdata._id}`}>
+                         details
+                      </Link>
+                    </button>
+                    <button className="text-[13px] ml-2 rounded-md font-semibold bg-white text-violet-600 hover:bg-violet-600 duration-200 hover:text-violet-100 px-4 py-[6px] uppercase">
+                      <Link href={`/dashboard/allbooks/${booksdata._id}`}>
+                        update
+                      </Link>
+                    </button>
+                    <button
                     onClick={() => handlerdelete(booksdata._id)}
-                    className="text-[15px] ml-2 rounded-md font-semibold bg-violet-100 text-violet-600 hover:bg-violet-600 duration-200 hover:text-violet-100 px-4 py-[6px] uppercase"
+                    className="text-[13px] ml-2 rounded-md font-semibold bg-white text-violet-600 hover:bg-violet-600 duration-200 hover:text-violet-100 px-4 py-[6px] uppercase"
                   >
                     Delete
                   </button>
+                  </div>
                 </div>
               </div>
             ))}
@@ -142,13 +142,13 @@ const page = () => {
                 <h2 className="card-title">{booksdata.title}</h2>
                 <p>{booksdata.added_date}</p>
                 <div className="flex">
-                  <button className="text-[15px] mt-2 rounded-md font-semibold bg-violet-100 text-violet-600 hover:bg-violet-600 duration-200 hover:text-violet-100 px-4 py-[6px] uppercase">
+                  <button className="text-[13px]  rounded-md font-semibold bg-white text-violet-600 hover:bg-violet-600 duration-200 hover:text-violet-100 px-4 py-[6px] uppercase">
                     <Link href={`/all-books/${booksdata._id}`}>
                       view details
                     </Link>
                   </button>
 
-                  <button className="text-[15px] ml-2 rounded-md font-semibold bg-violet-100 text-violet-600 hover:bg-violet-600 duration-200 hover:text-violet-100 px-4 py-[6px] uppercase">
+                  <button className="text-[13px] ml-2 rounded-md font-semibold bg-white text-violet-600 hover:bg-violet-600 duration-200 hover:text-violet-100 px-4 py-[6px] uppercase">
                     <Link href={`/dashboard/allbooks/${booksdata._id}`}>
                       update
                     </Link>
@@ -156,7 +156,7 @@ const page = () => {
 
                   <button
                     onClick={() => handlerdelete(booksdata._id)}
-                    className="text-[15px] ml-2 rounded-md font-semibold bg-violet-100 text-violet-600 hover:bg-violet-600 duration-200 hover:text-violet-100 px-4 py-[6px] uppercase"
+                    className="text-[13px] ml-2 rounded-md font-semibold bg-white text-violet-600 hover:bg-violet-600 duration-200 hover:text-violet-100 px-4 py-[6px] uppercase"
                   >
                     Delete
                   </button>
