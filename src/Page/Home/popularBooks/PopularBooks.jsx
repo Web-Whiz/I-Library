@@ -163,7 +163,7 @@ const PopularBooks = () => {
   const {data: popularBooks=[], refetch} = useQuery({
     queryKey: ['popularBooks'],
     queryFn: async() => {
-        const res = await fetch(`http://localhost:5000/popular-books`)
+        const res = await fetch(`https://i-library-server-seven.vercel.app/popular-books`)
         return res.json();
     }
 })

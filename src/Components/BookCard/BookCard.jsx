@@ -1,12 +1,12 @@
-'use client'
+"use client";
 import useAuth from "@/Utils/useAuth";
 import useCart from "@/Utils/useCart";
 import React from "react";
 import Swal from "sweetalert2";
 
 const BookCard = ({ book }) => {
-  const {user,loading} = useAuth()
-  const [carts, refetch] = useCart()
+  const { user, loading } = useAuth();
+  const [carts, refetch] = useCart();
 
   const handleAddToCart = (book) => {
     if (!user) {
@@ -20,10 +20,21 @@ const BookCard = ({ book }) => {
       return
     }
 
+    if(carts?.length === 3){
+      Swal.fire({
+        position: 'center',
+        icon: 'warning',
+        title: 'You can add only 3 books',
+        showConfirmButton: false,
+        timer: 1500
+      })
+      return
+    }
+
     const { image_url, title, author, _id } = book
     const cartItem = { title, author, bookId: _id, image_url, userEmail: user?.email }
 
-    fetch('http://localhost:5000/carts', {
+    fetch('https://i-library-server-seven.vercel.app/carts', {
       method: 'POST',
       headers: {
         'content-type': 'application/json'
@@ -45,7 +56,7 @@ const BookCard = ({ book }) => {
         }
         if(data.message){
           // todo: have to add swal
-          
+
           Swal.fire({
             position: 'center',
             icon: 'success',
@@ -57,58 +68,57 @@ const BookCard = ({ book }) => {
       })
 
   }
-
 
   const handleAddToWishList = (book) => {
-
-
     if (!user) {
       Swal.fire({
-        position: 'center',
-        icon: 'success',
-        title: 'Login first',
+        position: "center",
+        icon: "success",
+        title: "Login first",
         showConfirmButton: false,
-        timer: 1500
-      })
-      return
+        timer: 1500,
+      });
+      return;
     }
 
-    const { image_url, title, author, _id } = book
-    const wishLIstItem = { title, author, bookId: _id, image_url, userEmail: user?.email }
+    const { image_url, title, author, _id } = book;
+    const wishLIstItem = {
+      title,
+      author,
+      bookId: _id,
+      image_url,
+      userEmail: user?.email,
+    };
 
-    fetch('http://localhost:5000/wish-list', {
-      method: 'POST',
+    fetch("https://i-library-server-seven.vercel.app/wish-list", {
+      method: "POST",
       headers: {
-        'content-type': 'application/json'
+        "content-type": "application/json",
       },
-      body: JSON.stringify(wishLIstItem)
+      body: JSON.stringify(wishLIstItem),
     })
-      .then(res => res.json())
+      .then((res) => res.json())
       .then((data) => {
-        if(data.insertedId){
-          
+        if (data.insertedId) {
           Swal.fire({
-            position: 'center',
-            icon: 'success',
-            title: 'Added to wish list',
+            position: "center",
+            icon: "success",
+            title: "Added to wish list",
             showConfirmButton: false,
-            timer: 1500
-          })
+            timer: 1500,
+          });
         }
-        if(data.message){
-          // todo: have to add swal
+        if (data.message) {
           Swal.fire({
-            position: 'center',
-            icon: 'success',
+            position: "center",
+            icon: "success",
             title: `${data.message}`,
             showConfirmButton: false,
-            timer: 1500
-          })
+            timer: 1500,
+          });
         }
-      })
-
-  }
-  // const {bookName, bookImg, authorName, shelfNo, rating, borrowPrice} = book;
+      });
+  };
 
   return (
     // <div className='flex items-center justify-center'>
@@ -136,12 +146,18 @@ const BookCard = ({ book }) => {
           />
           <div className="absolute z-0 top-0 left-0 -translate-y-full group-hover:-translate-y-0  duration-200 w-full h-full backdrop-blur-md bg-black/60 bg-opacity-30 flex justify-center items-center">
             <div className="flex flex-col items-center gap-1">
-            <button onClick={()=>handleAddToCart(book)} className="text-white text-sm w-full hover:bg-indigo-700 duration-200 border-[1px] border-white rounded-full px-4 py-[2px]">
-              Add to bag
-            </button>
-            <button onClick={()=>handleAddToWishList(book)} className="text-white text-sm w-full hover:bg-indigo-700 duration-200 border-[1px] border-white rounded-full px-4 py-[2px]">
-              Add to wish list
-            </button>
+              <button
+                onClick={() => handleAddToCart(book, user, carts, refetch)}
+                className="text-white text-sm w-full hover:bg-indigo-700 duration-200 border-[1px] border-white rounded-full px-4 py-[2px]"
+              >
+                Add to bag
+              </button>
+              <button
+                onClick={() => handleAddToWishList(book,user)}
+                className="text-white text-sm w-full hover:bg-indigo-700 duration-200 border-[1px] border-white rounded-full px-4 py-[2px]"
+              >
+                Add to wish list
+              </button>
             </div>
           </div>
         </div>
