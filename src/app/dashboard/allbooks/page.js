@@ -60,10 +60,10 @@ const page = () => {
               type="text"
               onChange={(e) => setsesrch(e.target.value)}
               placeholder="Enter title of books Search… "
-              className="w-full md:w-[530px] h-12 rounded border-2 border-b-blue-600"
+              className="w-full md:w-[530px] h-12 rounded border-2 border-b-blue-600 p-4 mb-5 md:mb-2 mt-5"
             />
             <button
-              className="bg-indigo-700 text-white outline-none p-2 "
+              className="bg-indigo-700 text-white outline-none px-2 mb-5 md:mb-2 mt-5"
               onClick={Handlersearch}
             >
               Search...
@@ -174,7 +174,7 @@ const page = () => {
             >
               <figure>
                 <img
-                  className="w-[343px]"
+                  className="w-[343px] h-[300px]"
                   src={booksdata.image_url}
                   alt="Movie"
                 />
