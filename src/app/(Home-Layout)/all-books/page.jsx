@@ -1,65 +1,39 @@
-"use client"
+"use client";
 import banner from "@/assets/banner01.jpg";
 import AllBookCard from "@/Components/AllBookCard/AllBookCard";
 import { FaFilter } from "react-icons/fa";
 import PageBanner from "@/Components/PageBanner/PageBanner";
-import { getBooks } from "@/Utils/useBooks";
+import {
+  getBookAuthor,
+  getBookCategory,
+  getBookPublisher,
+  getBooks,
+  getCategoryFilteredBook,
+} from "@/Utils/useBooks";
+import { useEffect, useState } from "react";
 const AllBooks = () => {
-  const categories = [
-    {
-      id: 1,
-      category_name: "Fiction",
-    },
-    {
-      id: 3,
-      category_name: "Fantasy",
-    },
-    {
-      id: 4,
-      category_name: "Mystery",
-    },
-    {
-      id: 5,
-      category_name: "Thriller",
-    },
-    {
-      id: 6,
-      category_name: "Romance",
-    },
-
-    {
-      id: 8,
-      category_name: "Horror",
-    },
-    {
-      id: 9,
-      category_name: "Adventure",
-    },
-
-    {
-      id: 10,
-      category_name: "Kid's Books",
-    },
-
-    {
-      id: 11,
-      category_name: "Biography",
-    },
-
-    {
-      id: 12,
-      category_name: "Science",
-    },
-    {
-      id: 13,
-      category_name: "History",
-    },
-    {
-      id: 14,
-      category_name: "Philosophy",
-    },
-  ];
+  const [categories] = getBookCategory();
+  const [authors] = getBookAuthor();
+  const [publishers] = getBookPublisher();
   const [allBooks] = getBooks();
+  const [books, setBooks] = useState(null);
+  let filterCategory = [];
+  const [categoryFilteredBook, refetch] =
+    getCategoryFilteredBook(filterCategory);
+
+  const handleFilterByCategory = (categoryName) => {
+    if (filterCategory.includes(categoryName)) {
+      filterCategory = filterCategory.filter(
+        (category) => category !== categoryName
+      );
+    } else {
+      filterCategory.push(categoryName);
+    }
+    refetch();
+    console.log(filterCategory);
+    console.log(categoryFilteredBook);
+  };
+
   return (
     <div>
       <div>
@@ -69,48 +43,87 @@ const AllBooks = () => {
         <div className="col-span-3 hidden lg:block">
           <div className="bg-white w-full h-fit p-4">
             <h2 className="text-lg font-semibold">Category:</h2>
-            {categories.map((category) => {
-              return (
-                <div
-                  key={category.id}
-                  className="flex justify-between ml-4 my-2"
-                >
-                  <h2 className="hover:text-indigo-600 duration-200 cursor-pointer">
-                    {category?.category_name}
-                  </h2>
-                  <h3 className="text-gray-400">(205)</h3>
-                </div>
-              );
-            })}
+            {categories.length >= 12 &&
+              categories.slice(4, 16).map((category) => {
+                return (
+                  <div
+                    key={category.category}
+                    className="flex justify-between ml-4 my-2"
+                  >
+                    <div className="flex items-center gap-2">
+                      <input
+                        type="checkbox"
+                        onChange={() =>
+                          handleFilterByCategory(category.category)
+                        }
+                        id={category.category}
+                        name="categoryFilter"
+                      />
+                      <label
+                        htmlFor={category.category}
+                        className="hover:text-indigo-600 duration-200 cursor-pointer"
+                      >
+                        {category.category}
+                      </label>
+                    </div>
+                    <h3 className="text-gray-400">({category.count})</h3>
+                  </div>
+                );
+              })}
+            {categories.length >= 10 && (
+              <div className="w-full text-right">
+                <button className="text-indigo-700">see more</button>
+              </div>
+            )}
           </div>
           <div className="bg-white w-full h-fit my-5 p-4">
             <h2 className="text-lg font-semibold">Author:</h2>
-            {categories.map((category) => {
+            {authors.map((author) => {
               return (
                 <div
-                  key={category.id}
+                  key={author.author}
                   className="flex justify-between ml-4 my-2"
                 >
-                  <h2 className="hover:text-indigo-600 duration-200 cursor-pointer">
-                    {category?.category_name}
-                  </h2>
-                  <h3 className="text-gray-400">(205)</h3>
+                  <div className="flex items-center gap-2">
+                    <input
+                      type="checkbox"
+                      id={author.author}
+                      name="categoryFilter"
+                    />
+                    <label
+                      htmlFor={author.author}
+                      className="hover:text-indigo-600 duration-200 cursor-pointer"
+                    >
+                      {author.author}
+                    </label>
+                  </div>
+                  <h3 className="text-gray-400">({author.count})</h3>
                 </div>
               );
             })}
           </div>
           <div className="bg-white w-full h-fit p-4">
             <h2 className="text-lg font-semibold">Publisher:</h2>
-            {categories.map((category) => {
+            {publishers.map((publisher) => {
               return (
                 <div
-                  key={category.id}
+                  key={publisher.publisher}
                   className="flex justify-between ml-4 my-2"
                 >
-                  <h2 className="hover:text-indigo-600 duration-200 cursor-pointer">
-                    {category?.category_name}
-                  </h2>
-                  <h3 className="text-gray-400">(205)</h3>
+                  <div className="flex items-center gap-2">
+                    <input
+                      type="checkbox"
+                      id={publisher.publisher}
+                      name="categoryFilter"
+                    />
+                    <label
+                      htmlFor={publisher.publisher}
+                      className="hover:text-indigo-600 duration-200 cursor-pointer"
+                    >
+                      {publisher.publisher}
+                    </label>
+                  </div>
+                  <h3 className="text-gray-400">({publisher.count})</h3>
                 </div>
               );
             })}
@@ -141,9 +154,13 @@ const AllBooks = () => {
               </select>
             </div>
           </div>
-          {allBooks.map((book) => {
-            return <AllBookCard key={book._id} book={book} />;
-          })}
+          {books
+            ? books.map((book) => {
+                return <AllBookCard key={book._id} book={book} />;
+              })
+            : allBooks.map((book) => {
+                return <AllBookCard key={book._id} book={book} />;
+              })}
         </div>
       </div>
 

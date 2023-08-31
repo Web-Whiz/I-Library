@@ -1,14 +1,26 @@
 "use client";
-import React, { useState } from "react";
+import Modal from "@/Components/Modal/Modal";
+import QAModal from "@/Components/QAModal/QAModal";
+import useAuth from "@/Utils/useAuth";
+import { getBook } from "@/Utils/useBooks";
+import useQA from "@/Utils/useQA";
+import useReviewsAndRatings from "@/Utils/useReviewsAndRatings";
 import bookImg from "@/assets/book1.png";
 import Image from "next/image";
-import Rating from "react-rating";
+import { useState } from "react";
 import { BsStar, BsStarFill } from "react-icons/bs";
 import { PiSealCheckFill } from "react-icons/pi";
-import { getBook } from "@/Utils/useBooks";
+import Rating from "react-rating";
+
 const Book = ({ params }) => {
   const [book] = getBook(params.id);
+  // console.log(book);
+  const { user } = useAuth();
   const [showPdf, setShowPdf] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [showQAModal, setShowQAModal] = useState(false);
+  const [reviews] = useReviewsAndRatings();
+  const [qas] = useQA();
 
   const togglePdfViewer = () => {
     setShowPdf(true);
@@ -93,6 +105,7 @@ const Book = ({ params }) => {
                   Read PDF
                 </button>
                 {/* pdf components */}
+                {/* <Document></Document> */}
                 {/* pdf components */}
 
                 <button className="px-3 py-2 bg-violet-600 text-violet-100 hover:bg-violet-100 hover:text-violet-600 duration-200">
@@ -353,9 +366,21 @@ const Book = ({ params }) => {
                     fractions={4}
                   />
                 </div>
-                <button className="px-3 rounded-sm py-2 bg-violet-100 text-violet-700 hover:text-violet-100 hover:bg-violet-700 duration-200 text-[15px]">
+                <button
+                  className="px-3 rounded-sm py-2 bg-violet-100 text-violet-700 hover:text-violet-100 hover:bg-violet-700 duration-200 text-[15px]"
+                  onClick={() => setShowModal(true)}
+                >
                   Write a review
                 </button>
+                {showModal ? (
+                  <Modal
+                    showModal={showModal}
+                    setShowModal={setShowModal}
+                    bookImg={book.image_url}
+                    bookTitle={book.title}
+                    bookId={book._id}
+                  ></Modal>
+                ) : null}
               </div>
               <div>
                 <h2 className="text-4xl font-bold">4.46</h2>
@@ -377,229 +402,99 @@ const Book = ({ params }) => {
               </div>
             </div>
             <div>
-              <div className="my-5">
-                <div className="flex items-center gap-5">
-                  <img
-                    className="h-16 w-16 rounded-full"
-                    src="../../favicon.ico"
-                  />
-                  <div>
-                    <p>
-                      By Hamim,
-                      <span className="text-gray-500">20 Aug 2023</span>
-                    </p>
-                    <Rating
-                      placeholderRating={4.46}
-                      className="space-x-1 md:space-x-3"
-                      readonly
-                      emptySymbol={
-                        <BsStar className="text-lg md:text-2xl text-[#FF9900]" />
-                      }
-                      placeholderSymbol={
-                        <BsStarFill className="text-[#FF9900] text-lg md:text-2xl" />
-                      }
-                      fullSymbol={
-                        <BsStarFill className="text-[#FF9900] text-lg md:text-2xl" />
-                      }
+              {reviews.map((review) => (
+                <div key={review._id} className="my-5">
+                  <div className="flex items-center gap-5">
+                    <img
+                      className="h-16 w-16 rounded-full"
+                      src={user?.photoURL}
+                      alt={user?.displayName}
                     />
+                    <div>
+                      <p>
+                        By {review?.username},{" "}
+                        <span className="text-gray-500">{review?.date}</span>
+                      </p>
+
+                      <Rating
+                        // value={review?.rating}
+                        initialRating={review?.rating}
+                        // placeholderRating={4.46}
+                        className="space-x-1 md:space-x-3"
+                        readonly
+                        emptySymbol={
+                          <BsStar className="text-lg md:text-2xl text-[#FF9900]" />
+                        }
+                        placeholderSymbol={
+                          <BsStarFill className="text-[#FF9900] text-lg md:text-2xl" />
+                        }
+                        fullSymbol={
+                          <BsStarFill className="text-[#FF9900] text-lg md:text-2xl" />
+                        }
+                      />
+                    </div>
                   </div>
+                  <p className="my-5 text-justify md:text-start">
+                    {review?.review}
+                  </p>
+                  <hr className="mb-5" />
                 </div>
-                <p className="my-5 text-justify md:text-start">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas
-                  excepturi commodi eos! Laborum libero amet quod laboriosam
-                  tenetur animi ducimus quidem, similique dolorem recusandae!
-                  Consequuntur mollitia quidem numquam quisquam recusandae!
-                </p>
-                <hr className="mb-5" />
-              </div>
-              <div className="my-5">
-                <div className="flex items-center gap-5">
-                  <img
-                    className="h-16 w-16 rounded-full"
-                    src="../../favicon.ico"
-                  />
-                  <div>
-                    <p>
-                      By Hamim,
-                      <span className="text-gray-500">20 Aug 2023</span>
-                    </p>
-                    <Rating
-                      placeholderRating={4.46}
-                      className="space-x-1 md:space-x-3"
-                      readonly
-                      emptySymbol={
-                        <BsStar className="text-lg md:text-2xl text-[#FF9900]" />
-                      }
-                      placeholderSymbol={
-                        <BsStarFill className="text-[#FF9900] text-lg md:text-2xl" />
-                      }
-                      fullSymbol={
-                        <BsStarFill className="text-[#FF9900] text-lg md:text-2xl" />
-                      }
-                    />
-                  </div>
-                </div>
-                <p className="my-5 text-justify md:text-start">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas
-                  excepturi commodi eos! Laborum libero amet quod laboriosam
-                  tenetur animi ducimus quidem, similique dolorem recusandae!
-                  Consequuntur mollitia quidem numquam quisquam recusandae!
-                </p>
-                <hr className="mb-5" />
-              </div>
-              <div className="my-5">
-                <div className="flex items-center gap-5">
-                  <img
-                    className="h-16 w-16 rounded-full"
-                    src="../../favicon.ico"
-                  />
-                  <div>
-                    <p>
-                      By Hamim,
-                      <span className="text-gray-500">20 Aug 2023</span>
-                    </p>
-                    <Rating
-                      placeholderRating={4.46}
-                      className="space-x-1 md:space-x-3"
-                      readonly
-                      emptySymbol={
-                        <BsStar className="text-lg md:text-2xl text-[#FF9900]" />
-                      }
-                      placeholderSymbol={
-                        <BsStarFill className="text-[#FF9900] text-lg md:text-2xl" />
-                      }
-                      fullSymbol={
-                        <BsStarFill className="text-[#FF9900] text-lg md:text-2xl" />
-                      }
-                    />
-                  </div>
-                </div>
-                <p className="my-5 text-justify md:text-start">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas
-                  excepturi commodi eos! Laborum libero amet quod laboriosam
-                  tenetur animi ducimus quidem, similique dolorem recusandae!
-                  Consequuntur mollitia quidem numquam quisquam recusandae!
-                </p>
-                <hr className="mb-5" />
-              </div>
+              ))}
             </div>
           </div>
           {/* reviews and ratings */}
+
           {/* Ask a question */}
           <div className="my-5 mt-10">
             <div className="flex flex-col md:flex-row justify-between md:items-center gap-4 pb-6 border-b-[1px] border-gray-100">
               <div>
                 <h2 className="text-2xl font-bold">Book Q/A</h2>
-                <h3>Have a question regarding the product?</h3>
-                <h4>Ask Us Ask a Question</h4>
+                <h3>Have a question regarding the book?</h3>
+                <h4>Ask a Question</h4>
               </div>
               <div>
-                <button className="px-3 rounded-sm py-2 bg-violet-100 text-violet-700 hover:text-violet-100 hover:bg-violet-700 duration-200 text-[15px]">
+                <button
+                  className="px-3 rounded-sm py-2 bg-violet-100 text-violet-700 hover:text-violet-100 hover:bg-violet-700 duration-200 text-[15px]"
+                  onClick={() => setShowQAModal(true)}
+                >
                   Ask a question
                 </button>
+                {showQAModal ? (
+                  <QAModal
+                    showQAModal={showQAModal}
+                    setShowQAModal={setShowQAModal}
+                    bookImg={book.image_url}
+                    bookTitle={book.title}
+                    bookId={book._id}
+                  ></QAModal>
+                ) : null}
               </div>
             </div>
             <div className="mt-5">
-              <ul className="list-none py-4 border-b-[1px] border-gray-100">
-                <li>
-                  <span className="text-lg font-semibold">Question:</span>
-                  <span> Can you please describe the book topic?</span>
-                  <span className="text-neutral-400"> Questioned by</span>
-                  <span className="font-semibold"> Hamim</span>
-                  <span className="text-neutral-400"> on 20 Aug 2023</span>
-                </li>
-                <li className="ml-2 md:ml-6 mt-2">
-                  <span className="text-lg font-semibold">Answer:</span>
-                  <span>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Maxime nemo ea similique culpa odio labore officiis
-                    doloremque magni omnis aut.
-                  </span>
-                  <span className="text-neutral-400"> Answered by</span>
-                  <span className="font-semibold"> Hamim</span>
-                  <span className="text-neutral-400"> on 20 Aug 2023</span>
-                </li>
-              </ul>
-              <ul className="list-none py-4 border-b-[1px] border-gray-100">
-                <li>
-                  <span className="text-lg font-semibold">Question:</span>
-                  <span> Can you please describe the book topic?</span>
-                  <span className="text-neutral-400"> Questioned by</span>
-                  <span className="font-semibold"> Hamim</span>
-                  <span className="text-neutral-400"> on 20 Aug 2023</span>
-                </li>
-                <li className="ml-2 md:ml-6 mt-2">
-                  <span className="text-lg font-semibold">Answer:</span>
-                  <span>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Maxime nemo ea similique culpa odio labore officiis
-                    doloremque magni omnis aut.
-                  </span>
-                  <span className="text-neutral-400"> Answered by</span>
-                  <span className="font-semibold"> Hamim</span>
-                  <span className="text-neutral-400"> on 20 Aug 2023</span>
-                </li>
-              </ul>
-              <ul className="list-none py-4 border-b-[1px] border-gray-100">
-                <li>
-                  <span className="text-lg font-semibold">Question:</span>
-                  <span> Can you please describe the book topic?</span>
-                  <span className="text-neutral-400"> Question by</span>
-                  <span className="font-semibold"> Hamim</span>
-                  <span className="text-neutral-400"> on 20 Aug 2023</span>
-                </li>
-                <li className="ml-2 md:ml-6 mt-2">
-                  <span className="text-lg font-semibold">Answer:</span>
-                  <span>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Maxime nemo ea similique culpa odio labore officiis
-                    doloremque magni omnis aut.
-                  </span>
-                  <span className="text-neutral-400"> Question by</span>
-                  <span className="font-semibold"> Hamim</span>
-                  <span className="text-neutral-400"> on 20 Aug 2023</span>
-                </li>
-              </ul>
-              <ul className="list-none py-4 border-b-[1px] border-gray-100">
-                <li>
-                  <span className="text-lg font-semibold">Question:</span>
-                  <span> Can you please describe the book topic?</span>
-                  <span className="text-neutral-400"> Question by</span>
-                  <span className="font-semibold"> Hamim</span>
-                  <span className="text-neutral-400"> on 20 Aug 2023</span>
-                </li>
-                <li className="ml-2 md:ml-6 mt-2">
-                  <span className="text-lg font-semibold">Answer:</span>
-                  <span>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Maxime nemo ea similique culpa odio labore officiis
-                    doloremque magni omnis aut.
-                  </span>
-                  <span className="text-neutral-400"> Question by</span>
-                  <span className="font-semibold"> Hamim</span>
-                  <span className="text-neutral-400"> on 20 Aug 2023</span>
-                </li>
-              </ul>
-              <ul className="list-none py-4 border-b-[1px] border-gray-100">
-                <li>
-                  <span className="text-lg font-semibold">Question:</span>
-                  <span> Can you please describe the book topic?</span>
-                  <span className="text-neutral-400"> Question by</span>
-                  <span className="font-semibold"> Hamim</span>
-                  <span className="text-neutral-400"> on 20 Aug 2023</span>
-                </li>
-                <li className="ml-2 md:ml-6 mt-2">
-                  <span className="text-lg font-semibold">Answer:</span>
-                  <span>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Maxime nemo ea similique culpa odio labore officiis
-                    doloremque magni omnis aut.
-                  </span>
-                  <span className="text-neutral-400"> Question by</span>
-                  <span className="font-semibold"> Hamim</span>
-                  <span className="text-neutral-400"> on 20 Aug 2023</span>
-                </li>
-              </ul>
+              {qas.map((qa) => (
+                <ul
+                  key={qa._id}
+                  className="list-none py-4 border-b-[1px] border-gray-100"
+                >
+                  <li>
+                    <span className="text-lg font-semibold">Question: </span>
+                    <span> {qa?.question}</span>
+                    <span className="text-neutral-400"> Questioned by</span>
+                    <span className="font-semibold"> {qa?.username}</span>
+                    <span className="text-neutral-400"> {qa?.date}</span>
+                  </li>
+                  <li className="ml-2 md:ml-6 mt-2">
+                    <span className="text-lg font-semibold">Answer: </span>
+                    <span> {qa?.answer}</span>
+                    <span className="text-neutral-400"> Answered by</span>
+                    <span className="font-semibold"> {qa["answered-by"]}</span>
+                    <span className="text-neutral-400">
+                      {" "}
+                      {qa["answered-date"]}
+                    </span>
+                  </li>
+                </ul>
+              ))}
             </div>
           </div>
           {/* Ask a question */}
