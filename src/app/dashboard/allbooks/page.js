@@ -72,7 +72,7 @@ const page = () => {
         </div>
       </div>
       <div>
-        <div className="overflow-x-auto md:hidden lg:block hidden">
+        <div className="md:hidden lg:block hidden">
           <div>
             <div className="flex w-[1240px] ml-[190px] bg-white mt-5 border-2 p-2">
               <p className="ml-6">Photo</p>
@@ -86,7 +86,7 @@ const page = () => {
             {Booksdatas.map((booksdata) => (
               <div
                 key={booksdata._id}
-                className="flex rounded mt-7 bg-blue-300 w-[1240px] ml-48 shadow-md"
+                className="flex rounded mt-7 bg-blue-300 lg:w-[1240px] ml-48 shadow-md"
               >
                 <div className="flex items-center p-5 space-x-3">
                   <img
@@ -166,11 +166,11 @@ const page = () => {
 
         {/* Phone responsive */}
 
-        <div className="md:hidden lg:hidden block">
+        <div className="md:hidden lg:hidden block sm:grid sm:grid-cols-2 sm:ml-5  ml-4 w-[328px] sm:w-full">
           {Booksdatas.map((booksdata) => (
             <div
               key={booksdata._id}
-              className="bg-base-100 shadow-xl rounded mb-5"
+              className="shadow-xl rounded mb-5 "
             >
               <figure>
                 <img
