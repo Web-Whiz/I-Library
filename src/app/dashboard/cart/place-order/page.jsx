@@ -8,7 +8,7 @@ const PlaceOrder = () => {
         bookName: 'Life is beautiful'
     }
     const handlePay = () => {
-        fetch('https://i-library-server-seven.vercel.app/order', {
+        fetch(`${process.env.NEXT_PUBLIC_BaseURL}/order`, {
             method: 'Post',
             headers: {
               'content-type': 'application/json'
