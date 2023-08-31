@@ -10,29 +10,28 @@ import {
   getBooks,
   getCategoryFilteredBook,
 } from "@/Utils/useBooks";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 const AllBooks = () => {
   const [categories] = getBookCategory();
   const [authors] = getBookAuthor();
   const [publishers] = getBookPublisher();
   const [allBooks] = getBooks();
   const [books, setBooks] = useState(null);
-  let filterCategory = [];
+  const [filterCategory, setFilterCategory] = useState([]);
   const [categoryFilteredBook, refetch] =
     getCategoryFilteredBook(filterCategory);
 
   const handleFilterByCategory = (categoryName) => {
     if (filterCategory.includes(categoryName)) {
-      filterCategory = filterCategory.filter(
+      const updatedCategoryFilter = filterCategory.filter(
         (category) => category !== categoryName
       );
+      setFilterCategory(updatedCategoryFilter);
     } else {
-      filterCategory.push(categoryName);
+      setFilterCategory([...filterCategory, categoryName]);
     }
-    refetch();
-    console.log(filterCategory);
-    console.log(categoryFilteredBook);
   };
+  refetch();
 
   return (
     <div>
@@ -154,8 +153,8 @@ const AllBooks = () => {
               </select>
             </div>
           </div>
-          {books
-            ? books.map((book) => {
+          {categoryFilteredBook.length >= 1
+            ? categoryFilteredBook.map((book) => {
                 return <AllBookCard key={book._id} book={book} />;
               })
             : allBooks.map((book) => {
