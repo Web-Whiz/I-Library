@@ -20,6 +20,17 @@ const BookCard = ({ book }) => {
       return;
     }
 
+    if (carts.length === 3) {
+      Swal.fire({
+        position: "center",
+        icon: "warning",
+        title: "You can add three books",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      return;
+    }
+
     const { image_url, title, author, _id } = book;
     const cartItem = {
       title,

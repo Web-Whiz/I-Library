@@ -21,7 +21,7 @@ const Users = () => {
     const userId = selectedUserId;
     const warning = e.target.elements.text.value;
 
-    fetch(`https://i-library-server-seven.vercel.app/users/warning/${userId}`, {
+    fetch(`${process.env.NEXT_PUBLIC_BaseURL}/users/warning/${userId}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -43,7 +43,7 @@ const Users = () => {
     // enabled: !loading,
     queryFn: async () => {
       const res = await fetch(
-        `https://i-library-server-seven.vercel.app/users`
+        `${process.env.NEXT_PUBLIC_BaseURL}/users`
       );
       return res.json();
     },
@@ -57,7 +57,7 @@ const Users = () => {
       updatedRole = "user";
     }
 
-    fetch(`https://i-library-server-seven.vercel.app/users/update-role/${id}`, {
+    fetch(`${process.env.NEXT_PUBLIC_BaseURL}/users/update-role/${id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -80,7 +80,7 @@ const Users = () => {
       updatedStatus = "active";
     }
 
-    fetch(`https://i-library-server-seven.vercel.app/users/update-status/${id}`, {
+    fetch(`${process.env.NEXT_PUBLIC_BaseURL}/users/update-status/${id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
