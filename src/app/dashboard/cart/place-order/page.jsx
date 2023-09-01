@@ -1,8 +1,10 @@
 "use client";
+import useAuth from "@/Utils/useAuth";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
 const PlaceOrder = () => {
+  const { user } = useAuth();
   const [borrowDate] = useState(new Date().toISOString().substr(0, 10));
   const order = {
     email: "john@gmail.com",
@@ -56,6 +58,9 @@ const PlaceOrder = () => {
                 <div className="mb-4 w-full">
                   <label className="block mb-1">Name:</label>
                   <input
+                    type="text"
+                    value={user?.displayName}
+                    readOnly
                     {...register("name", { required: "Name is required" })}
                     className="w-full px-3 py-2 border rounded-md outline-none focus:ring focus:ring-indigo-200"
                   />
@@ -67,6 +72,9 @@ const PlaceOrder = () => {
                 <div className="mb-4 w-full">
                   <label className="block mb-1">Email:</label>
                   <input
+                    type="email"
+                    value={user?.email}
+                    readOnly
                     {...register("email", {
                       required: "Email is required",
                       pattern: /^\S+@\S+$/i,
@@ -79,8 +87,8 @@ const PlaceOrder = () => {
                 </div>
               </div>
 
-              <div className="flex flex-col md:flex-row w-full gap-4">
-                <div className="mb-4 ">
+              <div className="flex flex-col justify-between md:flex-row w-full gap-4">
+                <div className="mb-4 w-full ">
                   <label className="block mb-1">Borrow Date:</label>
                   <input
                     {...register("borrowDate")}
@@ -91,7 +99,7 @@ const PlaceOrder = () => {
                   />
                 </div>
 
-                <div className="mb-4">
+                <div className="mb-4 w-full">
                   <label className="block mb-1">Duration (days):</label>
                   <input
                     {...register("duration", {
@@ -115,7 +123,7 @@ const PlaceOrder = () => {
                   )}
                 </div>
 
-                <div className="mb-4">
+                <div className="mb-4 w-full">
                   <label className="block mb-1">Return Date:</label>
                   <input
                     {...register("returnDate")}

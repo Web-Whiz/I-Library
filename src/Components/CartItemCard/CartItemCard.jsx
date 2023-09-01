@@ -45,7 +45,7 @@ const CartItemCard = ({ cartData, refetch }) => {
   };
   return (
     <div>
-      <div className="flex p-3 bg-white w-full border my-1">
+      <div className="flex p-3 shadow-md w-full border">
         <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
           <img
             src={cartData?.image_url}
@@ -56,7 +56,7 @@ const CartItemCard = ({ cartData, refetch }) => {
         <div className="ml-4 flex flex-1 flex-col">
           <div>
             <div className="flex justify-between text-base font-medium text-gray-900">
-              <h3>
+              <h3 className="text-sm sm:text-lg">
                 <a href="#">{cartData?.title}</a>
               </h3>
               <p className="ml-4">$50.00</p>
