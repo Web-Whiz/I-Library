@@ -6,11 +6,7 @@ import { useForm } from "react-hook-form";
 const PlaceOrder = () => {
   const { user } = useAuth();
   const [borrowDate] = useState(new Date().toISOString().substr(0, 10));
-  const order = {
-    email: "john@gmail.com",
-    bookId: 1234,
-    bookName: "Life is beautiful",
-  };
+ 
 
   const {
     register,
@@ -20,13 +16,22 @@ const PlaceOrder = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data); // You can process the form data here
+
+    // const {name,email,borrowDate,returnDate,duration,shippingAddress} = data
+
+    // const order = {
+    //   email: "john@gmail.com",
+    //   bookId: 1234,
+    //   bookName: "Life is beautiful",
+    // };
+
+    // console.log(data); // You can process the form data here
     fetch(`${process.env.NEXT_PUBLIC_BaseURL}/order`, {
       method: "Post",
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(order),
+      body: JSON.stringify(data),
     })
       .then((res) => res.json())
       .then((data) => {
@@ -105,7 +110,7 @@ const PlaceOrder = () => {
                     {...register("duration", {
                       required: "Duration is required",
                       min: {
-                        value: 1,
+                        value: 2,
                         message: "Duration must be at least 1 day",
                       },
                       max: {
@@ -126,7 +131,7 @@ const PlaceOrder = () => {
                 <div className="mb-4 w-full">
                   <label className="block mb-1">Return Date:</label>
                   <input
-                    {...register("returnDate")}
+                    {...register("returnDate",{required: "Return Date is required",})}
                     type="text"
                     readOnly
                     value={calculateReturnDate(watch("duration"))}
