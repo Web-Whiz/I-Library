@@ -16,6 +16,7 @@ import {
   BiStar,
   BiTimeFive,
   BiUser,
+  BiSolidBookAdd,
 } from "react-icons/bi";
 import { RxCross2 } from "react-icons/rx";
 const DashboardNavbar = () => {
@@ -114,6 +115,7 @@ const DashboardNavbar = () => {
             <BiStar /> My Reviews{" "}
           </Link>
         </li>
+        
         <h2 className="text-sm font-semibold text-gray-400 mt-3">
           General Menu
         </h2>
