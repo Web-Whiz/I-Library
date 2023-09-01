@@ -3,16 +3,25 @@
 import useAuth from "@/Utils/useAuth";
 import { getBookShelf } from "@/Utils/useBookShelf";
 import Link from "next/link";
+import { useState } from "react";
 import { BiSolidEdit, BiSolidEditAlt } from "react-icons/bi";
 import { GiBookshelf } from "react-icons/gi";
 import { MdDeleteForever, MdSearch } from "react-icons/md";
+import ShelfNameChange from "./ShelfNameChange";
 
 const BookShelf = () => {
   const { user } = useAuth();
-  const [bookShelf] = getBookShelf(user?.email);
+  const [bookShelf, refetch] = getBookShelf(user?.email);
+  const [selectedShelf, setSelectedShelf] = useState(null);
+  const [changeShelfName, setChangeShelfName] = useState(false);
   const handleDeleteShelf = (id) => {
-    
+    console.log("hello");
   };
+  const handleEditShelf = (shelf) => {
+    setChangeShelfName(true);
+    setSelectedShelf(shelf);
+  };
+
   return (
     <div className="bg-white w-full shadow-lg p-5">
       <div className="flex justify-between items-center">
@@ -32,8 +41,7 @@ const BookShelf = () => {
       <div className="my-10 grid grid-cols-4 gap-8">
         {bookShelf.map((shelf) => {
           return (
-            <Link
-              href={`/dashboard/book-shelf/${shelf._id}`}
+            <div
               key={shelf._id}
               className="bg-gray-100 shadow-md p-6 rounded-md"
             >
@@ -49,15 +57,33 @@ const BookShelf = () => {
                   >
                     <MdDeleteForever />
                   </button>
-                  <button className="text-2xl text-gray-400 hover:text-indigo-700 duration-150">
+                  <button
+                    onClick={() => handleEditShelf(shelf)}
+                    className="text-2xl text-gray-400 hover:text-indigo-700 duration-150"
+                  >
                     <BiSolidEditAlt />
                   </button>
                 </div>
               </div>
               <h3 className="mt-4">Total Books: {shelf.books.length}</h3>
-            </Link>
+              <Link
+                className="block mt-2"
+                href={`/dashboard/book-shelf/${shelf._id}`}
+              >
+                <button className="px-3 py-[6px] bg-white rounded-md">
+                  view books
+                </button>
+              </Link>
+            </div>
           );
         })}
+        {changeShelfName && selectedShelf && (
+          <ShelfNameChange
+            setChangeShelfName={setChangeShelfName}
+            shelf={selectedShelf}
+            refetch={refetch}
+          />
+        )}
       </div>
     </div>
   );

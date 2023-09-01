@@ -58,3 +58,25 @@ export const postBookShelf = (addedBook) => {
       toast.error(error.message);
     });
 };
+
+
+export const updateShelfName = (id, shelfName) => {
+  fetch(`${process.env.NEXT_PUBLIC_BaseURL}/book-shelf?id=${id}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(shelfName),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+      if (data.insertedId || data.modifiedCount >= 1) {
+        toast.success("Shelf name updated successfully");
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+      toast.error(error.message);
+    });
+};
