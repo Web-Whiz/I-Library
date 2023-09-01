@@ -1,6 +1,7 @@
 "use client";
 import useAuth from "@/Utils/useAuth";
 import React from "react";
+import { toast } from "react-hot-toast";
 import Swal from "sweetalert2";
 
 const CartItemCard = ({ cartData, refetch }) => {
@@ -35,13 +36,7 @@ const CartItemCard = ({ cartData, refetch }) => {
           .then((res) => res.json())
           .then((data) => {
             if (data.deletedCount) {
-              Swal.fire({
-                position: "center",
-                icon: "success",
-                title: "Deleted From Cart",
-                showConfirmButton: false,
-                timer: 1500,
-              });
+              toast.error("Deleted From Cart")
               refetch();
             }
           });

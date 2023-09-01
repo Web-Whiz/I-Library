@@ -1,28 +1,44 @@
-{
-  "_id": "adsf",
-  "email": "asdfalsdf",
-  "transactionId": "adfasdf",
-  "data": "",
-  "price": "",
-  "books": [
-    {
-      "title": "",
-      "img_url": "",
-      "bookid": "",
-      "author": ""
-    },
-    {
-      "title": "",
-      "img_url": "",
-      "bookid": "",
-      "author": ""
-    },
-    {
-      "title": "",
-      "img_url": "",
-      "bookid": "",
-      "author": ""
-    }
-  ]
-}
-
+[
+  {
+    "_id": "",
+    "userName": "",
+    "userEmail": "",
+    "shelfName": "",
+    "books": [
+      {
+        "bookId": "",
+        "bookTitle": "",
+        "bookImg": "",
+        "authorName": ""
+      }
+    ]
+  },
+  {
+    "_id": "",
+    "userName": "",
+    "userEmail": "",
+    "shelfName": "",
+    "books": [
+      {
+        "bookId": "",
+        "bookTitle": "",
+        "bookImg": "",
+        "authorName": ""
+      }
+    ]
+  },
+  {
+    "_id": "",
+    "userName": "",
+    "userEmail": "",
+    "shelfName": "",
+    "books": [
+      {
+        "bookId": "",
+        "bookTitle": "",
+        "bookImg": "",
+        "authorName": ""
+      }
+    ]
+  }
+]

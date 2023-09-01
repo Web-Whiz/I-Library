@@ -50,6 +50,14 @@ const DashboardNavbar = () => {
         </li>
         <li className="text-gray-900 font-medium cursor-pointer py-[6px] duration-200 text-lg hover:bg-violet-50 rounded-sm hover:text-violet-600  my-1 px-2">
           <Link
+            href="/dashboard/book-shelf"
+            className="flex items-center gap-4 text-[15px]"
+          >
+            <GiBookshelf /> Book shelf
+          </Link>
+        </li>
+        <li className="text-gray-900 font-medium cursor-pointer py-[6px] duration-200 text-lg hover:bg-violet-50 rounded-sm hover:text-violet-600  my-1 px-2">
+          <Link
             href="/dashboard/cart"
             className="flex items-center gap-4 text-[15px]"
           >
