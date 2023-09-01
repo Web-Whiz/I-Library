@@ -59,8 +59,7 @@ export const postBookShelf = (addedBook) => {
     });
 };
 
-
-export const updateShelfName = (id, shelfName) => {
+export const updateShelfName = (id, shelfName, refetch) => {
   fetch(`${process.env.NEXT_PUBLIC_BaseURL}/book-shelf?id=${id}`, {
     method: "PATCH",
     headers: {
@@ -72,6 +71,7 @@ export const updateShelfName = (id, shelfName) => {
     .then((data) => {
       console.log(data);
       if (data.insertedId || data.modifiedCount >= 1) {
+        refetch();
         toast.success("Shelf name updated successfully");
       }
     })
