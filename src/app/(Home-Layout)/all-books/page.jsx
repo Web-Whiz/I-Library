@@ -39,7 +39,8 @@ const AllBooks = () => {
         <PageBanner bannerImg={banner} bannerName="All Books" />
       </div>
       <div className="container mx-auto flex items-start justify-between gap-8 my-10 w-full">
-        <div className="hidden lg:block w-[300px]">
+        {/* filter option */}
+        <div className="hidden lg:block w-[40%] xl:w-[20%]">
           <div className="bg-white w-full h-fit p-4">
             <h2 className="text-lg font-semibold">Category:</h2>
             {categories.length >= 12 &&
@@ -128,8 +129,10 @@ const AllBooks = () => {
             })}
           </div>
         </div>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 justify-center lg:justify-self-end gap-4">
-          <div className="col-span-2 sm:col-span-3 md:col-span-4 lg:col-span-3 xl:col-span-4 2xl:col-span-5 bg-white w-full h-20 flex items-center justify-between lg:justify-end px-5">
+        {/* filter option  */}
+        {/* book card */}
+        <div className="xl:w-[80%]">
+          <div className="bg-white w-full mb-5 h-20 flex items-center justify-between lg:justify-end px-5">
             <button className="bg-[#EFF3F8] flex items-center gap-2 px-3 py-2 rounded-sm lg:hidden">
               <span>
                 <FaFilter />
@@ -153,13 +156,15 @@ const AllBooks = () => {
               </select>
             </div>
           </div>
-          {categoryFilteredBook.length >= 1
-            ? categoryFilteredBook.map((book) => {
-                return <AllBookCard key={book._id} book={book} />;
-              })
-            : allBooks.map((book) => {
-                return <AllBookCard key={book._id} book={book} />;
-              })}
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 justify-center lg:justify-self-end gap-4">
+            {categoryFilteredBook.length >= 1
+              ? categoryFilteredBook.map((book) => {
+                  return <AllBookCard key={book._id} book={book} />;
+                })
+              : allBooks.map((book) => {
+                  return <AllBookCard key={book._id} book={book} />;
+                })}
+          </div>
         </div>
       </div>
 
