@@ -1,14 +1,16 @@
 "use client";
 import useAuth from "@/Utils/useAuth";
-import { getBookShelf } from "@/Utils/useBookShelf";
+import { getBookShelf, postBookShelf } from "@/Utils/useBookShelf";
 import { useState } from "react";
+import { toast } from "react-hot-toast";
 import { AiFillCloseCircle } from "react-icons/ai";
+import { FaAngleDown, FaAngleUp } from "react-icons/fa";
 
 const BookShelfModal = ({ book, setAddToBookShelf }) => {
   const { user } = useAuth();
   const [bookShelf] = getBookShelf(user?.email);
-
   const [isOpen, setIsOpen] = useState(false);
+  const [newShelf, setNewShelf] = useState(null);
   const [selectedOption, setSelectedOption] = useState(bookShelf[0]?.shelfName);
   const handleOptionChange = (option) => {
     setSelectedOption(option);
@@ -16,10 +18,19 @@ const BookShelfModal = ({ book, setAddToBookShelf }) => {
   };
 
   const handleAddToBookShelf = () => {
-    console.log(selectedOption);
+    const addedBook = {
+      bookId: book._id,
+      bookTitle: book.title,
+      bookImg: book.image_url,
+      authorName: book.author,
+      shelfName: newShelf ? newShelf : selectedOption,
+      userEmail: user?.email,
+      userName: user?.displayName,
+    };
+    postBookShelf(addedBook);
   };
   return (
-    <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+    <div className="justify-center duration-300 items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
       <div className="relative w-auto my-6 mx-auto max-w-3xl">
         {/*content*/}
         <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
@@ -59,7 +70,9 @@ const BookShelfModal = ({ book, setAddToBookShelf }) => {
                 <span className="mr-1">
                   {selectedOption || "Select a shelf name"}
                 </span>
-                <span className="ml-1">{isOpen ? "▲" : "▼"}</span>
+                <span className="ml-1">
+                  {isOpen ? <FaAngleUp /> : <FaAngleDown />}
+                </span>
               </div>
               {isOpen && (
                 <div className="absolute w-full mt-2 py-2 bg-white border border-gray-300 rounded-md shadow-sm">
@@ -84,6 +97,7 @@ const BookShelfModal = ({ book, setAddToBookShelf }) => {
               </h2>
               <input
                 type="text"
+                onChange={(e) => setNewShelf(e.target.value)}
                 placeholder="Type your shelf name"
                 className="bg-white w-full border border-gray-300 rounded-md shadow-sm py-2 px-4 outline-none"
               />

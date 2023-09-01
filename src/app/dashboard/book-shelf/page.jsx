@@ -10,6 +10,9 @@ import { MdDeleteForever, MdSearch } from "react-icons/md";
 const BookShelf = () => {
   const { user } = useAuth();
   const [bookShelf] = getBookShelf(user?.email);
+  const handleDeleteShelf = (id) => {
+    
+  };
   return (
     <div className="bg-white w-full shadow-lg p-5">
       <div className="flex justify-between items-center">
@@ -40,7 +43,10 @@ const BookShelf = () => {
                   <h2 className="text-xl font-semibold">{shelf.shelfName}</h2>
                 </div>
                 <div className="space-x-4">
-                  <button className="text-2xl text-gray-400 hover:text-indigo-700 duration-150">
+                  <button
+                    onClick={() => handleDeleteShelf(shelf._id)}
+                    className="text-2xl text-gray-400 hover:text-indigo-700 duration-150"
+                  >
                     <MdDeleteForever />
                   </button>
                   <button className="text-2xl text-gray-400 hover:text-indigo-700 duration-150">

@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import { toast } from "react-hot-toast";
 
 export const getBookShelf = (email) => {
   const { data: bookShelf = [], refetch } = useQuery({
@@ -35,4 +36,25 @@ export const getShelfBooks = (id) => {
   });
 
   return [shelfBooks, isLoading, refetch];
+};
+
+export const postBookShelf = (addedBook) => {
+  fetch(`${process.env.NEXT_PUBLIC_BaseURL}/book-shelf`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(addedBook),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+      if (data.insertedId || data.modifiedCount >= 1) {
+        toast.success("Book added successfully");
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+      toast.error(error.message);
+    });
 };
