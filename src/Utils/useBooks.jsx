@@ -55,7 +55,21 @@ export const getCategoryFilteredBook = (categoryNames) => {
       return res.json();
     },
   });
-  console.log(categoryFilteredBook)
+  console.log(categoryFilteredBook);
+  return [categoryFilteredBook, refetch];
+};
+
+export const getCategorizedBook = (categoryName) => {
+  const { data: categoryFilteredBook = [], refetch } = useQuery({
+    queryKey: ["categoryFilteredBook"],
+    // enabled: !loading,
+    queryFn: async () => {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_BaseURL}/books/category-filter?categories=${categoryName}`
+      );
+      return res.json();
+    },
+  });
   return [categoryFilteredBook, refetch];
 };
 
