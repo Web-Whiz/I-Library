@@ -87,6 +87,45 @@ export const getBookAuthor = () => {
 
   return [authors, refetch];
 };
+export const getAuthors = () => {
+  const { data: authors = [], refetch } = useQuery({
+    queryKey: ["authors"],
+    // enabled: !loading,
+    queryFn: async () => {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_BaseURL}/authors`);
+      return res.json();
+    },
+  });
+
+  return [authors, refetch];
+};
+export const getSpecificAuthor = (id) => {
+  const { data: author = [], refetch } = useQuery({
+    queryKey: ["author"],
+    // enabled: !loading,
+    queryFn: async () => {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_BaseURL}/author/${id}`
+      );
+      return res.json();
+    },
+  });
+
+  return [author, refetch];
+};
+export const getSpecificAuthorBook = (authorName) => {
+  const { data: authorFilteredBook = [], refetch } = useQuery({
+    queryKey: ["authorFilteredBook"],
+    // enabled: !loading,
+    queryFn: async () => {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_BaseURL}/books/author-filter?authors=${authorName}`
+      );
+      return res.json();
+    },
+  });
+  return [authorFilteredBook, refetch];
+};
 export const getBookPublisher = () => {
   const { data: publishers = [], refetch } = useQuery({
     queryKey: ["publishers"],
@@ -100,4 +139,18 @@ export const getBookPublisher = () => {
   });
 
   return [publishers, refetch];
+};
+
+export const getSpecificPublisherBook = (publisherName) => {
+  const { data: publisherFilteredBook = [], refetch } = useQuery({
+    queryKey: ["publisherFilteredBook"],
+    // enabled: !loading,
+    queryFn: async () => {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_BaseURL}/books/publisher-filter?publishers=${publisherName}`
+      );
+      return res.json();
+    },
+  });
+  return [publisherFilteredBook, refetch];
 };
