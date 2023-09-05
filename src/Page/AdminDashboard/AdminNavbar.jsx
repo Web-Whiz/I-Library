@@ -45,19 +45,23 @@ const AdminNavbar = () => {
             All Users
           </Link>
         </li>
-        <li className="text-gray-900 font-medium cursor-pointer py-[6px] duration-200 text-lg hover:bg-violet-50 rounded-sm hover:text-violet-600  my-1 px-2">
-          <a className="flex items-center gap-4 text-[15px]">
-            <BiSolidBookAlt />
-            All Books
-          </a>
-        </li>
-        <li className="text-gray-900 font-medium cursor-pointer py-[6px] duration-200 text-lg hover:bg-violet-50 rounded-sm hover:text-violet-600  my-1 px-2">
-          <Link href="#" className="flex items-center gap-4 text-[15px]">
-            <BiSolidBookAdd />
-            Add Books
+        <li className="text-gray-900 font-medium cursor-pointer py-[6px] duration-200 text-lg hover:bg-violet-50 rounded-sm hover:text-violet-600 my-1  px-2">
+          <Link
+            href="/admin-dashboard/AddBook"
+            className="flex items-center gap-4 text-[15px]"
+          >
+            <BiSolidBookAdd /> Add Book{" "}
           </Link>
         </li>
 
+        <li className="text-gray-900 font-medium cursor-pointer py-[6px] duration-200 text-lg hover:bg-violet-50 rounded-sm hover:text-violet-600 my-1  px-2">
+          <Link
+            href="/admin-dashboard/allbooks"
+            className="flex items-center gap-4 text-[15px]"
+          >
+            <BiSolidBookAdd /> All Book{" "}
+          </Link>
+        </li>
         <li className="text-gray-900 font-medium cursor-pointer py-[6px] duration-200 text-lg hover:bg-violet-50 rounded-sm hover:text-violet-600  my-1 px-2">
           <a className="flex items-center gap-4 text-[15px]">
             <BiTimeFive /> Issue Books

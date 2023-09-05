@@ -74,6 +74,17 @@ const page = () => {
                 placeholder="Type your phone number"
               />
             </div>
+            <div className="mt-3">
+              <label htmlFor="address" className="text-[16px] font-medium">
+                Address:
+              </label>
+              <input
+                type="text"
+                id="address"
+                className="w-full px-3 py-[6px] text-[16px] mt-[6px] rounded-md border-2 border-gray-200 outline-none focus:border-indigo-500"
+                placeholder="Type your address"
+              />
+            </div>
             <div className="flex justify-end mt-5">
               <button className="text-[15px] rounded-md font-semibold bg-violet-100 text-violet-600 hover:bg-violet-600 duration-200 hover:text-violet-100 px-4 py-[6px] uppercase">
                 save

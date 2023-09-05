@@ -2,6 +2,7 @@
 import useAuth from "@/Utils/useAuth";
 import useCart from "@/Utils/useCart";
 import React from "react";
+import { toast } from "react-hot-toast";
 import Swal from "sweetalert2";
 
 const BookCard = ({ book }) => {
@@ -10,24 +11,12 @@ const BookCard = ({ book }) => {
 
   const handleAddToCart = (book) => {
     if (!user) {
-      Swal.fire({
-        position: "center",
-        icon: "warning",
-        title: "Login First",
-        showConfirmButton: false,
-        timer: 1500,
-      });
+      toast.error("Please login first");
       return;
     }
 
     if (carts.length === 3) {
-      Swal.fire({
-        position: "center",
-        icon: "warning",
-        title: "You can add three books",
-        showConfirmButton: false,
-        timer: 1500,
-      });
+      toast.error("You can only add three books in your cart");
       return;
     }
 
@@ -52,37 +41,19 @@ const BookCard = ({ book }) => {
         if (data.insertedId) {
           // todo: have to add swal
           refetch();
-          Swal.fire({
-            position: "center",
-            icon: "success",
-            title: "Added to cart",
-            showConfirmButton: false,
-            timer: 1500,
-          });
+          toast.success("Added successfully");
         }
         if (data.message) {
           // todo: have to add swal
 
-          Swal.fire({
-            position: "center",
-            icon: "success",
-            title: `${data.message}`,
-            showConfirmButton: false,
-            timer: 1500,
-          });
+          toast.success(`${data.message}`);
         }
       });
   };
 
   const handleAddToWishList = (book) => {
     if (!user) {
-      Swal.fire({
-        position: "center",
-        icon: "success",
-        title: "Login first",
-        showConfirmButton: false,
-        timer: 1500,
-      });
+      toast.error("Please login first");
       return;
     }
 
@@ -105,45 +76,15 @@ const BookCard = ({ book }) => {
       .then((res) => res.json())
       .then((data) => {
         if (data.insertedId) {
-          Swal.fire({
-            position: "center",
-            icon: "success",
-            title: "Added to wish list",
-            showConfirmButton: false,
-            timer: 1500,
-          });
+          toast.success("Wishlist added successfully");
         }
         if (data.message) {
           // todo: have to add swal
-          Swal.fire({
-            position: "center",
-            icon: "success",
-            title: `${data.message}`,
-            showConfirmButton: false,
-            timer: 1500,
-          });
+          toast.success(`${data.message}`);
         }
       });
   };
-  // const {bookName, bookImg, authorName, shelfNo, rating, borrowPrice} = book;
-
   return (
-    // <div className='flex items-center justify-center'>
-    //     <div className="h-full w-full sm:h-[280px] sm:w-[185px] group relative cursor-pointer  overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30">
-    //     <div className='h-full w-full '>
-    //         <img className=" h-full w-full transition-transform duration-500 " src={book?.bookImg} alt="" />
-    //     </div>
-
-    //     <div className=" bg-[#0f86cde6] absolute inset-0 flex translate-y-[200%] flex-col items-center justify-center px-2 text-center transition-all duration-500 group-hover:translate-y-0">
-    //         <h1 className="font-bold text-2xl">{book?.bookName}</h1>
-    //         <p className="">Author: {book?.authorName}</p>
-    //         <p className="text-white">Shelf No: {book?.shelfNo}</p>
-    //         <p className="text-white">Borrow Price: ${book?.borrowPrice}</p>
-    //         <p className="text-white">Rating: {book?.rating}</p>
-
-    //     </div>
-    // </div>
-    // </div>
     <div className="">
       <div className="w-[158px] sm:w-[180px] mx-auto group h-[320px] p-[3px] bg-[#f8fafc] hover:shadow-md duration-500 shadow-slate-100 rounded-sm overflow-hidden relative collegeCard flex flex-col">
         <div className="w-full h-[215px] relative">
