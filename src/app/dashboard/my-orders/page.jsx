@@ -1,14 +1,32 @@
 "use client";
 
+import useAuth from "@/Utils/useAuth";
+import { useQuery } from "@tanstack/react-query";
 import React, { useState } from "react";
 import { MdExpandLess, MdExpandMore } from "react-icons/md";
 
 const MyOrders = () => {
+  const {user,loading}= useAuth()
+
+  const { data: myOrders = [], refetch } = useQuery({
+    queryKey: ["myOrders", user?.email],
+    enabled: !loading,
+    queryFn: async () => {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_BaseURL}/my-orders?email=${user?.email}`
+      );
+      return res.json();
+    },
+  });
+
+console.log(myOrders)
+console.log(user?.email)
+
   const arr = [1, 2, 3, 4];
   const arr2 = [1, 2, 3];
 
   const [accordions, setAccordions] = useState(
-    new Array(arr.length).fill(false)
+    new Array(myOrders?.length).fill(false)
   ); // Initialize an array of accordion states
 
   const toggleAccordion = (index) => {
@@ -36,12 +54,12 @@ const MyOrders = () => {
         <p>Date</p>
         <p>Books</p>
         <p>TrxID</p>
-        <p>Total Paid</p>
+        <p>Status</p>
         <p>Action</p>
       </div>
 
-      {arr.map((item, index) => (
-        <div key={index} className="my-4">
+      {myOrders.map((order,index) => (
+        <div key={order?._id} className="my-4">
           <div
             className={`flex bg-indigo-500  text-white text-center p-4 justify-between cursor-pointer duration-300 transform-gpu ${
               accordions[index]
@@ -50,11 +68,11 @@ const MyOrders = () => {
             }`}
             onClick={() => toggleAccordion(index)}
           >
-            <p className="w-full px-2">#12345</p>
-            <p className="w-full px-2">12/10/2023</p>
-            <p className="w-full px-2">3</p>
-            <p className="w-full px-2">547854863214852</p>
-            <p className="w-full px-2">$15</p>
+            <p className="w-full px-2">{order?._id}</p>
+            <p className="w-full px-2">{order?.borrowDate}</p>
+            <p className="w-full px-2">{order?.orderedBooks?.length}</p>
+            <p className="w-full px-2">{order?.transactionId}</p>
+            <p className="w-full px-2">{order?.paidStatus}</p>
             <span>
               {accordions[index] ? <MdExpandLess /> : <MdExpandMore />}
             </span>
@@ -66,14 +84,16 @@ const MyOrders = () => {
                 accordions[index] ? "opacity-100" : "opacity-0"
               }`}
             >
-              {arr2.map((item, index) => (
+              {order?.orderedBooks.map((item, index) => (
                 <div
                   key={index}
-                  className="bg-white p-4 rounded-lg shadow-lg text-center"
+                  className="bg-white p-4 rounded-lg shadow-lg gap-2 flex  items-start justify-start"
                 >
-                  <p>Book img</p>
-                  <p>Book Name</p>
-                  <p>Author</p>
+                  <img className="h-[100px]" src={item.image_url} alt="" />
+                  <div className="flex flex-col pl-2 w-full">
+                  <p>{item.title}</p>
+                  <p>{item.author}</p>
+                  </div>
                 </div>
               ))}
             </div>
