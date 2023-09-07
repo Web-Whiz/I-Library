@@ -2,7 +2,10 @@
 import { useQuery } from "@tanstack/react-query";
 
 export const getBooks = () => {
-  const { data: allBooks = [], refetch } = useQuery({
+  const {
+    data: allBooks = [],
+    refetch,
+  } = useQuery({
     queryKey: ["all books"],
     // enabled: !loading,
     queryFn: async () => {
@@ -44,7 +47,6 @@ export const getBookCategory = () => {
 
 export const getCategoryFilteredBook = (categoryNames) => {
   const categoriesQueryString = categoryNames.join(",");
-  console.log(categoriesQueryString);
   const { data: categoryFilteredBook = [], refetch } = useQuery({
     queryKey: ["categoryFilteredBook"],
     // enabled: !loading,
@@ -55,7 +57,6 @@ export const getCategoryFilteredBook = (categoryNames) => {
       return res.json();
     },
   });
-  console.log(categoryFilteredBook)
   return [categoryFilteredBook, refetch];
 };
 
