@@ -9,7 +9,7 @@ const PublicationsPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [showAllPublications, setShowAllPublications] = useState(false);
   const [publishers] = getBookPublisher();
-  console.log(publishers);
+  // console.log(publishers);
   // const publications = [
   //   {
   //     id: 1,
