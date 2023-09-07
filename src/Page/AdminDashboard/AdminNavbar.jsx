@@ -53,6 +53,7 @@ const AdminNavbar = () => {
             <BiSolidBookAdd /> Add Book{" "}
           </Link>
         </li>
+
         <li className="text-gray-900 font-medium cursor-pointer py-[6px] duration-200 text-lg hover:bg-violet-50 rounded-sm hover:text-violet-600 my-1  px-2">
           <Link
             href="/admin-dashboard/allbooks"
@@ -69,6 +70,14 @@ const AdminNavbar = () => {
         <li className="text-gray-900 font-medium cursor-pointer py-[6px] duration-200 text-lg hover:bg-violet-50 rounded-sm hover:text-violet-600  my-1 px-2">
           <Link href="#" className="flex items-center gap-4 text-[15px]">
             <BiSolidBookAlt /> Requested Books
+          </Link>
+        </li>
+        <li className="text-gray-900 font-medium cursor-pointer py-[6px] duration-200 text-lg hover:bg-violet-50 rounded-sm hover:text-violet-600  my-1 px-2">
+          <Link
+            href="/admin-dashboard/questions-answers"
+            className="flex items-center gap-4 text-[15px]"
+          >
+            <BiSolidBookAlt /> Questions & Answers
           </Link>
         </li>
 
