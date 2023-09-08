@@ -119,19 +119,21 @@ const Users = () => {
             <div className="flex flex-col md:flex-row w-fit">
               <button
                 onClick={() => handleChangeRole(user?._id, user?.role)}
-                className="p-2 m-2 bg-green-400 rounded w-full md:max-w-fit"
+                className={`p-2 m-2 bg-green-400 rounded w-full md:max-w-fit`}
               >
                 Make {user?.role === "admin" ? "User" : "Admin"}
               </button>
               <button
                 onClick={() => openModal(user?._id)}
-                className="p-2 m-2 bg-green-400 rounded w-full md:max-w-fit"
+                className={`p-2 m-2  bg-yellow-400 rounded md:max-w-fit w-full ${user?.role === 'admin'?'hidden':''} `}
+                disabled={user?.role === 'admin'}
               >
                 Give Warning
               </button>
               <button 
-              className="p-2 m-2  bg-red-400 rounded md:max-w-fit w-full"
+              className={`p-2 m-2 ${ user?.status === 'suspended'?'bg-red-700':''} bg-red-400 rounded md:max-w-fit w-full ${user?.role === 'admin'?'hidden':''} `}
               onClick={() => handleSuspend(user?._id, user?.status)}
+              disabled={user?.role === 'admin'}
               >
                 { user?.status === 'suspended'?'Suspended':'Suspend'}
                 

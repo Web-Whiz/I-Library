@@ -1,9 +1,24 @@
 "use client";
 import BarChart from "@/Page/AdminDashboard/BarChart";
+import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import { BiSolidBook, BiTimeFive, BiUser } from "react-icons/bi";
 import { FaBookOpen } from "react-icons/fa";
 const AdminHome = () => {
+
+
+  const { data: dashboardHomeData = [], refetch } = useQuery({
+    queryKey: ["dashboardHomeData"],
+    // enabled: !loading,
+    queryFn: async () => {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_BaseURL}/dashboard-home`
+      );
+      return res.json();
+    },
+  });
+  console.log(dashboardHomeData)
+
   return (
     <div className="container">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4  mb-4">
@@ -13,7 +28,7 @@ const AdminHome = () => {
           </span>
           <div className="text-center md:text-right">
             <p>Total Users</p>
-            <p>15</p>
+            <p>{dashboardHomeData?.totalUsers}</p>
           </div>
         </div>
         <div className="px-8 py-8 sm:py-4 bg-white font-semibold hover:shadow-sm rounded border m-1 flex flex-col md:flex-row  gap-2 items-center justify-between">
@@ -22,7 +37,7 @@ const AdminHome = () => {
           </span>
           <div className="text-center md:text-right">
             <p>Total Books</p>
-            <p>15</p>
+            <p>{dashboardHomeData?.totalBooks}</p>
           </div>
         </div>
         <div className="px-8 py-8 sm:py-4 bg-white font-semibold hover:shadow-sm rounded border m-1 flex flex-col md:flex-row  gap-2 items-center justify-between">

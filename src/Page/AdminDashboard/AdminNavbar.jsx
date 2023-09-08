@@ -25,7 +25,7 @@ const AdminNavbar = () => {
         <RxCross2 />
       </button>
       <div className="py-8 flex justify-center px-4">
-        <Image width={200} src={logo} alt="logo" />
+        <Link href='/'><Image width={200} src={logo} alt="logo" /></Link>
       </div>
       <ul className="px-4 h-full bg-white text-[#3d3c3c]">
         <li className="text-gray-900 font-medium cursor-pointer py-[6px] duration-200 text-lg hover:bg-violet-50 rounded-sm hover:text-violet-600  my-1 px-2">
