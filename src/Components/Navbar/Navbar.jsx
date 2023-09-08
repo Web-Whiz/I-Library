@@ -18,7 +18,7 @@ const Navbar = () => {
   const { isMenuOpen, setIsMenuOpen, isCartOpen, logOut, setIsCartOpen, user } =
     useAuth();
   const [carts, refetch] = useCart();
-  const [{role}] = useRole()
+  const [role] = useRole()
   const [isUserOpen, setIsUserOpen] = useState(false);
   // console.log(role)
   return (
@@ -61,7 +61,7 @@ const Navbar = () => {
                     <li className="text-gray-900 font-medium text-[15px] cursor-pointer py-[6px] duration-200 hover:bg-violet-50 rounded-sm hover:text-violet-600  my-1 px-4">
                       <Link
                         // href="/admin-dashboard"
-                        href={role === 'admin'?'admin-dashboard':'dashboard'}
+                        href={role?.role === 'admin'?'admin-dashboard':'dashboard'}
                         className="flex items-center gap-4"
                       >
                         <BiSolidDashboard /> Dashboard
@@ -69,7 +69,7 @@ const Navbar = () => {
                     </li>
                     <li className="text-gray-900 font-medium text-[15px] cursor-pointer py-[6px] duration-200 hover:bg-violet-50 rounded-sm hover:text-violet-600  my-1 px-4">
                       <Link
-                        href="/dashboard"
+                         href={role?.role === 'admin'?'admin-dashboard':'dashboard'}
                         className="flex items-center gap-4"
                       >
                         <BiUserCheck /> Profile
