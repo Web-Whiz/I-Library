@@ -1,5 +1,6 @@
 "use client";
 import AuthorCard from "@/Components/AuthorCard/AuthorCard";
+import { getAuthors } from "@/Utils/useBooks";
 import Link from "next/link";
 import "swiper/css";
 import { Autoplay, Navigation } from "swiper/modules";
@@ -10,128 +11,130 @@ import "./PopularAuthors.css";
 // import 'swiper/css/navigation';
 
 const PopularAuthors = () => {
-  const authors = [
-    {
-      id: 1,
-      author_img:
-        "https://www.writermag.com/wp-content/uploads/2015/09/russell-banks.jpg",
-      author_name: "Enoch Gallion",
-      books_published: 120,
-      facebook_link: "https://www.facebook.com",
-      twitter_link: "https://www.twitter.com",
-      linkedin_link: "https://www.linkedin.com",
-    },
-    {
-      id: 2,
-      author_img:
-        "https://blog.workman.com/wp-content/uploads/2018/10/Jim-Mustich-Color-%C2%A9-Trisha-Keeler-Photography-200x300.jpg",
-      author_name: "Enoch Gallion",
-      books_published: 120,
-      facebook_link: "https://www.facebook.com",
-      twitter_link: "https://www.twitter.com",
-      linkedin_link: "https://www.linkedin.com",
-    },
-    {
-      id: 3,
-      author_img:
-        "https://septemberpublishing.org/wp-content/uploads/2021/03/Bruce-Fogle-3.jpg",
-      author_name: "Enoch Gallion",
-      books_published: 120,
-      facebook_link: "https://www.facebook.com",
-      twitter_link: "https://www.twitter.com",
-      linkedin_link: "https://www.linkedin.com",
-    },
-    {
-      id: 4,
-      author_img:
-        "https://www.writermag.com/wp-content/uploads/2015/09/russell-banks.jpg",
-      author_name: "Enoch Gallion",
-      books_published: 120,
-      facebook_link: "https://www.facebook.com",
-      twitter_link: "https://www.twitter.com",
-      linkedin_link: "https://www.linkedin.com",
-    },
-    {
-      id: 5,
-      author_img:
-        "https://images.squarespace-cdn.com/content/v1/5784b8d1b8a79b20f4381bc5/1627468750772-OTVPYEWT5VGUTREJOHNM/Glenn+Adamson+c.John+Michael+Kohler.jpg",
-      author_name: "Enoch Gallion",
-      books_published: 120,
-      facebook_link: "https://www.facebook.com",
-      twitter_link: "https://www.twitter.com",
-      linkedin_link: "https://www.linkedin.com",
-    },
-    {
-      id: 6,
-      author_img:
-        "https://library.nashville.org/sites/default/files/images/blog/rashad_rayford_civil_freestyle.jpg",
-      author_name: "Enoch Gallion",
-      books_published: 120,
-      facebook_link: "https://www.facebook.com",
-      twitter_link: "https://www.twitter.com",
-      linkedin_link: "https://www.linkedin.com",
-    },
-    {
-      id: 7,
-      author_img:
-        "https://www.writermag.com/wp-content/uploads/2015/09/russell-banks.jpg",
-      author_name: "Enoch Gallion",
-      books_published: 120,
-      facebook_link: "https://www.facebook.com",
-      twitter_link: "https://www.twitter.com",
-      linkedin_link: "https://www.linkedin.com",
-    },
-    {
-      id: 8,
-      author_img:
-        "https://blog.workman.com/wp-content/uploads/2018/10/Jim-Mustich-Color-%C2%A9-Trisha-Keeler-Photography-200x300.jpg",
-      author_name: "Enoch Gallion",
-      books_published: 120,
-      facebook_link: "https://www.facebook.com",
-      twitter_link: "https://www.twitter.com",
-      linkedin_link: "https://www.linkedin.com",
-    },
-    {
-      id: 9,
-      author_img:
-        "https://septemberpublishing.org/wp-content/uploads/2021/03/Bruce-Fogle-3.jpg",
-      author_name: "Enoch Gallion",
-      books_published: 120,
-      facebook_link: "https://www.facebook.com",
-      twitter_link: "https://www.twitter.com",
-      linkedin_link: "https://www.linkedin.com",
-    },
-    {
-      id: 10,
-      author_img:
-        "https://www.writermag.com/wp-content/uploads/2015/09/russell-banks.jpg",
-      author_name: "Enoch Gallion",
-      books_published: 120,
-      facebook_link: "https://www.facebook.com",
-      twitter_link: "https://www.twitter.com",
-      linkedin_link: "https://www.linkedin.com",
-    },
-    {
-      id: 11,
-      author_img:
-        "https://images.squarespace-cdn.com/content/v1/5784b8d1b8a79b20f4381bc5/1627468750772-OTVPYEWT5VGUTREJOHNM/Glenn+Adamson+c.John+Michael+Kohler.jpg",
-      author_name: "Enoch Gallion",
-      books_published: 120,
-      facebook_link: "https://www.facebook.com",
-      twitter_link: "https://www.twitter.com",
-      linkedin_link: "https://www.linkedin.com",
-    },
-    {
-      id: 12,
-      author_img:
-        "https://library.nashville.org/sites/default/files/images/blog/rashad_rayford_civil_freestyle.jpg",
-      author_name: "Enoch Gallion",
-      books_published: 120,
-      facebook_link: "https://www.facebook.com",
-      twitter_link: "https://www.twitter.com",
-      linkedin_link: "https://www.linkedin.com",
-    },
-  ];
+  // const authors = [
+  //   {
+  //     id: 1,
+  //     author_img:
+  //       "https://www.writermag.com/wp-content/uploads/2015/09/russell-banks.jpg",
+  //     author_name: "Enoch Gallion",
+  //     books_published: 120,
+  //     facebook_link: "https://www.facebook.com",
+  //     twitter_link: "https://www.twitter.com",
+  //     linkedin_link: "https://www.linkedin.com",
+  //   },
+  //   {
+  //     id: 2,
+  //     author_img:
+  //       "https://blog.workman.com/wp-content/uploads/2018/10/Jim-Mustich-Color-%C2%A9-Trisha-Keeler-Photography-200x300.jpg",
+  //     author_name: "Enoch Gallion",
+  //     books_published: 120,
+  //     facebook_link: "https://www.facebook.com",
+  //     twitter_link: "https://www.twitter.com",
+  //     linkedin_link: "https://www.linkedin.com",
+  //   },
+  //   {
+  //     id: 3,
+  //     author_img:
+  //       "https://septemberpublishing.org/wp-content/uploads/2021/03/Bruce-Fogle-3.jpg",
+  //     author_name: "Enoch Gallion",
+  //     books_published: 120,
+  //     facebook_link: "https://www.facebook.com",
+  //     twitter_link: "https://www.twitter.com",
+  //     linkedin_link: "https://www.linkedin.com",
+  //   },
+  //   {
+  //     id: 4,
+  //     author_img:
+  //       "https://www.writermag.com/wp-content/uploads/2015/09/russell-banks.jpg",
+  //     author_name: "Enoch Gallion",
+  //     books_published: 120,
+  //     facebook_link: "https://www.facebook.com",
+  //     twitter_link: "https://www.twitter.com",
+  //     linkedin_link: "https://www.linkedin.com",
+  //   },
+  //   {
+  //     id: 5,
+  //     author_img:
+  //       "https://images.squarespace-cdn.com/content/v1/5784b8d1b8a79b20f4381bc5/1627468750772-OTVPYEWT5VGUTREJOHNM/Glenn+Adamson+c.John+Michael+Kohler.jpg",
+  //     author_name: "Enoch Gallion",
+  //     books_published: 120,
+  //     facebook_link: "https://www.facebook.com",
+  //     twitter_link: "https://www.twitter.com",
+  //     linkedin_link: "https://www.linkedin.com",
+  //   },
+  //   {
+  //     id: 6,
+  //     author_img:
+  //       "https://library.nashville.org/sites/default/files/images/blog/rashad_rayford_civil_freestyle.jpg",
+  //     author_name: "Enoch Gallion",
+  //     books_published: 120,
+  //     facebook_link: "https://www.facebook.com",
+  //     twitter_link: "https://www.twitter.com",
+  //     linkedin_link: "https://www.linkedin.com",
+  //   },
+  //   {
+  //     id: 7,
+  //     author_img:
+  //       "https://www.writermag.com/wp-content/uploads/2015/09/russell-banks.jpg",
+  //     author_name: "Enoch Gallion",
+  //     books_published: 120,
+  //     facebook_link: "https://www.facebook.com",
+  //     twitter_link: "https://www.twitter.com",
+  //     linkedin_link: "https://www.linkedin.com",
+  //   },
+  //   {
+  //     id: 8,
+  //     author_img:
+  //       "https://blog.workman.com/wp-content/uploads/2018/10/Jim-Mustich-Color-%C2%A9-Trisha-Keeler-Photography-200x300.jpg",
+  //     author_name: "Enoch Gallion",
+  //     books_published: 120,
+  //     facebook_link: "https://www.facebook.com",
+  //     twitter_link: "https://www.twitter.com",
+  //     linkedin_link: "https://www.linkedin.com",
+  //   },
+  //   {
+  //     id: 9,
+  //     author_img:
+  //       "https://septemberpublishing.org/wp-content/uploads/2021/03/Bruce-Fogle-3.jpg",
+  //     author_name: "Enoch Gallion",
+  //     books_published: 120,
+  //     facebook_link: "https://www.facebook.com",
+  //     twitter_link: "https://www.twitter.com",
+  //     linkedin_link: "https://www.linkedin.com",
+  //   },
+  //   {
+  //     id: 10,
+  //     author_img:
+  //       "https://www.writermag.com/wp-content/uploads/2015/09/russell-banks.jpg",
+  //     author_name: "Enoch Gallion",
+  //     books_published: 120,
+  //     facebook_link: "https://www.facebook.com",
+  //     twitter_link: "https://www.twitter.com",
+  //     linkedin_link: "https://www.linkedin.com",
+  //   },
+  //   {
+  //     id: 11,
+  //     author_img:
+  //       "https://images.squarespace-cdn.com/content/v1/5784b8d1b8a79b20f4381bc5/1627468750772-OTVPYEWT5VGUTREJOHNM/Glenn+Adamson+c.John+Michael+Kohler.jpg",
+  //     author_name: "Enoch Gallion",
+  //     books_published: 120,
+  //     facebook_link: "https://www.facebook.com",
+  //     twitter_link: "https://www.twitter.com",
+  //     linkedin_link: "https://www.linkedin.com",
+  //   },
+  //   {
+  //     id: 12,
+  //     author_img:
+  //       "https://library.nashville.org/sites/default/files/images/blog/rashad_rayford_civil_freestyle.jpg",
+  //     author_name: "Enoch Gallion",
+  //     books_published: 120,
+  //     facebook_link: "https://www.facebook.com",
+  //     twitter_link: "https://www.twitter.com",
+  //     linkedin_link: "https://www.linkedin.com",
+  //   },
+  // ];
+
+  const [authors] = getAuthors();
 
   return (
     <section className="container mx-auto p-8 md:p-5 2xl:p-0">
@@ -188,7 +191,7 @@ const PopularAuthors = () => {
           {authors.map((author, index) => (
             <SwiperSlide key={index}>
               <div className="flex items-center justify-center">
-                <AuthorCard key={author.id} author={author} />{" "}
+                <AuthorCard key={author?._id} author={author} />{" "}
               </div>
             </SwiperSlide>
           ))}

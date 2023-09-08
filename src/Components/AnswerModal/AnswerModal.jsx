@@ -3,13 +3,19 @@ import useAuth from "@/Utils/useAuth";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
 import { AiFillCloseCircle } from "react-icons/ai";
-import { BsStar, BsStarFill } from "react-icons/bs";
-import Rating from "react-rating";
 
-const Modal = ({ showModal, setShowModal, bookImg, bookTitle, bookId }) => {
+const AnswerModal = ({
+  showAnswerModal,
+  setShowAnswerModal,
+  bookImg,
+  bookTitle,
+  bookId,
+  question,
+}) => {
   const { user } = useAuth();
-  const [rating, setRating] = useState(0);
-  const [review, setReview] = useState("");
+  const [answer, setAnswer] = useState("");
+
+  // console.log(bookTitle);
 
   // Create a new Date object representing the current date and time
   const currentDate = new Date();
@@ -28,23 +34,18 @@ const Modal = ({ showModal, setShowModal, bookImg, bookTitle, bookId }) => {
     event.preventDefault();
 
     const data = {
-      username: user?.displayName,
-      rating,
-      review,
+      answer,
       date: formattedDate,
-      bookTitle,
-      bookImg,
-      bookId,
-      email: user?.email,
+      name: user?.displayName,
     };
 
-    // console.log(data);
+    console.log(data);
 
     try {
       const response = await fetch(
-        "https://i-library-server.vercel.app/reviews",
+        `${process.env.NEXT_PUBLIC_BaseURL}/qa/${bookId}`,
         {
-          method: "POST",
+          method: "PATCH",
           headers: {
             "Content-Type": "application/json",
           },
@@ -53,11 +54,11 @@ const Modal = ({ showModal, setShowModal, bookImg, bookTitle, bookId }) => {
       );
 
       if (response.ok) {
-        toast.success("Review submitted successfully!");
+        toast.success("Answer given successfully!");
         event.target.reset();
-        setShowModal(false);
+        setShowAnswerModal(false);
       } else {
-        toast.error("Failed to submit review.");
+        toast.error("Failed to give answer.");
       }
     } catch (error) {
       console.error("Error:", error);
@@ -69,7 +70,7 @@ const Modal = ({ showModal, setShowModal, bookImg, bookTitle, bookId }) => {
       <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
         <div className="relative w-auto my-6 mx-auto max-w-3xl">
           {/*content*/}
-          <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+          <div className="border-0 rounded-lg shadow-sm relative flex flex-col w-full bg-white outline-none focus:outline-none">
             {/*header*/}
             <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
               <div className="flex items-center gap-5">
@@ -78,12 +79,12 @@ const Modal = ({ showModal, setShowModal, bookImg, bookTitle, bookId }) => {
                   <h3 className="text-base md:text-xl font-medium">
                     {bookTitle}
                   </h3>
-                  <p>Rate this book</p>
+                  <p>Give Your Answer</p>
                 </div>
               </div>
               <button
                 className="p-1 ml-auto border-0 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
-                onClick={() => setShowModal(false)}
+                onClick={() => setShowAnswerModal(false)}
               >
                 <span className=" text-red-400 hover:text-red-500 h-6 w-6 text-2xl block outline-none focus:outline-none ease-linear transition-all duration-150">
                   <AiFillCloseCircle></AiFillCloseCircle>
@@ -94,32 +95,19 @@ const Modal = ({ showModal, setShowModal, bookImg, bookTitle, bookId }) => {
             <div className="relative p-6 flex-auto">
               <form onSubmit={handleSubmit}>
                 <div className="my-1">
-                  <Rating
-                    initialRating={rating}
-                    onChange={(value) => setRating(value)}
-                    placeholderRating={0}
-                    className="space-x-1 md:space-x-3"
-                    emptySymbol={
-                      <BsStar className="text-lg md:text-2xl text-[#FF9900]" />
-                    }
-                    placeholderSymbol={
-                      <BsStarFill className="text-[#FF9900] text-lg md:text-2xl" />
-                    }
-                    fullSymbol={
-                      <BsStarFill className="text-[#FF9900] text-lg md:text-2xl" />
-                    }
-                    fractions={4}
-                  />
+                  <p className="text-base md:text-lg font-medium text-gray-900">
+                    Q: {question}
+                  </p>
                 </div>
                 <textarea
                   required
-                  value={review}
-                  onChange={(event) => setReview(event.target.value)}
+                  value={answer}
+                  onChange={(event) => setAnswer(event.target.value)}
                   name=""
                   id=""
                   cols="5"
                   rows="3"
-                  placeholder="Describe your experience"
+                  placeholder="Provide your answer here!"
                   className="my-4 text-slate-500 text-base leading-relaxed w-full md:w-96 border border-gray-400 p-2 rounded outline-none"
                 ></textarea>
                 {/*footer*/}
@@ -127,7 +115,7 @@ const Modal = ({ showModal, setShowModal, bookImg, bookTitle, bookId }) => {
                   <button
                     className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                     type="button"
-                    onClick={() => setShowModal(false)}
+                    onClick={() => setShowAnswerModal(false)}
                   >
                     Close
                   </button>
@@ -143,9 +131,9 @@ const Modal = ({ showModal, setShowModal, bookImg, bookTitle, bookId }) => {
           </div>
         </div>
       </div>
-      <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+      <div className="opacity-5 fixed inset-0 z-40 bg-black"></div>
     </div>
   );
 };
 
-export default Modal;
+export default AnswerModal;
