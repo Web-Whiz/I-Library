@@ -7,8 +7,6 @@ const img_hosting_token = process.env.VITE_IMEGE_KEY;
 const AddBook = () => {
   const [pdf, setpdf] = useState(false);
 
-  console.log(pdf);
-
   const pdffile = (e) => {
     setpdf(e.target.checked);
   };
@@ -45,6 +43,10 @@ const AddBook = () => {
       toast.error("Image not uploaded!");
       toast.dismiss(toastId);
     }
+  };
+
+  const hello = (e) => {
+    console.log(e);
   };
 
   const onSubmit = async (data) => {
@@ -110,213 +112,142 @@ const AddBook = () => {
 
   return (
     <div>
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className="bg-white md:p-20 p-3 rounded-md md:space-y-10  border-8 "
-      >
-        <h1 className="text-center md:text-4xl text-2xl font-semibold md:-mt-5">
+      <form onSubmit={handleSubmit(onSubmit)} className="bg-white p-5">
+        <h1 className="text-center text-4xl font-semibold space-y-5 mt-5 mb-5">
           Add Your Own Book
         </h1>
-        {/* Slot 1 */}
-        <ul className="md:flex md:space-x-8">
-          <li>
-            <input
-              {...register("title", { required: true })}
-              className="md:w-[680px] w-full mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
-              type="text"
-              placeholder="Title"
-              required
-            />
-          </li>
-          <li>
-            <input
-              {...register("author", { required: true })}
-              className="md:w-[680px] w-full mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
-              type="text"
-              placeholder="Author"
-              required
-            />
-          </li>
-        </ul>
 
-        {/* Slot 2 */}
-        <ul className="md:flex md:space-x-8">
-          <li>
-            <input
-              {...register("translator", { required: true })}
-              className="md:w-[680px] w-full mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
-              type="text"
-              placeholder="Translator"
-              required
-            />
-          </li>
-          <li>
-            <input
-              {...register("publisher", { required: true })}
-              className="md:w-[680px] w-full mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
-              type="text"
-              placeholder="Publisher"
-              required
-            />
-          </li>
-        </ul>
-
-        {/* Slot 3 */}
-        <ul className="md:flex md:space-x-8">
-          <li>
-            <input
-              {...register("shelf", { required: true })}
-              className="md:w-[680px] w-full mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
-              type="number"
-              placeholder="Shelf"
-              required
-            />
-          </li>
-          <li>
-            <input
-              onChange={uploadImage}
-              className="md:w-[680px] w-full mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
-              type="file"
-              placeholder="image_url"
-              required
-            />
-          </li>
-        </ul>
-
-        <ul className="md:flex md:space-x-8">
-          <li>
-            <input
-              {...register("edition", { required: true })}
-              className="md:w-[680px] w-full mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
-              type="text"
-              placeholder="Edition"
-              required
-            />
-          </li>
-          <li>
-            <input
-              {...register("published_in", { required: true })}
-              className="md:w-[680px] w-full mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
-              type="text"
-              placeholder="Published"
-              required
-            />
-          </li>
-        </ul>
-
-        {/* Slot 4 */}
-        <ul className="md:flex md:space-x-8">
-          <li>
-            <input
-              {...register("category", { required: true })}
-              className="md:w-[680px] w-full mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
-              type="text"
-              placeholder="category"
-              required
-            />
-          </li>
-          <li>
-            <input
-              {...register("number_of_pages", { required: true })}
-              className="md:w-[680px] w-full mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
-              type="text"
-              placeholder="Number_of_Pages"
-              required
-            />
-          </li>
-        </ul>
-
-        {/* Slot 5 */}
-        <ul className="md:flex md:space-x-8">
-          <li>
-            <input
-              {...register("language", { required: true })}
-              className="md:w-[680px] w-full mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
-              type="text"
-              placeholder="Language"
-              required
-            />
-          </li>
-          <li>
-            <input
-              {...register("country", { required: true })}
-              className="md:w-[680px] w-full mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
-              type="text"
-              placeholder="Country"
-              required
-            />
-          </li>
-        </ul>
-
-        {/* Slot 6 */}
-        {/* <ul className="md:flex md:space-x-8">
-          <li>
-            <input
-              {...register("ratings", { required: true })}
-              className="md:w-[680px] w-full mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
-              type="text"
-              placeholder="Ratings"
-              required
-            />
-          </li>
-          <li>
-            <input
-              {...register("total_read", { required: true })}
-              className="md:w-[680px] w-full mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
-              type="text"
-              placeholder="Total_read"
-              required
-            />
-          </li>
-        </ul> */}
-
-        {/* Slot 7 */}
-        <ul className="md:flex md:space-x-8">
-          <li>
-            <input
-              {...register("added_date", { required: true })}
-              className="md:w-[1390px] w-full mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
-              type="date"
-              placeholder="added_date"
-              required
-            />
-          </li>
-        </ul>
-
-        {/* Slot 8 */}
-        <ul className="md:flex md:space-x-[440px]">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
+          <input
+            {...register("title", { required: true })}
+            type="text"
+            className="mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
+            placeholder="Title"
+            required
+          />
+          <input
+            {...register("author", { required: true })}
+            type="text"
+            className="mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
+            placeholder="Author"
+            required
+          />
+          <input
+            {...register("translator", { required: true })}
+            type="text"
+            className="mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
+            placeholder="Translator"
+            required
+          />
+          <input
+            {...register("publisher", { required: true })}
+            type="text"
+            className="mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
+            placeholder="Publisher"
+            required
+          />
+          <input
+            {...register("shelf", { required: true })}
+            type="number"
+            className="mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
+            placeholder="Shelf"
+            required
+          />
+          <input
+            {...register("image_url", { required: true })}
+            type="file"
+            onChange={uploadImage}
+            className="mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
+            placeholder="image_url"
+            required
+          />
+          <input
+            onChange={hello}
+            {...register("edition", { required: true })}
+            type="text"
+            className="mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
+            placeholder="Edition"
+            required
+          />
+          <input
+            {...register("published_in", { required: true })}
+            type="number"
+            className="mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
+            placeholder="Published_in"
+            required
+          />
+          <input
+            {...register("category", { required: true })}
+            type="text"
+            className="mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
+            placeholder="category"
+            required
+          />
+          <input
+            {...register("number_of_pages", { required: true })}
+            type="number"
+            className="mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
+            placeholder="Number_of_pages"
+            required
+          />
+          <input
+            {...register("language", { required: true })}
+            type="text"
+            className="mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
+            placeholder="Language"
+            required
+          />
+          <input
+            {...register("country", { required: true })}
+            type="text"
+            className="mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
+            placeholder="Country"
+            required
+          />
+          {/* <input
+            {...register("total_read", { required: true })}
+            type="text"
+            className="mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
+            placeholder="Total_read"
+            required
+          /> */}
+          <input
+            {...register("added_date", { required: true })}
+            type="date"
+            className="mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
+            placeholder="added_date"
+            required
+          />
+        </div>
+        <ul className="grid xl:grid-cols-3 gap-5 items-center mt-6 mb-5">
           <div className="form-control">
             <label className="cursor-pointer label">
-              <span className="label-text md:text-3xl text-xl mr-4">
-                Hard Copy
-              </span>
+              <span className="label-text md:text-3xl text-xl">Hard Copy</span>
               <input
                 {...register("hard_copy")}
                 type="checkbox"
-                className="checkbox checkbox-info items-center"
+                className="checkbox checkbox-info items-center w-5 h-5 ml-3"
               />
             </label>
           </div>
           <div className="form-control">
             <label className="cursor-pointer label">
-              <span className="label-text md:text-3xl text-xl mr-4">Pdf</span>
+              <span className="label-text md:text-3xl text-xl">Pdf</span>
               <input
                 {...register("pdf")}
                 type="checkbox"
                 onChange={pdffile}
-                className="checkbox checkbox-info items-center"
+                className="checkbox checkbox-info items-center w-5 h-5 ml-3"
               />
             </label>
           </div>
           <div className="form-control">
             <label className="cursor-pointer label">
-              <span className="label-text md:text-3xl text-xl mr-4 md:ml-[90px]">
-                Ebook
-              </span>
+              <span className="label-text md:text-3xl text-xl ">Ebook</span>
               <input
                 {...register("ebook")}
                 type="checkbox"
-                className="checkbox checkbox-info items-center"
+                className="checkbox checkbox-info items-center w-5 h-5 ml-3"
               />
             </label>
           </div>
@@ -326,20 +257,22 @@ const AddBook = () => {
             <input
               type="text"
               {...register("pdf_link")}
-              className="md:w-[1390px] w-full p-2 outline-none border-2 rounded focus:border-indigo-500"
+              className="w-full p-2 outline-none border-2 rounded focus:border-indigo-500"
               placeholder="Enter Your Pdf Link"
               required
             />
           ) : (
             <input
               type="text"
-              className="md:w-[1390px] hidden p-2 outline-none border-2 rounded focus:border-indigo-500 "
+              className="hidden p-2 outline-none border-2 rounded focus:border-indigo-500 "
             />
           )}
         </div>
-        <button className="md:w-9/12 md:ml-48 ml-28 mt-3 md:py-4 p-3 border bg-[#ede9fe] text-[#a03aed] hover:text-white hover:bg-[#a03aed] bg-opacity-25 font-semibold duration-700 rounded-md">
-          <input type="submit" value={"Submit"} />
-        </button>
+        <div className="">
+          <button className="p-3 mt-4 w-full bg-[#ede9fe] text-[#a03aed] hover:text-white hover:bg-[#a03aed] bg-opacity-25 font-semibold duration-700 rounded-md">
+            <input type="submit" value={"Submit"} />
+          </button>
+        </div>
       </form>
       <Toaster />
     </div>
