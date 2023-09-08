@@ -56,7 +56,7 @@ const AuthProviders = ({ children }) => {
       setLoading(false);
       if (currentUser && currentUser.email) {
         const loggedUser = { email: currentUser.email };
-        fetch("http://localhost:5000/jwt", {
+        fetch(`${process.env.NEXT_PUBLIC_BaseURL}/jwt`, {
           method: "POST",
           headers: {
             "content-type": "application/json",
