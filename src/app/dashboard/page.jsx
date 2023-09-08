@@ -12,7 +12,6 @@ import {
   FaClipboardList,
   FaExclamationCircle,
 } from "react-icons/fa";
-import { BiCheck, BiUser } from "react-icons/bi";
 
 const Page = () => {
   return (
@@ -48,7 +47,7 @@ const Page = () => {
           <span className="text-4xl p-2 bg-white rounded text-yellow-400 shadow-lg" ><FaExclamationCircle /></span>
           <div className="w-full">
             <p>Overdue Books</p>
-            <p>15</p>
+            <p>2</p>
           </div>
         </div>
 
@@ -93,7 +92,7 @@ const Page = () => {
           <h1>Awards</h1>
           <div className="flex gap-2 text-4xl ">
           <span className="text-4xl p-2 bg-white rounded text-orange-400 shadow-lg"><FaTrophy /></span>
-          <span className="text-4xl p-2 bg-white rounded text-orange-400 shadow-lg"><FaTrophy /></span>
+          <span className="text-4xl p-2 bg-white rounded text-orange-400 shadow-lg"><FaMedal /></span>
           <span className="text-4xl p-2 bg-white rounded text-orange-400 shadow-lg"><FaTrophy /></span>
 
           </div>
