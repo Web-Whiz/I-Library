@@ -49,19 +49,19 @@ console.log(user?.email)
       <h1 className="text-center font-semibold text-2xl text-indigo-700 mb-4">
         My Orders List
       </h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 bg-indigo-100 p-4 text-center font-semibold">
+      <div className="flex flex-col md:flex-row items-center justify-between  bg-indigo-100 p-4 text-center font-semibold">
         <p>Order Id</p>
         <p>Date</p>
         <p>Books</p>
         <p>TrxID</p>
-        <p>Status</p>
-        <p>Action</p>
+        <p>Delivery Status</p>
+        
       </div>
 
       {myOrders.map((order,index) => (
         <div key={order?._id} className="my-4">
           <div
-            className={`flex bg-indigo-500  text-white text-center p-4 justify-between cursor-pointer duration-300 transform-gpu ${
+            className={`flex flex-wrap md:flex-nowrap bg-indigo-500   text-white text-center p-4 justify-between items-center cursor-pointer duration-300 transform-gpu ${
               accordions[index]
                 ? "bg-indigo-700"
                 : "hover:bg-indigo-600"
@@ -72,7 +72,7 @@ console.log(user?.email)
             <p className="w-full px-2">{order?.borrowDate}</p>
             <p className="w-full px-2">{order?.orderedBooks?.length}</p>
             <p className="w-full px-2">{order?.transactionId}</p>
-            <p className="w-full px-2">{order?.paidStatus}</p>
+            <p className="w-full capitalize bg-yellow-500 rounded p-2">{order?.orderStatus}</p>
             <span>
               {accordions[index] ? <MdExpandLess /> : <MdExpandMore />}
             </span>

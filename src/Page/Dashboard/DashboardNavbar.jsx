@@ -75,9 +75,11 @@ const DashboardNavbar = () => {
           </Link>
         </li>
         <li className="text-gray-900 font-medium cursor-pointer py-[6px] duration-200 text-lg hover:bg-violet-50 rounded-sm hover:text-violet-600  my-1 px-2">
-          <a className="flex items-center gap-4 text-[15px]">
+          <Link
+          href='/dashboard/orders-history'
+          className="flex items-center gap-4 text-[15px]">
             <BiTimeFive /> Order History
-          </a>
+          </Link>
         </li>
         <li className="text-gray-900 font-medium cursor-pointer py-[6px] duration-200 text-lg hover:bg-violet-50 rounded-sm hover:text-violet-600  my-1 px-2">
           <Link
