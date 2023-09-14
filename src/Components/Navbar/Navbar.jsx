@@ -1,18 +1,17 @@
 "use client";
-import Image from "next/image";
-import React, { useState } from "react";
 import logo from "@/assets/ILibrary.png";
+import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 // import { FiShoppingCart, FiSearch } from "react-icons/fi";
-import { FaCartPlus } from "react-icons/fa";
-import { AiOutlineMenu } from "react-icons/ai";
-import SearchBar from "../SearchBar/SearchBar";
 import useAuth from "@/Utils/useAuth";
-import BurgerMenu from "../BurgerMenu/BurgerMenu";
-import Hamburger from "hamburger-react";
-import ShoppingCart from "../ShoppingCart/ShoppingCart";
-import { BiLogOut, BiSolidDashboard, BiUserCheck } from "react-icons/bi";
 import useCart from "@/Utils/useCart";
+import Hamburger from "hamburger-react";
+import { BiLogOut, BiSolidDashboard, BiUserCheck } from "react-icons/bi";
+import { FaCartPlus } from "react-icons/fa";
+import BurgerMenu from "../BurgerMenu/BurgerMenu";
+import SearchBar from "../SearchBar/SearchBar";
+import ShoppingCart from "../ShoppingCart/ShoppingCart";
 const Navbar = () => {
   const { isMenuOpen, setIsMenuOpen, isCartOpen, logOut, setIsCartOpen, user } =
     useAuth();
