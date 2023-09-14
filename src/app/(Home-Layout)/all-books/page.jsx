@@ -16,7 +16,6 @@ const AllBooks = () => {
   const [authors] = getBookAuthor();
   const [publishers] = getBookPublisher();
   const [allBooks] = getBooks();
-  const [books, setBooks] = useState(null);
   const [filterCategory, setFilterCategory] = useState([]);
   const [categoryFilteredBook, refetch] =
     getCategoryFilteredBook(filterCategory);
@@ -32,7 +31,6 @@ const AllBooks = () => {
     }
   };
   refetch();
-
   return (
     <div>
       <div>

@@ -13,11 +13,14 @@ import Hamburger from "hamburger-react";
 import ShoppingCart from "../ShoppingCart/ShoppingCart";
 import { BiLogOut, BiSolidDashboard, BiUserCheck } from "react-icons/bi";
 import useCart from "@/Utils/useCart";
+import useRole from "@/Utils/useRole";
 const Navbar = () => {
   const { isMenuOpen, setIsMenuOpen, isCartOpen, logOut, setIsCartOpen, user } =
     useAuth();
   const [carts, refetch] = useCart();
+  const [role] = useRole()
   const [isUserOpen, setIsUserOpen] = useState(false);
+  // console.log(role)
   return (
     <>
       <nav className="bg-white">
@@ -57,8 +60,8 @@ const Navbar = () => {
                   <ul className="list-none w-full">
                     <li className="text-gray-900 font-medium text-[15px] cursor-pointer py-[6px] duration-200 hover:bg-violet-50 rounded-sm hover:text-violet-600  my-1 px-4">
                       <Link
-                        href="/dashboard"
-                        // href={role?'admin-dashboard':'dashboard'}
+                        // href="/admin-dashboard"
+                        href={role?.role === 'admin'?'admin-dashboard':'dashboard'}
                         className="flex items-center gap-4"
                       >
                         <BiSolidDashboard /> Dashboard
@@ -66,7 +69,7 @@ const Navbar = () => {
                     </li>
                     <li className="text-gray-900 font-medium text-[15px] cursor-pointer py-[6px] duration-200 hover:bg-violet-50 rounded-sm hover:text-violet-600  my-1 px-4">
                       <Link
-                        href="/dashboard"
+                         href={role?.role === 'admin'?'admin-dashboard':'dashboard'}
                         className="flex items-center gap-4"
                       >
                         <BiUserCheck /> Profile

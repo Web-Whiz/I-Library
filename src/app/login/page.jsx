@@ -27,7 +27,17 @@ const LoginPage = () => {
     toast.promise(Login(data.email, data.password), {
       loading: "Logging in...",
       success: (result) => {
-        console.log(result.user);
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        fetch("http://localhost:5000/jwt", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(loggedUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+          });
         return "Login successful";
       },
       error: (error) => {
@@ -161,8 +171,6 @@ const LoginPage = () => {
                 type={showPassword ? "text" : "password"}
                 {...register("password", {
                   required: true,
-                  minLength: 6,
-                  pattern: /(?=.*[A-Z])(?=.*[@$!%*?&])/,
                 })}
                 className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                 placeholder="************"
@@ -177,11 +185,12 @@ const LoginPage = () => {
             </div>
             {errors.password && (
               <div className="text-red-600">
-                {errors.password.type === "required"
-                  ? "Password is required"
-                  : errors.password.type === "minLength"
-                  ? "Password must be at least 6 characters long"
-                  : "Password must contain a capital letter and a special character"}
+                {
+                  errors.password.type === "required" && "Password is required"
+                  // : errors.password.type === "minLength"
+                  // ? "Password must be at least 6 characters long"
+                  // : "Password must contain a capital letter and a special character"
+                }
               </div>
             )}
           </div>

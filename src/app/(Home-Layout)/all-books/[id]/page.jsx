@@ -28,7 +28,7 @@ const Book = ({ params }) => {
         <div className="w-full lg:w-[70%] items-center justify-center grid grid-cols-1 sm:grid-cols-5 gap-10 p-6">
           {/* book image */}
           <div className="sm:col-span-2">
-            <div className="w-full p-6 border-[#EAE6E6] border-[1px]">
+            <div className="w-full p-6 border-[#EAE6E6] border-[1px] overflow-hidden">
               <img
                 className="w-full h-[215px] object-contain object-center hover:scale-150 duration-500"
                 src={book.image_url}

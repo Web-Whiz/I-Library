@@ -5,7 +5,9 @@ import { AiFillCloseCircle } from "react-icons/ai";
 const ShelfNameChange = ({ setChangeShelfName, shelf, refetch }) => {
   const [newShelf, setNewShelf] = useState(null);
   const handleEditShelfName = () => {
-    updateShelfName(shelf._id, { shelfName: newShelf }, refetch);
+    updateShelfNa
+    
+    me(shelf._id, { shelfName: newShelf }, refetch);
     refetch();
     setChangeShelfName(false);
   };
