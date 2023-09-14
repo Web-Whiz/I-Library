@@ -70,7 +70,7 @@ const BarChart = () => {
   };
 
   return (
-    <div className="h-[500px] px-8">
+    <div className="h-[800px]">
       <Line data={data}options={options}/>
     </div>
   );

@@ -1,29 +1,14 @@
 "use client";
 
-
 import { useQuery } from "@tanstack/react-query";
 import { FaCalendar, FaCheckCircle, FaClock, FaEnvelope, FaTruck, FaUser } from 'react-icons/fa';
 import { MdDateRange } from "react-icons/md";
 
 
 const OrderDetails = ({ params }) => {
-  // const id = parseFloat(params.id)
-  // const { data: orderDetails = [], refetch } = useQuery({
-  //   queryKey: ["orderDetails"],
-  //   // enabled: !loading,
-  //   queryFn: async () => {
-  //     const res = await fetch(
-  //       `${process.env.NEXT_PUBLIC_BaseURL}/order-details/64f1e5113dbed9800b92c8a2}`
-  //     );
-  //     return res.json();
-  //   },
-  // });
-    // console.log(typeof(id));
-
 
     const { data: orderDetails = [], refetch } = useQuery({
       queryKey: ["orderDetails"],
-      // Uncomment this line if you want to enable the query conditionally based on some 'loading' state
       // enabled: !loading,
       queryFn: async () => {
         const res = await fetch(

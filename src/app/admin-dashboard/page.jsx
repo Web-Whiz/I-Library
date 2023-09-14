@@ -51,7 +51,7 @@ const AdminHome = () => {
         </div>
       </div>
 
-      <div className="h-[500px]">
+      <div className="h-[800px]">
         <BarChart  />
       </div>
     </div>

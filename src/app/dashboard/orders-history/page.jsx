@@ -7,9 +7,6 @@ import React from "react";
 const OrderHistory = () => {
   const { user, loading } = useAuth();
 
-  // if(loading){
-  //   return 'loading...'
-  // }
 
   const { data: orderHistory = [], refetch } = useQuery({
     queryKey: ["orderHistory", user?.email],
