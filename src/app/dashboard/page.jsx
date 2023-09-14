@@ -1,36 +1,66 @@
 "use client";
 import React from "react";
-const page = () => {
+import {
+  FaBook,
+  FaCalendarAlt,
+  FaMedal,
+  FaRegClock,
+  FaGift,
+  FaHeart,
+  FaTrophy,
+  FaHandHoldingUsd,
+  FaClipboardList,
+  FaExclamationCircle,
+} from "react-icons/fa";
+
+const Page = () => {
   return (
-    <div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4  mb-4">
-        <div className="p-8 bg-sky-300 font-semibold hover:shadow-sm rounded border m-1 flex flex-col gap-2 items-center justify-center">
-          <img src="/icon1.png" alt="Book Icon" />
-          <p>Total Read Books</p>
-          <p>15</p>
-        </div>
-        <div className="p-8 bg-sky-300 font-semibold hover:shadow-sm rounded border m-1 flex flex-col gap-2 items-center justify-center">
-          <img src="/icon1.png" alt="Book Icon" />
-          <p>Borrowed Books</p>
-          <p>3</p>
-        </div>
-        <div className="p-8 bg-sky-300 font-semibold hover:shadow-sm rounded border m-1 flex flex-col gap-2 items-center justify-center">
-          <img src="/icon1.png" alt="Book Icon" />
-          <p>Requested Books</p>
-          <p>3</p>
-        </div>
-        <div className="p-8 bg-sky-300 font-semibold hover:shadow-sm rounded border m-1 flex flex-col gap-2 items-center justify-center">
-          <img src="/icon1.png" alt="Book Icon" />
-          <p>Over Due Books</p>
-          <p>1</p>
-        </div>
-        <div className="p-8 bg-sky-300 font-semibold hover:shadow-sm rounded border m-1 flex flex-col gap-2 items-center justify-center">
-          <img src="/icon1.png" alt="Book Icon" />
-          <p>Donated Books</p>
-          <p>1</p>
+    <div className="container">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
+        
+        <div className="box p-8 bg-blue-400 font-semibold hover:shadow-lg rounded border items-center m-1 flex gap-2">
+          <span className="text-4xl p-2 bg-white rounded text-teal-400 shadow-lg"><FaBook /></span>
+          <div className="w-full">
+            <p>Total Read Books</p>
+            <p>15</p>
+          </div>
         </div>
 
-        <div className="p-8 bg-sky-300  font-semibold hover:shadow-sm rounded border m-1 flex flex-col gap-3 items-start ">
+        <div className="box p-8 bg-green-400 font-semibold hover:shadow-lg rounded border m-1 flex  gap-2 items-center ">
+          <span className="text-4xl p-2 bg-white rounded text-blue-400 shadow-lg"><FaHandHoldingUsd /></span>
+          <div className="w-full">
+            <p>Borrowed Books</p>
+            <p>5</p>
+          </div>
+
+        </div>
+
+        <div className="box p-8 bg-yellow-400 font-semibold hover:shadow-lg rounded border m-1 flex  gap-2 items-center ">
+          <span className="text-4xl p-2 bg-white rounded text-green-400 shadow-lg"><FaClipboardList /></span>
+          <div className="w-full">
+            <p>Requested Books</p>
+            <p>15</p>
+          </div>
+        </div>
+
+        <div className="box p-8 bg-orange-400 font-semibold hover:shadow-lg rounded border m-1 flex  gap-2 items-center ">
+          <span className="text-4xl p-2 bg-white rounded text-yellow-400 shadow-lg" ><FaExclamationCircle /></span>
+          <div className="w-full">
+            <p>Overdue Books</p>
+            <p>2</p>
+          </div>
+        </div>
+
+        <div className="box p-8 bg-red-400 font-semibold hover:shadow-lg rounded border m-1 flex  gap-2 items-center ">
+          <span className="text-4xl p-2 bg-white rounded text-orange-400 shadow-lg" ><FaHeart /></span>
+          <div className="w-full">
+            <p>Donated Books</p>
+            <p>15</p>
+          </div>
+        </div>
+
+
+        <div className="box p-8 bg-purple-400 font-semibold hover:shadow-lg rounded border m-1 flex flex-col gap-3 items-start">
           <div>
             <p>Recently Read:Book Name</p>
             <p>Selected For Next:Book Name</p>
@@ -50,18 +80,21 @@ const page = () => {
           </div>
         </div>
       </div>
-      <div className=" grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <div className="p-8 bg-sky-300 font-semibold hover:shadow-sm rounded border m-1 flex flex-col gap-1 ">
-          <p>Your Upcoming Event</p>
-          <h1>Event Name:</h1>
-          <h2>Date:</h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div className="box p-8 bg-pink-400 font-semibold hover:shadow-lg rounded border m-1 flex items-center gap-2">
+          <span className="text-4xl p-2 bg-white rounded text-purple-400 shadow-lg block w-fit"><FaCalendarAlt /></span>
+          <div className="w-full">
+            <p>Event Name</p>
+            <p>Date</p>
+          </div>
         </div>
-        <div className="p-8 bg-sky-300 font-semibold hover:shadow-sm rounded border m-1 flex flex-col gap-3 items-center justify-center">
+        <div className="box p-8 bg-teal-400 font-semibold hover:shadow-lg rounded border m-1 flex flex-col gap-3 items-center justify-center">
           <h1>Awards</h1>
-          <div className="flex gap-2">
-            <img src="/icon1.png" alt="Book Icon" />
-            <img src="/icon1.png" alt="Book Icon" />
-            <img src="/icon1.png" alt="Book Icon" />
+          <div className="flex gap-2 text-4xl ">
+          <span className="text-4xl p-2 bg-white rounded text-orange-400 shadow-lg"><FaTrophy /></span>
+          <span className="text-4xl p-2 bg-white rounded text-orange-400 shadow-lg"><FaMedal /></span>
+          <span className="text-4xl p-2 bg-white rounded text-orange-400 shadow-lg"><FaTrophy /></span>
+
           </div>
         </div>
       </div>
@@ -69,4 +102,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
