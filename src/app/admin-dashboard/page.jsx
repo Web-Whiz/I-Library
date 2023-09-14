@@ -1,15 +1,19 @@
 "use client";
-import BarChart from "@/Page/AdminDashboard/BarChart";
+
+
+import Chart from "@/Page/AdminDashboard/Chart";
+import useAuth from "@/Utils/useAuth";
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
-import { BiSolidBook, BiTimeFive, BiUser } from "react-icons/bi";
+import { BiTimeFive, BiUser } from "react-icons/bi";
 import { FaBookOpen } from "react-icons/fa";
-const AdminHome = () => {
 
+const AdminHome = () => {
+  const { loading } = useAuth();
 
   const { data: dashboardHomeData = [], refetch } = useQuery({
     queryKey: ["dashboardHomeData"],
-    // enabled: !loading,
+    enabled: !loading,
     queryFn: async () => {
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_BaseURL}/dashboard-home`
@@ -17,7 +21,17 @@ const AdminHome = () => {
       return res.json();
     },
   });
-  console.log(dashboardHomeData)
+
+  const { data: newAddedBooks = [] } = useQuery({
+    queryKey: ["newAddedBooks"],
+    enabled: !loading,
+    queryFn: async () => {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_BaseURL}/books/new-added`
+      );
+      return res.json();
+    },
+  });
 
   return (
     <div className="container">
@@ -51,8 +65,9 @@ const AdminHome = () => {
         </div>
       </div>
 
-      <div className="h-[800px]">
-        <BarChart  />
+      <div>
+        <h1 className="text-center w-fit mx-auto font-bold border-b-2 ">Number of New Books Added in the Last Seven Days</h1>        
+        {!loading && <Chart data={newAddedBooks} />}
       </div>
     </div>
   );
