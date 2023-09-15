@@ -19,8 +19,8 @@ const AllBookCard = ({ book }) => {
         <h1 className="font-semibold text-sm "> {book?.title} </h1>
       </div>
       <div className="flex flex-col pb-2 justify-end items-center z-10">
-        <h3 className="text-xs text-gray-600 font-medium">
-          Self-Help and Motivation
+        <h3 className="text-xs text-gray-600 font-medium capitalize">
+          {book?.category}
         </h3>
         <h4 className="text-[10px]">Self no: 23</h4>
       </div>
