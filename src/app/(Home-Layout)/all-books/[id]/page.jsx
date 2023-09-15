@@ -4,10 +4,12 @@ import QAModal from "@/Components/QAModal/QAModal";
 import useAuth from "@/Utils/useAuth";
 import { getBook } from "@/Utils/useBooks";
 import useQA from "@/Utils/useQA";
+// import useReviewsAndRatings from "@/Utils/useReviewsAndRatings";
 import useReviewsAndRatings from "@/Utils/useReviewsAndRatings";
 import bookImg from "@/assets/book1.png";
 import Image from "next/image";
-import { useState } from "react";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 import { BsStar, BsStarFill } from "react-icons/bs";
 import { PiSealCheckFill } from "react-icons/pi";
 import Rating from "react-rating";
@@ -20,8 +22,14 @@ const Book = ({ params }) => {
   const [addToBookShelf, setAddToBookShelf] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [showQAModal, setShowQAModal] = useState(false);
-  const [reviews] = useReviewsAndRatings();
+  // const [reviews] = useReviewsAndRatings();
   const [qas] = useQA();
+  const [reviews, fetchReviewsAndRatings] = useReviewsAndRatings();
+  useEffect(() => {
+    // Fetch reviews and ratings when the component mounts
+    fetchReviewsAndRatings();
+  }, [reviews]);
+
   return (
     <section>
       <div className="container mx-auto bg-white flex justify-between flex-col lg:flex-row shadow-lg">
@@ -100,12 +108,12 @@ const Book = ({ params }) => {
                 At a glance
               </button>
               <div className="grid grid-cols-2 w-full gap-2 mt-2">
-                <button className="px-3 py-2 bg-violet-600 text-violet-100 hover:bg-violet-100 hover:text-violet-600 duration-200">
+                <Link
+                  href="/LinuxGuide.pdf"
+                  className="px-3 py-2 bg-violet-600 text-violet-100 hover:bg-violet-100 hover:text-violet-600 duration-200 text-center"
+                >
                   Read PDF
-                </button>
-                {/* pdf components */}
-                {/* <Document></Document> */}
-                {/* pdf components */}
+                </Link>
 
                 <button className="px-3 py-2 bg-violet-600 text-violet-100 hover:bg-violet-100 hover:text-violet-600 duration-200">
                   Borrow
@@ -377,6 +385,7 @@ const Book = ({ params }) => {
                     bookImg={book.image_url}
                     bookTitle={book.title}
                     bookId={book._id}
+                    fetchReviewsAndRatings={fetchReviewsAndRatings}
                   ></Modal>
                 ) : null}
               </div>
