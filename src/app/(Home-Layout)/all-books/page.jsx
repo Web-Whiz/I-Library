@@ -1,37 +1,111 @@
 "use client";
-import banner from "@/assets/banner01.jpg";
-import AllBookCard from "@/Components/AllBookCard/AllBookCard";
-import { FaFilter } from "react-icons/fa";
+import FilteredBooksGrid from "@/Components/FilteredBooksGrid/FilteredBooksGrid";
 import PageBanner from "@/Components/PageBanner/PageBanner";
 import {
+  getAuthorFilteredBook,
   getBookAuthor,
   getBookCategory,
   getBookPublisher,
   getBooks,
   getCategoryFilteredBook,
+  getPublisherFilteredBook,
 } from "@/Utils/useBooks";
-import { useEffect, useState } from "react";
+import banner from "@/assets/banner01.jpg";
+import { useState } from "react";
+import { FaFilter } from "react-icons/fa";
+
 const AllBooks = () => {
   const [categories] = getBookCategory();
   const [authors] = getBookAuthor();
   const [publishers] = getBookPublisher();
   const [allBooks] = getBooks();
-  const [books, setBooks] = useState(null);
-  let filterCategory = [];
-  const [categoryFilteredBook, refetch] =
-    getCategoryFilteredBook(filterCategory);
+
+  const [selectedCategories, setSelectedCategories] = useState([]);
+  const [selectedAuthors, setSelectedAuthors] = useState([]);
+  const [selectedPublishers, setSelectedPublishers] = useState([]);
+
+  // State variables for sorting
+  const [sortBy, setSortBy] = useState("title"); // Default sort by title
+  const [sortOrder, setSortOrder] = useState("ascending"); // Default sort in ascending order
+
+  const [categoriesToShow, setCategoriesToShow] = useState(12);
+  const categoriesPerPage = 12;
+
+  const [authorsToShow, setAuthorsToShow] = useState(12);
+  const authorsPerPage = 12;
+
+  const [publishersToShow, setPublishersToShow] = useState(12);
+  const publishersPerPage = 12;
+
+  const [categoryFilteredBook, categoryRefetch] =
+    getCategoryFilteredBook(selectedCategories);
+
+  const [authorFilteredBook, authorRefetch] =
+    getAuthorFilteredBook(selectedAuthors);
+
+  const [publisherFilteredBook, publisherRefetch] =
+    getPublisherFilteredBook(selectedPublishers);
 
   const handleFilterByCategory = (categoryName) => {
-    if (filterCategory.includes(categoryName)) {
-      filterCategory = filterCategory.filter(
-        (category) => category !== categoryName
+    if (selectedCategories.includes(categoryName)) {
+      setSelectedCategories((prevCategories) =>
+        prevCategories.filter((category) => category !== categoryName)
       );
     } else {
-      filterCategory.push(categoryName);
+      setSelectedCategories((prevCategories) => [
+        ...prevCategories,
+        categoryName,
+      ]);
     }
-    refetch();
-    console.log(filterCategory);
-    console.log(categoryFilteredBook);
+  };
+  categoryRefetch();
+
+  const handleFilterByAuthor = (authorName) => {
+    if (selectedAuthors.includes(authorName)) {
+      setSelectedAuthors((prevAuthors) =>
+        prevAuthors.filter((author) => author !== authorName)
+      );
+    } else {
+      setSelectedAuthors((prevAuthors) => [...prevAuthors, authorName]);
+    }
+  };
+  authorRefetch();
+
+  const handleFilterByPublisher = (publisherName) => {
+    if (selectedPublishers.includes(publisherName)) {
+      setSelectedPublishers((prevPublishers) =>
+        prevPublishers.filter((publisher) => publisher !== publisherName)
+      );
+    } else {
+      setSelectedPublishers((prevPublishers) => [
+        ...prevPublishers,
+        publisherName,
+      ]);
+    }
+  };
+  publisherRefetch();
+
+  // Function to handle sorting
+  const handleSort = (criteria) => {
+    if (criteria === sortBy) {
+      // Toggle sorting order if the same criterion is selected again
+      setSortOrder(sortOrder === "ascending" ? "descending" : "ascending");
+    } else {
+      // Change the sorting criterion and default to ascending order
+      setSortBy(criteria);
+      setSortOrder("ascending");
+    }
+  };
+
+  // Function to sort books based on the selected criterion and order
+  const sortBooks = (books) => {
+    return [...books].sort((a, b) => {
+      if (sortOrder === "ascending") {
+        return a[sortBy].localeCompare(b[sortBy]);
+      } else {
+        return b[sortBy].localeCompare(a[sortBy]);
+      }
+    });
   };
 
   return (
@@ -39,46 +113,51 @@ const AllBooks = () => {
       <div>
         <PageBanner bannerImg={banner} bannerName="All Books" />
       </div>
-      <div className="container mx-auto grid grid-cols-12 gap-8 my-10">
-        <div className="col-span-3 hidden lg:block">
+      <div className="container mx-auto flex items-start justify-between gap-8 my-10 w-full">
+        {/* filter option */}
+        <div className="hidden lg:block w-[40%] xl:w-[20%]">
           <div className="bg-white w-full h-fit p-4">
             <h2 className="text-lg font-semibold">Category:</h2>
-            {categories.length >= 12 &&
-              categories.slice(4, 16).map((category) => {
-                return (
-                  <div
-                    key={category.category}
-                    className="flex justify-between ml-4 my-2"
-                  >
-                    <div className="flex items-center gap-2">
-                      <input
-                        type="checkbox"
-                        onChange={() =>
-                          handleFilterByCategory(category.category)
-                        }
-                        id={category.category}
-                        name="categoryFilter"
-                      />
-                      <label
-                        htmlFor={category.category}
-                        className="hover:text-indigo-600 duration-200 cursor-pointer"
-                      >
-                        {category.category}
-                      </label>
-                    </div>
-                    <h3 className="text-gray-400">({category.count})</h3>
+            {categories.slice(0, categoriesToShow).map((category) => {
+              return (
+                <div
+                  key={category.category}
+                  className="flex justify-between ml-4 my-2"
+                >
+                  <div className="flex items-center gap-2">
+                    <input
+                      type="checkbox"
+                      onChange={() => handleFilterByCategory(category.category)}
+                      id={category.category}
+                      name="categoryFilter"
+                    />
+                    <label
+                      htmlFor={category.category}
+                      className="hover:text-indigo-600 duration-200 cursor-pointer"
+                    >
+                      {category.category}
+                    </label>
                   </div>
-                );
-              })}
-            {categories.length >= 10 && (
+                  <h3 className="text-gray-400">({category.count})</h3>
+                </div>
+              );
+            })}
+            {categories.length > categoriesToShow && (
               <div className="w-full text-right">
-                <button className="text-indigo-700">see more</button>
+                <button
+                  className="text-indigo-700"
+                  onClick={() =>
+                    setCategoriesToShow(categoriesToShow + categoriesPerPage)
+                  }
+                >
+                  See More
+                </button>
               </div>
             )}
           </div>
           <div className="bg-white w-full h-fit my-5 p-4">
             <h2 className="text-lg font-semibold">Author:</h2>
-            {authors.map((author) => {
+            {authors.slice(0, authorsToShow).map((author) => {
               return (
                 <div
                   key={author.author}
@@ -87,8 +166,9 @@ const AllBooks = () => {
                   <div className="flex items-center gap-2">
                     <input
                       type="checkbox"
+                      onChange={() => handleFilterByAuthor(author.author)}
                       id={author.author}
-                      name="categoryFilter"
+                      name="authorFilter"
                     />
                     <label
                       htmlFor={author.author}
@@ -101,10 +181,22 @@ const AllBooks = () => {
                 </div>
               );
             })}
+            {authors.length > authorsToShow && (
+              <div className="w-full text-right">
+                <button
+                  className="text-indigo-700"
+                  onClick={() =>
+                    setAuthorsToShow(authorsToShow + authorsPerPage)
+                  }
+                >
+                  See More
+                </button>
+              </div>
+            )}
           </div>
           <div className="bg-white w-full h-fit p-4">
             <h2 className="text-lg font-semibold">Publisher:</h2>
-            {publishers.map((publisher) => {
+            {publishers.slice(0, publishersToShow).map((publisher) => {
               return (
                 <div
                   key={publisher.publisher}
@@ -114,7 +206,10 @@ const AllBooks = () => {
                     <input
                       type="checkbox"
                       id={publisher.publisher}
-                      name="categoryFilter"
+                      onChange={() =>
+                        handleFilterByPublisher(publisher.publisher)
+                      }
+                      name="publisherFilter"
                     />
                     <label
                       htmlFor={publisher.publisher}
@@ -127,10 +222,24 @@ const AllBooks = () => {
                 </div>
               );
             })}
+            {publishers.length > publishersToShow && (
+              <div className="w-full text-right">
+                <button
+                  className="text-indigo-700"
+                  onClick={() =>
+                    setPublishersToShow(publishersToShow + publishersPerPage)
+                  }
+                >
+                  See More
+                </button>
+              </div>
+            )}
           </div>
         </div>
-        <div className="col-span-12 lg:col-span-9 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 justify-center lg:justify-self-end gap-4">
-          <div className="col-span-2 sm:col-span-3 md:col-span-4 lg:col-span-3 xl:col-span-4 2xl:col-span-5 bg-white w-full h-20 flex items-center justify-between lg:justify-end px-5">
+        {/* filter option  */}
+        {/* book card */}
+        <div className="xl:w-[80%]">
+          <div className="bg-white w-full mb-5 h-20 flex items-center justify-between lg:justify-end px-5">
             <button className="bg-[#EFF3F8] flex items-center gap-2 px-3 py-2 rounded-sm lg:hidden">
               <span>
                 <FaFilter />
@@ -139,28 +248,40 @@ const AllBooks = () => {
             </button>
             <div className="flex items-center gap-2">
               <label htmlFor="sortOption" className="font-medium">
-                Sorted by:
+                Sort by:
               </label>
               <select
-                name="softOption"
+                name="sortOption"
                 className="outline-0 rounded-sm px-3 py-2 bg-[#EFF3F8]"
                 id="sortOption"
+                onChange={(e) => handleSort(e.target.value)}
               >
-                <option value="Default" defaultValue>
-                  Default
-                </option>
-                <option value="Default">Ascending</option>
-                <option value="Default">Descending</option>
+                <option value="title">Title</option>
+                <option value="author">Author</option>
+                {/* Add more sorting criteria as needed */}
               </select>
+              <button
+                className="text-indigo-700"
+                onClick={() => handleSort(sortBy)} // Toggle sorting order
+              >
+                {sortOrder === "ascending" ? "Ascending" : "Descending"}
+              </button>
             </div>
           </div>
-          {books
-            ? books.map((book) => {
-                return <AllBookCard key={book._id} book={book} />;
-              })
-            : allBooks.map((book) => {
-                return <AllBookCard key={book._id} book={book} />;
-              })}
+
+          {/* Filtered Books Grid */}
+          <FilteredBooksGrid
+            filteredBooks={
+              selectedCategories.length > 0
+                ? categoryFilteredBook
+                : selectedAuthors.length > 0
+                ? authorFilteredBook
+                : selectedPublishers.length > 0
+                ? publisherFilteredBook
+                : sortBooks(allBooks) // Apply sorting to all books
+            }
+            allBooks={allBooks}
+          />
         </div>
       </div>
 

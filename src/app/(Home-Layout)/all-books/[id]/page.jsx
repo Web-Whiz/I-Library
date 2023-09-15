@@ -4,31 +4,32 @@ import QAModal from "@/Components/QAModal/QAModal";
 import useAuth from "@/Utils/useAuth";
 import { getBook } from "@/Utils/useBooks";
 import useQA from "@/Utils/useQA";
+// import useReviewsAndRatings from "@/Utils/useReviewsAndRatings";
 import useReviewsAndRatings from "@/Utils/useReviewsAndRatings";
 import bookImg from "@/assets/book1.png";
 import Image from "next/image";
-import { useState } from "react";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 import { BsStar, BsStarFill } from "react-icons/bs";
 import { PiSealCheckFill } from "react-icons/pi";
 import Rating from "react-rating";
+import BookShelfModal from "./BookShelfModal";
 
 const Book = ({ params }) => {
   const [book] = getBook(params.id);
   // console.log(book);
   const { user } = useAuth();
-  const [showPdf, setShowPdf] = useState(false);
+  const [addToBookShelf, setAddToBookShelf] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [showQAModal, setShowQAModal] = useState(false);
-  const [reviews] = useReviewsAndRatings();
+  // const [reviews] = useReviewsAndRatings();
   const [qas] = useQA();
+  const [reviews, fetchReviewsAndRatings] = useReviewsAndRatings();
+  useEffect(() => {
+    // Fetch reviews and ratings when the component mounts
+    fetchReviewsAndRatings();
+  }, [reviews]);
 
-  const togglePdfViewer = () => {
-    setShowPdf(true);
-    console.log(showPdf);
-  };
-  const getStarValue = (e) => {
-    console.log(e);
-  };
   return (
     <section>
       <div className="container mx-auto bg-white flex justify-between flex-col lg:flex-row shadow-lg">
@@ -42,9 +43,18 @@ const Book = ({ params }) => {
                 alt="book img"
               />
             </div>
-            <button className="px-3 mt-6 rounded-sm py-2 bg-violet-100 text-violet-700 hover:text-violet-100 hover:bg-violet-700 duration-200 text-[15px] w-full">
+            <button
+              onClick={() => setAddToBookShelf(true)}
+              className="px-3 mt-6 rounded-sm py-2 bg-violet-100 text-violet-700 hover:text-violet-100 hover:bg-violet-700 duration-200 text-[15px] w-full"
+            >
               Add to virtual book self
             </button>
+            {addToBookShelf && (
+              <BookShelfModal
+                book={book}
+                setAddToBookShelf={setAddToBookShelf}
+              />
+            )}
           </div>
           {/* book image */}
           {/* book info */}
@@ -98,15 +108,12 @@ const Book = ({ params }) => {
                 At a glance
               </button>
               <div className="grid grid-cols-2 w-full gap-2 mt-2">
-                <button
-                  onClick={togglePdfViewer}
-                  className="px-3 py-2 bg-violet-600 text-violet-100 hover:bg-violet-100 hover:text-violet-600 duration-200"
+                <Link
+                  href="/LinuxGuide.pdf"
+                  className="px-3 py-2 bg-violet-600 text-violet-100 hover:bg-violet-100 hover:text-violet-600 duration-200 text-center"
                 >
                   Read PDF
-                </button>
-                {/* pdf components */}
-                {/* <Document></Document> */}
-                {/* pdf components */}
+                </Link>
 
                 <button className="px-3 py-2 bg-violet-600 text-violet-100 hover:bg-violet-100 hover:text-violet-600 duration-200">
                   Borrow
@@ -351,7 +358,6 @@ const Book = ({ params }) => {
                 <h2>Rate this book</h2>
                 <div className="my-1">
                   <Rating
-                    onChange={getStarValue}
                     placeholderRating={0}
                     className="space-x-1 md:space-x-3"
                     emptySymbol={
@@ -379,6 +385,7 @@ const Book = ({ params }) => {
                     bookImg={book.image_url}
                     bookTitle={book.title}
                     bookId={book._id}
+                    fetchReviewsAndRatings={fetchReviewsAndRatings}
                   ></Modal>
                 ) : null}
               </div>

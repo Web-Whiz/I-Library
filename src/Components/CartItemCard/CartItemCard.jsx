@@ -1,6 +1,7 @@
 "use client";
 import useAuth from "@/Utils/useAuth";
 import React from "react";
+import { toast } from "react-hot-toast";
 import Swal from "sweetalert2";
 
 const CartItemCard = ({ cartData, refetch }) => {
@@ -35,13 +36,7 @@ const CartItemCard = ({ cartData, refetch }) => {
           .then((res) => res.json())
           .then((data) => {
             if (data.deletedCount) {
-              Swal.fire({
-                position: "center",
-                icon: "success",
-                title: "Deleted From Cart",
-                showConfirmButton: false,
-                timer: 1500,
-              });
+              toast.error("Deleted From Cart")
               refetch();
             }
           });
@@ -50,7 +45,7 @@ const CartItemCard = ({ cartData, refetch }) => {
   };
   return (
     <div>
-      <div className="flex p-3 bg-white max-w-lg border my-1">
+      <div className="flex p-3 shadow-md w-full border">
         <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
           <img
             src={cartData?.image_url}
@@ -61,7 +56,7 @@ const CartItemCard = ({ cartData, refetch }) => {
         <div className="ml-4 flex flex-1 flex-col">
           <div>
             <div className="flex justify-between text-base font-medium text-gray-900">
-              <h3>
+              <h3 className="text-sm sm:text-lg">
                 <a href="#">{cartData?.title}</a>
               </h3>
               <p className="ml-4">$50.00</p>

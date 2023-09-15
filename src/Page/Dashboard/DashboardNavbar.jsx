@@ -16,6 +16,7 @@ import {
   BiStar,
   BiTimeFive,
   BiUser,
+  BiSolidBookAdd,
 } from "react-icons/bi";
 import { RxCross2 } from "react-icons/rx";
 const DashboardNavbar = () => {
@@ -50,6 +51,14 @@ const DashboardNavbar = () => {
         </li>
         <li className="text-gray-900 font-medium cursor-pointer py-[6px] duration-200 text-lg hover:bg-violet-50 rounded-sm hover:text-violet-600  my-1 px-2">
           <Link
+            href="/dashboard/book-shelf"
+            className="flex items-center gap-4 text-[15px]"
+          >
+            <GiBookshelf /> Book shelf
+          </Link>
+        </li>
+        <li className="text-gray-900 font-medium cursor-pointer py-[6px] duration-200 text-lg hover:bg-violet-50 rounded-sm hover:text-violet-600  my-1 px-2">
+          <Link
             href="/dashboard/cart"
             className="flex items-center gap-4 text-[15px]"
           >
@@ -58,15 +67,19 @@ const DashboardNavbar = () => {
           </Link>
         </li>
         <li className="text-gray-900 font-medium cursor-pointer py-[6px] duration-200 text-lg hover:bg-violet-50 rounded-sm hover:text-violet-600  my-1 px-2">
-          <a className="flex items-center gap-4 text-[15px]">
+          <Link 
+          href="/dashboard/my-orders"
+          className="flex items-center gap-4 text-[15px]">
             <BiClipboard />
             My Orders
-          </a>
+          </Link>
         </li>
         <li className="text-gray-900 font-medium cursor-pointer py-[6px] duration-200 text-lg hover:bg-violet-50 rounded-sm hover:text-violet-600  my-1 px-2">
-          <a className="flex items-center gap-4 text-[15px]">
+          <Link
+          href='/dashboard/orders-history'
+          className="flex items-center gap-4 text-[15px]">
             <BiTimeFive /> Order History
-          </a>
+          </Link>
         </li>
         <li className="text-gray-900 font-medium cursor-pointer py-[6px] duration-200 text-lg hover:bg-violet-50 rounded-sm hover:text-violet-600  my-1 px-2">
           <Link
@@ -106,6 +119,7 @@ const DashboardNavbar = () => {
             <BiStar /> My Reviews{" "}
           </Link>
         </li>
+        
         <h2 className="text-sm font-semibold text-gray-400 mt-3">
           General Menu
         </h2>

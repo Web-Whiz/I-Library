@@ -1,113 +1,114 @@
 "use client";
-import Image from "next/image";
-import Link from "next/link";
-import banner from "@/assets/banner01.jpg";
 import PageBanner from "@/Components/PageBanner/PageBanner";
+import { getBookPublisher } from "@/Utils/useBooks";
+import banner from "@/assets/banner01.jpg";
+import Link from "next/link";
 import { useState } from "react";
 
 const PublicationsPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [showAllPublications, setShowAllPublications] = useState(false);
-
-  const publications = [
-    {
-      id: 1,
-      name: "Abacas",
-      img: "https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books-illustration_23-2149341898.jpg?w=2000",
-    },
-    {
-      id: 2,
-      name: "Alfa",
-      img: "https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books-illustration_23-2149341898.jpg?w=2000",
-    },
-    {
-      id: 3,
-      name: "Book Readers",
-      img: "https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books-illustration_23-2149341898.jpg?w=2000",
-    },
-    {
-      id: 4,
-      name: "Donika Publishing",
-      img: "https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books-illustration_23-2149341898.jpg?w=2000",
-    },
-    {
-      id: 5,
-      name: "Harpwe Black",
-      img: "https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books-illustration_23-2149341898.jpg?w=2000",
-    },
-    {
-      id: 6,
-      name: "Islamic Foundation",
-      img: "https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books-illustration_23-2149341898.jpg?w=2000",
-    },
-    {
-      id: 7,
-      name: "Loft",
-      img: "https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books-illustration_23-2149341898.jpg?w=2000",
-    },
-    {
-      id: 8,
-      name: "Book Readers",
-      img: "https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books-illustration_23-2149341898.jpg?w=2000",
-    },
-    {
-      id: 9,
-      name: "Donika Publishing",
-      img: "https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books-illustration_23-2149341898.jpg?w=2000",
-    },
-    {
-      id: 10,
-      name: "Harpwe Black",
-      img: "https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books-illustration_23-2149341898.jpg?w=2000",
-    },
-    {
-      id: 11,
-      name: "Islamic Foundation",
-      img: "https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books-illustration_23-2149341898.jpg?w=2000",
-    },
-    {
-      id: 12,
-      name: "Abacas Publications",
-      img: "https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books-illustration_23-2149341898.jpg?w=2000",
-    },
-    {
-      id: 13,
-      name: "Abacas",
-      img: "https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books-illustration_23-2149341898.jpg?w=2000",
-    },
-    {
-      id: 14,
-      name: "Alfa",
-      img: "https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books-illustration_23-2149341898.jpg?w=2000",
-    },
-    {
-      id: 15,
-      name: "Book Readers",
-      img: "https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books-illustration_23-2149341898.jpg?w=2000",
-    },
-    {
-      id: 16,
-      name: "Donika Publishing",
-      img: "https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books-illustration_23-2149341898.jpg?w=2000",
-    },
-    {
-      id: 17,
-      name: "Harpwe Black",
-      img: "https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books-illustration_23-2149341898.jpg?w=2000",
-    },
-    {
-      id: 18,
-      name: "Islamic Foundation",
-      img: "https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books-illustration_23-2149341898.jpg?w=2000",
-    },
-  ];
+  const [publishers] = getBookPublisher();
+  // console.log(publishers);
+  // const publications = [
+  //   {
+  //     id: 1,
+  //     name: "Abacas",
+  //     img: "https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books-illustration_23-2149341898.jpg?w=2000",
+  //   },
+  //   {
+  //     id: 2,
+  //     name: "Alfa",
+  //     img: "https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books-illustration_23-2149341898.jpg?w=2000",
+  //   },
+  //   {
+  //     id: 3,
+  //     name: "Book Readers",
+  //     img: "https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books-illustration_23-2149341898.jpg?w=2000",
+  //   },
+  //   {
+  //     id: 4,
+  //     name: "Donika Publishing",
+  //     img: "https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books-illustration_23-2149341898.jpg?w=2000",
+  //   },
+  //   {
+  //     id: 5,
+  //     name: "Harpwe Black",
+  //     img: "https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books-illustration_23-2149341898.jpg?w=2000",
+  //   },
+  //   {
+  //     id: 6,
+  //     name: "Islamic Foundation",
+  //     img: "https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books-illustration_23-2149341898.jpg?w=2000",
+  //   },
+  //   {
+  //     id: 7,
+  //     name: "Loft",
+  //     img: "https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books-illustration_23-2149341898.jpg?w=2000",
+  //   },
+  //   {
+  //     id: 8,
+  //     name: "Book Readers",
+  //     img: "https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books-illustration_23-2149341898.jpg?w=2000",
+  //   },
+  //   {
+  //     id: 9,
+  //     name: "Donika Publishing",
+  //     img: "https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books-illustration_23-2149341898.jpg?w=2000",
+  //   },
+  //   {
+  //     id: 10,
+  //     name: "Harpwe Black",
+  //     img: "https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books-illustration_23-2149341898.jpg?w=2000",
+  //   },
+  //   {
+  //     id: 11,
+  //     name: "Islamic Foundation",
+  //     img: "https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books-illustration_23-2149341898.jpg?w=2000",
+  //   },
+  //   {
+  //     id: 12,
+  //     name: "Abacas Publications",
+  //     img: "https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books-illustration_23-2149341898.jpg?w=2000",
+  //   },
+  //   {
+  //     id: 13,
+  //     name: "Abacas",
+  //     img: "https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books-illustration_23-2149341898.jpg?w=2000",
+  //   },
+  //   {
+  //     id: 14,
+  //     name: "Alfa",
+  //     img: "https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books-illustration_23-2149341898.jpg?w=2000",
+  //   },
+  //   {
+  //     id: 15,
+  //     name: "Book Readers",
+  //     img: "https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books-illustration_23-2149341898.jpg?w=2000",
+  //   },
+  //   {
+  //     id: 16,
+  //     name: "Donika Publishing",
+  //     img: "https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books-illustration_23-2149341898.jpg?w=2000",
+  //   },
+  //   {
+  //     id: 17,
+  //     name: "Harpwe Black",
+  //     img: "https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books-illustration_23-2149341898.jpg?w=2000",
+  //   },
+  //   {
+  //     id: 18,
+  //     name: "Islamic Foundation",
+  //     img: "https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books-illustration_23-2149341898.jpg?w=2000",
+  //   },
+  // ];
 
   const togglePublicationsVisibility = () => {
     setShowAllPublications(!showAllPublications);
   };
 
-  const filteredPublications = publications.filter((publication) =>
-    publication.name.toLowerCase().includes(searchQuery.toLowerCase())
+  const filteredPublications = publishers.filter((publication) =>
+    publication.publisher.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   const setSearchQueryAndReset = (newQuery) => {
@@ -151,14 +152,19 @@ const PublicationsPage = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-y-12 md:gap-y-24">
           {filteredPublications
             .slice(0, showAllPublications ? undefined : 12)
-            .map((publication) => (
+            .map((publication, index) => (
               <Link
-                key={publication?.id}
-                href="/"
+                key={index}
+                href={`/publications?name=${encodeURIComponent(
+                  publication?.publisher
+                )}`}
+                as={`/publications/${encodeURIComponent(
+                  publication?.publisher
+                )}`}
                 className="flex items-center justify-center"
               >
                 <div
-                  title={publication?.name}
+                  title={publication?.publisher}
                   style={{
                     width: "140px",
                     height: "140px",
@@ -169,12 +175,12 @@ const PublicationsPage = () => {
                     style={{
                       filter: "grayscale(100%)",
                     }}
-                    src={publication?.img}
-                    alt={publication?.name}
+                    src="https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books-illustration_23-2149341898.jpg?w=2000"
+                    alt={publication?.publisher}
                     className="mx-auto rounded-full"
                   />
                   <h6 className="text-sm font-medium text-center mt-3">
-                    {publication?.name}
+                    {publication?.publisher}
                   </h6>
                 </div>
               </Link>
