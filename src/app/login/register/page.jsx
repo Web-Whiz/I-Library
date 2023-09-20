@@ -54,6 +54,7 @@ const RegisterPage = () => {
 
           if (responseData.insertedId) {
             toast.success("User created successfully");
+           
           }
         } catch (error) {
           console.log(error);

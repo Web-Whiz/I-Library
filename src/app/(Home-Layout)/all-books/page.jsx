@@ -31,6 +31,8 @@ const AllBooks = () => {
     }
   };
   refetch();
+
+  console.log(authors);
   return (
     <div>
       <div>
