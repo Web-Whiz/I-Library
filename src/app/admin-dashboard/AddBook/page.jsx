@@ -93,7 +93,7 @@ const AddBook = () => {
     };
     console.log(maindata);
 
-    fetch(`https://i-library-server-mu.vercel.app/books`, {
+    fetch(`${process.env.NEXT_PUBLIC_BaseURL}/books`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

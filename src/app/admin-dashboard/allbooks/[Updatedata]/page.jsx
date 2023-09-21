@@ -128,7 +128,7 @@ const Updatedatapage = ({ params }) => {
       pdf_link: pdf_link1 ? pdf_link : booksdatas.pdf_link,
     };
 
-    fetch(`https://i-library-server-mu.vercel.app/books/${params.Updatedata}`, {
+    fetch(`${process.env.NEXT_PUBLIC_BaseURL}/books/${params.Updatedata}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",

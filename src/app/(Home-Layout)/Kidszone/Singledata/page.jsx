@@ -5,7 +5,7 @@ import Link from "next/link";
 const Singledatapage = ({ KidsZoneBook }) => {
   console.log(KidsZoneBook);
   return (
-    <div className="w-full mx-auto group hover:shadow-xl h-[320px] p-[3px] bg-[#f8fafc] duration-500 shadow-slate-100 rounded-sm overflow-hidden relative collegeCard flex flex-col">
+    <div className="w-full mx-auto group hover:shadow-xl h-[320px] bg-[#f8fafc] duration-500 shadow-slate-100 rounded-md overflow-hidden relative collegeCard flex flex-col">
       <div className="w-full h-[215px] relative">
         <img
           className="w-full h-full hover:scale-120 duration-300 object-cover object-center"
@@ -13,7 +13,7 @@ const Singledatapage = ({ KidsZoneBook }) => {
         />
         <div className="absolute bottom-0 left-0 text-center w-full h-fit backdrop-blur-lg duration-200 opacity-0 group-hover:opacity-100">
           <button className="text-white uppercase bg-black/30 text-sm w-full h-full px-4 py-4">
-            <Link href={`/all-books/${KidsZoneBook._id}`}>view details</Link>
+            <Link href={`/all-books/${KidsZoneBook?._id}`}>view details</Link>
           </button>
         </div>
       </div>
