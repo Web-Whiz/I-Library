@@ -1,22 +1,17 @@
 .swiper-button-next,
-.swiper-button-prev{
-  
+.swiper-button-prev {
   height: 30px;
   width: 30px;
   margin: 20px;
   display: inline-block;
-  
 }
 
-.swiper-button-next{
+/* .swiper-button-next{
   background-image:url('/next-icon.svg') ;
 }
 .swiper-button-prev{
 background-image: url('/preview-icon.svg');
-}
-
-
-
+} */
 
 .swiper-button-prev.swiper-button-disabled,
 .swiper-button-next.swiper-button-disabled {

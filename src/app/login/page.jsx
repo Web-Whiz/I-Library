@@ -1,17 +1,19 @@
 "use client";
-import Link from "next/link";
-import { FcGoogle } from "react-icons/fc";
-import { FaFacebookF } from "react-icons/fa";
-import login from "@/assets/login.png";
-import { MdOutlineMailOutline, MdOutlineLockOpen } from "react-icons/md";
-import Image from "next/image";
-import { useForm } from "react-hook-form";
 import useAuth from "@/Utils/useAuth";
+import login from "@/assets/login.png";
+import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { BiHide, BiShow } from "react-icons/bi";
+import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
+import { BiHide, BiShow } from "react-icons/bi";
+import { FaFacebookF } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
+import { MdOutlineLockOpen, MdOutlineMailOutline } from "react-icons/md";
 
 const LoginPage = () => {
+  const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
   const { Login, googleSignIn, facebookSignIn, user } = useAuth();
   const {
@@ -29,17 +31,19 @@ const LoginPage = () => {
       success: (result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
-        fetch("http://localhost:5000/jwt", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(loggedUser),
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            console.log(data);
-          });
-        return "Login successful";
+        // fetch(`${process.env.NEXT_PUBLIC_BaseURL}/jwt`, {
+        //   method: "POST",
+        //   headers: { "Content-Type": "application/json" },
+        //   body: JSON.stringify(loggedUser),
+        // })
+        //   .then((res) => res.json())
+        //   .then((data) => {
+        //     console.log(data);
+        //   });
+        toast.success("Login successful");
+        router.push("/");
       },
+
       error: (error) => {
         console.log(error);
         throw new Error("Login failed");
@@ -74,7 +78,8 @@ const LoginPage = () => {
               responseData.insertedId ||
               responseData.message === "user already exists"
             ) {
-              return "Login successful";
+              toast.success("Login successful");
+              router.push("/");
             }
           } catch (error) {
             console.log(error);

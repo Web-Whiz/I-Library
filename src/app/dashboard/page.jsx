@@ -1,25 +1,38 @@
 "use client";
-import React from "react";
+import useAuth from "@/Utils/useAuth";
+import { getDonatedBooks } from "@/Utils/useDonatedBooks";
+import { getRequestedBooks } from "@/Utils/useRequestedBooks";
+import { useEffect } from "react";
 import {
   FaBook,
   FaCalendarAlt,
-  FaMedal,
-  FaRegClock,
-  FaGift,
-  FaHeart,
-  FaTrophy,
-  FaHandHoldingUsd,
   FaClipboardList,
   FaExclamationCircle,
+  FaHandHoldingUsd,
+  FaHeart,
+  FaMedal,
+  FaTrophy,
 } from "react-icons/fa";
 
 const Page = () => {
+  const { user } = useAuth();
+  const [requestedBooks, requestedBooksRefetch] = getRequestedBooks(
+    user?.email
+  );
+  const [donatedBook, donatedBooksRefetch] = getDonatedBooks(user?.email);
+
+  useEffect(() => {
+    requestedBooksRefetch();
+    donatedBooksRefetch();
+  }, [requestedBooks, donatedBook]);
+
   return (
     <div className="container">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
-        
         <div className="box p-8 bg-blue-400 font-semibold hover:shadow-lg rounded border items-center m-1 flex gap-2">
-          <span className="text-4xl p-2 bg-white rounded text-teal-400 shadow-lg"><FaBook /></span>
+          <span className="text-4xl p-2 bg-white rounded text-teal-400 shadow-lg">
+            <FaBook />
+          </span>
           <div className="w-full">
             <p>Total Read Books</p>
             <p>15</p>
@@ -27,24 +40,29 @@ const Page = () => {
         </div>
 
         <div className="box p-8 bg-green-400 font-semibold hover:shadow-lg rounded border m-1 flex  gap-2 items-center ">
-          <span className="text-4xl p-2 bg-white rounded text-blue-400 shadow-lg"><FaHandHoldingUsd /></span>
+          <span className="text-4xl p-2 bg-white rounded text-blue-400 shadow-lg">
+            <FaHandHoldingUsd />
+          </span>
           <div className="w-full">
             <p>Borrowed Books</p>
             <p>5</p>
           </div>
-
         </div>
 
         <div className="box p-8 bg-yellow-400 font-semibold hover:shadow-lg rounded border m-1 flex  gap-2 items-center ">
-          <span className="text-4xl p-2 bg-white rounded text-green-400 shadow-lg"><FaClipboardList /></span>
+          <span className="text-4xl p-2 bg-white rounded text-green-400 shadow-lg">
+            <FaClipboardList />
+          </span>
           <div className="w-full">
             <p>Requested Books</p>
-            <p>15</p>
+            <p>{requestedBooks?.length}</p>
           </div>
         </div>
 
         <div className="box p-8 bg-orange-400 font-semibold hover:shadow-lg rounded border m-1 flex  gap-2 items-center ">
-          <span className="text-4xl p-2 bg-white rounded text-yellow-400 shadow-lg" ><FaExclamationCircle /></span>
+          <span className="text-4xl p-2 bg-white rounded text-yellow-400 shadow-lg">
+            <FaExclamationCircle />
+          </span>
           <div className="w-full">
             <p>Overdue Books</p>
             <p>2</p>
@@ -52,13 +70,14 @@ const Page = () => {
         </div>
 
         <div className="box p-8 bg-red-400 font-semibold hover:shadow-lg rounded border m-1 flex  gap-2 items-center ">
-          <span className="text-4xl p-2 bg-white rounded text-orange-400 shadow-lg" ><FaHeart /></span>
+          <span className="text-4xl p-2 bg-white rounded text-orange-400 shadow-lg">
+            <FaHeart />
+          </span>
           <div className="w-full">
             <p>Donated Books</p>
-            <p>15</p>
+            <p>{donatedBook?.length}</p>
           </div>
         </div>
-
 
         <div className="box p-8 bg-purple-400 font-semibold hover:shadow-lg rounded border m-1 flex flex-col gap-3 items-start">
           <div>
@@ -82,7 +101,9 @@ const Page = () => {
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div className="box p-8 bg-pink-400 font-semibold hover:shadow-lg rounded border m-1 flex items-center gap-2">
-          <span className="text-4xl p-2 bg-white rounded text-purple-400 shadow-lg block w-fit"><FaCalendarAlt /></span>
+          <span className="text-4xl p-2 bg-white rounded text-purple-400 shadow-lg block w-fit">
+            <FaCalendarAlt />
+          </span>
           <div className="w-full">
             <p>Event Name</p>
             <p>Date</p>
@@ -91,10 +112,15 @@ const Page = () => {
         <div className="box p-8 bg-teal-400 font-semibold hover:shadow-lg rounded border m-1 flex flex-col gap-3 items-center justify-center">
           <h1>Awards</h1>
           <div className="flex gap-2 text-4xl ">
-          <span className="text-4xl p-2 bg-white rounded text-orange-400 shadow-lg"><FaTrophy /></span>
-          <span className="text-4xl p-2 bg-white rounded text-orange-400 shadow-lg"><FaMedal /></span>
-          <span className="text-4xl p-2 bg-white rounded text-orange-400 shadow-lg"><FaTrophy /></span>
-
+            <span className="text-4xl p-2 bg-white rounded text-orange-400 shadow-lg">
+              <FaTrophy />
+            </span>
+            <span className="text-4xl p-2 bg-white rounded text-orange-400 shadow-lg">
+              <FaMedal />
+            </span>
+            <span className="text-4xl p-2 bg-white rounded text-orange-400 shadow-lg">
+              <FaTrophy />
+            </span>
           </div>
         </div>
       </div>

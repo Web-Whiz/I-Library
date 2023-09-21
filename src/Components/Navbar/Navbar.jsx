@@ -62,8 +62,8 @@ const Navbar = () => {
                         // href="/admin-dashboard"
                         href={
                           role?.role === "admin"
-                            ? "admin-dashboard"
-                            : "dashboard"
+                            ? "/admin-dashboard"
+                            : "/dashboard"
                         }
                         className="flex items-center gap-4"
                       >

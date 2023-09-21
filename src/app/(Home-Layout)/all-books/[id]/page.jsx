@@ -1,10 +1,8 @@
 "use client";
 import Modal from "@/Components/Modal/Modal";
 import QAModal from "@/Components/QAModal/QAModal";
-import useAuth from "@/Utils/useAuth";
 import { getBook } from "@/Utils/useBooks";
 import useQA from "@/Utils/useQA";
-// import useReviewsAndRatings from "@/Utils/useReviewsAndRatings";
 import useReviewsAndRatings from "@/Utils/useReviewsAndRatings";
 import bookImg from "@/assets/book1.png";
 import Image from "next/image";
@@ -17,18 +15,20 @@ import BookShelfModal from "./BookShelfModal";
 
 const Book = ({ params }) => {
   const [book] = getBook(params.id);
-  // console.log(book);
-  const { user } = useAuth();
   const [addToBookShelf, setAddToBookShelf] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [showQAModal, setShowQAModal] = useState(false);
-  // const [reviews] = useReviewsAndRatings();
-  const [qas] = useQA();
+  const [qas, fetchQas] = useQA();
   const [reviews, fetchReviewsAndRatings] = useReviewsAndRatings();
+
   useEffect(() => {
     // Fetch reviews and ratings when the component mounts
     fetchReviewsAndRatings();
   }, [reviews]);
+
+  useEffect(() => {
+    fetchQas();
+  }, [qas]);
 
   return (
     <section>
@@ -38,7 +38,7 @@ const Book = ({ params }) => {
           <div className="sm:col-span-2">
             <div className="w-full p-6 border-[#EAE6E6] border-[1px]">
               <img
-                className="w-full h-[215px] object-contain object-center hover:scale-150 duration-500"
+                className="w-full h-[215px] object-contain object-center hover:scale-125 duration-500"
                 src={book.image_url}
                 alt="book img"
               />
@@ -414,8 +414,8 @@ const Book = ({ params }) => {
                   <div className="flex items-center gap-5">
                     <img
                       className="h-16 w-16 rounded-full"
-                      src={user?.photoURL}
-                      alt={user?.displayName}
+                      src={review?.userPhoto}
+                      alt={review?.username}
                     />
                     <div>
                       <p>
@@ -473,6 +473,7 @@ const Book = ({ params }) => {
                     bookImg={book.image_url}
                     bookTitle={book.title}
                     bookId={book._id}
+                    fetchQas={fetchQas}
                   ></QAModal>
                 ) : null}
               </div>

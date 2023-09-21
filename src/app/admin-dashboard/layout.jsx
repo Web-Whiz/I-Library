@@ -1,6 +1,5 @@
 "use client";
 import AdminNavbar from "@/Page/AdminDashboard/AdminNavbar";
-import DashboardNavbar from "@/Page/Dashboard/DashboardNavbar";
 import useAuth from "@/Utils/useAuth";
 import Hamburger from "hamburger-react";
 
@@ -8,7 +7,7 @@ const DashboardLayout = ({ children }) => {
   const { isDashboardOpen, setIsDashboardOpen, user } = useAuth();
   return (
     <html lang="en" data-theme="light">
-      <body className=" bg-[#EFF3F8]">
+      <body className="bg-[#EFF3F8]">
         <section className="flex">
           <nav
             className={`lg:block min-h-screen fixed top-0 left-0 z-50 bg-white border-r-2 w-[65%] md:w-[35%] lg:w-[22%] xl:w-[16%] ${

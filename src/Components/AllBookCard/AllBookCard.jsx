@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 const AllBookCard = ({ book }) => {
-  console.log(book)
+  // console.log(book)
   return (
     <div className="w-full mx-auto group hover:shadow-xl h-[320px] p-[3px] bg-[#f8fafc] duration-500 shadow-slate-100 rounded-sm overflow-hidden relative collegeCard flex flex-col">
       <div className="w-full h-[215px] relative">
