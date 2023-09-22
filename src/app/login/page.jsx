@@ -31,7 +31,7 @@ const LoginPage = () => {
       success: (result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
-        // fetch(`${process.env.NEXT_PUBLIC_BaseURL}/jwt`, {
+        // fetch("http://localhost:5000/jwt", {
         //   method: "POST",
         //   headers: { "Content-Type": "application/json" },
         //   body: JSON.stringify(loggedUser),
@@ -40,8 +40,8 @@ const LoginPage = () => {
         //   .then((data) => {
         //     console.log(data);
         //   });
-        toast.success("Login successful");
         router.push("/");
+        return "Login successful";
       },
 
       error: (error) => {
@@ -78,8 +78,8 @@ const LoginPage = () => {
               responseData.insertedId ||
               responseData.message === "user already exists"
             ) {
-              toast.success("Login successful");
               router.push("/");
+              return "Login successful";
             }
           } catch (error) {
             console.log(error);
@@ -119,6 +119,7 @@ const LoginPage = () => {
             responseData.insertedId ||
             responseData.message === "user already exists"
           ) {
+            router.push("/");
             return "Login successful";
           }
         } catch (error) {
