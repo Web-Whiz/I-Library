@@ -4,8 +4,6 @@ import {
   FaBook,
   FaCalendarAlt,
   FaMedal,
-  FaRegClock,
-  FaGift,
   FaHeart,
   FaTrophy,
   FaHandHoldingUsd,

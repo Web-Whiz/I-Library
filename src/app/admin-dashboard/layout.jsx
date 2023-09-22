@@ -1,12 +1,14 @@
 "use client";
 import AdminNavbar from "@/Page/AdminDashboard/AdminNavbar";
 import DashboardNavbar from "@/Page/Dashboard/DashboardNavbar";
+import AdminRoute from "@/Providers/AdminRoute";
 import useAuth from "@/Utils/useAuth";
 import Hamburger from "hamburger-react";
 
 const DashboardLayout = ({ children }) => {
   const { isDashboardOpen, setIsDashboardOpen, user } = useAuth();
   return (
+    <AdminRoute>
     <html lang="en" data-theme="light">
       <body className=" bg-[#EFF3F8]">
         <section className="flex">
@@ -46,6 +48,7 @@ const DashboardLayout = ({ children }) => {
         </section>
       </body>
     </html>
+</AdminRoute>
   );
 };
 

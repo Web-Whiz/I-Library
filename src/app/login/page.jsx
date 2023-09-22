@@ -10,6 +10,7 @@ import useAuth from "@/Utils/useAuth";
 import { useState } from "react";
 import { BiHide, BiShow } from "react-icons/bi";
 import { toast } from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -22,6 +23,7 @@ const LoginPage = () => {
     reset,
   } = useForm();
   const password = watch("password", "");
+  const router = useRouter();
 
   const handleLogin = async (data) => {
     toast.promise(Login(data.email, data.password), {
@@ -38,6 +40,7 @@ const LoginPage = () => {
           .then((data) => {
             console.log(data);
           });
+        router.push("/");
         return "Login successful";
       },
       error: (error) => {
@@ -74,6 +77,7 @@ const LoginPage = () => {
               responseData.insertedId ||
               responseData.message === "user already exists"
             ) {
+              router.push("/");
               return "Login successful";
             }
           } catch (error) {
@@ -114,6 +118,7 @@ const LoginPage = () => {
             responseData.insertedId ||
             responseData.message === "user already exists"
           ) {
+            router.push("/");
             return "Login successful";
           }
         } catch (error) {
