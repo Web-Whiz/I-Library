@@ -38,9 +38,11 @@ const MenuItem = () => {
             About us
           </li>
         </Link>
-        <li className="hover:text-gray-950 hover:bg-white text-white px-2 py-2 cursor-pointer duration-200 font-medium">
-          Kids zone
-        </li>
+        <Link href={"/Kidszone"}>
+          <li className="hover:text-gray-950 hover:bg-white text-white px-2 py-2 cursor-pointer duration-200 font-medium">
+            Kids zone
+          </li>
+        </Link>
       </ul>
     </div>
   );

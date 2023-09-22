@@ -6,7 +6,14 @@ import { AiFillCloseCircle } from "react-icons/ai";
 import { BsStar, BsStarFill } from "react-icons/bs";
 import Rating from "react-rating";
 
-const Modal = ({ showModal, setShowModal, bookImg, bookTitle, bookId }) => {
+const Modal = ({
+  showModal,
+  setShowModal,
+  bookImg,
+  bookTitle,
+  bookId,
+  fetchReviewsAndRatings,
+}) => {
   const { user } = useAuth();
   const [rating, setRating] = useState(0);
   const [review, setReview] = useState("");
@@ -24,6 +31,46 @@ const Modal = ({ showModal, setShowModal, bookImg, bookTitle, bookId }) => {
 
   // console.log(formattedDate);
 
+  // const handleSubmit = async (event) => {
+  //   event.preventDefault();
+
+  //   const data = {
+  //     username: user?.displayName,
+  //     rating,
+  //     review,
+  //     date: formattedDate,
+  //     bookTitle,
+  //     bookImg,
+  //     bookId,
+  //     email: user?.email,
+  //   };
+
+  //   // console.log(data);
+
+  //   try {
+  //     const response = await fetch(
+  //       "https://i-library-server.vercel.app/reviews",
+  //       {
+  //         method: "POST",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //         body: JSON.stringify(data),
+  //       }
+  //     );
+
+  //     if (response.ok) {
+  //       toast.success("Review submitted successfully!");
+  //       event.target.reset();
+  //       setShowModal(false);
+  //     } else {
+  //       toast.error("Failed to submit review.");
+  //     }
+  //   } catch (error) {
+  //     console.error("Error:", error);
+  //   }
+  // };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -36,13 +83,12 @@ const Modal = ({ showModal, setShowModal, bookImg, bookTitle, bookId }) => {
       bookImg,
       bookId,
       email: user?.email,
+      userPhoto: user?.photoURL,
     };
-
-    // console.log(data);
 
     try {
       const response = await fetch(
-        "https://i-library-server.vercel.app/reviews",
+        `${process.env.NEXT_PUBLIC_BaseURL}/reviews`,
         {
           method: "POST",
           headers: {
@@ -56,6 +102,9 @@ const Modal = ({ showModal, setShowModal, bookImg, bookTitle, bookId }) => {
         toast.success("Review submitted successfully!");
         event.target.reset();
         setShowModal(false);
+
+        // Fetch reviews and ratings again to update the UI
+        fetchReviewsAndRatings();
       } else {
         toast.error("Failed to submit review.");
       }

@@ -43,7 +43,7 @@ const WishListCard = ({ wishListBook, refetch }) => {
     });
   };
   return (
-    <div className="flex bg-white shadow-md p-3 max-w-lg border w-full">
+    <div className="flex bg-white shadow-md p-3 border w-full">
       <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
         <img
           src={wishListBook?.image_url}

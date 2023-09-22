@@ -1,13 +1,13 @@
 "use client";
 import Modal from "@/Components/Modal/Modal";
 import QAModal from "@/Components/QAModal/QAModal";
-import useAuth from "@/Utils/useAuth";
 import { getBook } from "@/Utils/useBooks";
 import useQA from "@/Utils/useQA";
 import useReviewsAndRatings from "@/Utils/useReviewsAndRatings";
 import bookImg from "@/assets/book1.png";
 import Image from "next/image";
-import { useState } from "react";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 import { BsStar, BsStarFill } from "react-icons/bs";
 import { PiSealCheckFill } from "react-icons/pi";
 import Rating from "react-rating";
@@ -15,22 +15,30 @@ import BookShelfModal from "./BookShelfModal";
 
 const Book = ({ params }) => {
   const [book] = getBook(params.id);
-  // console.log(book);
-  const { user } = useAuth();
   const [addToBookShelf, setAddToBookShelf] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [showQAModal, setShowQAModal] = useState(false);
-  const [reviews] = useReviewsAndRatings();
-  const [qas] = useQA();
+  const [qas, fetchQas] = useQA();
+  const [reviews, fetchReviewsAndRatings] = useReviewsAndRatings();
+
+  useEffect(() => {
+    // Fetch reviews and ratings when the component mounts
+    fetchReviewsAndRatings();
+  }, [reviews]);
+
+  useEffect(() => {
+    fetchQas();
+  }, [qas]);
+
   return (
     <section>
       <div className="container mx-auto bg-white flex justify-between flex-col lg:flex-row shadow-lg">
         <div className="w-full lg:w-[70%] items-center justify-center grid grid-cols-1 sm:grid-cols-5 gap-10 p-6">
           {/* book image */}
           <div className="sm:col-span-2">
-            <div className="w-full p-6 border-[#EAE6E6] border-[1px]">
+            <div className="w-full p-6 border-[#EAE6E6] border-[1px] overflow-hidden">
               <img
-                className="w-full h-[215px] object-contain object-center hover:scale-150 duration-500"
+                className="w-full h-[215px] object-contain object-center hover:scale-125 duration-500"
                 src={book.image_url}
                 alt="book img"
               />
@@ -100,12 +108,13 @@ const Book = ({ params }) => {
                 At a glance
               </button>
               <div className="grid grid-cols-2 w-full gap-2 mt-2">
-                <button className="px-3 py-2 bg-violet-600 text-violet-100 hover:bg-violet-100 hover:text-violet-600 duration-200">
+                <Link
+                  href="/LinuxGuide.pdf"
+                  target="_blank"
+                  className="px-3 py-2 bg-violet-600 text-violet-100 hover:bg-violet-100 hover:text-violet-600 duration-200 text-center"
+                >
                   Read PDF
-                </button>
-                {/* pdf components */}
-                {/* <Document></Document> */}
-                {/* pdf components */}
+                </Link>
 
                 <button className="px-3 py-2 bg-violet-600 text-violet-100 hover:bg-violet-100 hover:text-violet-600 duration-200">
                   Borrow
@@ -377,6 +386,7 @@ const Book = ({ params }) => {
                     bookImg={book.image_url}
                     bookTitle={book.title}
                     bookId={book._id}
+                    fetchReviewsAndRatings={fetchReviewsAndRatings}
                   ></Modal>
                 ) : null}
               </div>
@@ -405,8 +415,8 @@ const Book = ({ params }) => {
                   <div className="flex items-center gap-5">
                     <img
                       className="h-16 w-16 rounded-full"
-                      src={user?.photoURL}
-                      alt={user?.displayName}
+                      src={review?.userPhoto}
+                      alt={review?.username}
                     />
                     <div>
                       <p>
@@ -464,6 +474,7 @@ const Book = ({ params }) => {
                     bookImg={book.image_url}
                     bookTitle={book.title}
                     bookId={book._id}
+                    fetchQas={fetchQas}
                   ></QAModal>
                 ) : null}
               </div>

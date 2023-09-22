@@ -1,22 +1,25 @@
 "use client";
-import Link from "next/link";
-import { FcGoogle } from "react-icons/fc";
-import { FaFacebookF } from "react-icons/fa";
-import {
-  MdOutlineMailOutline,
-  MdOutlineLockOpen,
-  MdOutlineEdit,
-  MdOutlineCameraAlt,
-} from "react-icons/md";
+import useAuth from "@/Utils/useAuth";
+import usePhotoUpload from "@/Utils/usePhotoUpload";
 import login from "@/assets/login.png";
 import Image from "next/image";
-import { useForm } from "react-hook-form";
-import useAuth from "@/Utils/useAuth";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { BiHide, BiShow } from "react-icons/bi";
-import usePhotoUpload from "@/Utils/usePhotoUpload";
+import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
+import { BiHide, BiShow } from "react-icons/bi";
+import { FaFacebookF } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
+import {
+  MdOutlineCameraAlt,
+  MdOutlineEdit,
+  MdOutlineLockOpen,
+  MdOutlineMailOutline,
+} from "react-icons/md";
+
 const RegisterPage = () => {
+  const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
   const { createUser, googleSignIn, facebookSignIn, updateUserProfile } =
     useAuth();
@@ -54,6 +57,11 @@ const RegisterPage = () => {
 
           if (responseData.insertedId) {
             toast.success("User created successfully");
+<<<<<<< HEAD
+            router.push("/");
+=======
+           
+>>>>>>> 4492cb5f133f7d7a1aaa6c4c4a05f7b733f91edb
           }
         } catch (error) {
           console.log(error);
@@ -91,7 +99,8 @@ const RegisterPage = () => {
               responseData.insertedId ||
               responseData.message === "user already exists"
             ) {
-              return "Login successful";
+              toast.success("Login successful");
+              router.push("/");
             }
           } catch (error) {
             console.log(error);

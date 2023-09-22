@@ -10,10 +10,8 @@ const AdminRoute = ({ children }) => {
   const { user, loading } = useAuth();
   const [role] = useRole();
   console.log(role?.role);
-    if (loading) {
-    return (
-      <Loading />
-    );
+  if (loading) {
+    return <Loading />;
   }
   if (!user || role?.role !== "admin") {
     router.push("/");

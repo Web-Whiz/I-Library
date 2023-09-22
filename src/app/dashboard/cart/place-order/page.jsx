@@ -54,7 +54,7 @@ const PlaceOrder = () => {
   };
   return (
     <div>
-      <div className="min-h-screen bg-gray-100 flex items-center justify-center">
+      <div className="bg-gray-100 flex items-center justify-center">
         <div className="flex flex-col md:flex-row w-full p-6 gap-4 bg-white shadow-md rounded-md">
           <div className="w-full">
             <h2 className="text-2xl mb-4">Shipping Address</h2>

@@ -1,18 +1,19 @@
 "use client";
-import Link from "next/link";
-import { FcGoogle } from "react-icons/fc";
-import { FaFacebookF } from "react-icons/fa";
-import login from "@/assets/login.png";
-import { MdOutlineMailOutline, MdOutlineLockOpen } from "react-icons/md";
-import Image from "next/image";
-import { useForm } from "react-hook-form";
 import useAuth from "@/Utils/useAuth";
-import { useState } from "react";
-import { BiHide, BiShow } from "react-icons/bi";
-import { toast } from "react-hot-toast";
+import login from "@/assets/login.png";
+import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { toast } from "react-hot-toast";
+import { BiHide, BiShow } from "react-icons/bi";
+import { FaFacebookF } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
+import { MdOutlineLockOpen, MdOutlineMailOutline } from "react-icons/md";
 
 const LoginPage = () => {
+  const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
   const { Login, googleSignIn, facebookSignIn, user } = useAuth();
   const {
@@ -23,7 +24,6 @@ const LoginPage = () => {
     reset,
   } = useForm();
   const password = watch("password", "");
-  const router = useRouter();
 
   const handleLogin = async (data) => {
     toast.promise(Login(data.email, data.password), {
@@ -31,18 +31,19 @@ const LoginPage = () => {
       success: (result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
-        fetch("http://localhost:5000/jwt", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(loggedUser),
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            console.log(data);
-          });
+        // fetch("http://localhost:5000/jwt", {
+        //   method: "POST",
+        //   headers: { "Content-Type": "application/json" },
+        //   body: JSON.stringify(loggedUser),
+        // })
+        //   .then((res) => res.json())
+        //   .then((data) => {
+        //     console.log(data);
+        //   });
         router.push("/");
         return "Login successful";
       },
+
       error: (error) => {
         console.log(error);
         throw new Error("Login failed");

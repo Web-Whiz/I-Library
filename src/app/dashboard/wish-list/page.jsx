@@ -8,8 +8,8 @@ const page = () => {
 
   return (
     <div className="w-full bg-white shadow-lg p-5">
-      <h1>Total Wish List Books:{wishListBooks?.length}</h1>
-      <div className="space-y-4 my-5 w-full">
+      <h1 className="text-2xl">Total Wish List Books:{wishListBooks?.length}</h1>
+      <div className="  grid grid-cols-1 xl:grid-cols-2 gap-5 w-full mt-4">
         {wishListBooks?.map((wishListBook) => (
           <WishListCard
             key={wishListBook?._id}

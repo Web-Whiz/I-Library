@@ -2,10 +2,7 @@
 import { useQuery } from "@tanstack/react-query";
 
 export const getBooks = () => {
-  const {
-    data: allBooks = [],
-    refetch,
-  } = useQuery({
+  const { data: allBooks = [], refetch } = useQuery({
     queryKey: ["all books"],
     // enabled: !loading,
     queryFn: async () => {
@@ -61,6 +58,23 @@ export const getCategoryFilteredBook = (categoryNames) => {
   return [categoryFilteredBook, refetch];
 };
 
+export const getAuthorFilteredBook = (authorNames) => {
+  const authorsQueryString = authorNames.join(",");
+  console.log(authorsQueryString);
+  const { data: authorFilteredBook = [], refetch } = useQuery({
+    queryKey: ["authorFilteredBook"],
+    // enabled: !loading,
+    queryFn: async () => {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_BaseURL}/books/author-filter?authors=${authorsQueryString}`
+      );
+      return res.json();
+    },
+  });
+  console.log(authorFilteredBook);
+  return [authorFilteredBook, refetch];
+};
+
 export const getCategorizedBook = (categoryName) => {
   const { data: categoryFilteredBook = [], refetch } = useQuery({
     queryKey: ["categoryFilteredBook"],
@@ -73,6 +87,20 @@ export const getCategorizedBook = (categoryName) => {
     },
   });
   return [categoryFilteredBook, refetch];
+};
+
+export const getKidsZoneBook = () => {
+  const { data: KidsZoneBook = [], refetch } = useQuery({
+    queryKey: ["KidsZoneBook"],
+    // enabled: !loading,
+    queryFn: async () => {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_BaseURL}/books/category-filter?categories=kids`
+      );
+      return res.json();
+    },
+  });
+  return [KidsZoneBook, refetch];
 };
 
 export const getBookAuthor = () => {
@@ -154,5 +182,22 @@ export const getSpecificPublisherBook = (publisherName) => {
       return res.json();
     },
   });
+  return [publisherFilteredBook, refetch];
+};
+
+export const getPublisherFilteredBook = (publisherNames) => {
+  const publishersQueryString = publisherNames.join(",");
+  console.log(publishersQueryString);
+  const { data: publisherFilteredBook = [], refetch } = useQuery({
+    queryKey: ["publisherFilteredBook"],
+    // enabled: !loading,
+    queryFn: async () => {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_BaseURL}/books/publisher-filter?publishers=${publishersQueryString}`
+      );
+      return res.json();
+    },
+  });
+  console.log(publisherFilteredBook);
   return [publisherFilteredBook, refetch];
 };

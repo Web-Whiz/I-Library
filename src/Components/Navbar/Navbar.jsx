@@ -1,24 +1,23 @@
 "use client";
-import Image from "next/image";
-import React, { useState } from "react";
 import logo from "@/assets/ILibrary.png";
+import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 // import { FiShoppingCart, FiSearch } from "react-icons/fi";
-import { FaCartPlus } from "react-icons/fa";
-import { AiOutlineMenu } from "react-icons/ai";
-import SearchBar from "../SearchBar/SearchBar";
 import useAuth from "@/Utils/useAuth";
-import BurgerMenu from "../BurgerMenu/BurgerMenu";
-import Hamburger from "hamburger-react";
-import ShoppingCart from "../ShoppingCart/ShoppingCart";
-import { BiLogOut, BiSolidDashboard, BiUserCheck } from "react-icons/bi";
 import useCart from "@/Utils/useCart";
 import useRole from "@/Utils/useRole";
+import Hamburger from "hamburger-react";
+import { BiLogOut, BiSolidDashboard, BiUserCheck } from "react-icons/bi";
+import { FaCartPlus } from "react-icons/fa";
+import BurgerMenu from "../BurgerMenu/BurgerMenu";
+import SearchBar from "../SearchBar/SearchBar";
+import ShoppingCart from "../ShoppingCart/ShoppingCart";
 const Navbar = () => {
   const { isMenuOpen, setIsMenuOpen, isCartOpen, logOut, setIsCartOpen, user } =
     useAuth();
   const [carts, refetch] = useCart();
-  const [role] = useRole()
+  const [role] = useRole();
   const [isUserOpen, setIsUserOpen] = useState(false);
   // console.log(role)
   return (
@@ -61,7 +60,11 @@ const Navbar = () => {
                     <li className="text-gray-900 font-medium text-[15px] cursor-pointer py-[6px] duration-200 hover:bg-violet-50 rounded-sm hover:text-violet-600  my-1 px-4">
                       <Link
                         // href="/admin-dashboard"
-                        href={role?.role === 'admin'?'admin-dashboard':'dashboard'}
+                        href={
+                          role?.role === "admin"
+                            ? "/admin-dashboard"
+                            : "/dashboard"
+                        }
                         className="flex items-center gap-4"
                       >
                         <BiSolidDashboard /> Dashboard
@@ -69,7 +72,11 @@ const Navbar = () => {
                     </li>
                     <li className="text-gray-900 font-medium text-[15px] cursor-pointer py-[6px] duration-200 hover:bg-violet-50 rounded-sm hover:text-violet-600  my-1 px-4">
                       <Link
-                         href={role?.role === 'admin'?'admin-dashboard':'dashboard'}
+                        href={
+                          role?.role === "admin"
+                            ? "admin-dashboard"
+                            : "dashboard"
+                        }
                         className="flex items-center gap-4"
                       >
                         <BiUserCheck /> Profile

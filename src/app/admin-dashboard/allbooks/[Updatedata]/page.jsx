@@ -128,9 +128,7 @@ const Updatedatapage = ({ params }) => {
       pdf_link: pdf_link1 ? pdf_link : booksdatas.pdf_link,
     };
 
-    console.log(maindata);
-
-    fetch(`https://i-library-server-mu.vercel.app/books/${params.Updatedata}`, {
+    fetch(`${process.env.NEXT_PUBLIC_BaseURL}/books/${params.Updatedata}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
@@ -150,207 +148,143 @@ const Updatedatapage = ({ params }) => {
 
   return (
     <div>
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className="bg-white md:p-20 p-3 rounded-md md:space-y-10  border-8 "
-      >
-        <h1 className="text-center md:text-4xl text-2xl font-semibold md:-mt-5">
+      <form onSubmit={handleSubmit(onSubmit)} className="bg-white mt-5">
+        <h1 className="text-center md:text-4xl text-2xl font-semibold pt-5">
           Update Book Information
         </h1>
         {/* Slot 1 */}
-        <ul className="md:flex md:space-x-8">
-          <li>
-            <input
-              {...register("title")}
-              defaultValue={booksdatas.title}
-              onChange={(e) => settitle1(true)}
-              className="md:w-[680px] w-full mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
-              type="text"
-              placeholder="Title"
-            />
-          </li>
-          <li>
-            <input
-              {...register("author")}
-              onChange={(e) => setauthor1(true)}
-              defaultValue={booksdatas.author}
-              className="md:w-[680px] w-full mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
-              type="text"
-              placeholder="Author"
-            />
-          </li>
-        </ul>
 
-        {/* Slot 2 */}
-        <ul className="md:flex md:space-x-8">
-          <li>
-            <input
-              {...register("translator")}
-              onChange={(e) => settranslator1(true)}
-              defaultValue={booksdatas.translator}
-              className="md:w-[680px] w-full mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
-              type="text"
-              placeholder="Translator"
-            />
-          </li>
-          <li>
-            <input
-              {...register("publisher")}
-              onChange={(e) => setpublisher1(true)}
-              defaultValue={booksdatas.publisher}
-              className="md:w-[680px] w-full mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
-              type="text"
-              placeholder="Publisher"
-            />
-          </li>
-        </ul>
-
-        {/* Slot 3 */}
-        <ul className="md:flex md:space-x-8">
-          <li>
-            <input
-              {...register("shelf")}
-              onChange={(e) => setshelf1(true)}
-              defaultValue={booksdatas.shelf}
-              className="md:w-[680px] w-full mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
-              type="number"
-              placeholder="Shelf"
-            />
-          </li>
-          <li>
-            <input
-              onChange={uploadImage}
-              onClick={() => hendleimg(true)}
-              // defaultValue={booksdatas.image_url}
-              className="md:w-[680px] w-full mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
-              type="file"
-              placeholder="image_url"
-            />
-          </li>
-        </ul>
-
-        <ul className="md:flex md:space-x-8">
-          <li>
-            <input
-              {...register("edition")}
-              onChange={(e) => setedition1(true)}
-              defaultValue={booksdatas.edition}
-              className="md:w-[680px] w-full mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
-              type="text"
-              placeholder="Edition"
-            />
-          </li>
-          <li>
-            <input
-              {...register("published_in")}
-              onChange={(e) => setpublished_in1(true)}
-              defaultValue={booksdatas.published_in}
-              className="md:w-[680px] w-full mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
-              type="text"
-              placeholder="Published"
-            />
-          </li>
-        </ul>
-
-        {/* Slot 4 */}
-        <ul className="md:flex md:space-x-8">
-          <li>
-            <input
-              {...register("category")}
-              onChange={(e) => setcategory1(true)}
-              defaultValue={booksdatas.category}
-              className="md:w-[680px] w-full mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
-              type="text"
-              placeholder="category"
-            />
-          </li>
-          <li>
-            <input
-              {...register("number_of_pages")}
-              onChange={(e) => setnumber_of_pages1(true)}
-              defaultValue={booksdatas.number_of_pages}
-              className="md:w-[680px] w-full mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
-              type="text"
-              placeholder="Number_of_Pages"
-            />
-          </li>
-        </ul>
-
-        {/* Slot 5 */}
-        <ul className="md:flex md:space-x-8">
-          <li>
-            <input
-              {...register("language")}
-              onChange={(e) => setlanguage1(true)}
-              defaultValue={booksdatas.language}
-              className="md:w-[680px] w-full mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
-              type="text"
-              placeholder="Language"
-            />
-          </li>
-          <li>
-            <input
-              {...register("country")}
-              onChange={(e) => setcountry1(true)}
-              defaultValue={booksdatas.country}
-              className="md:w-[680px] w-full mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
-              type="text"
-              placeholder="Country"
-            />
-          </li>
-        </ul>
-
-        {/* Slot 6 */}
-        {/* <ul className="md:flex md:space-x-8">
-          <li>
-            <input
-              {...register("ratings")}
-              className="md:w-[680px] w-full mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
-              type="text"
-              placeholder="Ratings"
-            />
-          </li>
-          <li>
-            <input
-              {...register("total_read")}
-              className="md:w-[680px] w-full mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
-              type="text"
-              placeholder="Total_read"
-            />
-          </li>
-        </ul> */}
-
-        {/* Slot 7 */}
-        <ul className="md:flex md:space-x-8">
-          <li>
-            <input
-              {...register("added_date")}
-              onChange={(e) => setadded_date1(true)}
-              defaultValue={booksdatas.added_date}
-              className="md:w-[1390px] w-full mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
-              type="date"
-              placeholder="added_date"
-            />
-          </li>
-        </ul>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 p-4">
+          <input
+            {...register("title")}
+            defaultValue={booksdatas.title}
+            onChange={(e) => settitle1(true)}
+            className="mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
+            type="text"
+            placeholder="Title"
+          />
+          <input
+            {...register("author")}
+            onChange={(e) => setauthor1(true)}
+            defaultValue={booksdatas.author}
+            className="mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
+            type="text"
+            placeholder="Author"
+          />
+          <input
+            {...register("translator")}
+            onChange={(e) => settranslator1(true)}
+            defaultValue={booksdatas.translator}
+            className="mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
+            type="text"
+            placeholder="Translator"
+          />
+          <input
+            {...register("publisher")}
+            onChange={(e) => setpublisher1(true)}
+            defaultValue={booksdatas.publisher}
+            className="mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
+            type="text"
+            placeholder="Publisher"
+          />
+          <input
+            {...register("shelf")}
+            onChange={(e) => setshelf1(true)}
+            defaultValue={booksdatas.shelf}
+            className="mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
+            type="number"
+            placeholder="Shelf"
+          />
+          <input
+            onChange={uploadImage}
+            onClick={() => hendleimg(true)}
+            // defaultValue={booksdatas.image_url}
+            className="mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
+            type="file"
+            placeholder="image_url"
+          />
+          <input
+            {...register("edition")}
+            onChange={(e) => setedition1(true)}
+            defaultValue={booksdatas.edition}
+            className="mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
+            type="text"
+            placeholder="Edition"
+          />
+          <input
+            {...register("published_in")}
+            onChange={(e) => setpublished_in1(true)}
+            defaultValue={booksdatas.published_in}
+            className="mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
+            type="text"
+            placeholder="Published"
+          />
+          <input
+            {...register("category")}
+            onChange={(e) => setcategory1(true)}
+            defaultValue={booksdatas.category}
+            className="mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
+            type="text"
+            placeholder="category"
+          />
+          <input
+            {...register("number_of_pages")}
+            onChange={(e) => setnumber_of_pages1(true)}
+            defaultValue={booksdatas.number_of_pages}
+            className="mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
+            type="text"
+            placeholder="Number_of_Pages"
+          />
+          <input
+            {...register("language")}
+            onChange={(e) => setlanguage1(true)}
+            defaultValue={booksdatas.language}
+            className="mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
+            type="text"
+            placeholder="Language"
+          />
+          <input
+            {...register("country")}
+            onChange={(e) => setcountry1(true)}
+            defaultValue={booksdatas.country}
+            className="mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
+            type="text"
+            placeholder="Country"
+          />
+          {/* <input
+            {...register("ratings", { required: true })}
+            type="text"
+            className="mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
+            placeholder="Ratings"
+            required
+          /> */}
+          <input
+            {...register("added_date")}
+            onChange={(e) => setadded_date1(true)}
+            defaultValue={booksdatas.added_date}
+            className="mt-2 p-2 outline-none border-2 rounded focus:border-indigo-500"
+            type="date"
+            placeholder="added_date"
+          />
+        </div>
 
         {/* Slot 8 */}
-        {/* <ul className="md:flex md:space-x-[440px]">
+        {/* <ul className="grid xl:grid-cols-3 gap-5 items-center mt-6 mb-5 pl-3">
           <div className="form-control">
             <label className="cursor-pointer label">
-              <span className="label-text md:text-3xl text-xl mr-4">
-                Hard Copy
-              </span>
+              <span className="label-text text-3xl">Hard Copy</span>
+
               <input
                 {...register("hard_copy")}
                 type="checkbox"
+                onChange={(e) => sethard_copy1(true)}
                 className="checkbox checkbox-info items-center"
               />
             </label>
           </div>
           <div className="form-control">
             <label className="cursor-pointer label">
-              <span className="label-text md:text-3xl text-xl mr-4">Pdf</span>
+              <span className="label-text text-3xl">Pdf</span>
               <input
                 {...register("pdf")}
                 type="checkbox"
@@ -361,24 +295,22 @@ const Updatedatapage = ({ params }) => {
           </div>
           <div className="form-control">
             <label className="cursor-pointer label">
-              <span className="label-text md:text-3xl text-xl mr-4 md:ml-[90px]">
-                Ebook
-              </span>
-              <input
-                {...register("ebook")}
-                type="checkbox"
-                className="checkbox checkbox-info items-center"
-              />
+              <span className="label-text text-3xl">Ebook</span>
+                <input
+                  {...register("ebook")}
+                  type="checkbox"
+                  className="checkbox checkbox-info items-center"
+                />
             </label>
           </div>
         </ul> */}
-        <div>
+        <div className="p-4">
           {pdf === true ? (
             <input
               type="text"
               {...register("pdf_link")}
               defaultValue={booksdatas.pdf_link}
-              className="md:w-[1390px] w-full p-2 outline-none border-2 rounded focus:border-indigo-500"
+              className="w-full p-2 outline-none border-2 rounded focus:border-indigo-500"
               placeholder="Enter Your Pdf Link"
             />
           ) : (
@@ -388,7 +320,7 @@ const Updatedatapage = ({ params }) => {
             />
           )}
         </div>
-        <button className="md:w-9/12 md:ml-48 ml-28 mt-3 md:py-4 p-3 border bg-[#ede9fe] text-[#a03aed] hover:text-white hover:bg-[#a03aed] bg-opacity-25 font-semibold duration-700 rounded-md">
+        <button className="w-9/12 xl:ml-48 lg:ml-24 md:ml-28 sm:ml-20 ml-16 mb-10 mt-6 p-3 border bg-[#ede9fe] text-[#a03aed] hover:text-white hover:bg-[#a03aed] bg-opacity-25 font-semibold duration-700 rounded-md">
           <input type="submit" value={"Submit"} />
         </button>
       </form>
