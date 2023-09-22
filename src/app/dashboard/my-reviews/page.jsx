@@ -4,10 +4,16 @@ import useReviews from "@/Utils/useReviews";
 import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
 import Link from "next/link";
+import { useEffect } from "react";
 
 const MyReviews = () => {
-  const [reviews] = useReviews();
+  const [reviews, fetchReviewsAndRatings] = useReviews();
   const { user } = useAuth();
+
+  useEffect(() => {
+    fetchReviewsAndRatings();
+  }, []);
+
   return (
     <div className="w-full bg-white shadow-lg p-5 md:p-8">
       <div className="flex flex-col md:flex-row justify-between gap-y-5 md:gap-y-0">
@@ -23,12 +29,12 @@ const MyReviews = () => {
       </div>
       <hr className="my-10" />
       {reviews.map((review) => (
-        <div key={review._id}>
+        <div key={review?._id}>
           <div className="flex items-center gap-5">
             <img
               className="h-16 w-16 rounded-full"
               src={user?.photoURL}
-              alt={user?.displayName}
+              alt={review?.username}
             />
             <div>
               <p>
@@ -43,7 +49,7 @@ const MyReviews = () => {
               />
             </div>
           </div>
-          <Link href="/">
+          <Link href={`/all-books/${review["book-id"]}`}>
             <p className="my-5 font-medium text-gray-900 hover:text-indigo-600">
               <span className="border-b-2 border-indigo-300 hover:bg-indigo-50 p-1 transition-all">
                 {review["book-name"]}

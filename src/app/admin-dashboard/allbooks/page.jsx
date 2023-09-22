@@ -8,7 +8,7 @@ const page = () => {
   const [search, setsesrch] = useState("");
 
   useEffect(() => {
-    fetch("https://i-library-server-mu.vercel.app/books")
+    fetch(`${process.env.NEXT_PUBLIC_BaseURL}/books`)
       .then((res) => res.json())
       .then((data) => {
         setBooksdatas(data);
@@ -16,7 +16,7 @@ const page = () => {
   }, []);
 
   const Handlersearch = () => {
-    fetch(`https://i-library-server-mu.vercel.app/books/${search}`)
+    fetch(`${process.env.NEXT_PUBLIC_BaseURL}/books/${search}`)
       .then((res) => res.json())
       .then((data) => {
         setBooksdatas(data);
@@ -35,7 +35,7 @@ const page = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://i-library-server-mu.vercel.app/books/${_id}`, {
+        fetch(`${process.env.NEXT_PUBLIC_BaseURL}/books/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

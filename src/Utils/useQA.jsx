@@ -1,21 +1,25 @@
-"use client";
-import { useQuery } from "@tanstack/react-query";
-import useAuth from "./useAuth";
+// "use client";
+// import { useQuery } from "@tanstack/react-query";
+import { useState } from "react";
 import { getBook } from "./useBooks";
 
 const useQA = () => {
-  const { user } = useAuth();
   const [book] = getBook();
-  const { data: qas = [], refetch } = useQuery({
-    queryKey: ["qa", book._id],
-    queryFn: async () => {
+  const [qas, setQas] = useState([]);
+
+  const fetchQas = async () => {
+    try {
       const res = await fetch(
-        `https://i-library-server.vercel.app/qa/${book._id}`
+        `${process.env.NEXT_PUBLIC_BaseURL}/qa/${book._id}`
       );
-      return res.json();
-    },
-  });
-  return [qas, refetch];
+      const data = await res.json();
+      setQas(data);
+    } catch (error) {
+      console.error("Error fetching qas:", error);
+    }
+  };
+
+  return [qas, fetchQas];
 };
 
 export default useQA;

@@ -10,6 +10,7 @@ const QAModal = ({
   bookImg,
   bookTitle,
   bookId,
+  fetchQas,
 }) => {
   const { user } = useAuth();
   const [question, setQuestion] = useState("");
@@ -43,7 +44,7 @@ const QAModal = ({
     // console.log(data);
 
     try {
-      const response = await fetch("https://i-library-server.vercel.app/qa", {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_BaseURL}/qa`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -55,6 +56,7 @@ const QAModal = ({
         toast.success("Question submitted successfully!");
         event.target.reset();
         setShowQAModal(false);
+        fetchQas();
       } else {
         toast.error("Failed to submit question.");
       }

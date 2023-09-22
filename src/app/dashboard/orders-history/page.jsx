@@ -24,6 +24,10 @@ const OrderHistory = () => {
   return (
     <>
     <div>
+
+    </div>
+    
+    <div>
       <h1 className="text text-center font-bold text-xl py-4">My Order History</h1>
       <hr />
     </div>

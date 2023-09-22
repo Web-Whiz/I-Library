@@ -11,6 +11,7 @@ const AnswerModal = ({
   bookTitle,
   bookId,
   question,
+  fetchAnswers,
 }) => {
   const { user } = useAuth();
   const [answer, setAnswer] = useState("");
@@ -39,7 +40,7 @@ const AnswerModal = ({
       name: user?.displayName,
     };
 
-    console.log(data);
+    // console.log(data);
 
     try {
       const response = await fetch(
@@ -57,6 +58,7 @@ const AnswerModal = ({
         toast.success("Answer given successfully!");
         event.target.reset();
         setShowAnswerModal(false);
+        fetchAnswers();
       } else {
         toast.error("Failed to give answer.");
       }

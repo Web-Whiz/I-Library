@@ -83,6 +83,7 @@ const Modal = ({
       bookImg,
       bookId,
       email: user?.email,
+      userPhoto: user?.photoURL,
     };
 
     try {
