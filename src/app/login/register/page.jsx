@@ -57,11 +57,7 @@ const RegisterPage = () => {
 
           if (responseData.insertedId) {
             toast.success("User created successfully");
-<<<<<<< HEAD
             router.push("/");
-=======
-           
->>>>>>> 4492cb5f133f7d7a1aaa6c4c4a05f7b733f91edb
           }
         } catch (error) {
           console.log(error);
