@@ -15,9 +15,8 @@ const AdminRoute = ({ children }) => {
       <Loading />
     );
   }
-  if (!user || role?.role !== "admin") {
-    router.push("/");
-    return;
+  if (!user) {
+    return router.push("/");
   }
 
   return children;
