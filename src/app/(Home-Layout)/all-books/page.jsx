@@ -58,6 +58,7 @@ const AllBooks = () => {
       ]);
     }
   };
+<<<<<<< HEAD
   categoryRefetch();
 
   const handleFilterByAuthor = (authorName) => {
@@ -108,6 +109,11 @@ const AllBooks = () => {
     });
   };
 
+=======
+  refetch();
+
+  console.log(authors);
+>>>>>>> 4492cb5f133f7d7a1aaa6c4c4a05f7b733f91edb
   return (
     <div>
       <div>

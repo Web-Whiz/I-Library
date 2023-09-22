@@ -2,10 +2,7 @@
 import { useQuery } from "@tanstack/react-query";
 
 export const getBooks = () => {
-  const {
-    data: allBooks = [],
-    refetch,
-  } = useQuery({
+  const { data: allBooks = [], refetch } = useQuery({
     queryKey: ["all books"],
     // enabled: !loading,
     queryFn: async () => {
@@ -90,6 +87,20 @@ export const getCategorizedBook = (categoryName) => {
     },
   });
   return [categoryFilteredBook, refetch];
+};
+
+export const getKidsZoneBook = () => {
+  const { data: KidsZoneBook = [], refetch } = useQuery({
+    queryKey: ["KidsZoneBook"],
+    // enabled: !loading,
+    queryFn: async () => {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_BaseURL}/books/category-filter?categories=kids`
+      );
+      return res.json();
+    },
+  });
+  return [KidsZoneBook, refetch];
 };
 
 export const getBookAuthor = () => {
