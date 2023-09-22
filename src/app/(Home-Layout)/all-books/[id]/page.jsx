@@ -110,6 +110,7 @@ const Book = ({ params }) => {
               <div className="grid grid-cols-2 w-full gap-2 mt-2">
                 <Link
                   href="/LinuxGuide.pdf"
+                  target="_blank"
                   className="px-3 py-2 bg-violet-600 text-violet-100 hover:bg-violet-100 hover:text-violet-600 duration-200 text-center"
                 >
                   Read PDF
