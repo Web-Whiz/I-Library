@@ -9,99 +9,6 @@ const PublicationsPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [showAllPublications, setShowAllPublications] = useState(false);
   const [publishers] = getBookPublisher();
-  // console.log(publishers);
-  // const publications = [
-  //   {
-  //     id: 1,
-  //     name: "Abacas",
-  //     img: "https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books-illustration_23-2149341898.jpg?w=2000",
-  //   },
-  //   {
-  //     id: 2,
-  //     name: "Alfa",
-  //     img: "https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books-illustration_23-2149341898.jpg?w=2000",
-  //   },
-  //   {
-  //     id: 3,
-  //     name: "Book Readers",
-  //     img: "https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books-illustration_23-2149341898.jpg?w=2000",
-  //   },
-  //   {
-  //     id: 4,
-  //     name: "Donika Publishing",
-  //     img: "https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books-illustration_23-2149341898.jpg?w=2000",
-  //   },
-  //   {
-  //     id: 5,
-  //     name: "Harpwe Black",
-  //     img: "https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books-illustration_23-2149341898.jpg?w=2000",
-  //   },
-  //   {
-  //     id: 6,
-  //     name: "Islamic Foundation",
-  //     img: "https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books-illustration_23-2149341898.jpg?w=2000",
-  //   },
-  //   {
-  //     id: 7,
-  //     name: "Loft",
-  //     img: "https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books-illustration_23-2149341898.jpg?w=2000",
-  //   },
-  //   {
-  //     id: 8,
-  //     name: "Book Readers",
-  //     img: "https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books-illustration_23-2149341898.jpg?w=2000",
-  //   },
-  //   {
-  //     id: 9,
-  //     name: "Donika Publishing",
-  //     img: "https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books-illustration_23-2149341898.jpg?w=2000",
-  //   },
-  //   {
-  //     id: 10,
-  //     name: "Harpwe Black",
-  //     img: "https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books-illustration_23-2149341898.jpg?w=2000",
-  //   },
-  //   {
-  //     id: 11,
-  //     name: "Islamic Foundation",
-  //     img: "https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books-illustration_23-2149341898.jpg?w=2000",
-  //   },
-  //   {
-  //     id: 12,
-  //     name: "Abacas Publications",
-  //     img: "https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books-illustration_23-2149341898.jpg?w=2000",
-  //   },
-  //   {
-  //     id: 13,
-  //     name: "Abacas",
-  //     img: "https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books-illustration_23-2149341898.jpg?w=2000",
-  //   },
-  //   {
-  //     id: 14,
-  //     name: "Alfa",
-  //     img: "https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books-illustration_23-2149341898.jpg?w=2000",
-  //   },
-  //   {
-  //     id: 15,
-  //     name: "Book Readers",
-  //     img: "https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books-illustration_23-2149341898.jpg?w=2000",
-  //   },
-  //   {
-  //     id: 16,
-  //     name: "Donika Publishing",
-  //     img: "https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books-illustration_23-2149341898.jpg?w=2000",
-  //   },
-  //   {
-  //     id: 17,
-  //     name: "Harpwe Black",
-  //     img: "https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books-illustration_23-2149341898.jpg?w=2000",
-  //   },
-  //   {
-  //     id: 18,
-  //     name: "Islamic Foundation",
-  //     img: "https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books-illustration_23-2149341898.jpg?w=2000",
-  //   },
-  // ];
 
   const togglePublicationsVisibility = () => {
     setShowAllPublications(!showAllPublications);
@@ -120,9 +27,9 @@ const PublicationsPage = () => {
     <div>
       {/* Publications Banner */}
       <div>
-        <PageBanner bannerName="Publications" bannerImg={banner} />
+        <PageBanner bannerName="All Publications" bannerImg={banner} />
       </div>
-      <section className="container mx-auto mt-20 mb-40">
+      <section className="container mx-auto mt-16 mb-32">
         {/* Publications Search */}
         <form className="flex items-center justify-center">
           <div>
@@ -140,7 +47,10 @@ const PublicationsPage = () => {
             </button>
           </div>
         </form>
-        <hr className="mt-6 mb-20 border-black" />
+        <hr
+          className="my-16"
+          style={{ height: "1px", backgroundColor: "#ccc", border: "none" }}
+        />
 
         {filteredPublications.length === 0 && (
           <p className="text-center text-red-500 font-medium mt-4 text-lg">

@@ -1,4 +1,3 @@
-import React from "react";
 import Image from "next/image";
 
 import icon1 from "@/assets/icon1.png";
@@ -8,13 +7,15 @@ import icon3 from "@/assets/icon3.png";
 const OurServices = () => {
   return (
     <div className="container mx-auto px-2 md:px-0">
-      <h3 className="text-[#0F86CD] font-extrabold text-4xl text-center">
-        Our Services{" "}
-      </h3>
-      <p className="text-center my-3">
-        Fresh Pages, New Adventures. Discover the latest arrivals <br /> in our
-        New Releases section
-      </p>
+      <div className="text-center mb-10">
+        <h1 className="capitalize font-bold text-3xl mb-3 text-[#0F86CD]">
+          Our Services
+        </h1>
+        <h3 className=" max-w-[450px] mx-auto">
+          Explore our most borrowed, loved, and timeless books. Join the
+          literary journey today!
+        </h3>
+      </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-9">
         <div className="bg-rose-500 bg-opacity-80 p-8 hover:shadow-lg hover:bg-opacity-100 duration-300 cursor-pointer">
           <Image

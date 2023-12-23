@@ -28,9 +28,9 @@ const AuthorPage = () => {
 
   return (
     <div>
-      <PageBanner bannerName="Author" bannerImg={banner} />
+      <PageBanner bannerName="All Authors" bannerImg={banner} />
 
-      <section className="container mx-auto p-5 mt-20 mb-40">
+      <section className="container mx-auto p-5 mt-12 mb-32">
         {/* Authors Search */}
         <form className="flex items-center justify-center">
           <div>
@@ -48,7 +48,10 @@ const AuthorPage = () => {
             </button>
           </div>
         </form>
-        <hr className="mt-6 mb-20 border-black" />
+        <hr
+          className="mt-12 mb-16"
+          style={{ height: "1px", backgroundColor: "#ccc", border: "none" }}
+        />
 
         {filteredAuthors.length === 0 && (
           <p className="text-center text-red-500 font-medium mt-4 text-lg">
@@ -62,8 +65,8 @@ const AuthorPage = () => {
               <Link
                 key={author?._id}
                 // href={`/author/${author?._id}`}
-                href={`/author?id=${encodeURIComponent(author?._id)}`}
-                as={`/author/${encodeURIComponent(author?._id)}`}
+                href={`/authors?id=${encodeURIComponent(author?._id)}`}
+                as={`/authors/${encodeURIComponent(author?._id)}`}
                 className="flex items-center justify-center"
               >
                 <div className="text-center text-gray-900 hover:text-indigo-700">

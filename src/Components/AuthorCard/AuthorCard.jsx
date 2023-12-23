@@ -3,7 +3,7 @@ import { FaFacebookF, FaLinkedin, FaTwitter } from "react-icons/fa";
 
 const AuthorCard = ({ author }) => {
   return (
-    <div className="w-52 h-[297px] bg-white rounded-lg p-4 hover:shadow-lg cursor-pointer">
+    <div className="w-52 h-[297px] bg-white rounded-lg p-4 hover:shadow-lg cursor-pointer duration-200">
       <img
         style={{ width: "170px", height: "170px" }}
         className="mx-auto"

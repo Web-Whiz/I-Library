@@ -1,18 +1,18 @@
 "use client";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
-import "./testimonials.css";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 import TestimonialCard from "./TestimonialCard";
+import "./testimonials.css";
 const Testimonials = () => {
-
   return (
-    <div className="bg-testimonials-bg">
-      <div className="text-center pt-5">
-        <h1 className="capitalize font-bold text-4xl mt-14 mb-3 text-[#0F86CD]">
+    <div className="bg-testimonials-bg relative">
+      <div className="bg-black bg-opacity-30 absolute w-full h-full"></div>
+      <div className="text-center pt-5 shadow-lg bg-black bg-opacity-30 pb-4">
+        <h1 className="capitalize font-extrabold text-4xl mt-12 mb-3 text-white">
           Testimonials
         </h1>
-        <h3 className=" max-w-[450px] text-slate-200 mx-auto mb-4">
-          Celebrating Our Readers' Voices
+        <h3 className="text-white mb-4 font-medium text-base">
+          Celebrating Our Readers Voices
         </h3>
       </div>
       <div className="py-20">

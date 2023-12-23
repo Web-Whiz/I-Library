@@ -39,7 +39,7 @@ const Book = ({ params }) => {
             <div className="w-full p-6 border-[#EAE6E6] border-[1px] overflow-hidden">
               <img
                 className="w-full h-[215px] object-contain object-center hover:scale-125 duration-500"
-                src={book.image_url}
+                src={book?.image_url}
                 alt="book img"
               />
             </div>
@@ -59,25 +59,25 @@ const Book = ({ params }) => {
           {/* book image */}
           {/* book info */}
           <div className="sm:col-span-3">
-            <h2 className="text-2xl font-medium">{book.title}</h2>
+            <h2 className="text-2xl font-medium">{book?.title}</h2>
             <h4 className="text-sm">
-              by
-              <span className="text-[#0386FF] cursor-pointer">
-                {book.author}
+              By
+              <span className="text-[#0386FF] cursor-pointer ml-1">
+                {book?.author}
               </span>
             </h4>
-            <h4 className="mt-7 text-sm">
+            <h4 className="mt-5 text-sm">
               Category:
-              <span className="text-[#0386FF] cursor-pointer">
-                {book.category}
+              <span className="text-[#0386FF] cursor-pointer ml-1">
+                {book?.category}
               </span>
             </h4>
             <h4 className="text-sm">
-              Self no: <span>{book.shelf}</span>
+              Self No: <span>{book?.shelf}</span>
             </h4>
             <div className="flex items-center gap-3 mt-1">
               <Rating
-                placeholderRating={book.ratings}
+                placeholderRating={book?.ratings}
                 className="space-x-1"
                 readonly
                 emptySymbol={

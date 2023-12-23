@@ -117,7 +117,7 @@ const AllBooks = () => {
         {/* filter option */}
         <div className="hidden lg:block w-[40%] xl:w-[20%]">
           <div className="bg-white w-full h-fit p-4">
-            <h2 className="text-lg font-semibold">Category:</h2>
+            <h2 className="text-lg font-semibold">Categories :</h2>
             {categories.slice(0, categoriesToShow).map((category) => {
               return (
                 <div
@@ -156,7 +156,7 @@ const AllBooks = () => {
             )}
           </div>
           <div className="bg-white w-full h-fit my-5 p-4">
-            <h2 className="text-lg font-semibold">Author:</h2>
+            <h2 className="text-lg font-semibold">Authors :</h2>
             {authors.slice(0, authorsToShow).map((author) => {
               return (
                 <div
@@ -195,7 +195,7 @@ const AllBooks = () => {
             )}
           </div>
           <div className="bg-white w-full h-fit p-4">
-            <h2 className="text-lg font-semibold">Publisher:</h2>
+            <h2 className="text-lg font-semibold">Publications :</h2>
             {publishers.slice(0, publishersToShow).map((publisher) => {
               return (
                 <div
@@ -240,7 +240,7 @@ const AllBooks = () => {
         {/* book card */}
         <div className="xl:w-[80%]">
           <div className="bg-white w-full mb-5 h-20 flex items-center justify-between lg:justify-end px-5">
-            <button className="bg-[#EFF3F8] flex items-center gap-2 px-3 py-2 rounded-sm lg:hidden">
+            <button className="bg-[#EFF3F8] gap-2 px-3 py-2 rounded-sm hidden">
               <span>
                 <FaFilter />
               </span>
@@ -248,7 +248,7 @@ const AllBooks = () => {
             </button>
             <div className="flex items-center gap-2">
               <label htmlFor="sortOption" className="font-medium">
-                Sort by:
+                Sort by :
               </label>
               <select
                 name="sortOption"
@@ -260,8 +260,9 @@ const AllBooks = () => {
                 <option value="author">Author</option>
                 {/* Add more sorting criteria as needed */}
               </select>
+              <span className="font-medium">in</span>
               <button
-                className="text-indigo-700"
+                className="text-indigo-700 font-medium"
                 onClick={() => handleSort(sortBy)} // Toggle sorting order
               >
                 {sortOrder === "ascending" ? "Ascending" : "Descending"}

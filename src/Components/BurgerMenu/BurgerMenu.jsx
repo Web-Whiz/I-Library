@@ -1,19 +1,18 @@
-import Image from "next/image";
-import React from "react";
 import logo from "@/assets/ILibrary.png";
-import { FaGoogle, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
+import Image from "next/image";
 import Link from "next/link";
 import {
-  BiHomeHeart,
   BiBookAlt,
   BiGridAlt,
-  BiUserCircle,
-  BiNews,
-  BiMessageRoundedDetail,
-  BiPhone,
+  BiHomeHeart,
   BiInfoCircle,
+  BiMessageRoundedDetail,
+  BiNews,
+  BiPhone,
   BiSmile,
+  BiUserCircle,
 } from "react-icons/bi";
+import { FaGoogle, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
 const BurgerMenu = () => {
   return (
     <div className="w-full h-screen bg-white text-lg space-y-4 relative">
@@ -35,10 +34,7 @@ const BurgerMenu = () => {
       <div>
         <ul className="px-2 h-full bg-white text-[#3d3c3c]">
           <li className="text-gray-900 font-medium cursor-pointer py-[6px] duration-200 text-lg hover:bg-violet-50 rounded-sm hover:text-violet-600  my-1 px-2">
-            <Link
-              href="/"
-              className="flex items-center gap-4 text-[15px]"
-            >
+            <Link href="/" className="flex items-center gap-4 text-[15px]">
               <BiHomeHeart /> Home
             </Link>
           </li>
@@ -52,19 +48,28 @@ const BurgerMenu = () => {
             </Link>
           </li>
           <li className="text-gray-900 font-medium cursor-pointer py-[6px] duration-200 text-lg hover:bg-violet-50 rounded-sm hover:text-violet-600  my-1 px-2">
-            <Link href="/category" className="flex items-center gap-4 text-[15px]">
+            <Link
+              href="/categories"
+              className="flex items-center gap-4 text-[15px]"
+            >
               <BiGridAlt />
-              Category
+              Categories
             </Link>
           </li>
           <li className="text-gray-900 font-medium cursor-pointer py-[6px] duration-200 text-lg hover:bg-violet-50 rounded-sm hover:text-violet-600  my-1 px-2">
-            <Link href="author" className="flex items-center gap-4 text-[15px]">
-              <BiUserCircle /> Author
+            <Link
+              href="/authors"
+              className="flex items-center gap-4 text-[15px]"
+            >
+              <BiUserCircle /> Authors
             </Link>
           </li>
           <li className="text-gray-900 font-medium cursor-pointer py-[6px] duration-200 text-lg hover:bg-violet-50 rounded-sm hover:text-violet-600  my-1 px-2">
-            <Link href="/publications" className="flex items-center gap-4 text-[15px]">
-              <BiNews /> Publication
+            <Link
+              href="/publications"
+              className="flex items-center gap-4 text-[15px]"
+            >
+              <BiNews /> Publications
             </Link>
           </li>
           <li className="text-gray-900 font-medium cursor-pointer py-[6px] duration-200 text-lg hover:bg-violet-50 rounded-sm hover:text-violet-600 my-1  px-2">
@@ -73,17 +78,26 @@ const BurgerMenu = () => {
             </Link>
           </li>
           <li className="text-gray-900 font-medium cursor-pointer py-[6px] duration-200 text-lg hover:bg-violet-50 rounded-sm hover:text-violet-600  my-1 px-2 ">
-            <Link href="/contact" className="flex items-center gap-4 text-[15px]">
+            <Link
+              href="/contact"
+              className="flex items-center gap-4 text-[15px]"
+            >
               <BiPhone /> Contact
             </Link>
           </li>
           <li className="text-gray-900 font-medium cursor-pointer py-[6px] duration-200 text-lg hover:bg-violet-50 rounded-sm hover:text-violet-600 my-1  px-2">
-            <Link href="/about-us" className="flex items-center gap-4 text-[15px]">
+            <Link
+              href="/about-us"
+              className="flex items-center gap-4 text-[15px]"
+            >
               <BiInfoCircle /> About us
             </Link>
           </li>
           <li className="text-gray-900 font-medium cursor-pointer py-[6px] duration-200 text-lg hover:bg-violet-50 rounded-sm hover:text-violet-600 my-1  px-2">
-            <Link href="/kids-zone" className="flex items-center gap-4 text-[15px]">
+            <Link
+              href="/kids-zone"
+              className="flex items-center gap-4 text-[15px]"
+            >
               <BiSmile /> Kids zone
             </Link>
           </li>
